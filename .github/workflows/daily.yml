@@ -1,0 +1,113 @@
+name: Daily update
+
+# AUTOMATIC or MANUAL updates - set the repository variable UPDATE_MODE
+# (Settings -> Secrets and variables -> Actions -> Variables):
+#   daily   (default) every weekday after the US close
+#   weekly  Fridays only (the week's close)
+#   manual  never on its own - press "Run workflow" (or "Update now" on the site) when you want fresh data
+on:
+  schedule:
+    # 22:30 UTC = 6:30 PM New York in summer (EDT) / 5:30 PM in winter (EST), after the US close.
+    # That is 4:00 AM IST the next morning.
+    - cron: "30 22 * * 1-4"   # Monday-Thursday: daily mode only
+    - cron: "30 22 * * 5"     # Friday: daily and weekly mode
+  workflow_dispatch:
+    inputs:
+      source:
+        description: "Price source"
+        type: choice
+        options: [yahoo, yfinance]
+        default: yahoo
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    # manual runs always go; scheduled runs follow UPDATE_MODE
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (vars.UPDATE_MODE || 'daily') == 'daily' ||
+      (vars.UPDATE_MODE == 'weekly' && github.event.schedule == '30 22 * * 5')
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Refresh index memberships (keeps old files if a source fails)
+        run: python scripts/update_reference.py
+
+      - name: Download prices from Yahoo Finance
+        id: yahoo
+        if: (inputs.source || 'yahoo') == 'yahoo'
+        continue-on-error: true
+        run: python scripts/fetch_prices.py --source yahoo
+
+      - name: Fall back to yfinance if the direct download failed
+        if: steps.yahoo.outcome != 'success'
+        run: python scripts/fetch_prices.py --source yfinance
+
+      - name: Fundamentals (SEC filings, insider trades, Yahoo profiles - new data only)
+        continue-on-error: true
+        timeout-minutes: 50
+        env:
+          SEC_CONTACT: ${{ vars.SEC_CONTACT }}
+        run: python scripts/fetch_fundamentals.py
+
+      - name: All-time-high reference (rebuilt weekly, ~5 min)
+        continue-on-error: true
+        run: python scripts/fetch_ath.py
+
+      - name: Compute dashboard data
+        run: python scripts/compute.py
+
+      - name: Run VPCI screener (vpci/app.py logic, completed and running week)
+        continue-on-error: true
+        run: python scripts/vpci_app_run.py
+
+      - name: Telegram evening digest (only if the Telegram secrets are set)
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: python scripts/telegram_alerts.py --evening
+
+      - name: Save data to the repository
+        run: |
+          git config user.name "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          # Keep only what the next run needs (config incl. fundamentals, weekly VPCI sector snapshots).
+          # The website's data files are published straight to Pages below, so they are not
+          # committed every night - that keeps the repository small.
+          git add config docs/data/vpci/history vpci/Stock_List_US.csv
+          git diff --cached --quiet || git commit -m "Data update $(date -u +%F)"
+          # Take in any commit made while this job ran (e.g. an edit to themes.csv)
+          git pull --rebase --autostash -X theirs origin main
+          git push
+
+      # Commits made by this job do not trigger a GitHub Pages rebuild,
+      # so the job publishes the website itself.
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: docs
+      - id: deployment
+        uses: actions/deploy-pages@v5

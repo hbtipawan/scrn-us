@@ -1,0 +1,170 @@
+Set,ETF,Label
+US sectors,XLK,Technology
+US sectors,XLF,Financials
+US sectors,XLV,Health care
+US sectors,XLE,Energy
+US sectors,XLI,Industrials
+US sectors,XLY,Consumer discretionary
+US sectors,XLP,Consumer staples
+US sectors,XLU,Utilities
+US sectors,XLB,Materials
+US sectors,XLRE,Real estate
+US sectors,XLC,Communication services
+Equal-weight sectors,RSPT,Technology (equal weight)
+Equal-weight sectors,RSPF,Financials (equal weight)
+Equal-weight sectors,RSPH,Health care (equal weight)
+Equal-weight sectors,RSPG,Energy (equal weight)
+Equal-weight sectors,RSPN,Industrials (equal weight)
+Equal-weight sectors,RSPD,Consumer discretionary (equal weight)
+Equal-weight sectors,RSPS,Consumer staples (equal weight)
+Equal-weight sectors,RSPU,Utilities (equal weight)
+Equal-weight sectors,RSPM,Materials (equal weight)
+Equal-weight sectors,RSPR,Real estate (equal weight)
+Equal-weight sectors,RSPC,Communication services (equal weight)
+Tech & innovation,SMH,Semiconductors (VanEck)
+Tech & innovation,SOXX,Semiconductors (iShares)
+Tech & innovation,IGV,Software
+Tech & innovation,CIBR,Cybersecurity
+Tech & innovation,HACK,Cybersecurity (ETFMG)
+Tech & innovation,SKYY,Cloud computing
+Tech & innovation,WCLD,Cloud SaaS
+Tech & innovation,FDN,Internet
+Tech & innovation,SOCL,Social media
+Tech & innovation,BOTZ,Robotics & AI
+Tech & innovation,ROBO,Robotics & automation
+Tech & innovation,AIQ,Artificial intelligence
+Tech & innovation,QTUM,Quantum & machine learning
+Tech & innovation,ARKK,ARK Innovation
+Tech & innovation,ARKW,ARK Next Generation Internet
+Tech & innovation,UFO,Space
+Tech & innovation,ITA,Aerospace & defense (iShares)
+Tech & innovation,XAR,Aerospace & defense (SPDR)
+Tech & innovation,PPA,Aerospace & defense (Invesco)
+Tech & innovation,BLOK,Blockchain
+Tech & innovation,DRIV,Autonomous & EVs
+Tech & innovation,FINX,Fintech
+Tech & innovation,IPAY,Digital payments
+Tech & innovation,ESPO,Video games & esports
+Tech & innovation,IPO,Recent IPOs
+Cyclicals & financials,KRE,Regional banks
+Cyclicals & financials,KBE,Banks
+Cyclicals & financials,IAI,Brokers & exchanges
+Cyclicals & financials,KIE,Insurance
+Cyclicals & financials,XHB,Homebuilders (SPDR)
+Cyclicals & financials,ITB,Home construction (iShares)
+Cyclicals & financials,PAVE,Infrastructure
+Cyclicals & financials,XRT,Retail
+Cyclicals & financials,IYT,Transportation
+Cyclicals & financials,XTN,Transportation (equal weight)
+Cyclicals & financials,JETS,Airlines
+Cyclicals & financials,PEJ,Leisure & entertainment
+Cyclicals & financials,VNQ,REITs
+Cyclicals & financials,IYZ,Telecom
+Cyclicals & financials,PBJ,Food & beverage
+Energy & resources,XOP,Oil & gas exploration
+Energy & resources,OIH,Oil services
+Energy & resources,AMLP,MLPs & pipelines
+Energy & resources,URA,Uranium
+Energy & resources,URNM,Uranium miners
+Energy & resources,NLR,Nuclear energy
+Energy & resources,TAN,Solar
+Energy & resources,ICLN,Clean energy
+Energy & resources,LIT,Lithium & batteries
+Energy & resources,GDX,Gold miners
+Energy & resources,GDXJ,Junior gold miners
+Energy & resources,SIL,Silver miners
+Energy & resources,SILJ,Junior silver miners
+Energy & resources,COPX,Copper miners
+Energy & resources,REMX,Rare earths & strategic metals
+Energy & resources,XME,Metals & mining
+Energy & resources,PICK,Global metals & mining
+Energy & resources,SLX,Steel
+Energy & resources,MOO,Agribusiness
+Energy & resources,WOOD,Timber & forestry
+Energy & resources,PHO,Water
+Health care,XBI,Biotech (equal weight)
+Health care,IBB,Biotech (large caps)
+Health care,IHI,Medical devices
+Health care,IHF,Health care providers
+Health care,XPH,Pharmaceuticals
+Health care,ARKG,Genomics
+Size & style,SPY,S&P 500
+Size & style,RSP,S&P 500 equal weight
+Size & style,QQQ,Nasdaq 100
+Size & style,QQQE,Nasdaq 100 equal weight
+Size & style,DIA,Dow Jones 30
+Size & style,MDY,S&P MidCap 400
+Size & style,IJR,S&P SmallCap 600
+Size & style,IWM,Russell 2000
+Size & style,IWF,Large-cap growth
+Size & style,IWD,Large-cap value
+Size & style,IWO,Small-cap growth
+Size & style,IWN,Small-cap value
+Size & style,MTUM,Momentum factor
+Size & style,QUAL,Quality factor
+Size & style,USMV,Minimum volatility
+Size & style,VLUE,Value factor
+Size & style,SPHB,High beta
+Size & style,SPLV,Low volatility
+Size & style,SCHD,Dividend
+Countries & regions,EFA,Developed markets ex-US
+Countries & regions,EEM,Emerging markets
+Countries & regions,VEA,Developed markets (Vanguard)
+Countries & regions,VWO,Emerging markets (Vanguard)
+Countries & regions,FXI,China large caps
+Countries & regions,MCHI,China
+Countries & regions,KWEB,China internet
+Countries & regions,EWJ,Japan
+Countries & regions,EWZ,Brazil
+Countries & regions,INDA,India
+Countries & regions,EPI,India earnings
+Countries & regions,EWG,Germany
+Countries & regions,EWU,United Kingdom
+Countries & regions,EWY,South Korea
+Countries & regions,EWT,Taiwan
+Countries & regions,EWW,Mexico
+Countries & regions,EWC,Canada
+Countries & regions,EWA,Australia
+Countries & regions,EWI,Italy
+Countries & regions,EWP,Spain
+Countries & regions,EWQ,France
+Countries & regions,EWL,Switzerland
+Countries & regions,EWS,Singapore
+Countries & regions,EWH,Hong Kong
+Countries & regions,EZA,South Africa
+Countries & regions,ARGT,Argentina
+Countries & regions,VNM,Vietnam
+Countries & regions,TUR,Turkey
+Countries & regions,EIDO,Indonesia
+Countries & regions,EZU,Eurozone
+Commodities & crypto,GLD,Gold
+Commodities & crypto,IAU,Gold (iShares)
+Commodities & crypto,SLV,Silver
+Commodities & crypto,PPLT,Platinum
+Commodities & crypto,PALL,Palladium
+Commodities & crypto,CPER,Copper
+Commodities & crypto,USO,Crude oil
+Commodities & crypto,BNO,Brent crude
+Commodities & crypto,UNG,Natural gas
+Commodities & crypto,DBA,Agriculture
+Commodities & crypto,DBC,Commodity basket
+Commodities & crypto,CORN,Corn
+Commodities & crypto,WEAT,Wheat
+Commodities & crypto,IBIT,Bitcoin
+Commodities & crypto,ETHA,Ether
+Commodities & crypto,UUP,US dollar
+Commodities & crypto,FXE,Euro
+Commodities & crypto,FXY,Japanese yen
+Bonds & rates,BIL,T-bills 1–3 months
+Bonds & rates,SHY,Treasuries 1–3 years
+Bonds & rates,IEI,Treasuries 3–7 years
+Bonds & rates,IEF,Treasuries 7–10 years
+Bonds & rates,TLT,Treasuries 20+ years
+Bonds & rates,TIP,Inflation-protected
+Bonds & rates,AGG,US aggregate bonds
+Bonds & rates,LQD,Investment-grade corporates
+Bonds & rates,HYG,High-yield corporates
+Bonds & rates,JNK,High yield (SPDR)
+Bonds & rates,BKLN,Senior loans
+Bonds & rates,EMB,Emerging-market bonds
+Bonds & rates,MUB,Municipal bonds

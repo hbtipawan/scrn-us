@@ -1,0 +1,24 @@
+{
+  "_comment": "Edit these to change the universe and behaviour. Money is in US dollars; turnover and market cap in $ millions.",
+  "history_calendar_days": 760,
+  "base_history_calendar_days": 2300,
+  "prefilter_min_price": 3,
+  "prefilter_min_dollar_volume_m": 1.0,
+  "min_price": 5,
+  "min_median_turnover_m": 5.0,
+  "min_market_cap_m": 300,
+  "etf_min_median_turnover_m": 5.0,
+  "min_bars": 60,
+  "min_group_size": 3,
+  "benchmark": "S&P 500",
+  "extra_indices": [
+    "Nasdaq 100",
+    "Dow Jones",
+    "Russell 2000",
+    "S&P 400 Mid",
+    "S&P 600 Small"
+  ],
+  "breadth_history_days": 260,
+  "yahoo_requests_per_second": 15,
+  "sec_user_agent": ""
+}

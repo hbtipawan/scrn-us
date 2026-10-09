@@ -1,0 +1,931 @@
+import json
+import re
+import warnings
+from datetime import datetime, date as _date
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+import numpy as np
+import pandas as pd
+import streamlit as st
+
+# ── Startup guard: pinpoint exactly what's missing instead of a redacted
+#    ModuleNotFoundError on Streamlit Cloud ──────────────────────────────
+import importlib.util as _ilu, os as _os
+_missing = []
+for _mod in ("pandas", "numpy", "requests", "yfinance", "pyotp"):
+    if _ilu.find_spec(_mod) is None:
+        _missing.append(f"Python package `{_mod}` → add it to requirements.txt")
+for _f in ("vpci_engine.py", "data_sources.py", "sector_history.py", "signal_history.py"):
+    if not _os.path.exists(_f):
+        _missing.append(f"File `{_f}` → upload it to the repo root")
+if _missing:
+    st.error("🚨 **Deployment is incomplete.** Fix the following and reboot the app:\n\n"
+             + "\n".join(f"- {m}" for m in _missing))
+    st.stop()
+
+from vpci_engine import analyze_stock_v3, DEFAULT_PARAMS, MIN_BARS
+from data_sources import (
+    fetch_weekly_any, load_upstox_instruments,
+    kite_totp_login, kite_access_token, set_kite_manual_token,
+)
+from signal_history import classify_fresh_v2, analyze_young_stock, YOUNG_MIN_BARS
+from sector_history import (
+    load_sector_map, attach_sector_columns, build_sector_leadership,
+    save_weekly_snapshot, load_history_from_github, build_rotation_view,
+    init_checkpoint, save_checkpoint, clear_checkpoint,
+    checkpoint_to_json, restore_checkpoint_from_upload,
+    CHECKPOINT_EVERY,
+)
+
+warnings.filterwarnings("ignore")
+
+UNIVERSE_FILES = ["Stock_List_US.csv"]   # written each evening by scripts/vpci_app_run.py (companyId, Name, Sector, Industry)
+MARKET_FLAG = "US"   # US edition: NYSE / Nasdaq / NYSE American stocks
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# RANKING HELPERS  (original pre-v4 weights — earnings phase removed)
+# ═══════════════════════════════════════════════════════════════════════════════
+def parse_mcap_to_crore(mcap_str):
+    """US edition (name kept so the ranking code is unchanged): parse '$12.3B', '$850M',
+    '$1.2T' or 'N/A' to US$ millions."""
+    if pd.isna(mcap_str) or mcap_str == "N/A" or not str(mcap_str).strip():
+        return np.nan
+    m = re.match(r"\$?\s*([\d.]+)\s*([TBM]?)", str(mcap_str).strip().upper())
+    if not m:
+        return np.nan
+    return float(m.group(1)) * {"T": 1e6, "B": 1e3, "M": 1.0, "": 1.0}[m.group(2)]
+
+
+def mcap_score(musd):
+    """Sweet spot: $2B - $10B (US mid caps). Decays outside this band.
+    (The Indian edition's sweet spot is Rs 5,000 - 15,000 crore.)"""
+    if pd.isna(musd) or musd <= 0:
+        return 0.5
+    if 2000 <= musd <= 10000:
+        return 1.0
+    if 1000 <= musd < 2000:
+        return 0.6 + 0.4 * (musd - 1000) / 1000
+    if 10000 < musd <= 30000:
+        return 1.0 - 0.4 * (musd - 10000) / 20000
+    if 500 <= musd < 1000:
+        return 0.3 + 0.3 * (musd - 500) / 500
+    if 30000 < musd <= 100000:
+        return 0.6 - 0.6 * (musd - 30000) / 70000
+    return 0.0
+
+
+def rank_stocks(df, include_relaxed=False, min_gates=7):
+    """Rank stocks already passing the gates by composite score."""
+    if include_relaxed:
+        mask = (df["full_entry"] == True) | (df["relaxed_entry"] == True) | (df["gate_count"] >= min_gates)
+    else:
+        mask = df["full_entry"] == True
+
+    pool = df[mask].copy().reset_index(drop=True)
+    if len(pool) == 0:
+        return pool
+
+    pool["score_vpci"] = pool["vpci"].rank(pct=True)
+    pool["score_rs"] = pool["rs_return"].rank(pct=True)
+    pool["score_52w"] = (pool["pct_near_52w"].clip(0, 100) / 100.0)
+    pool["score_tight"] = 1.0 - pool["risk_pct"].rank(pct=True)
+    if "vol_ratio" in pool.columns:
+        pool["score_vol"] = pool["vol_ratio"].rank(pct=True)
+    else:
+        pool["score_vol"] = 0.5
+    pool["mcap_crore"] = pool["Market Cap"].apply(parse_mcap_to_crore)
+    pool["score_mcap"] = pool["mcap_crore"].apply(mcap_score)
+
+    weights = {
+        "score_vpci":  0.25,
+        "score_rs":    0.25,
+        "score_52w":   0.20,
+        "score_tight": 0.15,
+        "score_vol":   0.10,
+        "score_mcap":  0.05,
+    }
+    pool["composite_score"] = sum(pool[col] * w for col, w in weights.items())
+
+    if "fresh_signal" in pool.columns:
+        pool.loc[pool["fresh_signal"] == True, "composite_score"] *= 1.05
+
+    pool = pool.sort_values("composite_score", ascending=False).reset_index(drop=True)
+    pool["rank"] = pool.index + 1
+    return pool
+
+
+def rank_g4_pending(df):
+    """
+    Rank stocks where gate_count == 6 and ONLY G4 (breakout) is missing.
+    Pre-breakout high-conviction watchlist candidates.
+    """
+    required_cols = ["gate_count", "g1", "g2", "g3", "g4", "g5", "g6", "g7"]
+    for c in required_cols:
+        if c not in df.columns:
+            return pd.DataFrame()
+
+    mask = (
+        (df["gate_count"] == 6) &
+        (df["g1"] == True) & (df["g2"] == True) & (df["g3"] == True) &
+        (df["g4"] == False) &
+        (df["g5"] == True) & (df["g6"] == True) & (df["g7"] == True)
+    )
+
+    pool = df[mask].copy().reset_index(drop=True)
+    if len(pool) == 0:
+        return pool
+
+    pool["score_vpci"] = pool["vpci"].rank(pct=True)
+    pool["score_rs"] = pool["rs_return"].rank(pct=True)
+    pool["score_52w"] = (pool["pct_near_52w"].clip(0, 100) / 100.0)
+    pool["score_tight"] = 1.0 - pool["risk_pct"].rank(pct=True)
+    if "vol_ratio" in pool.columns:
+        pool["score_vol"] = pool["vol_ratio"].rank(pct=True)
+    else:
+        pool["score_vol"] = 0.5
+    pool["mcap_crore"] = pool["Market Cap"].apply(parse_mcap_to_crore)
+    pool["score_mcap"] = pool["mcap_crore"].apply(mcap_score)
+    if "pct_near_52w" in pool.columns:
+        pool["score_proximity"] = pool["pct_near_52w"].clip(0, 100) / 100.0
+    else:
+        pool["score_proximity"] = 0.5
+
+    weights = {
+        "score_vpci":      0.20,
+        "score_rs":        0.20,
+        "score_52w":       0.15,
+        "score_tight":     0.15,
+        "score_vol":       0.10,
+        "score_mcap":      0.05,
+        "score_proximity": 0.15,
+    }
+    pool["composite_score"] = sum(pool[col] * w for col, w in weights.items())
+    pool = pool.sort_values("composite_score", ascending=False).reset_index(drop=True)
+    pool["rank"] = pool.index + 1
+    return pool
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PAGE CONFIG + HIGH-CONTRAST / LARGE-FONT THEME
+# ═══════════════════════════════════════════════════════════════════════════════
+st.set_page_config(page_title="Pawan Chaturvedi Screener", page_icon="📈", layout="wide")
+
+st.markdown("""
+<style>
+    html, body, [class*="css"] { font-size: 17px !important; }
+    .stDataFrame { font-size: 16px !important; }
+    div[data-testid="stMetricValue"] { font-size: 30px !important; font-weight: 700; }
+    div[data-testid="stMetricLabel"] { font-size: 16px !important; }
+    .stTabs [data-baseweb="tab"] { font-size: 17px !important; padding: 10px 18px; }
+    .stTabs [aria-selected="true"] {
+        background: linear-gradient(90deg, #00b89422, #00b89411);
+        border-radius: 8px 8px 0 0;
+    }
+    .src-badge {
+        display: inline-block; padding: 4px 14px; margin: 2px 6px 2px 0;
+        border-radius: 14px; font-size: 16px; font-weight: 600;
+    }
+    .src-ok  { background: #00b89433; color: #00e6b8; border: 1px solid #00b894; }
+    .src-off { background: #ff767533; color: #ff9f9e; border: 1px solid #ff7675; }
+    .hero {
+        text-align: center; padding: 18px 0 8px 0;
+        background: linear-gradient(180deg, #00b89412, transparent);
+        border-radius: 14px; margin-bottom: 4px;
+    }
+    .hero h1 { font-size: 3em; margin: 0; letter-spacing: 0.5px; }
+    .hero p  { color: #9aa0a6; font-size: 1.25em; margin-top: 6px; }
+</style>
+<div class="hero">
+    <h1>📈 Pawan's Screener</h1>
+    <p>VPCI v3 Momentum & Breakout System • US Stocks (NYSE • Nasdaq) • Yahoo Finance</p>
+</div>
+""", unsafe_allow_html=True)
+st.divider()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UNIVERSE LOADER  (US list written by scripts/vpci_app_run.py)
+# ═══════════════════════════════════════════════════════════════════════════════
+@st.cache_data(show_spinner=False)
+def get_universe():
+    """Load the US stock universe. Returns (symbols, path_used)."""
+    import os
+    for path in UNIVERSE_FILES:
+        if not os.path.exists(path):
+            continue
+        try:
+            df = pd.read_csv(path)
+            df.columns = [str(c).strip() for c in df.columns]
+            if "companyId" in df.columns:
+                syms = [str(t).strip().upper() for t in df["companyId"].dropna()]
+            elif "SYMBOL" in df.columns:
+                if "SERIES" in df.columns:
+                    df = df[df["SERIES"] == "EQ"]
+                syms = [str(t).strip().upper() for t in df["SYMBOL"].dropna()]
+            else:
+                continue
+            syms = [s for s in dict.fromkeys(syms) if s and s != "NAN"]
+            return syms, path
+        except Exception:
+            continue
+    st.error("🚨 No universe file found. Upload Stock_List_US.csv (companyId, Name, Sector, Industry).")
+    return ["AAPL", "MSFT", "NVDA"], None
+
+
+def universe_path():
+    _, p = get_universe()
+    return p or UNIVERSE_FILES[0]
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PROCESSING WORKER  — multi-source chain, screening logic untouched
+# ═══════════════════════════════════════════════════════════════════════════════
+def process_symbol(symbol, params, source_order, live=False, project_volume=True):
+    """
+    Returns ("full", result) | ("young", result) | ("failed", None).
+    Fetches once with the LOW bar minimum so recently listed stocks are kept
+    for the New Listings tab instead of being discarded.
+
+    live=True → last weekly bar is the CURRENT, still-forming week.
+    """
+    df, source, exchange = fetch_weekly_any(symbol, source_order,
+                                            min_bars=YOUNG_MIN_BARS,
+                                            live=live, project_volume=project_volume)
+    if df is None:
+        return "failed", None
+
+    _meta = {
+        "live_mode":        bool(live),
+        "partial_week":     bool(df.attrs.get("partial_week", False)),
+        "elapsed_sessions": df.attrs.get("elapsed_sessions"),
+        "week_confidence":  df.attrs.get("week_confidence"),
+        "volume_projected": bool(df.attrs.get("volume_projected", False)),
+        "projection_mult":  df.attrs.get("projection_mult"),
+        "asof":             df.attrs.get("asof"),
+        "week_ending":      str(df.index[-1].date()),
+    }
+
+    if len(df) >= MIN_BARS:
+        r = analyze_stock_v3(symbol, df, params)          # engine — untouched
+        if not r:
+            return "failed", None
+        r["source"] = source
+        r["exchange"] = exchange
+        # True fresh classification: position state machine over full history
+        fv = classify_fresh_v2(df, params)
+        r["fresh_v2"] = fv["fresh_v2"]
+        r["fresh_ext_v2"] = fv["fresh_ext_v2"]
+        r["in_open_position"] = fv["in_open_position"]
+        r["position_state"] = fv["position_state"]
+        r["last_entry_date"] = fv["last_entry_date"]
+        r["last_exit_date"] = fv["last_exit_date"]
+        r.update(_meta)
+        return "full", r
+
+    y = analyze_young_stock(symbol, df, params)
+    if y:
+        y["source"] = source
+        y["exchange"] = exchange
+        y.update(_meta)
+        return "young", y
+    return "failed", None
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SIDEBAR
+# ═══════════════════════════════════════════════════════════════════════════════
+st.sidebar.markdown("### ⚙️ Scan Configuration")
+st.sidebar.info("🇺🇸 US stocks (NYSE, Nasdaq, NYSE American). Weekly bars are built from "
+                "Yahoo Finance daily candles (split-adjusted). When the dashboard's evening "
+                "download is present (cache/prices.csv.gz) it is used instead — no network needed.")
+source_order = ["Cache", "Yahoo"]
+
+st.sidebar.markdown("---")
+st.sidebar.markdown("### 🔴 Live / Intraweek Mode")
+from data_sources import market_is_open, ist_now, session_fraction
+
+_open = market_is_open()
+st.sidebar.caption(
+    f"🕒 {ist_now().strftime('%a %d %b, %H:%M')} New York — "
+    + ("🟢 **Market OPEN** " + f"({session_fraction()*100:.0f}% of session done)"
+       if _open else "🔴 Market closed")
+)
+live_mode = st.sidebar.toggle(
+    "Screen the RUNNING week (live candle)", value=_open,
+    help="OFF = only completed weekly candles (Friday closes).\n"
+         "ON  = the current, still-forming week is used as the latest bar, "
+         "built from daily candles + today's live intraday candle."
+)
+project_volume = st.sidebar.toggle(
+    "Pro-rate partial-week volume", value=True, disabled=not live_mode,
+    help="A part-week has part-week volume, which artificially crushes VPCI's "
+         "volume terms (VM, VPR) early in the week. This scales the running "
+         f"week's volume to a full-week equivalent (capped at 5x, skipped if "
+         f"less than half a session has elapsed). It is an ASSUMPTION — it can "
+         "flip gates. Turn off to see raw, un-extrapolated volume."
+)
+if live_mode:
+    st.sidebar.warning(
+        "⚠️ Signals on the running week are **provisional** — they can and do "
+        "flip before Friday's close. Weigh them by the `week_confidence` column."
+    )
+    # Guard 2: raw partial-week volume crushes VPCI's VM/VPR terms → G5 fails.
+    if not project_volume:
+        st.sidebar.error(
+            "🚨 **Pro-rate is OFF.** The running week holds only "
+            f"~{session_fraction()*100:.0f}% of today plus prior sessions of volume, so "
+            "`VM = SMA_V(5)/SMA_V(20)` and `VPR` collapse, VPCI goes negative, "
+            "**G5 fails and your 7/7 count will crater**. This is arithmetic, "
+            "not signal. Turn it ON unless you are deliberately inspecting raw volume."
+        )
+
+st.sidebar.markdown("---")
+st.sidebar.markdown("### 🎯 Algorithm Settings")
+relaxed_mode = st.sidebar.toggle("Relaxed Mode (Allow 6/7 Gates)", value=False)
+
+with st.sidebar.expander("🛠️ Advanced Settings"):
+    workers = st.slider("Parallel Workers", min_value=3, max_value=30, value=12,
+                        help="Yahoo throttles heavy parallel use; 8-12 is a good range.")
+    test_limit = st.number_input("Limit Scan (0 = All)", min_value=0, max_value=10000, value=0)
+
+st.sidebar.markdown("---")
+
+# ── Resume / Recovery panel ─────────────────────────────────────────────
+with st.sidebar.expander("💾 Resume & Recovery", expanded=False):
+    st.caption(
+        f"Scans checkpoint to memory every {CHECKPOINT_EVERY} symbols. If your "
+        "session disconnects, click **Run Market Scan** again — completed "
+        "symbols are skipped."
+    )
+    _ckpt_bytes = checkpoint_to_json(MARKET_FLAG)
+    if _ckpt_bytes:
+        st.success("Checkpoint available — the next scan will resume from it.")
+        st.download_button(
+            "⬇ Download checkpoint (.json)", data=_ckpt_bytes,
+            file_name=f"vpci_checkpoint_{MARKET_FLAG}_{datetime.now():%Y%m%d_%H%M}.json",
+            mime="application/json", use_container_width=True,
+        )
+        if st.button("🗑 Clear checkpoint", use_container_width=True):
+            clear_checkpoint(MARKET_FLAG)
+            st.rerun()
+    else:
+        st.info("No checkpoint stored.")
+    _restored = st.file_uploader(
+        "Restore checkpoint", type=["json"], key="ckpt_uploader",
+        help="Upload a previously-downloaded checkpoint to resume across sessions.",
+    )
+    if _restored is not None:
+        ok, msg = restore_checkpoint_from_upload(_restored.read())
+        (st.success if ok else st.error)(msg)
+
+st.sidebar.markdown("---")
+run_scan = st.sidebar.button("🚀 Run Market Scan", type="primary", use_container_width=True)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SCAN EXECUTION  — results stored in st.session_state so the UI (and the
+# sector snapshot button) survives Streamlit reruns. This fixes the bug where
+# clicking any button wiped the results and snapshots never saved.
+# ═══════════════════════════════════════════════════════════════════════════════
+if run_scan:
+    params = {**DEFAULT_PARAMS, "relaxed": relaxed_mode}
+    symbols, upath = get_universe()
+    if test_limit > 0:
+        symbols = symbols[:test_limit]
+
+    results, failed, remaining = init_checkpoint(MARKET_FLAG, symbols)
+    done_symbols = [s for s in symbols if s not in remaining]
+    if results or failed:
+        st.success(f"♻️ Resumed from checkpoint — {len(done_symbols)} of "
+                   f"{len(symbols)} already done, {len(remaining)} to go.")
+    else:
+        st.info(f"📚 Loaded **{len(symbols)}** symbols from `{upath}`. Commencing analysis...")
+
+    progress_bar = st.progress(len(done_symbols) / max(len(symbols), 1))
+    status_text = st.empty()
+    young_results = list(st.session_state.get("young_results_partial", []))
+
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        futs = {ex.submit(process_symbol, s, params, source_order,
+                          live_mode, project_volume): s for s in remaining}
+        done = len(done_symbols)
+        since_ckpt = 0
+        for f in as_completed(futs):
+            done += 1
+            since_ckpt += 1
+            sym = futs[f]
+            progress_bar.progress(done / max(len(symbols), 1))
+            status_text.text(f"Scanning... {done} / {len(symbols)} processed")
+            try:
+                kind, r = f.result()
+                if kind == "full" and r:
+                    results.append(r)
+                elif kind == "young" and r:
+                    young_results.append(r)
+                else:
+                    failed.append(sym)
+            except Exception:
+                failed.append(sym)
+            done_symbols.append(sym)
+            if since_ckpt >= CHECKPOINT_EVERY:
+                save_checkpoint(MARKET_FLAG, symbols, results, failed, done_symbols)
+                since_ckpt = 0
+
+    save_checkpoint(MARKET_FLAG, symbols, results, failed, done_symbols)
+    clear_checkpoint(MARKET_FLAG)
+    status_text.empty()
+    progress_bar.empty()
+
+    if not results:
+        st.session_state.pop("scan_df", None)
+        st.session_state["scan_failed"] = failed
+        st.warning("No candidates found. Check data source connectivity.")
+    else:
+        df = pd.DataFrame(results)
+
+        def status_label(row):
+            # v2 fresh: entry with NO open prior position (first-ever, or after a sell)
+            if row.get("fresh_v2"): return "🔥 FRESH BUY"
+            if row.get("fresh_ext_v2"): return "🔥 FRESH EXT"
+            if row.get("full_entry") and row.get("in_open_position"): return "📌 CONTINUING (7/7)"
+            if row.get("full_entry"): return "★ BUYABLE (7/7)"
+            if row.get("gates_ready_ext"): return "⚡ 7/7 EXTENDED"
+            if row.get("relaxed_entry"): return "★ RELAXED (6/7)"
+            if row.get("gate_count", 0) >= 6 and row.get("tier1_pass"): return "◉ WATCHLIST (6/7)"
+            if row.get("gate_count", 0) >= 5: return "▲ MOMENTUM (5+)"
+            return "Other"
+
+        df["status"] = df.apply(status_label, axis=1)
+        df_sorted = df.sort_values(["gate_count", "pct_near_52w"], ascending=[False, False])
+
+        # ── Market-cap enrichment (metadata only — yfinance) ─────────────
+        top_symbols = df_sorted[df_sorted["gate_count"] >= 5]
+        mcap_dict = {}
+        if len(top_symbols) > 0:
+            with st.spinner("Fetching live Market Cap metadata..."):
+                def fetch_mcap(sym, exch):
+                    try:
+                        import yfinance as yf
+                        yf_sym = sym.replace(".", "-")
+                        tkr = yf.Ticker(yf_sym)
+                        try: return sym, tkr.fast_info['marketCap']
+                        except Exception:
+                            try: return sym, tkr.fast_info.market_cap
+                            except Exception: return sym, tkr.info.get('marketCap', 0)
+                    except Exception:
+                        return sym, 0
+                with ThreadPoolExecutor(max_workers=5) as executor:
+                    fut_list = [executor.submit(fetch_mcap, r["symbol"], r.get("exchange", "US"))
+                                for _, r in top_symbols.iterrows()]
+                    for future in as_completed(fut_list):
+                        sym, mval = future.result()
+                        mcap_dict[sym] = mval
+
+        df_sorted['raw_mcap'] = df_sorted['symbol'].map(mcap_dict).fillna(0)
+
+        def format_mcap(mcap):
+            if not mcap or mcap == 0: return "N/A"
+            m = mcap / 1e6
+            if m >= 1e6: return f"${m / 1e6:.2f}T"
+            if m >= 1e3: return f"${m / 1e3:.1f}B"
+            return f"${m:.0f}M"
+        df_sorted["Market Cap"] = df_sorted["raw_mcap"].apply(format_mcap)
+        df_sorted = df_sorted.drop(columns=["raw_mcap"])
+
+        # ── Company-name enrichment from the universe file ───────────────
+        try:
+            uni = pd.read_csv(universe_path())
+            uni.columns = [str(c).strip() for c in uni.columns]
+            if {"companyId", "Name"}.issubset(uni.columns):
+                name_map = dict(zip(uni["companyId"].astype(str).str.strip().str.upper(),
+                                    uni["Name"]))
+                df_sorted.insert(1, "Company Name",
+                                 df_sorted["symbol"].str.upper().map(name_map).fillna(""))
+        except Exception:
+            pass
+
+        # ── Persist everything the UI needs ──────────────────────────────
+        st.session_state["scan_df"] = df_sorted
+        st.session_state["young_df"] = (pd.DataFrame(young_results)
+                                        if young_results else pd.DataFrame())
+        st.session_state["scan_failed"] = failed
+        st.session_state["scan_time"] = datetime.now().isoformat(timespec="seconds")
+
+        # ── AUTO-SAVE the sector snapshot (this used to require a button
+        #    click that never worked across reruns) ──────────────────────
+        _sector_map = load_sector_map(universe_path())
+        if not _sector_map.empty:
+            _df_sect = attach_sector_columns(df_sorted, _sector_map)
+            _lead = build_sector_leadership(_df_sect)
+            if not _lead["sector_both"].empty and _lead["sector_both"]["stocks_passing"].sum() > 0:
+                ok, msg, _snap = save_weekly_snapshot(_lead, MARKET_FLAG)
+                st.session_state["last_snapshot_msg"] = ("✅ " if ok else "ℹ️ ") + msg
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# RESULTS RENDER  — reads session_state, so it survives every rerun
+# ═══════════════════════════════════════════════════════════════════════════════
+if "scan_df" not in st.session_state:
+    st.info("👈 Configure your data sources and click **🚀 Run Market Scan** to begin. "
+            "Results stay on screen until the next scan, even if you interact with buttons.")
+else:
+    df_sorted = st.session_state["scan_df"]
+    failed = st.session_state.get("scan_failed", [])
+
+    # ─── SCAN SUMMARY ───
+    st.markdown(f"### 📊 Scan Summary "
+                f"<span style='font-size:0.55em;color:#9aa0a6'>({st.session_state.get('scan_time','')})</span>",
+                unsafe_allow_html=True)
+    met1, met2, met3, met4 = st.columns(4)
+    met1.metric("Total Symbols Analyzed", len(df_sorted) + len(failed))
+    met2.metric("✅ Candidates Found", len(df_sorted))
+    met3.metric("⚠️ No Data / Excluded", len(failed))
+    met4.metric("★ Buyable (7/7)", int(df_sorted.get("full_entry", pd.Series(dtype=bool)).sum()))
+
+    # ─── DATA SOURCE COVERAGE BADGES ───
+    if "source" in df_sorted.columns:
+        src_counts = df_sorted["source"].value_counts().to_dict()
+        exch_counts = df_sorted["exchange"].value_counts().to_dict() if "exchange" in df_sorted.columns else {}
+        badges = "".join(
+            f"<span class='src-badge src-ok'>{s}: {src_counts.get(s, 0):,}</span>"
+            for s in ["Cache", "Yahoo"] if src_counts.get(s, 0) > 0
+        )
+        badges += "".join(
+            f"<span class='src-badge src-ok'>🏛 {e}: {exch_counts.get(e, 0):,}</span>"
+            for e in ["US"] if exch_counts.get(e, 0) > 0
+        )
+        if failed:
+            badges += f"<span class='src-badge src-off'>Not found anywhere: {len(failed)}</span>"
+        st.markdown(f"**Data coverage:** {badges}", unsafe_allow_html=True)
+
+    if failed:
+        with st.expander(f"⚠️ {len(failed)} symbols without enough weekly history (Cache → Yahoo)"):
+            st.dataframe(pd.DataFrame({"symbol": sorted(failed)}),
+                         use_container_width=True, hide_index=True, height=250)
+            st.download_button("⬇ Download failed list (.csv)",
+                               data="\n".join(["symbol"] + sorted(failed)).encode(),
+                               file_name=f"unresolved_{_date.today():%Y%m%d}.csv",
+                               mime="text/csv")
+    st.divider()
+
+    # ─── UI COPY, TRADINGVIEW LINKS (exchange-aware) ───
+    df_ui = df_sorted.copy()
+
+    def tv_link(row):
+        return f"https://www.tradingview.com/chart/?symbol={row['symbol']}"
+    df_ui["symbol"] = df_ui.apply(tv_link, axis=1)
+
+    cols = list(df_ui.columns)
+    if "Market Cap" in cols:
+        cols.remove("Market Cap")
+        insert_idx = cols.index("Company Name") + 1 if "Company Name" in cols else (
+                     cols.index("symbol") + 1 if "symbol" in cols else 0)
+        cols.insert(insert_idx, "Market Cap")
+    df_ui = df_ui[[c for c in cols if c in df_ui.columns]]
+
+    tv_config = {
+        "symbol": st.column_config.LinkColumn("Symbol", display_text=r".*symbol=(.*)")
+    }
+
+    def add_tv(frame):
+        out = frame.copy()
+        out["symbol"] = out.apply(tv_link, axis=1)
+        return out
+
+    # ─── TABS ───
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9 = st.tabs([
+        "🔥 Fresh Signals", "★ Buyable (7/7)", "◉ Watchlist (6/7)",
+        "All Results", "🏆 Ranked", "🎯 G4 Pending", "🌱 New Listings",
+        "🏭 Sector Leadership", "📈 Sector Rotation"
+    ])
+
+    with tab1:
+        st.caption(
+            "**Fresh = a genuinely NEW entry.** All 7 gates open this week AND the stock has "
+            "no open prior position — either it never signalled before, or its last position "
+            "was closed by a SELL (weekly close below the 3×ATR trailing stop). Stocks that "
+            "merely re-passed 7/7 while an old buy is still live are excluded (they show as "
+            "📌 CONTINUING in All Results). `position_state` tells you which case each one is."
+        )
+        fresh_df = df_ui[df_ui["status"].isin(["🔥 FRESH BUY", "🔥 FRESH EXT"])]
+        if not fresh_df.empty:
+            _lead_cols = ["symbol", "Company Name", "Market Cap", "close", "status",
+                          "position_state", "last_exit_date", "vpci", "rs_return",
+                          "pct_from_52w", "trail_stop", "init_sl", "risk_pct",
+                          "vol_ratio", "scenario", "source", "exchange"]
+            _rest = [c for c in fresh_df.columns if c not in _lead_cols]
+            fresh_df = fresh_df[[c for c in _lead_cols if c in fresh_df.columns] + _rest]
+            st.dataframe(fresh_df, use_container_width=True, column_config=tv_config, hide_index=True)
+        else:
+            st.info("No genuinely fresh signals this week (first-ever, or first after a sell).")
+        _cont = df_ui[df_ui["status"] == "📌 CONTINUING (7/7)"]
+        if not _cont.empty:
+            with st.expander(f"📌 {len(_cont)} stocks re-showing 7/7 inside an OPEN position "
+                             f"(old engine wrongly called these fresh)"):
+                st.dataframe(_cont, use_container_width=True, column_config=tv_config, hide_index=True)
+
+    with tab2:
+        buyable_df = df_ui[df_ui["status"].isin(["★ BUYABLE (7/7)", "📌 CONTINUING (7/7)"])]
+        if not buyable_df.empty:
+            st.dataframe(buyable_df, use_container_width=True, column_config=tv_config, hide_index=True)
+        else:
+            st.info("No stocks passed all 7 criteria.")
+
+    with tab3:
+        watch_df = df_ui[df_ui["status"].isin(["★ RELAXED (6/7)", "◉ WATCHLIST (6/7)"])]
+        if not watch_df.empty:
+            st.dataframe(watch_df, use_container_width=True, column_config=tv_config, hide_index=True)
+        else:
+            st.info("No watchlist candidates found.")
+
+    with tab4:
+        st.dataframe(df_ui, use_container_width=True, column_config=tv_config, hide_index=True)
+        all_csv = df_sorted.to_csv(index=False).encode("utf-8")
+        st.download_button("📥 Download All Results CSV", data=all_csv,
+                           file_name=f"vpci_all_{datetime.now():%Y%m%d_%H%M}.csv",
+                           mime="text/csv", key="all_download")
+
+    with tab5:
+        st.subheader("All Ranked Buyable Candidates")
+        st.caption("Composite score: VPCI 25% + RS 25% + 52wH 20% + Tight base 15% + Volume 10% + Mcap fit 5%")
+        try:
+            ranked = rank_stocks(df_sorted, include_relaxed=False)
+        except Exception as e:
+            st.error(f"Ranker error: {e}")
+            ranked = pd.DataFrame()
+
+        if len(ranked) > 0:
+            ranked_ui = add_tv(ranked)
+            display_cols = [
+                "rank", "symbol", "Company Name", "Market Cap", "close",
+                "composite_score", "score_vpci", "score_rs", "score_52w",
+                "score_tight", "score_vol", "score_mcap", "source", "exchange", "status"
+            ]
+            display_cols = [c for c in display_cols if c in ranked_ui.columns]
+            st.dataframe(
+                ranked_ui[display_cols].style.format({
+                    "composite_score": "{:.3f}", "score_vpci": "{:.2f}",
+                    "score_rs": "{:.2f}", "score_52w": "{:.2f}",
+                    "score_tight": "{:.2f}", "score_vol": "{:.2f}",
+                    "score_mcap": "{:.2f}", "close": "{:.2f}",
+                }),
+                use_container_width=True, hide_index=True, column_config=tv_config
+            )
+            st.info(f"Total ranked: {len(ranked)} stocks. Top 5 typically have score > 0.80. "
+                    f"Score gap from #1 to #5 indicates conviction strength.")
+            ranked_csv = ranked[[c for c in display_cols if c in ranked.columns]] \
+                .to_csv(index=False).encode('utf-8')
+            st.download_button("📥 Download Ranked CSV", data=ranked_csv,
+                               file_name=f"vpci_ranked_{datetime.now():%Y%m%d_%H%M}.csv",
+                               mime="text/csv", key="ranked_download")
+        else:
+            st.warning("No 7/7 stocks to rank this week. Try the Watchlist tab for 6/7 candidates.")
+
+    with tab6:
+        st.subheader("🎯 G4 Pending — Pre-Breakout Watchlist")
+        st.caption("All 6 other gates passing; only the G4 breakout above the 13-week high is missing. "
+                   "Watch these for the breakout.")
+        try:
+            g4_pending = rank_g4_pending(df_sorted)
+        except Exception as e:
+            st.error(f"G4 ranker error: {e}")
+            g4_pending = pd.DataFrame()
+
+        if len(g4_pending) > 0:
+            g4_ui = add_tv(g4_pending)
+            g4_display_cols = [
+                "rank", "symbol", "Company Name", "Market Cap", "close", "composite_score",
+                "score_vpci", "score_rs", "score_52w", "score_tight",
+                "score_vol", "score_mcap", "score_proximity", "source", "exchange", "status"
+            ]
+            g4_display_cols = [c for c in g4_display_cols if c in g4_ui.columns]
+            st.dataframe(
+                g4_ui[g4_display_cols].style.format({
+                    "composite_score": "{:.3f}", "score_vpci": "{:.2f}",
+                    "score_rs": "{:.2f}", "score_52w": "{:.2f}",
+                    "score_tight": "{:.2f}", "score_vol": "{:.2f}",
+                    "score_mcap": "{:.2f}", "score_proximity": "{:.2f}",
+                    "close": "{:.2f}",
+                }),
+                use_container_width=True, hide_index=True, column_config=tv_config
+            )
+            st.info(f"Total G4-pending: {len(g4_pending)} stocks. Click any symbol to open its "
+                    f"chart and watch for the breakout above the 13w high.")
+            g4_csv = g4_pending[[c for c in g4_display_cols if c in g4_pending.columns]] \
+                .to_csv(index=False).encode('utf-8')
+            st.download_button("📥 Download G4 Pending CSV", data=g4_csv,
+                               file_name=f"vpci_g4_pending_{datetime.now():%Y%m%d_%H%M}.csv",
+                               mime="text/csv", key="g4_pending_download")
+        else:
+            st.warning("No stocks meet the strict G4-pending criteria this week "
+                       "(all 6 other gates passing, only G4 missing).")
+
+    # ═══════════════════════════════════════════════════════════════════
+    # 🌱 New Listings — too young for the 7-gate scan, VPCI accumulation view
+    # ═══════════════════════════════════════════════════════════════════
+    with tab7:
+        st.subheader("🌱 New Listings — Early VPCI Accumulation Watch")
+        st.caption(
+            f"Stocks with {YOUNG_MIN_BARS}–{MIN_BARS - 1} weekly bars — too young for the "
+            f"full 7-gate scan (needs the 40-week SMA), but old enough for the exact same "
+            f"VPCI 5/20 computation. **Accumulating = the engine's G5 condition** "
+            f"(VPCI > 0, above its signal line, and rising). These are candidates to track "
+            f"until they mature into the main scan — not buy signals."
+        )
+        young_df = st.session_state.get("young_df", pd.DataFrame())
+        if young_df is None or young_df.empty:
+            st.info("No recently listed stocks with enough bars for a VPCI read were found this scan.")
+        else:
+            yd = young_df.copy().sort_values(
+                ["accumulating", "vpci"], ascending=[False, False]).reset_index(drop=True)
+            yc1, yc2, yc3 = st.columns(3)
+            yc1.metric("🌱 Young stocks scanned", len(yd))
+            yc2.metric("✅ Accumulating (G5-style)", int(yd["accumulating"].sum()))
+            yc3.metric("📈 Above 13w EMA", int(yd["above_13ema"].sum()))
+            st.divider()
+
+            yd_ui = add_tv(yd)
+            _acc = yd_ui[yd_ui["accumulating"] == True]
+            st.markdown("##### ✅ Accumulating — VPCI > 0, above signal, rising")
+            if not _acc.empty:
+                st.dataframe(
+                    _acc.style.format({"close": "{:.2f}", "vpci": "{:.4f}",
+                                       "vpci_signal": "{:.4f}", "vol_ratio": "{:.2f}"}),
+                    use_container_width=True, column_config=tv_config, hide_index=True)
+            else:
+                st.info("None of the young listings show VPCI accumulation this week.")
+
+            with st.expander("All young listings (including non-accumulating)"):
+                st.dataframe(
+                    yd_ui.style.format({"close": "{:.2f}", "vpci": "{:.4f}",
+                                        "vpci_signal": "{:.4f}", "vol_ratio": "{:.2f}"}),
+                    use_container_width=True, column_config=tv_config, hide_index=True)
+
+            st.download_button(
+                "📥 Download New Listings CSV",
+                data=yd.to_csv(index=False).encode("utf-8"),
+                file_name=f"vpci_new_listings_{datetime.now():%Y%m%d_%H%M}.csv",
+                mime="text/csv", key="young_download")
+
+    # ═══════════════════════════════════════════════════════════════════
+    # Sector & Industry Leadership (G5 + G6 + G7)
+    # ═══════════════════════════════════════════════════════════════════
+    with tab8:
+        st.subheader("🏭 Leading Sectors & Industries — G5 (VPCI) + G6 (Leader RS) + G7 (Above 40w)")
+        st.caption(
+            "Sectors and industries ranked by the count of stocks where the institutional "
+            "confirmation gates fire together. G5 = VPCI accumulation; G6 = leader RS positive "
+            "vs index; G7 = price above the 40-week MA (Stage 2 trend). When several "
+            "constituents of the same sector pass all three, accumulation, relative strength "
+            "and trend are aligned — the highest-conviction sector for fresh capital this week."
+        )
+        if st.session_state.get("last_snapshot_msg"):
+            st.caption(f"Snapshot status: {st.session_state['last_snapshot_msg']}")
+
+        _sector_map = load_sector_map(universe_path())
+        if _sector_map.empty:
+            st.warning("Sector map could not be loaded. Make sure the universe CSV contains "
+                       "companyId, Name, Sector, Industry columns.")
+        else:
+            _df_sect = attach_sector_columns(df_sorted, _sector_map)
+            _lead = build_sector_leadership(_df_sect)
+            _both = _lead["sector_both"]
+            _ind = _lead["industry_both"]
+
+            if _both.empty or _both["stocks_passing"].sum() == 0:
+                st.info("No stocks pass G5, G6 and G7 together in this scan.")
+            else:
+                c1, c2, c3 = st.columns(3)
+                c1.metric("Stocks passing G5 ∧ G6 ∧ G7", int(_both["stocks_passing"].sum()))
+                c2.metric("Sectors with ≥1 leader", int((_both["stocks_passing"] > 0).sum()))
+                c3.metric("Top sector",
+                          _both.iloc[0]["sector"] if len(_both) else "—",
+                          f"{int(_both.iloc[0]['stocks_passing'])} stocks" if len(_both) else "")
+                st.divider()
+
+                colA, colB = st.columns(2)
+                with colA:
+                    st.markdown("##### 🥇 Sectors — G5 ∧ G6 ∧ G7 (strict)")
+                    st.caption("All three gates passing — institutional confirmation cut.")
+                    st.dataframe(_both.head(20), use_container_width=True, hide_index=True)
+                with colB:
+                    st.markdown("##### 🏷️ Industries — G5 ∧ G6 ∧ G7 (strict)")
+                    st.caption("Drill-down within sectors — the actual sub-theme leading.")
+                    st.dataframe(_ind.head(20), use_container_width=True, hide_index=True)
+
+                with st.expander("📊 Broader breadth — Sectors / Industries with G5 ∨ G6 ∨ G7 firing"):
+                    st.caption("A wider net for early sector accumulation: stocks passing any of the "
+                               "three institutional gates — spots sectors just starting to rotate.")
+                    cE1, cE2 = st.columns(2)
+                    with cE1:
+                        st.markdown("**Sectors — G5 ∨ G6 ∨ G7**")
+                        st.dataframe(_lead["sector_either"].head(20),
+                                     use_container_width=True, hide_index=True)
+                    with cE2:
+                        st.markdown("**Industries — G5 ∨ G6 ∨ G7**")
+                        st.dataframe(_lead["industry_either"].head(20),
+                                     use_container_width=True, hide_index=True)
+
+                with st.expander("🔬 Stock-level view — every passer with sector tags"):
+                    st.dataframe(_lead["stock_table"], use_container_width=True, hide_index=True)
+
+                st.divider()
+                st.markdown("##### 💾 Weekly leadership snapshot")
+                st.caption(
+                    "A snapshot is now **saved automatically after every scan** (to GitHub if "
+                    "secrets are configured, otherwise to this session). The button below "
+                    "re-saves manually — e.g. if the auto-save failed on a network blip."
+                )
+                if st.button("💾 Save snapshot again", key="save_snap"):
+                    ok, msg, snap = save_weekly_snapshot(_lead, MARKET_FLAG)
+                    st.session_state["last_snapshot_msg"] = ("✅ " if ok else "ℹ️ ") + msg
+                    (st.success if ok else st.warning)(msg)
+
+                _snap_payload = {
+                    "scan_date": _date.today().isoformat(),
+                    "scan_timestamp": datetime.now().isoformat(timespec="seconds"),
+                    "market": MARKET_FLAG,
+                    "sector_both": _lead["sector_both"].to_dict(orient="records"),
+                    "industry_both": _lead["industry_both"].to_dict(orient="records"),
+                    "sector_either": _lead["sector_either"].to_dict(orient="records"),
+                    "industry_either": _lead["industry_either"].to_dict(orient="records"),
+                }
+                st.download_button(
+                    "⬇ Download snapshot (.json)",
+                    data=json.dumps(_snap_payload, indent=2).encode("utf-8"),
+                    file_name=f"sector_snapshot_{MARKET_FLAG}_{_date.today():%Y-%m-%d}.json",
+                    mime="application/json", key="dl_snap",
+                )
+                st.download_button(
+                    "⬇ Download sector leaders (.csv)",
+                    data=_both.to_csv(index=False).encode("utf-8"),
+                    file_name=f"sector_leaders_{MARKET_FLAG}_{_date.today():%Y-%m-%d}.csv",
+                    mime="text/csv", key="dl_sect_csv",
+                )
+
+    # ═══════════════════════════════════════════════════════════════════
+    # Sector Rotation (week-over-week history)
+    # ═══════════════════════════════════════════════════════════════════
+    with tab9:
+        st.subheader("📈 Sector Rotation — Week-Over-Week History")
+        st.caption(
+            "Counts of stocks passing G5 ∧ G6 ∧ G7 per sector across saved weekly snapshots. "
+            "A sector accelerating from 2 → 5 → 9 leaders over three weeks is rotating in; "
+            "a decaying one is rotating out. Snapshots auto-save after every scan; configure "
+            "GitHub secrets to persist them across container restarts."
+        )
+
+        _hist = load_history_from_github()
+        _hist += st.session_state.get("snapshots", [])
+
+        _seen, _dedup = set(), []
+        for s in sorted(_hist, key=lambda d: d.get("scan_date", "")):
+            key = (s.get("scan_date"), s.get("market"))
+            if key in _seen:
+                continue
+            _seen.add(key)
+            _dedup.append(s)
+        _hist = [s for s in _dedup if s.get("market") == MARKET_FLAG]
+
+        if not _hist:
+            st.info("No history yet. Run a scan — a snapshot is saved automatically — "
+                    "and each saved week will appear here.")
+        else:
+            st.success(f"Loaded {len(_hist)} weekly snapshot(s).")
+            _rot = build_rotation_view(_hist, top_n=12)
+            if not _rot.empty:
+                st.markdown("##### Sector × Week — stocks passing G5 ∧ G6 ∧ G7")
+
+                # matplotlib-free green heat shading (background_gradient needs
+                # matplotlib, which crashed every tab on Streamlit Cloud)
+                _vmax = max(float(_rot.values.max()), 1.0)
+                def _green_heat(v):
+                    try:
+                        frac = min(float(v) / _vmax, 1.0)
+                    except (TypeError, ValueError):
+                        return ""
+                    if frac <= 0:
+                        return ""
+                    alpha = 0.15 + 0.75 * frac
+                    txt = "#ffffff" if frac > 0.45 else "#d8ffef"
+                    return (f"background-color: rgba(0, 184, 148, {alpha:.2f}); "
+                            f"color: {txt}; font-weight: 600;")
+                _styler = _rot.style
+                # pandas ≥2.1 renamed Styler.applymap → Styler.map
+                _styler = (_styler.map(_green_heat) if hasattr(_styler, "map")
+                           else _styler.applymap(_green_heat))
+                st.dataframe(_styler, use_container_width=True)
+                if _rot.shape[1] >= 2:
+                    _delta = (_rot.iloc[:, -1] - _rot.iloc[:, -2]).sort_values(ascending=False)
+                    cR1, cR2 = st.columns(2)
+                    with cR1:
+                        st.markdown("##### 🚀 Rotating IN (week-over-week)")
+                        st.dataframe(_delta[_delta > 0].head(8).rename("Δ leaders").to_frame(),
+                                     use_container_width=True)
+                    with cR2:
+                        st.markdown("##### 🪂 Rotating OUT (week-over-week)")
+                        st.dataframe(_delta[_delta < 0].head(8).rename("Δ leaders").to_frame(),
+                                     use_container_width=True)
+            else:
+                st.info("Need at least one snapshot with sector data to render the rotation grid.")
