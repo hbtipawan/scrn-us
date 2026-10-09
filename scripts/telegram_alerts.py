@@ -258,7 +258,7 @@ def evening():
 
     top = lambda ids, n=8: sorted(ids, key=lambda s: -((by.get(s) or {}).get("rs") or 0))[:n]
     lines += ["", "<b>🔎 Today's scans</b>"]
-    for sid, label in (("combo3", "Confluence (4+ signal groups)"), ("lb_breakout", "Long-base breakouts (100+ day bases)"), ("s2_early", "Early Stage 2, score 70+"), ("f_post", "Post-earnings breakouts"), ("f_insider", "Insider buying clusters"), ("high52_dcr", "52-week highs, strong close"), ("vcp", "VCP setups"), ("etf_leaders", "ETF leaders near highs")):
+    for sid, label in (("combo3", "Confluence (4+ signal groups)"), ("lb_best", "Base breakouts, US Base Score 60+"), ("power_play", "Power plays (Minervini)"), ("qm_setup", "Qullamaggie breakout setups"), ("s2_early", "Early Stage 2, score 70+"), ("f_post", "Post-earnings breakouts"), ("f_insider", "Insider buying clusters"), ("etf_leaders", "ETF leaders near highs")):
         h = scans["hits"].get(sid) or []
         if h:
             lines.append(f"{label}: <b>{len(h)}</b> — " + ", ".join(sym(s) for s in top(h)))

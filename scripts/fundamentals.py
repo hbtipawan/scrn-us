@@ -88,6 +88,11 @@ def stock_metrics(q, hold, ins, asof):
         out["pat_yoy2"] = growth(at(6, "pat"), at(18, "pat"))
         out["rev_yoy1"] = growth(at(3, "rev"), at(15, "rev"))
         out["eps_yoy"] = growth(num(L.get("eps")), at(12, "eps"))
+        # Code 33 inputs: year-on-year growth for the last four quarters (EPS, else net income) and revenue
+        for k in range(4):
+            ge = growth(at(3 * k, "eps"), at(3 * k + 12, "eps"))
+            out[f"eg{k}"] = ge if np.isfinite(ge) else growth(at(3 * k, "pat"), at(3 * k + 12, "pat"))
+            out[f"rg{k}"] = growth(at(3 * k, "rev"), at(3 * k + 12, "rev"))
         out["pat_q1"], out["pat_q4"] = at(3, "pat"), at(12, "pat")
         streak = 0
         for k in range(6):
@@ -126,6 +131,9 @@ def stock_metrics(q, hold, ins, asof):
             out["opm_ttm_chg"] = float(out["opm_ttm"] - op_ttm0 / r0) if np.isfinite(out["opm_ttm"]) and np.isfinite(op_ttm0) and r0 and r0 > 0 else np.nan
         npm = pd.to_numeric(q["pat"], errors="coerce") / rev.where(rev > 0) * 100
         q["npm"] = npm
+        cols["npm"] = npm.to_numpy(dtype=float)
+        for k in range(3):                                   # net margin vs the same quarter a year earlier
+            out[f"mg{k}"] = at(3 * k, "npm") - at(3 * k + 12, "npm")
         out["npm"] = float(npm.iloc[-1]) if np.isfinite(npm.iloc[-1]) else np.nan
         # balance sheet: latest quarter-end
         eqs = pd.to_numeric(q["equity"], errors="coerce")
@@ -355,6 +363,20 @@ def build(U, ctx):
         "(William O'Neil). Check the market (M) on the Breadth tab.",
         (df.pat_yoy >= 25) & (df.rev_yoy >= 20) & (df.pat_ttm_g >= 20) & (h52 >= -15) & (rs >= 80) & inst_up,
         "Profit YoY %", df.pat_yoy, "pct", "rs")
+    acc = lambda a, b: a > b
+    c33 = (acc(df.eg0, df.eg1) & acc(df.eg1, df.eg2) & acc(df.eg2, df.eg3) & acc(df.rg0, df.rg1) & acc(df.rg1, df.rg2)
+           & acc(df.rg2, df.rg3) & (df.mg0 > 0) & (df.mg1 > 0) & (df.mg2 > 0) & (df.eg0 > 0) & (df.rg0 > 0))
+    add("f_code33", "Code 33 (Minervini)", E,
+        "Three quarters in a row of acceleration in EPS growth AND revenue growth (each quarter's year-on-year growth "
+        "faster than the quarter before), with net margin above the year-ago quarter in each of those three quarters — "
+        "Mark Minervini's 'Code 33', from the company's SEC filings.",
+        c33, "EPS YoY %", df.eg0, "pct", "rs")
+    mcap_ = ctx["mcap"].reindex(U)
+    add("f_kell", "Kell growth universe", E,
+        "Price over $20, market cap $2B–25B, and quarterly EPS and revenue both up more than 30% on last year — the "
+        "list Oliver Kell starts from (as set up in Deepvue) before looking for his price-cycle setups.",
+        (ctx["c"].reindex(U) > 20) & (mcap_ >= 2000) & (mcap_ <= 25000) & (df.eg0 > 30) & (df.rg0 > 30),
+        "EPS YoY %", df.eg0, "pct", "rs")
     add("f_sepa", "SEPA: trend template + earnings", E,
         "Passes Minervini's trend template and the business backs it: profit +20% and revenue +15% on last year, ROE 15%+.",
         tt & (df.pat_yoy >= 20) & (df.rev_yoy >= 15) & (df.roe >= 15), "Profit YoY %", df.pat_yoy, "pct", "rs")

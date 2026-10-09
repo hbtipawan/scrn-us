@@ -144,6 +144,12 @@ def main():
         fwd = np.where(idx + H < n, np.roll(c, -H) / c - 1, np.nan)
         bfwd = np.where(idx + H < n, np.roll(b, -H) / b - 1, np.nan)
         ex = (fwd - bfwd) * 100
+        def exn(h):
+            f = np.where(idx + h < n, np.roll(c, -h) / c - 1, np.nan)
+            bf = np.where(idx + h < n, np.roll(b, -h) / b - 1, np.nan)
+            return (f - bf) * 100
+        ex63, ex126 = exn(63), exn(126)
+        av50 = pd.Series(v).rolling(50, min_periods=20).mean().shift(1).to_numpy()
 
         # ── base breakouts: first breakout of each base (bases.py event code)
         evs = BS.recent_breakouts(c, 2, BS.D_MAX, BS.ZONE, BS.MIN_LEN)
@@ -165,10 +171,21 @@ def main():
             overhead = (c[max(0, pg - 500):pg + 1].max() / ce - 1) if pg >= 0 else 0.0
             vs200 = c[te] / sma200[te] - 1 if np.isfinite(sma200[te]) else np.nan
             sl = slope[te]
-            score = BS.base_score(length, rs[te], vs200, sl, tight15, bool(fa), overhead)
             up = np.isfinite(sma200[te]) and np.isfinite(sl) and c[te] > sma150[te] and sl > 0 and c[te] > sma200[te]
+            vb = v[st:te]
+            dry = v[max(st, te - 10):te].mean() / vb.mean() if vb.size and vb.mean() > 0 else np.nan
+            ud = np.nan
+            if te >= 51:
+                u_ = np.diff(c[te - 51:te]) > 0
+                vv = v[te - 50:te]
+                if vv[~u_].sum() > 0:
+                    ud = vv[u_].sum() / vv[~u_].sum()
+            bvr = v[te] / av50[te] if av50[te] > 0 else np.nan
+            score = BS.base_score(length, rs[te], vs200, sl, bvr, bool(fa))
             ev_rows.append((s, d[te], length, rs[te], up, score, ex[te],
-                            c[te + 1:te + 21].min() < ce * 0.95, c[te:te + H + 1].max() / c[te] >= 2.0))
+                            c[te + 1:te + 21].min() < ce * 0.95, c[te:te + H + 1].max() / c[te] >= 2.0,
+                            vs200, sl, tight15, int(fa), overhead, 1 - fl / ce, dry, ud, bvr, int(tc),
+                            c[te] / ce - 1, ex63[te], ex126[te]))
 
         # ── Stage 2 snapshots every 10th session
         stage = np.where((c > sma150) & (slope > .01), 2, np.where((c < sma150) & (slope < -.01), 4, 0))
@@ -184,7 +201,7 @@ def main():
         mdd[:n - 1] = np.roll(lowf, -1)[:n - 1] / c[:n - 1] - 1
         bigf = pd.Series(c[::-1]).rolling(H + 1, min_periods=H + 1).max().to_numpy()[::-1] / c >= 2.0
         g0 = cal.index(EVENT_FROM) if EVENT_FROM in cal else int(np.searchsorted(dates, EVENT_FROM))
-        for t in range(171, n - H):
+        for t in (range(171, n - H) if "--events" not in sys.argv else ()):
             if (i0 + t) % 10 or stage[t] != 2 or not (to[t] >= LIQ) or i0 + t < g0:
                 continue
             l4 = c4[c4 <= t]
@@ -210,7 +227,13 @@ def main():
         if (k + 1) % 250 == 0:
             print(f"  {k + 1}/{C.shape[1]} stocks  {len(ev_rows)} breakouts  {len(s2_rows)} Stage 2 snapshots  {time.time() - t0:.0f}s", flush=True)
 
-    E = pd.DataFrame(ev_rows, columns=["s", "date", "len", "rs", "up", "score", "ex", "fail", "big"])
+    E = pd.DataFrame(ev_rows, columns=["s", "date", "len", "rs", "up", "score", "ex", "fail", "big",
+                                       "vs200", "slope", "tight15", "fa", "over", "depth", "dry", "ud", "bvr", "tests",
+                                       "gap", "ex63", "ex126"])
+    if "--events" in sys.argv:
+        E.to_csv(CACHE / "bt_breakouts.csv.gz", index=False, compression="gzip")
+        print("events written", len(E))
+        return
     Z = pd.DataFrame(s2_rows, columns=["s", "date", "ph", "sc", "bases", "age", "e150", "e200", "ex", "end", "mdd", "big"])
     E.to_csv(CACHE / "bt_breakouts.csv.gz", index=False, compression="gzip")
     Z.to_csv(CACHE / "bt_stage2.csv.gz", index=False, compression="gzip")
@@ -248,10 +271,15 @@ def base_count(evs, c, to, cs, t):
 
 def write_evidence(E, Z, nstocks, cal):
     E["lb"] = pd.cut(E["len"], [24, 49, 99, 199, 399, 799, 1e9], labels=["25–49", "50–99", "100–199", "200–399", "400–799", "800+"]).astype(str)
-    E["sb"] = pd.cut(E["score"], [-1, 39, 54, 69, 79, 101], labels=["under 40", "40–54", "55–69", "70–79", "80+"]).astype(str)
+    E["score"] = [BS.base_score(*r) for r in zip(E["len"], E["rs"], E["vs200"], E["slope"], E["bvr"], E["fa"].astype(bool))]
+    E["sb"] = pd.cut(E["score"], [-1, 29, 44, 59, 74, 101], labels=["under 30", "30–44", "45–59", "60–74", "75+"]).astype(str)
+    E["tb"] = pd.cut(E["tight15"] * 100, [-1, 6, 9, 12, 16, 1e9], labels=["under 6%", "6–9%", "9–12%", "12–16%", "16%+"]).astype(str)
+    E["rb"] = pd.cut(E["rs"], [-1, 49, 69, 79, 89, 94, 100], labels=["under 50", "50–69", "70–79", "80–89", "90–94", "95+"]).astype(str)
     q = E["up"] & (E["rs"] >= 70)
     L = ["25–49", "50–99", "100–199", "200–399", "400–799", "800+"]
-    SB = ["under 40", "40–54", "55–69", "70–79", "80+"]
+    SB = ["under 30", "30–44", "45–59", "60–74", "75+"]
+    TB = ["under 6%", "6–9%", "9–12%", "12–16%", "16%+"]
+    RB = ["under 50", "50–69", "70–79", "80–89", "90–94", "95+"]
     early, late = E[E.date < SPLIT], E[E.date >= SPLIT]
     ex = ("fail", "big")
     span = f"{pd.Timestamp(EVENT_FROM):%b %Y} – {pd.Timestamp(cal[-1]):%b %Y}"
@@ -263,6 +291,12 @@ def write_evidence(E, Z, nstocks, cal):
                  f"100%+ at some point within the year."),
         "len_quality": table(E[q], "lb", L, ex), "len_other": table(E[~q], "lb", L, ex),
         "score_all": table(E, "sb", SB, ex), "score_early": table(early, "sb", SB, ex), "score_late": table(late, "sb", SB, ex),
+        "rs_early": table(early, "rb", RB, ex), "rs_late": table(late, "rb", RB, ex),
+        "tight_early": table(early, "tb", TB, ex), "tight_late": table(late, "tb", TB, ex),
+        "years": [{"label": y, "n": int(((g.score >= 60)).sum()),
+                   "hi": round(trimmed(g.ex[g.score >= 60]), 1), "lo": round(trimmed(g.ex[g.score < 30]), 1),
+                   "big_hi": round(float(g.big[g.score >= 60].mean() * 100), 1), "big_lo": round(float(g.big[g.score < 30].mean() * 100), 1)}
+                  for y, g in E.assign(y=E.date.str[:4]).groupby("y")],
         "caveats": ("Only stocks still listed today (companies that were delisted or acquired are missing, which flatters all "
                     "returns a little, but affects every bucket). Averages are trimmed at the 0.5% tails. Past results are "
                     "evidence, not a promise."),
@@ -304,9 +338,15 @@ def write_evidence(E, Z, nstocks, cal):
     s2["findings"] = old_s.get("findings", [])
     (CFG / "base_evidence.json").write_text(json.dumps(base, indent=1, ensure_ascii=False))
     (CFG / "stage2_evidence.json").write_text(json.dumps(s2, indent=1, ensure_ascii=False))
-    print(json.dumps({k: base[k] for k in ("len_quality", "len_other", "score_all", "score_early", "score_late")}, indent=0, ensure_ascii=False)[:6000])
+    print(json.dumps({k: base[k] for k in ("len_quality", "len_other", "score_all", "score_early", "score_late", "years")}, indent=0, ensure_ascii=False)[:6000])
     print(json.dumps({k: s2[k] for k in ("phase_all", "phase_early", "phase_late", "score_all", "score_early", "score_late", "grid", "bases", "months", "ext150", "ext200")}, ensure_ascii=False)[:9000])
 
 
 if __name__ == "__main__":
-    main()
+    if "--evidence" in sys.argv:       # rewrite the evidence tables from the cached backtest results
+        E_ = pd.read_csv(CACHE / "bt_breakouts.csv.gz", dtype={"date": str})
+        Z_ = pd.read_csv(CACHE / "bt_stage2.csv.gz", dtype={"date": str})
+        P_ = pd.read_csv(CACHE / "bt_prices.csv.gz", usecols=["symbol", "date"], dtype=str)
+        write_evidence(E_, Z_, P_.symbol.nunique() - 1, sorted(P_.date.unique()))
+    else:
+        main()

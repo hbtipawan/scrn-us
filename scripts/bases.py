@@ -11,11 +11,12 @@ move the pivot.
   length  = trading days from start to today - the "base days" shown on the site
   depth   = pivot to lowest close in the base
 
-The Base Score was built and validated on 20 years of NSE data in the Indian edition. On 20 years
-of US data (scripts/backtest_us.py, config/base_evidence.json, shown on the website) the result
-was different: 50-199-day bases in an uptrend did best, 400+ day bases lagged the S&P 500, and the
-Base Score cut failed breakouts but did not sort returns. The code is kept identical to the Indian
-edition so both sites measure bases the same way; the website shows the US evidence.
+The Indian edition's Base Score (built on NSE data) did not sort US returns, so the US edition has
+its own, fitted on 199,040 US breakouts from 2007-2026 (scripts/backtest_us.py) and kept only because
+it sorted average 1-year returns vs the S&P 500 - and the chance of doubling - in the same order in
+2007-16 and in 2017-26: RS rating, strength of the trend (distance above the 200-day, rising 150-day),
+base length (50-99 days best, 400+ worst), breakout-day volume, and a base built after an advance.
+The evidence tables are in config/base_evidence.json and on the website.
 
 Input: cache/prices.csv.gz (base_history_calendar_days of daily candles).
 """
@@ -204,20 +205,32 @@ def current_bases(c, dmax, zone):
 
 
 # ─────────────────────────────────────────────── score (validated in the backtest)
-def base_score(length, rs, vs200, slope150, tight15, from_above, overhead, parts=False):
-    """0-100. Points: base length 25 (best 200-399 days), RS 25, trend 20, right-side tightness 15,
-    base built after an advance 10, little overhead supply 5."""
-    pl = 25 if 200 <= length < 400 else 22 if 400 <= length < 800 else 14 if 100 <= length < 200 else \
-        12 if length >= 800 else 6 if length >= 50 else 0
-    rs = rs if rs is not None and np.isfinite(rs) else 0
-    pr = 25 if rs >= 90 else 20 if rs >= 80 else 15 if rs >= 70 else 7 if rs >= 50 else 0
+def base_score(length, rs, vs200, slope150, bvr, from_above, parts=False):
+    """US Base Score, 0-100, fitted on 199,040 US breakouts (scripts/backtest_us.py) and checked to sort
+    1-year returns vs the S&P 500 in the same order in 2007-16 AND 2017-26.
+      RS rating          30  (95+ 30, 90-94 25, 80-89 16, 70-79 8, 50-69 3)
+      trend strength     35  (close vs 200-day: 40%+ 25, 20-40% 16, 10-20% 8, 0-10% 4;
+                              150-day average up 5%+ in 20 sessions +10, 2-5% +4)
+      base length        15  (50-99 days 15, 25-49 or 100-199 10, 200-399 5, 400-799 2, 800+ 0)
+      breakout volume    15  (vs 50-day average: 3x+ 15, 2-3x 10, 1.5-2x 6, 1-1.5x 2; 0 before the breakout)
+      built after an advance 5 (the pivot is the left-side high, not a level the stock fell through)
+    It sorts the CHANCE OF A BIG WINNER and the average, not the typical result: the median breakout
+    lagged the S&P 500 in every band, and high scores fail (close back in the base) more often."""
+    f = lambda v: v is not None and np.isfinite(v)
+    pl = 15 if 50 <= length < 100 else 10 if (25 <= length < 50 or 100 <= length < 200) else \
+        5 if 200 <= length < 400 else 2 if 400 <= length < 800 else 0
+    rs = rs if f(rs) else 0
+    pr = 30 if rs >= 95 else 25 if rs >= 90 else 16 if rs >= 80 else 8 if rs >= 70 else 3 if rs >= 50 else 0
     pt = 0
-    if vs200 is not None and np.isfinite(vs200) and vs200 > 0:
-        pt = 20 if (slope150 is not None and np.isfinite(slope150) and slope150 > 0) else 8
-    pg = 15 if tight15 <= .06 else 11 if tight15 <= .09 else 7 if tight15 <= .12 else 3 if tight15 <= .16 else 0
-    py = 4 if from_above else 10
-    po = 5 if overhead <= .05 else 3 if overhead <= .15 else 0
-    p = [pl, pr, pt, pg, py, po]
+    if f(vs200):
+        pt = 25 if vs200 >= .4 else 16 if vs200 >= .2 else 8 if vs200 >= .1 else 4 if vs200 >= 0 else 0
+    if f(slope150):
+        pt += 10 if slope150 >= .05 else 4 if slope150 >= .02 else 0
+    pv = 0
+    if f(bvr):
+        pv = 15 if bvr >= 3 else 10 if bvr >= 2 else 6 if bvr >= 1.5 else 2 if bvr >= 1 else 0
+    py = 0 if from_above else 5
+    p = [pl, pr, pt, pv, py]
     return p if parts else int(sum(p))
 
 
@@ -277,8 +290,6 @@ def build(p_long, U, rs_now):
         e = n - 1
         sma150 = pd.Series(c).rolling(150).mean().to_numpy()
         sma200 = pd.Series(c).rolling(200).mean().to_numpy()
-        vs200 = c[e] / sma200[e] - 1 if n >= 200 else np.nan
-        slope = sma150[e] / sma150[e - 20] - 1 if n >= 170 else np.nan
         rs = rs_now.get(s, np.nan)
 
         def measure(kind, t, st, piv, fl, fa, pg, tc, tf):
@@ -295,9 +306,17 @@ def build(p_long, U, rs_now):
                 vv = v[endb - 50:endb]
                 if vv[~u].sum() > 0:
                     ud = vv[u].sum() / vv[~u].sum()
+            bvr = np.nan                              # breakout-day volume vs the prior 50-day average
+            if kind == "bo" and t >= 20:
+                av = v[max(0, t - 50):t].mean()
+                bvr = v[t] / av if av > 0 else np.nan
+            # trend measured on the breakout day for a breakout, today for a base still forming
+            te_ = t if kind == "bo" else e
+            vs_ = c[te_] / sma200[te_] - 1 if te_ >= 199 else np.nan
+            sl_ = sma150[te_] / sma150[te_ - 20] - 1 if te_ >= 169 else np.nan
             return dict(kind=kind, t=t, st=st, len=int(length), piv=piv, fl=fl, fa=fa, tc=tc, tf=tf,
-                        over=overhead, tight=tight15, dry=dry, ud=ud,
-                        scp=base_score(length, rs, vs200, slope, tight15, fa, overhead, parts=True))
+                        over=overhead, tight=tight15, dry=dry, ud=ud, bvr=bvr,
+                        scp=base_score(length, rs, vs_, sl_, bvr, fa, parts=True))
 
         bo = None
         ev = recent_breakouts(c, max(n - RECENT, 2), D_MAX, ZONE, MIN_LEN)
@@ -341,7 +360,7 @@ def build(p_long, U, rs_now):
                "ext": _r(ext * 100, 1) if ext is not None else None,
                "type": "S" if prim["fa"] else "C", "tc": prim["tc"], "tf": prim["tf"],
                "tight": _r(prim["tight"] * 100, 1), "dry": _r(prim["dry"], 2), "ud": _r(prim["ud"], 2),
-               "over": _r(prim["over"] * 100, 0), "sc": prim["sc"], "scp": prim["scp"], "tgt": _px(piv + 0.85 * (piv - fl)),
+               "over": _r(prim["over"] * 100, 0), "bvr": _r(prim["bvr"], 1), "sc": prim["sc"], "scp": prim["scp"], "tgt": _px(piv + 0.85 * (piv - fl)),
                "cap": bool(capped), "lst": bool(st == 0 and not capped), "bse": bool(nbse and st < nbse)}
         if near is not None:
             rec["np"], rec["nd"], rec["nlen"] = _px(near[0]), _r((near[0] / c[e] - 1) * 100, 1), near[1]
@@ -388,15 +407,20 @@ def scans(B):
 
     add("lb_breakout", "Long-base breakout",
         "Closed above the pivot of a base of 100+ trading days in the last 20 sessions and is still within 5% of it "
-        "(the buy range). In 20 years of US data, bases of 50-199 days in an uptrend did best; 400+ day bases lagged "
-        "the S&P 500 even though fewer of them failed - favour RS 90+ breakouts.",
+        "(the buy range). In 20 years of US data, bases of 50-199 days did best and 400+ day bases lagged the S&P 500, "
+        "so sort by Base Score and favour RS 90+.",
         bo_len >= 100, "Base days", bo_len)
     add("lb_near", "Long base near pivot",
         "In a base of 200+ trading days and within 5% below its pivot - watch for the breakout.",
         (R.st == "near") & (R.len >= 200), "Base days", R.len)
-    add("lb_best", "Big base, top Base Score",
-        "Base of 200+ trading days with a Base Score of 70+ (uptrend, RS, tight right side, base built after an advance) and "
-        "no more than 15% below its pivot. In the US backtest a Base Score of 70+ cut failed breakouts (30% vs 39%) but "
-        "did not add return - use it as a reliability check alongside RS.",
-        (R.len >= 200) & (R.sc >= 70) & (R.st != "ext") & (R.dist <= 15), "Base Score", R.sc)
+    add("lb_best", "Base breakout, Base Score 60+",
+        "Broke out of a base of 25+ days in the last 20 sessions, still within 5% of the pivot, with a US Base Score "
+        "of 60+ (RS, trend strength, 50-199-day base, breakout volume). In the US backtest, 60+ breakouts beat the "
+        "S&P 500 by 5-12% a year on average in both decades and doubled 3-4x as often as low scores - but about "
+        "40-45% failed, so use a stop under the pivot.",
+        R.st.isin(["bo0", "bo"]) & (R.sc >= 60), "Base Score", R.sc)
+    add("lb_setup", "Base near pivot, Base Score 50+",
+        "Within 5% below the pivot of a base of 25+ days with a Base Score of 50+ before any breakout-volume points "
+        "(so it reaches 60+ on a 1.5x volume breakout). The watchlist for tomorrow's breakouts.",
+        (R.st == "near") & (R.sc >= 50), "Base Score", R.sc)
     return meta, hits, metric

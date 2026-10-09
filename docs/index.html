@@ -489,6 +489,9 @@ footer.foot p{margin:4px 0;max-width:110ch}
   .drawer{animation:slidein .2s ease}
   @keyframes slidein{from{transform:translateY(24px);opacity:.4}to{transform:none;opacity:1}}
 }
+.evline{margin:10px 0 0;padding:10px 12px;border-radius:10px;background:var(--track);font-size:16px;line-height:1.6}
+.evline .evk{font-weight:800;margin-right:6px}.evline .evs{color:var(--muted)}
+.evd summary{cursor:pointer;color:var(--accent-ink);font-size:15px;margin-top:4px}
 </style>
 </head>
 <body>
@@ -778,6 +781,7 @@ function renderBreadth(){
   let h=`<div class="sec-head"><div><h2>Market breadth</h2><p>How many stocks are taking part. A rising index on falling breadth is a warning; breadth turning up from below 20% has marked many bottoms.</p></div></div>
   <div class="tiles">${tile("a20","Above 20 DMA")}${tile("a50","Above 50 DMA")}${tile("a200","Above 200 DMA")}
     ${pair("Advances / declines today",b.adv[L],b.dec[L],"adv","dec")}${pair("52-week highs / lows today",b.nh[L],b.nl[L],"nh","nl")}${pair("Up 4%+ / down 4%+ today",b.up4[L],b.dn4[L],"up4","dn4")}</div>`;
+  h+=marketRegime(b,L);
   const bv=b.bench.filter(isNum),blo=Math.min(...bv),bhi=Math.max(...bv);
   h+=`<div class="card chart" id="ch1"><h3>Share of stocks above their moving averages</h3>
     <div class="legend"><span><i style="--c:var(--s1)"></i>Above 50 DMA</span><span><i style="--c:var(--s2)"></i>Above 200 DMA</span><span><i class="dash" style="--c:var(--muted)"></i>${esc(b.bench_name)} (own scale)</span></div>
@@ -795,6 +799,33 @@ function renderBreadth(){
   wireChart($("#ch2"),"b",i=>`<b>${fmtDate(b.dates[i])}</b><br>Highs <b>${b.nh[i]}</b> · Lows <b>${b.nl[i]}</b><br>Net <b>${net[i]>0?"+":""}${net[i]}</b>`);
 }
 
+
+function marketRegime(b,L){
+  let h="";
+  const I=b.ibd||{};
+  if(Object.keys(I).length){
+    const card=(nm,x)=>{const n=x.cnt[x.cnt.length-1],c=n>=6?"down":n>=4?"":"up",days=x.last_ftd?Math.round((new Date(b.dates[L])-new Date(x.last_ftd))/864e5):null;
+      return `<div class="card tile"><div class="k">${esc(nm)}: distribution days (25 sessions)</div><div class="v num ${c}">${n}</div>
+      <div class="d">${n>=6?"Heavy selling by institutions — IBD treats 5–6 as a warning of a top":n>=4?"Building — watch for more":"Light — no sign of heavy selling"}</div>
+      <div class="d" style="margin-top:6px">Last follow-through day: <b>${x.last_ftd?esc(fmtDate(x.last_ftd)):"none in the data"}</b>${days!=null?` (${days} days ago)`:""}</div>
+      ${x.dd_dates.length?`<div class="d" style="margin-top:4px">Counted: ${x.dd_dates.slice(-7).map(d=>esc(fmtDate(d))).join(" · ")}</div>`:""}</div>`};
+    h+=`<h3 style="font-size:21px;margin:22px 0 10px">Market direction — IBD rules</h3><div class="tiles" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">${Object.entries(I).map(([k,v])=>card(k,v)).join("")}</div>
+    <p class="note">Distribution day: the index closes down 0.2% or more on higher volume than the day before; it drops out after 25 sessions or once the index rises 6% above that close. Follow-through day: on day 4 or later of a rally attempt, the index closes up 1.25% or more on higher volume (William O'Neil / IBD). These are the mechanical rules; IBD's own market call adds judgement.</p>`;
+  }
+  if(b.u25q){
+    const last=[];for(let i=L;i>=Math.max(0,L-59);i--)last.push({i,d:b.dates[i]});
+    const ct=(k,lab,c,f)=>({k,label:lab,fmt:r=>{const v=b[k][r.i];return `<span class="num ${typeof c==="function"?c(v):c}">${v==null?"–":f?f(v):v}</span>`},sort:r=>b[k][r.i]});
+    const rat=v=>v==null?"":v>=1.5?"up":v<0.5?"down":"";
+    const cols=[{k:"d",label:"Date",l:1,fmt:r=>fmtDate(r.d),sort:r=>r.d},ct("up4","Up 4%","up"),ct("dn4","Down 4%","down"),ct("r5","5-day ratio",rat,v=>v.toFixed(2)),ct("r10","10-day ratio",rat,v=>v.toFixed(2)),
+      ct("u25q","Up 25% in a quarter","up"),ct("d25q","Down 25% in a quarter","down"),ct("u25m","Up 25% in a month","up"),ct("d25m","Down 25% in a month","down"),
+      ct("u50m","Up 50% in a month","up"),ct("d50m","Down 50% in a month","down"),ct("u13","Up 13% in 34 days","up"),ct("d13","Down 13% in 34 days","down"),
+      ct("a40","Above 40-day (T2108)",v=>v<20?"down":v>80?"up":"",v=>v.toFixed(1)+"%"),ct("mco","McClellan osc.",v=>v>0?"up":v<0?"down":"",v=>v.toFixed(0))];
+    const zb=b.zbt?b.dates.filter((d,i)=>b.zbt[i]&&!b.zbt[i-1]):[];
+    h+=`<h3 style="font-size:21px;margin:22px 0 10px">Stockbee Market Monitor</h3><div class="card">${dtable("mm",last,cols,{limit:10})}</div>
+    <p class="note">Pradeep Bonde's market monitor with his published formulas: Up/Down 4% = a 4%+ move on higher volume than the day before and 100K+ shares; the 5- and 10-day ratios are the 4% up-days divided by the 4% down-days over 5 and 10 sessions (above 1.5 green, under 0.5 red); 25% in a quarter is measured from the lowest (highest) close of the last 65 sessions; 13% in 34 days likewise; T2108 is the share of stocks above their 40-day average (under 20% has marked many bottoms). Bonde counts every US common stock; this site counts its ${D.meta.universe.toLocaleString("en-US")} stocks of $300M+ market cap, so his absolute levels (e.g. fewer than 200 stocks up 25% in a quarter at bottoms) don't carry over one for one — read the direction and the extremes. McClellan oscillator = 19-day minus 39-day EMA of (advances − declines) ÷ (advances + declines) × 1000.${zb.length?` Zweig breadth thrust (10-day average of advances ÷ (advances + declines) going from under 40% to over 61.5% within 10 days): ${zb.map(d=>esc(fmtDate(d))).join(", ")}.`:" No Zweig breadth thrust in the period shown."}</p>`;
+  }
+  return h;
+}
 /* ════════════════════ RS RANKING ════════════════════ */
 function renderRS(){
   const f=st.rs,secs=[...new Set(D.stocks.filter(x=>(x.k==="e")===(f.kind==="e")).flatMap(x=>x.k==="e"?[x.cat,x.set]:[x.sec,x.ind]).filter(Boolean))].sort(),ths=Object.keys(D.groups.Themes||{}).sort();
@@ -832,8 +863,13 @@ function renderScanners(){
   const S=D.scans;if(!S?.meta){$("#view").innerHTML=`<div class="err">Scanner data is in an older format. Run “Daily update” once.</div>`;return}
   if(!D.scanMeta[st.scan])st.scan=S.meta[0].id;
   const m=D.scanMeta[st.scan],hits=S.hits[m.id]||[];
-  const rail=S.cats.map(c=>`<h4>${esc(c)}</h4>`+S.meta.filter(x=>x.cat===c).map(x=>{const n=(S.hits[x.id]||[]).length;return `<button type="button" data-scan="${x.id}" aria-current="${x.id===m.id}"><span>${esc(x.name)}</span><span class="c ${n?"":"z"}">${n}</span></button>`}).join("")).join("");
-  const pick=`<select class="select" id="scanSel" style="width:100%" aria-label="Choose a scanner">${S.cats.map(c=>`<optgroup label="${esc(c)}">${S.meta.filter(x=>x.cat===c).map(x=>`<option value="${x.id}" ${x.id===m.id?"selected":""}>${esc(x.name)} (${(S.hits[x.id]||[]).length})</option>`).join("")}</optgroup>`).join("")}</select>`;
+  const byTrader=st.scanGroup==="src";
+  const TORDER=["Bonde","Qullamaggie","Minervini","O'Neil","Deepvue","Webster","Morales & Kacher","Kell","Soreide","Weinstein","Wish","Darvas","Raschke","Connors","Crabel","Bollinger","Cardwell"];
+  const TNAME={"Bonde":"Pradeep Bonde (Stockbee)","Qullamaggie":"Kristjan Kullamägi (Qullamaggie)","Minervini":"Mark Minervini","O'Neil":"William O'Neil (IBD)","Deepvue":"Deepvue presets","Webster":"Mike Webster","Morales & Kacher":"Gil Morales & Chris Kacher","Kell":"Oliver Kell","Soreide":"Leif Soreide","Weinstein":"Stan Weinstein","Wish":"Dr. Eric Wish","Darvas":"Nicolas Darvas","Raschke":"Linda Raschke","Connors":"Larry Connors","Crabel":"Toby Crabel","Bollinger":"John Bollinger","Cardwell":"Andrew Cardwell"};
+  const groups=byTrader?TORDER.filter(t=>S.meta.some(x=>x.src===t)).map(t=>[TNAME[t]||t,S.meta.filter(x=>x.src===t)]):S.cats.map(c=>[c,S.meta.filter(x=>x.cat===c)]);
+  const btn=x=>{const n=(S.hits[x.id]||[]).length;return `<button type="button" data-scan="${x.id}" aria-current="${x.id===m.id}"><span>${esc(x.name)}</span><span class="c ${n?"":"z"}">${n}</span></button>`};
+  const rail=groups.map(([g,ms])=>`<h4>${esc(g)}</h4>`+ms.map(btn).join("")).join("");
+  const pick=`<select class="select" id="scanSel" style="width:100%" aria-label="Choose a scanner">${groups.map(([c,ms])=>`<optgroup label="${esc(c)}">${ms.map(x=>`<option value="${x.id}" ${x.id===m.id?"selected":""}>${esc(x.name)} (${(S.hits[x.id]||[]).length})</option>`).join("")}</optgroup>`).join("")}</select>`;
   let rows=hits.map(s=>D.by[s]).filter(Boolean);const metric=S.metric?.[m.id]||{};
   let topNote="";
   if(st.scanFund&&m.cat!=="ETFs"){const before=rows.length;rows=rows.filter(r=>(r.fr??0)>=st.scanFund);topNote=`${rows.length} of ${before} stocks have a Fund rating of ${st.scanFund}+. `}
@@ -851,9 +887,10 @@ function renderScanners(){
   const tid="scan_"+m.id,mk=dup||"metric";
   if(!st.tbl[tid])st.tbl[tid]={key:m.sort==="metric"||m.sort==="metric_asc"?mk:"rs",dir:m.sort==="metric_asc"?1:-1,show:100};
   $("#view").innerHTML=scanViewSeg()+`<div class="sec-head"><div><h2>Scanner library</h2><p>${S.meta.length} scans run on every stock after the close${D.meta.fund?` — ${S.meta.filter(x=>!x.id.startsWith("f_")).length} technical and ${S.meta.filter(x=>x.id.startsWith("f_")).length} fundamental (from SEC filings)`:""}. Tap any stock for its detail card, including every other scan it appears in.</p></div></div>
+  <div class="ctl" style="margin:0 0 14px"><span>Group the scans</span>${seg("scanGroup",["cat","src"],byTrader?"src":"cat",{cat:"By type of signal",src:"By trader who published it"})}</div>
   <div class="scan-pick">${pick}</div>
   <div class="scan-layout"><nav class="card rail" aria-label="Scanners">${rail}</nav>
-  <section class="card"><div class="scan-head"><h3>${esc(m.name)}<span class="cnt num">${hits.length}</span></h3><p>${esc(m.desc)}</p><div class="catchips"><span class="pill p-acc">${esc(m.cat)}</span>${rows.length?`<button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(rows.map(r=>r.s)))}" data-label="${esc(m.name)} stocks" style="margin-left:6px">☆ Add all ${rows.length} to a watchlist</button>`:""}</div>
+  <section class="card"><div class="scan-head"><h3>${esc(m.name)}<span class="cnt num">${hits.length}</span></h3><p>${esc(m.desc)}</p>${scanEvidence(m)}<div class="catchips"><span class="pill p-acc">${esc(m.cat)}</span>${m.src?`<span class="pill" style="margin-left:6px">${esc(TNAME[m.src]||m.src)}</span>`:""}${rows.length?`<button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(rows.map(r=>r.s)))}" data-label="${esc(m.name)} stocks" style="margin-left:6px">☆ Add all ${rows.length} to a watchlist</button>`:""}</div>
   ${isEtfScan?"":`<div style="display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:12px"><div class="ctl"><span>Stocks shown</span>${seg("scanTop",["0","5","10"],String(st.scanTop),{"0":"All","5":"Top 5 themes","10":"Top 10 themes"})}</div>
   ${D.meta.fund?`<div class="ctl"><span>Fundamentals</span>${seg("scanFund",["0","60","80"],String(st.scanFund),{"0":"Any","60":"Fund 60+","80":"Fund 80+"})}</div>`:""}</div>${topNote?`<p class="note" style="margin:8px 0 0">${esc(topNote)}</p>`:""}`}</div>
   <div id="scanT">${dtable(tid,rows,cols,{empty:"No stocks triggered this scan today."})}</div></section></div>`;
@@ -861,6 +898,18 @@ function renderScanners(){
   $("#scanSel").addEventListener("change",e=>{st.scan=e.target.value;store.set("scan2",st.scan);renderScanners()});
 }
 
+
+function scanEvidence(m){
+  const E=D.scans.ev,id=m.id.startsWith("etf_")?null:m.id,r=id&&E?.scans?.[id];
+  if(m.id.startsWith("f_"))return `<p class="note" style="margin:6px 0 0">Not back-tested: a fair test needs the filings as they stood on each past day.</p>`;
+  if(m.id.startsWith("lb_")||m.id.startsWith("s2_"))return `<p class="note" style="margin:6px 0 0">20-year evidence: see the Long bases / Stage 2 sections.</p>`;
+  if(!r||r.e21==null)return "";
+  const v=(x)=>x==null?"–":`<b class="num ${x>0.25?"up":x<-0.25?"down":""}">${sgn(x,1)}</b>`;
+  const y0=E.from.slice(0,4),y1=E.to.slice(0,4);
+  return `<div class="evline"><span class="evk">Tested ${esc(y0)}–${esc(y1)}</span> vs the average stock that day: next week ${v(r.e5)} · next month ${v(r.e21)} · next 3 months ${v(r.e63)}
+    <span class="evs">· beat it ${r.w21!=null?r.w21.toFixed(0):"–"}% of the time over a month · ahead in ${r.yrs_pos} of ${r.yrs} years · ${r.n.toLocaleString("en-US")} signals on ${r.days} test days</span>
+    <details class="evd"><summary>How this was tested</summary><p class="note" style="margin:6px 0 0">${esc(E.note)} Volatile stocks did better than average over these years and delisted losers are missing, so lists of fast movers (including some in Weakness) look better than they will in a bad year — compare scans with each other. Averages trimmed at the 1% tails.</p></details></div>`;
+}
 /* ════════════════════ LONG BASES ════════════════════
    bases.json (scripts/bases.py): one row per stock = its longest daily base.
    len = trading days in the base, piv = pivot (highest close inside it), fl = lowest close,
@@ -884,6 +933,7 @@ function bStatus(b,long){
   if(b.ib)h+=`<span class="bsub">${b.ib.ago===0?"Today":b.ib.ago+"d ago"}: broke out of a ${b.ib.len}-day base inside it ($${inr(b.ib.piv)})</span>`;
   return h}
 const bInner=b=>b.ib&&b.ib.len>=100&&b.ib.ext<=5;   // a long-base breakout inside an even longer base
+function bScorePill(v){if(!isNum(v))return "–";const c=v>=75?"rs-a":v>=60?"rs-b":v>=45?"rs-c":"rs-d";return `<span class="rs ${c}">${v}</span>`}
 function scorePill(v){if(!isNum(v))return "–";const c=v>=80?"rs-a":v>=70?"rs-b":v>=55?"rs-c":"rs-d";return `<span class="rs ${c}">${v}</span>`}
 function bchart(s,big,wpx){
   const ch=BASES?.charts?.[s],b=BASES?.by?.[s];if(!ch||!b)return "–";
@@ -912,7 +962,7 @@ const BCOL={
   fp:{k:"fp",label:"From pivot",fmt:r=>{const v=bFromPiv(r.b);return `<span class="num ${v>=0?"up":""}" style="font-weight:700">${sgn(v,1)}</span>`},sort:r=>bFromPiv(r.b)},
   piv:{k:"piv",label:"Pivot $",fmt:r=>`<span class="num">${inr(r.b.piv)}</span>`,sort:r=>r.b.piv},
   depth:{k:"depth",label:"Depth %",fmt:r=>`<span class="num">${isNum(r.b.depth)?r.b.depth.toFixed(0):"–"}</span>`,sort:r=>r.b.depth},
-  sc:{k:"sc",label:"Base Score",fmt:r=>scorePill(r.b.sc),sort:r=>r.b.sc},
+  sc:{k:"sc",label:"Base Score",fmt:r=>bScorePill(r.b.sc),sort:r=>r.b.sc},
   type:{k:"type",label:"Built after",l:1,fmt:r=>r.b.type==="C"?"an advance":`a decline`,sort:r=>r.b.type},
   tc:{k:"tc",label:"Pivot tests",fmt:r=>`<span class="num">${r.b.tc}</span>`,sort:r=>r.b.tc},
   tight:{k:"tight",label:"Last 15d range %",fmt:r=>`<span class="num">${isNum(r.b.tight)?r.b.tight.toFixed(1):"–"}</span>`,sort:r=>r.b.tight},
@@ -925,6 +975,7 @@ function bFilter(rows){
   return rows.filter(b=>{const x=D.by[b.s]||{};
     if(q&&!b.s.includes(q)&&!String(x.n||"").toUpperCase().includes(q))return false;
     if(f.status==="act"&&!["bo0","bo","near","w15"].includes(b.st))return false;
+    if(f.status==="pivot"&&!["bo0","bo","near"].includes(b.st))return false;
     if(f.status==="bo"&&!(["bo0","bo","ext"].includes(b.st)||bInner(b)))return false;
     if(["near","w15","in"].includes(f.status)&&b.st!==f.status)return false;
     if(b.len<min)return false;if(dep&&!(b.depth<=dep))return false;if(sc&&!(b.sc>=sc))return false;
@@ -934,34 +985,34 @@ function bFilter(rows){
 function bEvidence(E){
   if(!E)return "";
   const bar=(v,mx)=>`<span class="ebar" style="width:${Math.max(2,Math.round(Math.max(0,v)/mx*110))}px"></span><span class="num" style="font-weight:700">${sgn(v,1)}</span>`;
-  const mx=Math.max(...E.len_quality.map(r=>r.avg),...E.len_other.map(r=>r.avg),...E.score_all.map(r=>r.avg),1);
+  const mx=Math.max(...E.len_quality.map(r=>r.avg),...E.len_other.map(r=>r.avg),...E.score_all.map(r=>r.avg),...E.score_early.map(r=>r.avg),...E.score_late.map(r=>r.avg),...[E.rs_early,E.rs_late,E.tight_early,E.tight_late].flatMap(t=>(t||[]).map(r=>r.avg)),1);
   const oth=Object.fromEntries(E.len_other.map(r=>[r.label,r]));
   const t1=`<div class="tscroll"><table class="dt etab"><thead><tr><th class="l">Base length (trading days)</th><th class="l">Avg 1 yr vs ${esc(benchName())}</th><th>Median</th><th>Beat the index</th><th>Failed</th><th>Doubled</th><th>Breakouts</th><th class="l">Not in an uptrend: avg</th><th>Beat</th></tr></thead><tbody>`+
     E.len_quality.map(r=>{const o=oth[r.label]||{};return `<tr><td class="l"><b>${esc(r.label)}</b></td><td class="l">${bar(r.avg,mx)}</td><td class="num">${sgn(r.med,1)}</td><td class="num">${r.win.toFixed(0)}%</td><td class="num">${r.fail.toFixed(0)}%</td><td class="num">${r.big.toFixed(0)}%</td><td class="num">${r.n.toLocaleString("en-US")}</td><td class="l">${bar(o.avg,mx)}</td><td class="num">${isNum(o.win)?o.win.toFixed(0)+"%":"–"}</td></tr>`}).join("")+`</tbody></table></div>`;
   const late=Object.fromEntries(E.score_late.map(r=>[r.label,r])),all=Object.fromEntries(E.score_all.map(r=>[r.label,r]));
-  const t2=`<div class="tscroll"><table class="dt etab"><thead><tr><th class="l">Base Score</th><th class="l">Avg 1 yr vs ${esc(benchName())}, ${esc(E.p1||"2007–16")}</th><th class="l">Same, ${esc(E.p2||"2017–26")}</th><th>Median</th><th>Beat the index</th><th>Failed</th><th>Breakouts</th></tr></thead><tbody>`+
-    E.score_early.map(r=>{const l=late[r.label]||{},a=all[r.label]||{};return `<tr><td class="l"><b>${esc(r.label)}</b></td><td class="l">${bar(r.avg,mx)}</td><td class="l">${bar(l.avg,mx)}</td><td class="num">${sgn(a.med,1)}</td><td class="num">${a.win.toFixed(0)}%</td><td class="num">${a.fail.toFixed(0)}%</td><td class="num">${a.n.toLocaleString("en-US")}</td></tr>`}).join("")+`</tbody></table></div>`;
+  const t2=`<div class="tscroll"><table class="dt etab"><thead><tr><th class="l">Base Score</th><th class="l">Avg 1 yr vs ${esc(benchName())}, ${esc(E.p1||"2007–16")}</th><th class="l">Same, ${esc(E.p2||"2017–26")}</th><th>Doubled ${esc(E.p1||"")}</th><th>Doubled ${esc(E.p2||"")}</th><th>Median</th><th>Beat the index</th><th>Failed</th><th>Breakouts</th></tr></thead><tbody>`+
+    E.score_early.map(r=>{const l=late[r.label]||{},a=all[r.label]||{};return `<tr><td class="l"><b>${esc(r.label)}</b></td><td class="l">${bar(r.avg,mx)}</td><td class="l">${bar(l.avg,mx)}</td><td class="num">${isNum(r.big)?r.big.toFixed(0)+"%":"–"}</td><td class="num">${isNum(l.big)?l.big.toFixed(0)+"%":"–"}</td><td class="num">${sgn(a.med,1)}</td><td class="num">${a.win.toFixed(0)}%</td><td class="num">${a.fail.toFixed(0)}%</td><td class="num">${a.n.toLocaleString("en-US")}</td></tr>`}).join("")+`</tbody></table></div>`;
   return `<details class="card evid"${store.get("bxEv",false)?" open":""}><summary>${esc(E.title)} <span>— does a longer base mean a bigger move?</span></summary><div class="evb">
     <ul class="fl">${E.findings.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>
     <h4>Breakouts in an uptrend (above a rising 150-day and the 200-day average) with RS 70+, by base length</h4>${t1}
-    <h4>All breakouts, by Base Score at the breakout</h4>${t2}
+    <h4>All breakouts, by Base Score at the breakout</h4>${t2}${E.rs_early?`<h4>All breakouts, by RS rating at the breakout</h4><div class="tscroll"><table class="dt etab"><thead><tr><th class="l">RS rating</th><th class="l">Avg 1 yr, ${esc(E.p1)}</th><th class="l">Same, ${esc(E.p2)}</th><th>Doubled ${esc(E.p1)}</th><th>Doubled ${esc(E.p2)}</th><th>Failed ${esc(E.p2)}</th></tr></thead><tbody>${E.rs_early.map((r,i)=>{const l=E.rs_late[i]||{};return `<tr><td class="l"><b>${esc(r.label)}</b></td><td class="l">${bar(r.avg,mx)}</td><td class="l">${bar(l.avg,mx)}</td><td class="num">${r.big.toFixed(0)}%</td><td class="num">${(l.big??0).toFixed(0)}%</td><td class="num">${(l.fail??0).toFixed(0)}%</td></tr>`}).join("")}</tbody></table></div>`:""}${E.tight_early?`<h4>All breakouts, by the range of the last 15 sessions before the breakout (tightness)</h4><div class="tscroll"><table class="dt etab"><thead><tr><th class="l">Right-side range</th><th class="l">Avg 1 yr, ${esc(E.p1)}</th><th class="l">Same, ${esc(E.p2)}</th><th>Failed ${esc(E.p1)}</th><th>Failed ${esc(E.p2)}</th><th>Doubled ${esc(E.p2)}</th></tr></thead><tbody>${E.tight_early.map((r,i)=>{const l=E.tight_late[i]||{};return `<tr><td class="l"><b>${esc(r.label)}</b></td><td class="l">${bar(r.avg,mx)}</td><td class="l">${bar(l.avg,mx)}</td><td class="num">${r.fail.toFixed(0)}%</td><td class="num">${(l.fail??0).toFixed(0)}%</td><td class="num">${(l.big??0).toFixed(0)}%</td></tr>`}).join("")}</tbody></table></div>`:""}
     <p class="note">${esc(E.data)} ${esc(E.caveats)}</p>
-    <p class="note"><b>Base Score (0–100):</b> base length 25 (most for 200–399 days, then 400–799) · RS rating 25 · uptrend 20 (above a rising 150-day and the 200-day average) · tight right side 15 (last 15 sessions within 6%) · built after an advance 10 · little overhead supply 5. <b>Rules:</b> a base is the time a stock has spent below a closing high (the pivot) without falling more than 50% below it; it starts at the left-side high after an advance, or at the bar after the last close above the pivot if the stock fell into it. Breakout = close above the pivot; buy range = up to 5% above it (O'Neil). Measured move = pivot + 85% of the base height (Bulkowski).</p></div></details>`}
+    <p class="note"><b>US Base Score (0–100), fitted on the US data above and kept because it sorted returns the same way in both decades:</b> RS rating 30 (95+ 30, 90–94 25, 80–89 16, 70–79 8) · trend strength 35 (close 40%+ above the 200-day 25, 20–40% 16, 10–20% 8, 0–10% 4; 150-day average up 5%+ in a month +10, 2–5% +4) · base length 15 (50–99 days 15, 25–49 or 100–199 10, 200–399 5, 400–799 2) · breakout-day volume 15 (3× the 50-day average 15, 2× 10, 1.5× 6, 1× 2; added on the breakout day) · built after an advance 5. It finds the big winners; it does not make the typical breakout safer. <b>Rules:</b> a base is the time a stock has spent below a closing high (the pivot) without falling more than 50% below it; it starts at the left-side high after an advance, or at the bar after the last close above the pivot if the stock fell into it. Breakout = close above the pivot; buy range = up to 5% above it (O'Neil). Measured move = pivot + 85% of the base height (Bulkowski).</p></div></details>`}
 async function renderBases(){
   $("#view").innerHTML=`<div class="empty">Loading bases…</div>`;
   const B=await basesLoad();if(st.tab!=="bases")return;
   if(!B){$("#view").innerHTML=`<div class="err">Base data isn't there yet. It is made by the evening “Daily update” run — run it once from the Actions tab, then reload.</div>`;return}
-  const f=st.bx,R=B.rows,n200=R.filter(b=>b.len>=200).length,near=R.filter(b=>b.st==="near"),bo=R.filter(b=>["bo0","bo"].includes(b.st)||bInner(b)),top=R.filter(b=>b.sc>=70&&b.len>=200);
+  const f=st.bx,R=B.rows,n200=R.filter(b=>b.len>=200).length,near=R.filter(b=>b.st==="near"),bo=R.filter(b=>["bo0","bo"].includes(b.st)||bInner(b)),top=R.filter(b=>b.sc>=60&&["bo0","bo","near"].includes(b.st));
   const tile=(id,k,v,d)=>`<button type="button" class="card tile btile" data-bpreset="${id}"><div class="k">${k}</div><div class="v num">${v.toLocaleString("en-US")}</div><div class="d">${d}</div></button>`;
   $("#view").innerHTML=`<div class="sec-head"><div><h2>Long-base identifier</h2><p>Every stock in a base on the daily chart, ranked by how many trading days it has spent there. A base is the time a stock has spent below a closing high (its pivot) without falling more than 50% below it — Weinstein's Stage 1, O'Neil's cups and flat bases, Wyckoff ranges. Tested on 20 years of US data below.</p></div></div>
-  <div class="tiles btiles">${tile("big","Bases of 200+ days",n200,`of ${R.length.toLocaleString("en-US")} stocks in a base`)}${tile("near","Within 5% of the pivot",near.length,`${near.filter(b=>b.len>=200).length} of them in 200+ day bases`)}${tile("bo","Breakouts, last 20 days",bo.length,"still within 5% of the pivot")}${tile("top","Base Score 70+, 200+ days",top.length,"the best-scoring long bases")}</div>
+  <div class="tiles btiles">${tile("big","Bases of 200+ days",n200,`of ${R.length.toLocaleString("en-US")} stocks in a base`)}${tile("near","Within 5% of the pivot",near.length,`${near.filter(b=>b.len>=200).length} of them in 200+ day bases`)}${tile("bo","Breakouts, last 20 days",bo.length,"still within 5% of the pivot")}${tile("top","Base Score 60+, at the pivot",top.length,"breakouts and bases within 5% of the pivot")}</div>
   ${bEvidence(B.evidence)}
   <div class="card toolbar">
     <div class="ctl"><span>Search</span><input class="search" type="search" id="bq" placeholder="Symbol or company" value="${esc(f.q)}" aria-label="Search bases"></div>
-    <div class="ctl"><span>Where price is</span>${seg("b_status",["act","bo","near","w15","in","all"],f.status,{act:"Breakouts + within 15%",bo:"Breakouts",near:"Within 5%",w15:"5–15% below",in:"15%+ below",all:"All"})}</div>
+    <div class="ctl"><span>Where price is</span>${seg("b_status",["act","pivot","bo","near","w15","in","all"],f.status,{act:"Breakouts + within 15%",pivot:"At the pivot (±5%)",bo:"Breakouts",near:"Within 5%",w15:"5–15% below",in:"15%+ below",all:"All"})}</div>
     <div class="ctl"><span>Base at least</span>${seg("b_min",["25","100","200","400","800"],f.min,{"25":"25 days","100":"100 (~5 mo)","200":"200 (~10 mo)","400":"400 (~1.6 yr)","800":"800 (~3 yr)"})}</div>
     <div class="ctl"><span>Depth</span>${seg("b_depth",["0","15","33"],f.depth,{"0":"Any (≤50%)","15":"Flat ≤15%","33":"≤33%"})}</div>
-    <div class="ctl"><span>Base Score</span>${seg("b_score",["0","55","70","80"],f.score,{"0":"Any","55":"55+","70":"70+","80":"80+"})}</div>
+    <div class="ctl"><span>Base Score</span>${seg("b_score",["0","45","60","75"],f.score,{"0":"Any","45":"45+","60":"60+","75":"75+"})}</div>
     <div class="ctl"><span>Built after</span>${seg("b_type",["all","C","S"],f.type,{all:"Either",C:"An advance",S:"A decline"})}</div>
     <div class="ctl"><span>Also</span><div style="display:flex;flex-wrap:wrap;gap:0 16px"><label class="check"><input type="checkbox" id="bs2" ${f.s2?"checked":""}>Stage 2</label><label class="check"><input type="checkbox" id="brs" ${f.rs70?"checked":""}>RS 70+</label>${D.meta.fund?`<label class="check"><input type="checkbox" id="bf6" ${f.f60?"checked":""}>Fund 60+</label>`:""}</div></div>
   </div><div class="card" id="bxT"></div>`;
@@ -981,20 +1032,20 @@ function bPreset(id){const f=st.bx;Object.assign(f,{q:"",depth:"0",type:"all",s2
   if(id==="big")Object.assign(f,{status:"all",min:"200"});
   if(id==="near")Object.assign(f,{status:"near",min:"25"});
   if(id==="bo")Object.assign(f,{status:"bo",min:"25"});
-  if(id==="top")Object.assign(f,{status:"act",min:"200",score:"70"});
+  if(id==="top")Object.assign(f,{status:"pivot",min:"25",score:"60"});
   st.tbl.bases={key:"len",dir:-1,show:100};store.set("bx",f);renderBases()}
 function baseSection(sym,wpx){
   const b=BASES?.by?.[sym];
   if(!b)return BASES?`<div class="dsec"><h4>Base</h4><p class="note" style="margin:0">Not in a daily base of 25+ days right now (trending, or more than 50% below its last high).</p></div>`:"";
   const kv=(k,v)=>`<div><dt>${k}</dt><dd class="num">${v}</dd></div>`,p=b.scp||[];
-  const parts=[["Base length",p[0],25],["RS rating",p[1],25],["Uptrend",p[2],20],["Tight right side",p[3],15],["Built after an advance",p[4],10],["Little overhead supply",p[5],5]];
+  const parts=[["RS rating",p[1],30],["Trend strength",p[2],35],["Base length",p[0],15],["Breakout-day volume",p[3],15],["Built after an advance",p[4],5]];
   return `<div class="dsec" id="basesec"><h4>Base · <span style="color:var(--ink)">${b.len.toLocaleString("en-US")}${b.cap?"+":""} trading days</span> (${bdur(b.len)}) since ${esc(fmtDate(b.start))}${b.lst?" — since listing":""}</h4>
     <div class="bchwrap">${bchart(sym,true,wpx?wpx-30:0)}</div>
     <div style="margin:10px 0 8px">${bStatus(b,true)}</div>
     <dl class="dgrid">${kv("Pivot (closing high)","$"+inr(b.piv))}${kv("Base low","$"+inr(b.fl))}${kv("Depth",isNum(b.depth)?b.depth.toFixed(1)+"%":"–")}${kv("Built after",b.type==="C"?"an advance":"a decline")}
       ${kv("Pivot tests",b.tc)}${kv("Base-low tests",b.tf)}${kv("Last 15 days range",isNum(b.tight)?b.tight.toFixed(1)+"%":"–")}${kv("Volume 10d ÷ base avg",isNum(b.dry)?b.dry.toFixed(2)+"×":"–")}
       ${kv("Up/down volume 50d",isNum(b.ud)?b.ud.toFixed(2):"–")}${kv("Older high above pivot",isNum(b.over)&&b.over>0?"+"+b.over.toFixed(0)+"%":"None")}${kv("Measured move","$"+inr(b.tgt))}${b.np?kv("Next pivot above",`$${inr(b.np)} <span style="font-size:13px;color:var(--muted)">(${sgn(b.nd,1)}, ${b.nlen}d)</span>`):kv("Next pivot above","–")}</dl>
-    <div class="scorebd"><div class="sbh"><span>Base Score</span>${scorePill(b.sc)}</div>${parts.map(([k,v,mx])=>`<div class="sbr"><span>${k}</span><span class="sbt"><i style="width:${(v||0)/mx*100}%"></i></span><span class="num">${v??0}/${mx}</span></div>`).join("")}</div>
+    <div class="scorebd"><div class="sbh"><span>Base Score</span>${bScorePill(b.sc)}</div>${parts.map(([k,v,mx])=>`<div class="sbr"><span>${k}</span><span class="sbt"><i style="width:${(v||0)/mx*100}%"></i></span><span class="num">${v??0}/${mx}</span></div>`).join("")}${b.st==="near"||b.st==="w15"||b.st==="in"?`<p class="note" style="margin:6px 0 0">Breakout-day volume points are added on the day it breaks out.</p>`:""}</div>
   </div>`}
 
 /* ════════════════════ STAGE 2 PHASES (Scanners → Stage 2 phases) ════════════════════
@@ -1777,6 +1828,7 @@ document.addEventListener("click",e=>{
     if(k==="scanView"){st.scanView=v;store.set("scanView",v);if(location.hash.slice(1)!==(v==="s2"?"stage2":"scanners"))history.replaceState(null,"","#"+(v==="s2"?"stage2":"scanners"));renderScanners();return}
     if(k.startsWith("s2_")){st.s2[k.slice(3)]=v;store.set("s2",st.s2);if(st.tbl.s2)st.tbl.s2.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawStage2();return}
     if(k.startsWith("b_")){st.bx[k.slice(2)]=v;store.set("bx",st.bx);if(st.tbl.bases)st.tbl.bases.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawBases();return}
+    if(k==="scanGroup"){st.scanGroup=v;store.set("scanGroup",v);renderScanners();return}
     if(k==="scanTop"){st.scanTop=+v;store.set("scanTop",st.scanTop);renderScanners();return}
     if(k==="scanFund"){st.scanFund=+v;store.set("scanFund",st.scanFund);renderScanners();return}
     if(k==="fundmin"){st.rs.fmin=+v;store.set("rs",st.rs);s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawRS();return}
@@ -1799,7 +1851,7 @@ document.addEventListener("keydown",e=>{
 });
 window.addEventListener("hashchange",()=>{const t=location.hash.slice(1);if(t==="stage2"){if(st.tab!=="scanners"||st.scanView!=="s2")go("stage2");return}if(TABS.includes(t)&&(t!==st.tab||(t==="scanners"&&st.scanView==="s2"))){if(t==="scanners")st.scanView="lib";go(t)}});
 $("#themeBtn").addEventListener("click",()=>{const d=document.documentElement,cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";store.set("theme",d.dataset.theme)});
-(()=>{const t=store.get("theme",null);if(t)document.documentElement.dataset.theme=t;Object.assign(st,store.get("prefs",{}));Object.assign(st.rs,store.get("rs",{}));st.etfSet=store.get("etfSet",st.etfSet);Object.assign(st.bx,store.get("bx",{}));Object.assign(st.s2,store.get("s2",{}));st.scanView=store.get("scanView","lib");st.scan=store.get("scan2",st.scan);st.scanTop=+store.get("scanTop",0)||0;st.scanFund=+store.get("scanFund",0)||0;
+(()=>{const t=store.get("theme",null);if(t)document.documentElement.dataset.theme=t;Object.assign(st,store.get("prefs",{}));Object.assign(st.rs,store.get("rs",{}));st.etfSet=store.get("etfSet",st.etfSet);Object.assign(st.bx,store.get("bx",{}));Object.assign(st.s2,store.get("s2",{}));st.scanView=store.get("scanView","lib");st.scan=store.get("scan2",st.scan);st.scanTop=+store.get("scanTop",0)||0;st.scanGroup=store.get("scanGroup","cat");st.scanFund=+store.get("scanFund",0)||0;
   const h=location.hash.slice(1);if(h==="stage2"){st.scanView="s2";st.tab="scanners"}else{if(h==="scanners")st.scanView="lib";st.tab=TABS.includes(h)?h:store.get("tab","rotation")}})();
 
 load().then(()=>{index();renderHeader();renderFoot();render();updateWlBadge();wlCheckShared();syncPull();vpxLoad().then(()=>{refreshStars();updateWlBadge()})}).catch(err=>{

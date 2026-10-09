@@ -2,7 +2,7 @@
  "title": "What 20 years of US data say",
  "p1": "2007–16",
  "p2": "2017–26",
- "data": "Daily closes Jan 2007 – Oct 2026, 2,672 US stocks listed today, 199,041 first breakouts from bases of 25+ days with $1M+ daily dollar volume and a full year of data after. Returns are 1-year excess over the S&P 500 from the breakout close; 'Failed' = closed 5%+ back inside the base within 20 sessions; 'Doubled' = rose 100%+ at some point within the year.",
+ "data": "Daily closes Jan 2007 – Oct 2026, 2,672 US stocks listed today, 199,040 first breakouts from bases of 25+ days with $1M+ daily dollar volume and a full year of data after. Returns are 1-year excess over the S&P 500 from the breakout close; 'Failed' = closed 5%+ back inside the base within 20 sessions; 'Doubled' = rose 100%+ at some point within the year.",
  "len_quality": [
   {
    "label": "25–49",
@@ -15,16 +15,16 @@
   },
   {
    "label": "50–99",
-   "n": 9364,
+   "n": 9365,
    "avg": 4.1,
    "med": -2.2,
-   "win": 47.1,
+   "win": 47.0,
    "fail": 36.5,
    "big": 9.5
   },
   {
    "label": "100–199",
-   "n": 5823,
+   "n": 5824,
    "avg": 2.0,
    "med": -2.0,
    "win": 47.2,
@@ -33,7 +33,7 @@
   },
   {
    "label": "200–399",
-   "n": 7709,
+   "n": 7708,
    "avg": -0.6,
    "med": -4.7,
    "win": 44.1,
@@ -42,7 +42,7 @@
   },
   {
    "label": "400–799",
-   "n": 4889,
+   "n": 4888,
    "avg": -2.8,
    "med": -5.6,
    "win": 41.1,
@@ -62,7 +62,7 @@
  "len_other": [
   {
    "label": "25–49",
-   "n": 81361,
+   "n": 81360,
    "avg": 0.4,
    "med": -3.8,
    "win": 44.5,
@@ -117,151 +117,513 @@
  ],
  "score_all": [
   {
-   "label": "under 40",
-   "n": 83671,
-   "avg": 1.3,
-   "med": -4.2,
-   "win": 44.4,
-   "fail": 38.7,
-   "big": 8.3
-  },
-  {
-   "label": "40–54",
-   "n": 43258,
-   "avg": -0.4,
-   "med": -3.9,
-   "win": 43.8,
-   "fail": 32.8,
+   "label": "under 30",
+   "n": 127016,
+   "avg": -0.8,
+   "med": -4.1,
+   "win": 43.7,
+   "fail": 34.2,
    "big": 5.4
   },
   {
-   "label": "55–69",
-   "n": 44734,
-   "avg": 0.4,
-   "med": -3.3,
-   "win": 44.9,
-   "fail": 33.1,
-   "big": 5.9
+   "label": "30–44",
+   "n": 36627,
+   "avg": 0.5,
+   "med": -3.0,
+   "win": 45.2,
+   "fail": 33.6,
+   "big": 5.5
   },
   {
-   "label": "70–79",
-   "n": 19878,
-   "avg": -0.7,
-   "med": -3.1,
-   "win": 45.0,
-   "fail": 30.0,
-   "big": 3.8
+   "label": "45–59",
+   "n": 18677,
+   "avg": 2.3,
+   "med": -3.0,
+   "win": 46.1,
+   "fail": 36.5,
+   "big": 8.0
   },
   {
-   "label": "80+",
-   "n": 7500,
-   "avg": -0.4,
-   "med": -2.9,
-   "win": 45.4,
-   "fail": 29.9,
-   "big": 3.6
+   "label": "60–74",
+   "n": 10034,
+   "avg": 5.1,
+   "med": -2.5,
+   "win": 47.1,
+   "fail": 40.2,
+   "big": 11.6
+  },
+  {
+   "label": "75+",
+   "n": 6686,
+   "avg": 10.7,
+   "med": -3.5,
+   "win": 47.3,
+   "fail": 45.1,
+   "big": 21.2
   }
  ],
  "score_early": [
   {
-   "label": "under 40",
-   "n": 33785,
-   "avg": 2.9,
-   "med": -0.5,
-   "win": 49.2,
-   "fail": 37.0,
-   "big": 5.4
-  },
-  {
-   "label": "40–54",
-   "n": 18691,
-   "avg": 2.0,
-   "med": -0.5,
-   "win": 49.1,
-   "fail": 30.5,
-   "big": 3.0
-  },
-  {
-   "label": "55–69",
-   "n": 19506,
+   "label": "under 30",
+   "n": 54135,
    "avg": 1.8,
-   "med": -0.5,
+   "med": -0.6,
    "win": 49.0,
-   "fail": 29.5,
+   "fail": 31.8,
    "big": 3.4
   },
   {
-   "label": "70–79",
-   "n": 8913,
-   "avg": 1.7,
-   "med": -0.4,
-   "win": 49.3,
-   "fail": 27.6,
-   "big": 2.6
+   "label": "30–44",
+   "n": 15799,
+   "avg": 2.5,
+   "med": 0.0,
+   "win": 50.1,
+   "fail": 31.5,
+   "big": 3.1
   },
   {
-   "label": "80+",
-   "n": 3472,
+   "label": "45–59",
+   "n": 7919,
    "avg": 3.2,
-   "med": 0.8,
-   "win": 51.7,
-   "fail": 29.5,
-   "big": 2.3
+   "med": -0.0,
+   "win": 49.9,
+   "fail": 34.8,
+   "big": 4.7
+  },
+  {
+   "label": "60–74",
+   "n": 4131,
+   "avg": 3.5,
+   "med": -1.4,
+   "win": 48.2,
+   "fail": 38.6,
+   "big": 7.2
+  },
+  {
+   "label": "75+",
+   "n": 2382,
+   "avg": 8.4,
+   "med": -0.7,
+   "win": 49.2,
+   "fail": 38.9,
+   "big": 14.3
   }
  ],
  "score_late": [
   {
-   "label": "under 40",
-   "n": 49886,
-   "avg": 0.4,
-   "med": -7.7,
-   "win": 41.2,
-   "fail": 39.8,
+   "label": "under 30",
+   "n": 72881,
+   "avg": -2.6,
+   "med": -7.8,
+   "win": 39.7,
+   "fail": 35.9,
+   "big": 7.0
+  },
+  {
+   "label": "30–44",
+   "n": 20828,
+   "avg": -0.8,
+   "med": -6.2,
+   "win": 41.6,
+   "fail": 35.2,
+   "big": 7.3
+  },
+  {
+   "label": "45–59",
+   "n": 10758,
+   "avg": 2.0,
+   "med": -5.7,
+   "win": 43.3,
+   "fail": 37.8,
    "big": 10.4
   },
   {
-   "label": "40–54",
-   "n": 24567,
-   "avg": -2.1,
-   "med": -7.6,
-   "win": 39.7,
-   "fail": 34.6,
-   "big": 7.2
+   "label": "60–74",
+   "n": 5903,
+   "avg": 6.6,
+   "med": -3.8,
+   "win": 46.3,
+   "fail": 41.4,
+   "big": 14.7
   },
   {
-   "label": "55–69",
-   "n": 25228,
-   "avg": -0.6,
-   "med": -6.2,
-   "win": 41.7,
-   "fail": 35.9,
-   "big": 7.9
+   "label": "75+",
+   "n": 4304,
+   "avg": 12.2,
+   "med": -5.0,
+   "win": 46.2,
+   "fail": 48.6,
+   "big": 25.0
+  }
+ ],
+ "rs_early": [
+  {
+   "label": "under 50",
+   "n": 32593,
+   "avg": 2.0,
+   "med": -1.0,
+   "win": 48.3,
+   "fail": 33.0,
+   "big": 4.3
+  },
+  {
+   "label": "50–69",
+   "n": 20807,
+   "avg": 2.5,
+   "med": 0.6,
+   "win": 51.1,
+   "fail": 29.2,
+   "big": 2.3
   },
   {
    "label": "70–79",
-   "n": 10965,
-   "avg": -2.6,
-   "med": -6.0,
-   "win": 41.5,
-   "fail": 32.0,
-   "big": 4.7
+   "n": 11073,
+   "avg": 1.9,
+   "med": -0.2,
+   "win": 49.7,
+   "fail": 30.6,
+   "big": 2.6
   },
   {
-   "label": "80+",
-   "n": 4028,
-   "avg": -3.6,
-   "med": -7.5,
-   "win": 40.0,
-   "fail": 30.3,
-   "big": 4.8
+   "label": "80–89",
+   "n": 10873,
+   "avg": 3.0,
+   "med": 0.1,
+   "win": 50.1,
+   "fail": 32.6,
+   "big": 3.9
+  },
+  {
+   "label": "90–94",
+   "n": 5160,
+   "avg": 3.4,
+   "med": -1.3,
+   "win": 48.4,
+   "fail": 38.1,
+   "big": 6.7
+  },
+  {
+   "label": "95+",
+   "n": 3594,
+   "avg": 2.8,
+   "med": -5.8,
+   "win": 44.5,
+   "fail": 44.2,
+   "big": 11.5
+  }
+ ],
+ "rs_late": [
+  {
+   "label": "under 50",
+   "n": 44373,
+   "avg": -1.7,
+   "med": -8.1,
+   "win": 39.8,
+   "fail": 37.9,
+   "big": 8.3
+  },
+  {
+   "label": "50–69",
+   "n": 27623,
+   "avg": -3.2,
+   "med": -7.4,
+   "win": 39.6,
+   "fail": 33.1,
+   "big": 5.2
+  },
+  {
+   "label": "70–79",
+   "n": 15126,
+   "avg": -2.2,
+   "med": -6.3,
+   "win": 41.3,
+   "fail": 33.8,
+   "big": 5.8
+  },
+  {
+   "label": "80–89",
+   "n": 15182,
+   "avg": 0.3,
+   "med": -5.9,
+   "win": 42.7,
+   "fail": 36.4,
+   "big": 9.0
+  },
+  {
+   "label": "90–94",
+   "n": 6911,
+   "avg": 4.3,
+   "med": -5.1,
+   "win": 45.0,
+   "fail": 41.8,
+   "big": 14.2
+  },
+  {
+   "label": "95+",
+   "n": 5103,
+   "avg": 14.3,
+   "med": -4.3,
+   "win": 46.7,
+   "fail": 48.9,
+   "big": 24.3
+  }
+ ],
+ "tight_early": [
+  {
+   "label": "under 6%",
+   "n": 28749,
+   "avg": 0.8,
+   "med": -0.4,
+   "win": 49.3,
+   "fail": 24.0,
+   "big": 0.9
+  },
+  {
+   "label": "6–9%",
+   "n": 21117,
+   "avg": 1.5,
+   "med": -0.4,
+   "win": 49.2,
+   "fail": 29.3,
+   "big": 2.2
+  },
+  {
+   "label": "9–12%",
+   "n": 13044,
+   "avg": 2.5,
+   "med": -0.4,
+   "win": 49.3,
+   "fail": 35.3,
+   "big": 3.9
+  },
+  {
+   "label": "12–16%",
+   "n": 9642,
+   "avg": 2.3,
+   "med": -1.5,
+   "win": 47.9,
+   "fail": 41.1,
+   "big": 5.6
+  },
+  {
+   "label": "16%+",
+   "n": 11814,
+   "avg": 8.4,
+   "med": 0.4,
+   "win": 50.4,
+   "fail": 49.1,
+   "big": 13.1
+  }
+ ],
+ "tight_late": [
+  {
+   "label": "under 6%",
+   "n": 32576,
+   "avg": -5.8,
+   "med": -7.7,
+   "win": 38.2,
+   "fail": 28.0,
+   "big": 1.9
+  },
+  {
+   "label": "6–9%",
+   "n": 28098,
+   "avg": -4.1,
+   "med": -7.4,
+   "win": 39.6,
+   "fail": 33.6,
+   "big": 4.4
+  },
+  {
+   "label": "9–12%",
+   "n": 18835,
+   "avg": -2.0,
+   "med": -7.7,
+   "win": 40.6,
+   "fail": 38.3,
+   "big": 7.9
+  },
+  {
+   "label": "12–16%",
+   "n": 14814,
+   "avg": 1.9,
+   "med": -6.8,
+   "win": 42.7,
+   "fail": 42.6,
+   "big": 12.0
+  },
+  {
+   "label": "16%+",
+   "n": 20351,
+   "avg": 13.9,
+   "med": -4.1,
+   "win": 46.5,
+   "fail": 49.3,
+   "big": 22.4
+  }
+ ],
+ "years": [
+  {
+   "label": "2007",
+   "n": 700,
+   "hi": 2.8,
+   "lo": 1.9,
+   "big_hi": 9.1,
+   "big_lo": 2.2
+  },
+  {
+   "label": "2008",
+   "n": 425,
+   "hi": -8.8,
+   "lo": 3.7,
+   "big_hi": 1.9,
+   "big_lo": 2.8
+  },
+  {
+   "label": "2009",
+   "n": 720,
+   "hi": 17.4,
+   "lo": 13.6,
+   "big_hi": 16.8,
+   "big_lo": 11.8
+  },
+  {
+   "label": "2010",
+   "n": 633,
+   "hi": 14.8,
+   "lo": 0.1,
+   "big_hi": 14.1,
+   "big_lo": 2.8
+  },
+  {
+   "label": "2011",
+   "n": 599,
+   "hi": -6.3,
+   "lo": -2.1,
+   "big_hi": 2.3,
+   "big_lo": 1.4
+  },
+  {
+   "label": "2012",
+   "n": 608,
+   "hi": 17.2,
+   "lo": 3.6,
+   "big_hi": 12.8,
+   "big_lo": 2.8
+  },
+  {
+   "label": "2013",
+   "n": 795,
+   "hi": 12.6,
+   "lo": -1.4,
+   "big_hi": 16.9,
+   "big_lo": 2.5
+  },
+  {
+   "label": "2014",
+   "n": 698,
+   "hi": 0.4,
+   "lo": -1.7,
+   "big_hi": 7.9,
+   "big_lo": 1.5
+  },
+  {
+   "label": "2015",
+   "n": 682,
+   "hi": -7.4,
+   "lo": -2.1,
+   "big_hi": 1.6,
+   "big_lo": 2.0
+  },
+  {
+   "label": "2016",
+   "n": 653,
+   "hi": 4.6,
+   "lo": 4.6,
+   "big_hi": 9.8,
+   "big_lo": 4.3
+  },
+  {
+   "label": "2017",
+   "n": 971,
+   "hi": 8.6,
+   "lo": -1.9,
+   "big_hi": 13.7,
+   "big_lo": 3.7
+  },
+  {
+   "label": "2018",
+   "n": 895,
+   "hi": -0.0,
+   "lo": -3.8,
+   "big_hi": 7.7,
+   "big_lo": 1.8
+  },
+  {
+   "label": "2019",
+   "n": 896,
+   "hi": 12.6,
+   "lo": -14.3,
+   "big_hi": 13.7,
+   "big_lo": 3.5
+  },
+  {
+   "label": "2020",
+   "n": 1079,
+   "hi": 30.6,
+   "lo": 16.1,
+   "big_hi": 35.3,
+   "big_lo": 19.4
+  },
+  {
+   "label": "2021",
+   "n": 1624,
+   "hi": -4.2,
+   "lo": -4.6,
+   "big_hi": 13.1,
+   "big_lo": 1.6
+  },
+  {
+   "label": "2022",
+   "n": 889,
+   "hi": 2.2,
+   "lo": -2.5,
+   "big_hi": 10.7,
+   "big_lo": 3.9
+  },
+  {
+   "label": "2023",
+   "n": 1254,
+   "hi": 10.1,
+   "lo": -9.1,
+   "big_hi": 19.5,
+   "big_lo": 6.4
+  },
+  {
+   "label": "2024",
+   "n": 1432,
+   "hi": 14.1,
+   "lo": -5.8,
+   "big_hi": 21.7,
+   "big_lo": 6.1
+  },
+  {
+   "label": "2025",
+   "n": 1167,
+   "hi": 14.8,
+   "lo": 9.9,
+   "big_hi": 32.3,
+   "big_lo": 15.5
   }
  ],
  "caveats": "Only stocks still listed today (companies that were delisted or acquired are missing, which flatters all returns a little, but affects every bucket). Averages are trimmed at the 0.5% tails. Past results are evidence, not a promise.",
  "findings": [
-  "In US stocks a longer base did NOT lead to a bigger move — the opposite of the Indian result. Among breakouts in an uptrend (above a rising 150-day and the 200-day average) with RS 70+, 50–99-day bases beat the S&P 500 by about 4% over the next year and 25–49-day bases by about 2%, while 200–399-day bases lagged by about 1%, 400–799-day bases by about 3% and 800+ day bases by about 6%. The same order held in 2007–16 and in 2017–26 (checked on breakouts with RS 80+ in an uptrend: 50–99 days best, 800+ days worst in both halves).",
-  "Long bases were steadier rather than stronger: fewer of their breakouts failed (about 27–31% for 400+ days against 37% for 25–49 days), but far fewer of them doubled within the year (2–4% against 8%).",
-  "RS at the breakout was the factor that mattered most in the last decade: in 2017–26, breakouts with RS 90+ beat the S&P 500 by about 8.5% a year, against −1.7% for RS under 50 and −2.2% for RS 70–79. In 2007–16 the RS bands were close together (+2% to +3%). RS 90+ breakouts also failed more often (about 41–45%), so they need tight stops.",
-  "The Base Score, built and tested on NSE data, did not sort US returns: its bands averaged between −0.7% and +1.3% a year over the S&P 500, and in 2017–26 the 80+ band lagged (−3.6%). It did cut failed breakouts from 39% (under 40) to 30% (70+). On US stocks read it as a reliability gauge (fewer failed breakouts), not a return forecast; RS and the 50–199-day base length carry the return edge.",
-  "Context: from 2017 to 2026 a few giant companies carried the cap-weighted S&P 500, so the median stock lagged it — most buckets have negative medians. Compare the buckets with each other, not with zero."
+  "In US stocks a longer base did NOT lead to a bigger move, the opposite of the Indian result. Among breakouts in an uptrend (above a rising 150-day and the 200-day average) with RS 70+, 50–99-day bases beat the S&P 500 by about 4% over the next year and 25–49-day bases by about 2%, while 200–399-day bases lagged by about 1%, 400–799-day bases by about 3% and 800+ day bases by about 6%. The order held in both 2007–16 and 2017–26.",
+  "Long bases were steadier rather than stronger: fewer of their breakouts failed (about 25–31% for 400+ days against 37% for 25–49 days), but far fewer doubled within the year (2–4% against 8%).",
+  "The US Base Score (0–100) was rebuilt from this data: RS rating 30, trend strength 35 (distance above the 200-day average, and a 150-day average rising 2–5%+ a month), base length 15 (50–99 days best), breakout-day volume 15 (3× the 50-day average best) and a base built after an advance 5. It was kept because it sorted returns in the same order in BOTH halves: 75+ beat the S&P 500 by 8.4% a year in 2007–16 and 12.2% in 2017–26, against +1.8% and −2.6% for under 30; the chance of doubling rose from 3% to 14% and from 7% to 25%.",
+  "What the Base Score does NOT do: it does not lift the typical breakout. The median 75+ breakout still lagged the index (−0.7% and −5.0%), and high scores failed more often (39–49% closed back inside the base within 20 sessions, against 32–36% for under 30). The edge is in the winners, so cut failed breakouts quickly. A 60+ score beat a sub-30 score in 14 of 19 years; it lost in 2008, 2011, 2015 and 2021 (momentum sell-offs) and tied in 2016.",
+  "RS mattered most in the last decade: in 2017–26 RS 95+ breakouts beat the S&P 500 by 14.3% a year and doubled 24% of the time, against −1.7% and 8% for RS under 50. In 2007–16 RS bands were close together on average (+2% to +3%), though RS 95+ still doubled most often (11.5% vs 2–4%).",
+  "Tightness surprised: a right side within 6% over the last 15 sessions failed least (24–28%) but did worst (+0.8% and −5.8% a year), while a 16%+ right side did best (+8.4% and +13.9%) and doubled most. Tight bases are common in slow, low-volatility stocks. Tightness is therefore shown on the site but left out of the score; on a fast-moving leader it is still a sensible place for a low-risk entry.",
+  "Context: from 2017 to 2026 a few giant companies carried the cap-weighted S&P 500, so the median stock lagged it and most buckets have negative medians. Compare the buckets with each other, not with zero. Only stocks listed today are included (survivorship), which flatters every bucket a little."
  ]
 }

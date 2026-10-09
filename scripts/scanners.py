@@ -77,12 +77,36 @@ def crossed_down(a, b, k=1):
     return cond.iloc[-k:].any()
 
 
+def _week_start(d):
+    """Monday of the week containing date string/Timestamp d (as a string, like the frame index)."""
+    t = pd.Timestamp(d)
+    return str((t - pd.Timedelta(days=t.weekday())).date())
+
+
 # ───────────────────────────────────────────────────────────── scanner set
 CATS = ["Confluence", "Momentum", "Breakouts", "Volume", "Trend & pullbacks", "Price action", "Oscillators",
         "Relative strength", "Weakness"]
 
+# Who published each screen (shown on the site's "By trader" view). Screens not listed are standard technicals.
+SRC = {
+    "up4": "Bonde", "down4": "Bonde", "ti65_young": "Bonde", "anticipation": "Bonde", "dollar_bo": "Bonde",
+    "ep_bonde": "Bonde", "nine_m": "Bonde",
+    "episodic_pivot": "Qullamaggie", "qm_cont": "Qullamaggie", "qm_ep": "Qullamaggie", "qm_setup": "Qullamaggie",
+    "power_trend": "Morales & Kacher", "ants": "Morales & Kacher", "pocket_pivot": "Morales & Kacher", "bgu": "Morales & Kacher",
+    "high_octane": "Deepvue", "launchpad": "Deepvue", "power3": "Deepvue", "rsnh_1m": "Deepvue", "rsnh_3m": "Deepvue",
+    "rsnh_6m": "Deepvue", "high52_dcr": "Deepvue", "f_growth": "Deepvue",
+    "strong_3612": "Webster", "crossfire": "Webster", "hard_tape": "Webster",
+    "tight3w": "O'Neil", "rsline_lead": "O'Neil", "f_accel": "O'Neil", "f_canslim": "O'Neil",
+    "trend_template": "Minervini", "vcp": "Minervini", "power_play": "Minervini", "f_sepa": "Minervini", "f_code33": "Minervini",
+    "wedge_pop": "Kell", "bull_snort": "Kell", "f_kell": "Kell",
+    "low_tight_flag": "Soreide", "rocket_base": "Soreide", "ath": "Wish", "darvas": "Darvas", "nr7": "Crabel",
+    "stage2_bo": "Weinstein", "s2_early": "Weinstein", "s2_late_weak": "Weinstein", "squeeze": "Bollinger",
+    "rsi60": "Cardwell", "holy_grail": "Raschke", "rsi2": "Connors",
+}
+
 # Broad "state" lists left out of the confluence count.
-NOT_COUNTED = {"trend_template", "adx_strong", "leaders", "high_octane", "strong_3612"}
+NOT_COUNTED = {"trend_template", "adx_strong", "leaders", "high_octane", "strong_3612", "dollar_bo", "rsi2",
+               "anticipation", "ti65_young", "qm_setup"}
 
 
 def run_all(x):
@@ -127,6 +151,9 @@ def run_all(x):
     rng_l = (h - l)
     dcr = ((c - l) / rng_l.where(rng_l > 0) * 100).fillna(50)   # daily closing range, 0 = low, 100 = high
     adr = ((H / L - 1) * 100).iloc[-20:].mean()                  # average daily range %, 20 sessions
+    vr20 = v / V.iloc[-21:-1].mean()                             # volume vs the prior 20-day average
+    dvol50 = (C * V).iloc[-51:-1].mean() / 1e6                   # $ millions a day, prior 50 sessions
+    pctl = lambda r_: r_.rank(pct=True) * 100                    # percentile within the universe
     atr_prev = atr14.iloc[-2]
     first_bar = C.apply(lambda s_: s_.first_valid_index())
     pos = {d: i for i, d in enumerate(C.index)}
@@ -135,7 +162,7 @@ def run_all(x):
 
     hits, metric, meta = {}, {}, []
 
-    def add(id_, name, cat, desc, mask, m_label=None, m_vals=None, m_fmt="num", sort="rs"):
+    def add(id_, name, cat, desc, mask, m_label=None, m_vals=None, m_fmt="num", sort="rs", src=None):
         mask = mask.fillna(False).astype(bool)
         syms = sorted(mask.index[mask])
         hits[id_] = syms
@@ -143,12 +170,13 @@ def run_all(x):
             mv = m_vals.reindex(syms)
             metric[id_] = {s: (None if pd.isna(mv[s]) else round(float(mv[s]), 2)) for s in syms}
         meta.append({"id": id_, "name": name, "cat": cat, "desc": desc, "metric": m_label,
-                     "fmt": m_fmt, "sort": sort})
+                     "fmt": m_fmt, "sort": sort, **({"src": src} if src else {})})
 
     # ── Momentum
     add("up4", "4% breakout day", "Momentum",
-        "Up 4% or more today on volume above yesterday's — Pradeep Bonde's momentum-burst trigger.",
-        (d1 >= 0.04) & (v > pv), "Day %", d1 * 100, "pct", "metric")
+        "Up 4% or more today on volume above yesterday's and at least 100K shares — Pradeep Bonde's (Stockbee) "
+        "momentum-burst scan, exactly as published: c/c1 >= 1.04 and v > v1 and v >= 100000.",
+        (d1 >= 0.04) & (v > pv) & (v >= 1e5), "Day %", d1 * 100, "pct", "metric")
     add("burst20", "Momentum burst: +20% in 5 days", "Momentum",
         "Gained 20% or more over the last 5 sessions. Fast movers; check for news before chasing.",
         (C.iloc[-1] / C.iloc[-6] - 1) >= 0.20, "5-day %", (C.iloc[-1] / C.iloc[-6] - 1) * 100, "pct", "metric")
@@ -184,10 +212,11 @@ def run_all(x):
         "(Mike Webster's swing-trading list).",
         top(rr3) & top(rr6) & top(rr12) & (c > e21l), "3M %", rr3 * 100, "pct", "metric")
     ep_gap = o / pc - 1
-    add("episodic_pivot", "Episodic pivot", "Momentum",
+    add("episodic_pivot", "Episodic pivot: 10% gap (Qullamaggie)", "Momentum",
         "Gapped up 10% or more on at least 3× average volume and held the gap (close no more than 2% under the "
-        "open), after a quiet quarter (not up more than 30% in the prior 3 months). Pradeep Bonde's EP — "
-        "usually news-driven; check the news.",
+        "open), after a quiet quarter (not up more than 30% in the prior 3 months). Kristjan Kullamägi's EP "
+        "definition (a 10%+ gap on huge volume, ideally after months of going nowhere) — usually news-driven; "
+        "check the news.",
         (ep_gap >= 0.10) & (vr >= 3) & (c >= o * 0.98) & ((C.iloc[-2] / C.iloc[-65] - 1) <= 0.30),
         "Gap %", ep_gap * 100, "pct", "metric")
     gap_atr = (o - ph) / atr_prev
@@ -210,10 +239,11 @@ def run_all(x):
         (c > prior_hi) & (bars >= 200) & (dcr >= 67), "Close range %", dcr, "num")
     ath_prior = x.get("ath_prior")
     if ath_prior is not None:
+        athp = ath_prior.reindex(c.index)
         add("ath", "Green line breakout (all-time high)", "Breakouts",
-            "Closed above the highest price in the stock's entire listed history, on volume at least 1.2× average "
-            "and a close in the upper half of the day's range. No overhead supply at all.",
-            (c > ath_prior.reindex(c.index)) & (vr >= 1.2) & (dcr >= 50), "Vol ×", vr, "x")
+            "Closed above its all-time high after at least 3 months without touching it, on volume at or above the "
+            "50-day average (Dr. Eric Wish's green line breakout). No overhead supply at all.",
+            (c > athp) & (H.iloc[-64:-1].max() < athp) & (vr >= 1.0), "Vol ×", vr, "x")
     Wk = C.copy()
     Wk.index = pd.to_datetime(Wk.index)
     wk = Wk.resample("W-FRI").last().iloc[-3:]
@@ -225,10 +255,15 @@ def run_all(x):
     mx = np.fmax(np.fmax(e10l, e21l), s50l)
     mn = np.fmin(np.fmin(e10l, e21l), s50l)
     spread = (mx / mn - 1) * 100
+    e65 = C.ewm(span=65, adjust=False).mean()
+    e65l = e65.iloc[-1]
+    near3 = lambda m_: (c / m_ - 1).abs() <= 0.03
+    lp_spread = (np.fmax(np.fmax(e21l, s50l), e65l) / np.fmin(np.fmin(e21l, s50l), e65l) - 1) * 100
     add("launchpad", "Launch pad", "Breakouts",
-        "10 EMA, 21 EMA and 50 DMA bunched within 2% of each other with price above the 21 EMA, 50 DMA above the "
-        "200 DMA and within 10% of the 52-week high — energy stored before a move (Deepvue).",
-        (spread <= 2) & (c > e21l) & (s50l > s200l) & (pct_from_hi >= -10), "MA spread %", spread, "pct", "metric_asc")
+        "Price within 3% of the 21 EMA, the 50-day and the 65 EMA, with the three averages stacked (21 > 50 > 65) and "
+        "all rising over the last week — Deepvue's Launch Pad: a trend resting on its averages, ready to go.",
+        near3(e21l) & near3(s50l) & near3(e65l) & (e21l > s50l) & (s50l > e65l) & (e21l > e21.iloc[-6])
+        & (s50l > s50.iloc[-6]) & (e65l > e65.iloc[-6]), "MA spread %", lp_spread, "pct", "metric_asc")
     ipo_hi = pd.Series({k: H[k].iloc[-int(age[k]) - 1:-1].max() if young.get(k) and age[k] >= 10 else np.nan
                         for k in C.columns})
     add("ipo_bo", "IPO high breakout", "Breakouts",
@@ -335,11 +370,11 @@ def run_all(x):
     add("inside2", "Double inside day", "Price action",
         "Two inside days in a row in a Stage-2 uptrend — a tighter coil than a single inside day. Buy the break "
         "of the mother bar's high.", ins.iloc[-1] & ins.iloc[-2] & uptrend, "Range %", rng.iloc[-1] / c * 100, "pct")
-    dn3 = (C.diff() < 0).iloc[-4:-1].sum()
     add("bull_snort", "Bull snort", "Price action",
-        "After 2+ down closes in the prior 3 sessions, a 3%+ up day on at least 2× average volume closing in the "
-        "top quarter of its range, above the 200 DMA (Oliver Kell) — a forceful turn.",
-        (dn3 >= 2) & (d1 >= 0.03) & (vr >= 2) & (dcr >= 75) & (c > s200l), "Vol ×", vr, "x", "metric")
+        "Up more than 3% on at least 3× the 20-day average volume, closing in the top 30% of the day's range "
+        "(Oliver Kell's bull snort as set up in Deepvue). Early in a move it's a sign of big buyers; 25–30% above the "
+        "20 EMA it is more often a climax.",
+        (d1 > 0.03) & (vr20 >= 3) & (dcr >= 70), "Vol × 20d", vr20, "x", "metric")
 
     # ── Oscillators
     add("rsi60", "RSI crossed above 60", "Oscillators",
@@ -394,6 +429,132 @@ def run_all(x):
     add("gap_down", "Gap down not filled", "Weakness",
         "Opened 2%+ below yesterday's close, stayed below yesterday's low, and closed below the open.",
         (gap <= -0.02) & (h < pl) & (c < o), "Gap %", gap * 100, "pct", "metric_asc")
+
+
+    # ── Published trader screens (exact numbers from the source; see each description)
+    s10l = s10.iloc[-1]
+    s20l = s20.iloc[-1]
+    ti65 = C.rolling(7).mean() / C.rolling(65).mean()
+    ti65_l, ti65_25 = ti65.iloc[-1], ti65.iloc[-26]
+    minv3 = V.iloc[-4:-1].min()
+    add("ti65_young", "Young TI65 (Stockbee)", "Momentum",
+        "Trend Intensity: the 7-day average close is 5%+ above the 65-day average, and was not 25 sessions ago — a "
+        "trend that has just switched on. Pradeep Bonde: avgc7/avgc65 >= 1.05 and avgc7.25/avgc65.25 <= 1.05.",
+        (ti65_l >= 1.05) & (ti65_25 <= 1.05) & (minv3 >= 1e5), "TI65", ti65_l, "num", "metric", src="Bonde")
+    pchg = d1 * 100
+    add("anticipation", "Anticipation setup (Stockbee)", "Trend & pullbacks",
+        "A quiet day inside a trend, the day before a possible momentum burst: TI65 above 1.04, today's change "
+        "within ±0.4% and ±$0.20, price over $3, and at least 100K shares on each of the 3 prior days — Pradeep "
+        "Bonde's bullish anticipation scan as published (stocks pinned by a pending takeover, average daily range under 1.5%, "
+        "are left out). Best when the last few days were narrow and on low volume.",
+        (ti65_l > 1.04) & (pchg.abs() <= 0.4) & ((c - pc).abs() <= 0.2) & (c > 3) & (minv3 >= 1e5) & (adr >= 1.5),
+        "TI65", ti65_l, "num", "metric", src="Bonde")
+    add("dollar_bo", "$ breakout (Stockbee)", "Momentum",
+        "Closed at least $0.90 above the open on 100K+ shares, price $30 or more, and up on the day with volume above "
+        "yesterday's — Pradeep Bonde's dollar breakout for higher-priced stocks (c−o >= 0.90, his combo scan's c >= 30), "
+        "with his 4% scan's volume rule added so a slow drift doesn't qualify.",
+        ((c - o) >= 0.90) & (v >= 1e5) & (c >= 30) & (c > pc) & (v > pv) & (d1 >= 0.02), "Day %", d1 * 100, "pct", "metric",
+        src="Bonde")
+    add("ep_bonde", "Episodic pivot: 4% on 3× volume (Stockbee)", "Momentum",
+        "Up 4% or more on at least 3× the prior 50-day average volume and 300K+ shares — Pradeep Bonde's published EP "
+        "scan (c/c1 > 1.04 and v > 3*avgv50.1 and v >= 300000). Then check for the news: earnings, guidance, a contract.",
+        (d1 > 0.04) & (vr >= 3) & (v >= 3e5), "Vol ×", vr, "x", "metric", src="Bonde")
+    vmax_prior = V.iloc[-253:-1].max()
+    add("nine_m", "9 million volume EP (Stockbee)", "Volume",
+        "Traded 9 million shares or more today, price over $3, and never 9 million in the previous year — Bonde's "
+        "'9M EPV': sudden heavy interest in a stock that hasn't had it.",
+        (v >= 9e6) & (c > 3) & (vmax_prior < 9e6) & (bars >= 120), "Vol ×", vr, "x", "metric", src="Bonde")
+    r21 = C.iloc[-1] / C.iloc[-22] - 1
+    v5_, v5p = V.iloc[-5:].sum(), V.iloc[-10:-5].sum()
+    add("qm_cont", "Continuation base (Qullamaggie)", "Trend & pullbacks",
+        "Up 25%+ over the past month, volume over the last 5 sessions at least 50% below the 5 before, and the close "
+        "within 2% of the 10-day average — a strong stock pausing on its 10-day line (Deepvue's Qullamaggie "
+        "'Continuation' screen; rolling 5-day volume used instead of calendar weeks so Mondays aren't distorted).",
+        (r21 >= 0.25) & (v5_ <= 0.5 * v5p) & ((c / s10l - 1).abs() <= 0.02), "1M %", r21 * 100, "pct", "metric",
+        src="Qullamaggie")
+    dv_today = c * v / 1e6
+    add("qm_ep", "Big-volume gainer (Qullamaggie EP, Deepvue)", "Momentum",
+        "Up more than 7.5% today, closed above yesterday's high, on $100M+ traded — Deepvue's Qullamaggie Episodic "
+        "Pivot screen. Earnings EPs with big sales and EPS growth are the ones he wants.",
+        (d1 > 0.075) & (c > ph) & (dv_today >= 100), "Day %", d1 * 100, "pct", "metric", src="Qullamaggie")
+    r63, r126 = C.iloc[-1] / C.iloc[-64] - 1, C.iloc[-1] / C.iloc[-127] - 1
+    top2 = (pctl(r21) >= 98) | (pctl(r63) >= 98) | (pctl(r126) >= 98)
+    surf = (s10l > s10.iloc[-6]) & (s20l > s20.iloc[-6]) & (c >= s20l) & ((c / s10l - 1).abs() * 100 <= adr)
+    add("qm_setup", "Breakout setup: top 2% movers (Qullamaggie)", "Trend & pullbacks",
+        "In the top 2% of the universe on 1-, 3- or 6-month gain (Kullamägi's starting list), now resting on rising "
+        "10- and 20-day averages: close above the 20-day and within one average daily range of the 10-day. He buys "
+        "the break of the consolidation's high with a stop at the day's low.",
+        top2 & surf & (adr >= 3), "ADR %", adr, "pct", "metric", src="Qullamaggie")
+    rs3, rs6, rs12 = pctl(r63), pctl(r126), pctl(C.iloc[-1] / C.iloc[-253] - 1)
+    add("crossfire", "Cross Fire (Webster)", "Relative strength",
+        "Price over $20, $5M+ a day traded, 3- and 12-month relative strength both in the top 20%, up 1.5%+ today with "
+        "a close in the top 20% of the range, within 20% of the 52-week high and 1%+ above the 21-day average — Mike "
+        "Webster's Cross Fire screen (Deepvue).",
+        (c > 20) & (dvol50 >= 5) & (rs3 > 80) & (rs12 > 80) & (d1 > 0.015) & (dcr > 80) & (pct_from_hi >= -20)
+        & (c > 1.01 * s20l), "Day %", d1 * 100, "pct", "metric", src="Webster")
+    wk_open = C.iloc[-1] / C[C.index < _week_start(C.index[-1])].iloc[-1] - 1 if (C.index < _week_start(C.index[-1])).any() else d1
+    wH = H[H.index >= _week_start(C.index[-1])].max()
+    wL = L[L.index >= _week_start(C.index[-1])].min()
+    wcr = ((c - wL) / (wH - wL).where(wH > wL) * 100).fillna(50)
+    upv = V.where(C > C.shift(1)).iloc[-50:].sum()
+    dnv = V.where(C < C.shift(1)).iloc[-50:].sum()
+    udr = upv / dnv.where(dnv > 0)
+    add("hard_tape", "Hard Tape (Webster)", "Relative strength",
+        "Holding up when it's hard: price over $20, $25M+ a day traded, within 15% of the 52-week high, down no more "
+        "than 1% today and this week, closing in the top 40% of both the day's and the week's range, 50-day up/down "
+        "volume above 1.1, 3- and 6-month RS above 70 and 12-month above 50 — Mike Webster's screen (Deepvue).",
+        (c > 20) & (dvol50 >= 25) & (pct_from_hi >= -15) & (d1 >= -0.01) & (wk_open >= -0.01) & (dcr > 60) & (wcr > 60)
+        & (udr > 1.1) & (rs3 > 70) & (rs6 > 70) & (rs12 > 50), "U/D vol", udr, "num", "metric", src="Webster")
+
+    def flag(gain_lo, gain_hi, max_dd, f_lo, f_hi, pole=40):
+        """Pole: a rise of gain_lo..gain_hi from the lowest close of the `pole` sessions before the peak.
+        Flag: the peak was f_lo..f_hi sessions ago and no close since is more than max_dd below it."""
+        Cv = C.to_numpy()
+        n_ = len(Cv)
+        res, gains = np.zeros(Cv.shape[1], bool), np.full(Cv.shape[1], np.nan)
+        win = Cv[n_ - f_hi - 1:]
+        if n_ < pole + f_hi + 2:
+            return pd.Series(res, index=C.columns), pd.Series(gains, index=C.columns)
+        pk_rel = np.nanargmax(np.where(np.isnan(win), -np.inf, win), axis=0)
+        ago = len(win) - 1 - pk_rel
+        for j in np.flatnonzero((ago >= f_lo) & (ago <= f_hi)):
+            pi = n_ - 1 - ago[j]
+            pk = Cv[pi, j]
+            lo = np.nanmin(Cv[max(0, pi - pole):pi + 1, j])
+            g = pk / lo - 1
+            dd = 1 - np.nanmin(Cv[pi:, j]) / pk
+            if gain_lo <= g < gain_hi and dd <= max_dd and Cv[-1, j] >= pk * (1 - max_dd):
+                res[j], gains[j] = True, g * 100
+        return pd.Series(res, index=C.columns), pd.Series(gains, index=C.columns)
+    pp, pp_g = flag(1.0, 99, 0.25, 10, 30)
+    dd_pp = (1 - c / C.iloc[-31:].max())
+    add("power_play", "Power play / high tight flag (Minervini)", "Breakouts",
+        "Up 100%+ in 8 weeks or less (lowest close of the 40 sessions before the peak to the peak), then 2–6 weeks "
+        "sideways without giving back more than 20% (25% under $20) — Mark Minervini's power play, O'Neil's high "
+        "tight flag. Rare and explosive; often news-driven.",
+        pp & ((dd_pp <= 0.20) | ((c < 20) & (dd_pp <= 0.25))) & (adr >= 2), "Pole %", pp_g, "pct", "metric", src="Minervini")
+    ltf, ltf_g = flag(0.60, 0.90, 0.25, 5, 30)
+    add("low_tight_flag", "Low tight flag (Soreide)", "Breakouts",
+        "Up 60–90% within 40 sessions, then a flag no more than 25% deep (15% or less is better), price over $10 — "
+        "Leif Soreide's low tight flag (Deepvue). Stocks pinned by a pending takeover (average daily range under 2%) are left out.",
+        ltf & (c > 10) & (adr >= 2), "Pole %", ltf_g, "pct", "metric", src="Soreide")
+    g40 = C.iloc[-1] / C.iloc[-41:].min() - 1
+    add("rocket_base", "Rocket base (Soreide)", "Breakouts",
+        "A stock that fell 25–50% from its 52-week high and then rose 80%+ off its 40-day low, now above its 50- and "
+        "200-day averages with 50 > 150 > 200 and the 200-day rising for a month, price over $5 and 200K+ shares a "
+        "day — Leif Soreide's rocket base (Deepvue).",
+        (pct_from_hi <= -25) & (pct_from_hi >= -50) & (g40 > 0.80) & (c > s50l) & (c > s200l) & (s200l > s200.iloc[-22])
+        & (s50l > s150l) & (s150l > s200l) & (c > 5) & (x["avgv50"].iloc[-1] >= 2e5), "40d gain %", g40 * 100, "pct",
+        "metric", src="Soreide")
+    add("holy_grail", "Holy Grail (Raschke)", "Trend & pullbacks",
+        "ADX(14) above 30 with +DI over −DI — a strong trend — and today's low touched the 20 EMA while the close held "
+        "above it: Linda Raschke's Holy Grail (Street Smarts). Entry is a buy stop above today's high.",
+        (adx_l > 30) & (PDI.iloc[-1] > NDI.iloc[-1]) & (l <= e20) & (c > e20), "ADX", adx_l, "num", "metric", src="Raschke")
+    R2 = rsi(C, 2)
+    add("rsi2", "RSI(2) pullback (Connors)", "Oscillators",
+        "Above the 200-day average and RSI(2) under 10 — Larry Connors' short-term pullback in a long-term uptrend. "
+        "His exit is a close above the 5-day average. A mean-reversion trade, not a breakout.",
+        (c > s200l) & (R2.iloc[-1] < 10), "RSI(2)", R2.iloc[-1], "num", "metric_asc", src="Connors")
 
     # ── Confluence: in how many different signal GROUPS (categories) is each stock today?
     # Counting categories rather than scans stops one big up-day (which trips 4% day, volume spike,

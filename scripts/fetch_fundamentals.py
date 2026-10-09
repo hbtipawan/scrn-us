@@ -117,13 +117,17 @@ DUR = {
     "fin": ["InterestExpense", "InterestExpenseNonoperating", "InterestExpenseDebt", "InterestExpenseNet"],
     "dep": ["DepreciationDepletionAndAmortization", "DepreciationAndAmortization", "DepreciationAmortizationAndAccretionNet", "Depreciation"],
     "oi": ["NonoperatingIncomeExpense", "OtherNonoperatingIncomeExpense"],
+    # banks: revenue = net interest income + non-interest income (what Yahoo and the banks themselves report)
+    "nii": ["InterestIncomeExpenseNet"],
+    "nonii": ["NoninterestIncome"],
     "prov": ["ProvisionForLoanLeaseAndOtherLosses", "ProvisionForLoanAndLeaseLosses", "ProvisionForCreditLosses"],
     "ocf": ["NetCashProvidedByUsedInOperatingActivities", "NetCashProvidedByUsedInOperatingActivitiesContinuingOperations"],
     "capex": ["PaymentsToAcquirePropertyPlantAndEquipment", "PaymentsToAcquireProductiveAssets", "PaymentsForCapitalImprovements"],
     "shares": ["WeightedAverageNumberOfDilutedSharesOutstanding", "WeightedAverageNumberOfShareOutstandingBasicAndDiluted",
                "WeightedAverageNumberOfSharesOutstandingBasic"],
 }
-LAST_RESORT = {"InterestAndDividendIncomeOperating"}     # a lender's gross interest income: only if nothing else
+LAST_RESORT = {"InterestAndDividendIncomeOperating",          # a lender's gross interest income: only if nothing else
+               "RevenueFromContractWithCustomerIncludingAssessedTax"}   # gross of excise tax (Brown-Forman): net wins
 EPS = ["EarningsPerShareDiluted", "EarningsPerShareBasicAndDiluted", "EarningsPerShareBasic"]
 INST = {
     "equity": ["StockholdersEquity", "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"],
@@ -153,9 +157,10 @@ def _facts(gaap, concept, unit="USD"):
     return x.get("units", {}).get(unit, [])
 
 
-def durations(gaap, concepts, unit="USD", biggest=False):
+def durations(gaap, concepts, unit="USD", biggest=False, fill_gaps=False):
     """-> {(start, end): (val, filed, form)} using, for every period, the most recent filing (restatements win).
-    One concept is primary (the one reported most recently); others only fill older periods."""
+    One concept is primary (the one reported most recently); others only fill older periods
+    (and, with fill_gaps, quarters the primary one left out)."""
     best = None
     per_concept = []
     for k, cpt in enumerate(concepts):
@@ -183,9 +188,12 @@ def durations(gaap, concepts, unit="USD", biggest=False):
     per_concept.sort(key=lambda x: x[:3], reverse=True)
     out = dict(per_concept[0][3])
     first_end = min(e for (_, e) in out)
-    for _, _, _, d in per_concept[1:]:
+    ends = {e for (_, e) in out}
+    for *_, d in sorted(per_concept[1:], key=lambda x: -x[2]):      # fill in the order the tags are listed
         for key, v in d.items():
-            if key[1] < first_end and key not in out:
+            # older periods; with fill_gaps also quarters the primary tag skipped (PNC tags NetIncomeLoss only
+            # in some quarters and NetIncomeLossAvailableToCommonStockholdersBasic in all of them)
+            if key not in out and (key[1] < first_end or (fill_gaps and key[1] not in ends)):
                 out[key] = v
     return out
 
@@ -281,7 +289,7 @@ def parse_company(j, sym, min_year):
     first_filed = {}
     for col, cps in DUR.items():
         unit = "shares" if col == "shares" else "USD"
-        d = durations(gaap, cps, unit, biggest=(col == "rev"))
+        d = durations(gaap, cps, unit, biggest=(col == "rev"), fill_gaps=col in ("pat", "pat_all", "shares"))
         if col in ("ocf", "capex"):
             Q[col] = annual(d, fy_ends)
             continue
@@ -300,8 +308,8 @@ def parse_company(j, sym, min_year):
                     first_filed[e] = min(first_filed.get(e, "9999"), v[1])
         if col == "pat":
             Q["_ytd_pat"] = annual(d, fy_ends)
-        if col == "rev":
-            Q["_ytd_rev"] = annual(d, fy_ends)
+        if col in ("rev", "nii", "nonii"):
+            Q["_ytd_" + col] = annual(d, fy_ends)
     eps_d = durations(gaap, EPS, "USD/shares")
     Q["eps"] = {e: v for (s, e), (v, *_r) in eps_d.items() if QMIN <= _days(s, e) <= QMAX}
     B = {k: first_instant(gaap, v) for k, v in INST.items()}
@@ -314,6 +322,16 @@ def parse_company(j, sym, min_year):
         def b(col):
             return B.get(col, {}).get(e)
         rev, pat = g("rev"), g("pat")
+        ytd_rev = Q["_ytd_rev"].get(e)
+        # a bank's "revenue" tag is often only its fee income (ASC 606): use NII + non-interest income instead
+        if g("nii") is not None and g("nonii") is not None:
+            brev = g("nii") + g("nonii")
+            if brev > 0:
+                rev = brev
+                yn, yo = Q["_ytd_nii"].get(e), Q["_ytd_nonii"].get(e)
+                ytd_rev = yn + yo if yn is not None and yo is not None else ytd_rev
+        if rev is not None and rev < 0:
+            rev = None          # a negative quarter from differencing two different tags (FY - 9M): not real
         if rev is None and pat is None:
             continue
         cash = b("cash_sti")
@@ -339,7 +357,7 @@ def parse_company(j, sym, min_year):
             "equity": M(b("equity")), "borrow": M(debt), "cash": M(cash), "cwip": M(b("cwip")), "assets": M(b("assets")),
             "inv": M(b("inv")), "recv": M(b("recv")),
             "ocf": M(Q["ocf"].get(e)) if fye else None, "capex": M(Q["capex"].get(e)) if fye else None,
-            "ytd_rev": M(Q["_ytd_rev"].get(e)) if fye else None, "ytd_pat": M(Q["_ytd_pat"].get(e)) if fye else None,
+            "ytd_rev": M(ytd_rev) if fye else None, "ytd_pat": M(Q["_ytd_pat"].get(e)) if fye else None,
             "fye": 1 if fye else 0,
         })
     # drop a quarter that duplicates its neighbour after normalising the date

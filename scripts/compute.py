@@ -129,6 +129,48 @@ def market_caps(c):
     return (m["MarketCapM"] * (c.reindex(m.index) / m["Close"]).fillna(1.0)).dropna()
 
 
+def ibd_market(W, name, keep):
+    """Distribution days (index down 0.2%+ on higher volume than the day before; each one drops out after 25
+    sessions or once the index closes 6% above it - IBD) and follow-through days (day 4+ of a rally attempt, index up
+    1.25%+ on higher volume; a rally attempt starts on the first up close after the lowest close of the last 25
+    sessions and fails if that low is undercut). IBD's own 'market pulse' adds judgement; these are the mechanical rules."""
+    c = W["close"][name].dropna()
+    v = W["volume"][name].reindex(c.index)
+    h = W["high"][name].reindex(c.index).fillna(c)
+    chg = c.pct_change()
+    dd = (chg <= -0.002) & (v > v.shift(1)) & (v > 0)
+    n = len(c)
+    cv, hv, ddv = c.to_numpy(), h.to_numpy(), dd.to_numpy()
+    count = np.zeros(n, int)
+    active = []
+    for t in range(n):
+        if ddv[t]:
+            active.append(t)
+        active = [i for i in active if t - i < 25 and hv[i + 1:t + 1].max(initial=0) < cv[i] * 1.06]
+        count[t] = len(active)
+    ftd = np.zeros(n, bool)
+    low_i, day1 = None, None
+    for t in range(1, n):
+        lo25 = cv[max(0, t - 25):t + 1].min()
+        if cv[t] <= lo25:                      # new 25-day closing low: any rally attempt restarts
+            low_i, day1 = t, None
+            continue
+        if low_i is None:
+            continue
+        if cv[t] < cv[low_i]:
+            low_i, day1 = None, None
+            continue
+        if day1 is None and cv[t] > cv[t - 1]:
+            day1 = t
+        if day1 is not None and t - day1 >= 3 and chg.iloc[t] >= 0.0125 and v.iloc[t] > v.iloc[t - 1]:
+            ftd[t] = True
+            low_i, day1 = None, None
+    s = pd.DataFrame({"dd": dd.astype(int).to_numpy(), "cnt": count, "ftd": ftd.astype(int)}, index=c.index).reindex(keep).fillna(0)
+    last_ftd = c.index[ftd][-1] if ftd.any() else None
+    return {"dd": [int(x) for x in s.dd], "cnt": [int(x) for x in s.cnt], "ftd": [int(x) for x in s.ftd],
+            "last_ftd": last_ftd, "dd_dates": [str(c.index[i]) for i in active]}
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     W, u = load()
@@ -298,6 +340,8 @@ def main():
     nb = S["breadth_history_days"]
     dchg = Cu.pct_change(fill_method=None)
     valid = raw_close.notna()
+    vup = (Vu > Vu.shift(1)) & (Vu >= 1e5)
+    s40 = Cu.rolling(40, min_periods=40).mean()
     hiC = Cu.rolling(252, min_periods=200).max()
     loC = Cu.rolling(252, min_periods=200).min()
 
@@ -311,12 +355,33 @@ def main():
         "adv": ((dchg > 0) & valid).sum(axis=1), "dec": ((dchg < 0) & valid).sum(axis=1),
         "nh": ((Cu >= hiC) & hiC.notna() & valid).sum(axis=1),
         "nl": ((Cu <= loC) & loC.notna() & valid).sum(axis=1),
-        "up4": ((dchg >= 0.04) & valid).sum(axis=1), "dn4": ((dchg <= -0.04) & valid).sum(axis=1),
-    }).iloc[-nb:]
+        # Stockbee Market Monitor (Pradeep Bonde's published TC2000 formulas, on this site's stock universe)
+        "up4": ((dchg >= 0.04) & vup & valid).sum(axis=1), "dn4": ((dchg <= -0.04) & vup & valid).sum(axis=1),
+        "u25q": ((Cu / Cu.rolling(65, min_periods=65).min() - 1 >= 0.25) & valid).sum(axis=1),
+        "d25q": ((Cu / Cu.rolling(65, min_periods=65).max() - 1 <= -0.25) & valid).sum(axis=1),
+        "u25m": ((Cu / Cu.shift(20) - 1 >= 0.25) & valid).sum(axis=1),
+        "d25m": ((Cu / Cu.shift(20) - 1 <= -0.25) & valid).sum(axis=1),
+        "u50m": ((Cu / Cu.shift(20) - 1 >= 0.50) & valid).sum(axis=1),
+        "d50m": ((Cu / Cu.shift(20) - 1 <= -0.50) & valid).sum(axis=1),
+        "u13": ((Cu / Cu.rolling(34, min_periods=34).min() - 1 >= 0.13) & valid).sum(axis=1),
+        "d13": ((Cu / Cu.rolling(34, min_periods=34).max() - 1 <= -0.13) & valid).sum(axis=1),
+        "a40": pct((Cu > s40) & valid, s40.notna() & valid),          # T2108: % above the 40-day average
+    })
+    adv_, dec_ = b["adv"].astype(float), b["dec"].astype(float)
+    rana = ((adv_ - dec_) / (adv_ + dec_).replace(0, np.nan) * 1000).fillna(0)
+    b["mco"] = rana.ewm(alpha=0.10, adjust=False).mean() - rana.ewm(alpha=0.05, adjust=False).mean()   # McClellan
+    b["r5"] = b["up4"].rolling(5).sum() / b["dn4"].rolling(5).sum().replace(0, np.nan)
+    b["r10"] = b["up4"].rolling(10).sum() / b["dn4"].rolling(10).sum().replace(0, np.nan)
+    zw = (adv_ / (adv_ + dec_).replace(0, np.nan)).ewm(span=10, adjust=False).mean()
+    b["zbt"] = ((zw > 0.615) & (zw.rolling(11).min() < 0.40)).astype(int)                         # Zweig thrust
+    b = b.iloc[-nb:]
     bench_close = W["close"][bench].reindex(b.index) if bench in W["close"] else pd.Series(np.nan, index=b.index)
     breadth = {"dates": list(b.index), "bench": [r2(x) for x in bench_close], "bench_name": bench}
     for col in b.columns:
-        breadth[col] = [r2(x, 1) for x in b[col]] if col in ("a20", "a50", "a200") else [int(x) for x in b[col]]
+        breadth[col] = ([r2(x, 1) for x in b[col]] if col in ("a20", "a50", "a200", "a40", "mco") else
+                        [r2(x, 2) for x in b[col]] if col in ("r5", "r10") else [int(x) for x in b[col]])
+    # IBD-style distribution days and follow-through days on the S&P 500 and Nasdaq 100 (index volume from Yahoo)
+    breadth["ibd"] = {nm: ibd_market(W, nm, b.index) for nm in (bench, "Nasdaq 100") if nm in W["close"]}
 
     indices = {}
     for name in [bench] + S["extra_indices"]:
@@ -378,6 +443,7 @@ def main():
                 "stage2_bo": ("ETF: Stage 2 breakout", None), "golden": ("ETF: golden cross", None),
                 "pb50": ("ETF: pullback to the 50 DMA in an uptrend", None), "tight3w": ("ETF: 3 weeks tight", None),
                 "rsnh_3m": ("ETF: RS line at a 3-month high before price", None),
+                "rsi2": ("ETF: RSI(2) pullback in an uptrend (Connors)", None),
                 "below200": ("ETF: broke below the 200 DMA", None), "death": ("ETF: death cross", None)}
         emeta = {m["id"]: m for m in em}
         for sid, (nm, _) in pick.items():
@@ -469,7 +535,13 @@ def main():
         import traceback
         traceback.print_exc()
         print(f"stage 2 phases skipped: {e}")
+    for m in sc_meta:                                   # who published each screen (for the "By trader" view)
+        m.setdefault("src", SC.SRC.get(m["id"].replace("etf_", "", 1) if m["id"].startswith("etf_") else m["id"]))
+        if not m["src"]:
+            m.pop("src")
     scans = {"cats": cats, "meta": sc_meta, "hits": sc_hits, "metric": sc_metric}
+    if (CFG / "scan_evidence.json").exists():          # walk-forward test of each scan (scripts/backtest_scans.py)
+        scans["ev"] = json.loads((CFG / "scan_evidence.json").read_text())
 
     # earnings dates for ETFs are meaningless; for stocks fundamentals.py adds next_results
     fm = json.loads((CACHE / "fetch_meta.json").read_text()) if (CACHE / "fetch_meta.json").exists() else {}
