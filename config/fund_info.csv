@@ -415,7 +415,7 @@ BMO,Financial Services,Banks - Diversified,Canada,53234.0,2026-10-09,2026-12-02,
 BMRC,Financial Services,Banks - Regional,United States,315.0,2026-10-09,2026-10-26,False,,2026-10-26,1403475.0,1
 BMRN,Healthcare,Biotechnology,United States,3221.0,2026-10-09,2026-10-26,False,2026-08-06,2026-10-26,1048477.0,0
 BMY,Healthcare,Drug Manufacturers - General,United States,32500.0,2026-10-09,2026-10-29,False,,2026-10-29,14272.0,0
-BN,Financial Services,Asset Management,Canada,,2026-10-09,2026-10-28,False,,2026-10-28,1001085.0,0
+BN,Financial Services,Asset Management,Canada,,2026-10-09,2026-11-12,False,,2026-11-12,1001085.0,0
 BNC,Industrials,Farm & Heavy Construction Machinery,United States,48.0,2026-10-09,2026-12-11,True,,2026-12-11,1482541.0,0
 BNED,Consumer Cyclical,Specialty Retail,United States,2365.0,2026-10-09,,,2026-09-08,,1634117.0,0
 BNL,Real Estate,REIT - Diversified,United States,62.0,2026-10-09,2026-10-28,False,,2026-10-28,1424182.0,0
@@ -550,7 +550,7 @@ CDW,Technology,Information Technology Services,United States,14800.0,2026-10-09,
 CE,Basic Materials,Chemicals,United States,11000.0,2026-10-09,2026-11-02,False,,2026-11-02,1306830.0,0
 CECO,Industrials,Pollution & Treatment Controls,United States,1540.0,2026-10-09,2026-10-27,True,2026-08-10,2026-10-27,3197.0,0
 CEF,,,,,2026-10-09,,,,,1726122.0,0
-CEG,Utilities,Utilities - Independent Power Producers,United States,15291.0,2026-10-09,2026-11-09,True,2026-08-06,2026-11-09,1868275.0,0
+CEG,Utilities,Utilities - Independent Power Producers,United States,15291.0,2026-10-09,2026-11-09,False,2026-08-06,2026-11-09,1868275.0,0
 CELC,Healthcare,Biotechnology,United States,155.0,2026-10-09,2026-11-11,True,2026-08-13,2026-11-11,1603454.0,0
 CELH,Consumer Defensive,Beverages - Non-Alcoholic,United States,1497.0,2026-10-09,2026-11-09,True,2026-08-06,2026-11-09,1341766.0,0
 CENT,Consumer Defensive,Packaged Foods,United States,6000.0,2026-10-09,2026-11-25,True,2026-08-05,2026-11-25,887733.0,0
@@ -1234,7 +1234,7 @@ HBAN,Financial Services,Banks - Regional,United States,25527.0,2026-10-09,2026-1
 HBCP,Financial Services,Banks - Regional,United States,486.0,2026-10-09,2026-10-19,False,,2026-10-19,1436425.0,1
 HBM,Basic Materials,Copper,Canada,,2026-10-09,2026-10-29,True,2026-07-29,2026-10-29,1322422.0,0
 HBNC,Financial Services,Banks - Regional,United States,465.0,2026-10-09,2026-10-21,False,,2026-10-21,706129.0,1
-HBT,Financial Services,Banks - Regional,United States,826.0,2026-10-09,2026-10-26,True,2026-07-27,2026-10-26,775215.0,1
+HBT,Financial Services,Banks - Regional,United States,826.0,2026-10-09,2026-10-26,False,2026-07-27,2026-10-26,775215.0,1
 HCA,Healthcare,Medical Care Facilities,United States,230000.0,2026-10-09,2026-10-27,False,,2026-10-27,860730.0,0
 HCC,Basic Materials,Coking Coal,United States,1485.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1691303.0,0
 HCI,Financial Services,Insurance - Property & Casualty,United States,594.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1400810.0,0

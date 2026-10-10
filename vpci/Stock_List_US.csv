@@ -186,7 +186,6 @@ ARLP,"Alliance Resource Partners, L.P.",Energy,Thermal Coal
 ARM,Arm Holdings plc,Technology,Semiconductors
 ARMK,Aramark,Industrials,Specialty Business Services
 AROC,"Archrock, Inc.",Energy,Oil & Gas Equipment & Services
-ARQQ,Arqit Quantum Inc.,Technology,Software - Infrastructure
 ARQT,"Arcutis Biotherapeutics, Inc.",Healthcare,Biotechnology
 ARR,"ARMOUR Residential REIT, Inc.",Real Estate,REIT - Mortgage
 ARVN,"Arvinas, Inc.",Healthcare,Biotechnology
@@ -487,6 +486,7 @@ CENX,Century Aluminum Company,Basic Materials,Aluminum
 CERT,"Certara, Inc.",Healthcare,Health Information Services
 CEVA,"CEVA, Inc.",Technology,Semiconductors
 CF,"CF Industries Holdings, Inc.",Basic Materials,Agricultural Inputs
+CFFI,C&F Financial Corporation,Financial Services,Banks - Regional
 CFFN,"Capitol Federal Financial, Inc.",Financial Services,Banks - Regional
 CFG,"Citizens Financial Group, Inc.",Financial Services,Banks - Regional
 CFR,"Cullen/Frost Bankers, Inc.",Financial Services,Banks - Regional
@@ -612,6 +612,7 @@ CROX,"Crocs, Inc.",Consumer Cyclical,Footwear & Accessories
 CRS,Carpenter Technology Corporation,Industrials,Metal Fabrication
 CRSP,CRISPR Therapeutics AG,Healthcare,Biotechnology
 CRSR,"Corsair Gaming, Inc.",Technology,Computer Hardware
+CRTO,Criteo S.A.,Communication Services,Advertising Agencies
 CRUS,"Cirrus Logic, Inc.",Technology,Semiconductors
 CRVL,CorVel Corporation,Financial Services,Insurance Brokers
 CRVS,"Corvus Pharmaceuticals, Inc.",Healthcare,Biotechnology
@@ -1017,6 +1018,7 @@ GFL,GFL Environmental Inc.,Industrials,Waste Management
 GFR,Greenfire Resources Ltd.,Energy,Oil & Gas E&P
 GFS,GLOBALFOUNDRIES Inc.,Technology,Semiconductors
 GGAL,Grupo Financiero Galicia S.A.,Financial Services,Banks - Regional
+GGB,Gerdau S.A.,Basic Materials,Steel
 GGG,Graco Inc.,Industrials,Specialty Industrial Machinery
 GH,"Guardant Health, Inc.",Healthcare,Diagnostics & Research
 GHC,Graham Holdings Company,Industrials,Conglomerates
@@ -1140,6 +1142,7 @@ HMY,Harmony Gold Mining Company Limited,Basic Materials,Gold
 HNGE,"Hinge Health, Inc.",Healthcare,Health Information Services
 HNI,HNI Corporation,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
 HNRG,Hallador Energy Company,Utilities,Utilities - Independent Power Producers
+HNST,"The Honest Company, Inc.",Consumer Defensive,Household & Personal Products
 HOG,"Harley-Davidson, Inc.",Consumer Cyclical,Recreational Vehicles
 HOMB,"Home BancShares, Inc.",Financial Services,Banks - Regional
 HON,Honeywell International Inc.,Industrials,Conglomerates
@@ -1226,6 +1229,7 @@ IMKTA,"Ingles Markets, Incorporated",Consumer Defensive,Grocery Stores
 IMMX,"Immix Biopharma, Inc.",Healthcare,Biotechnology
 IMNM,"Immunome, Inc.",Healthcare,Biotechnology
 IMO,Imperial Oil Limited,Unknown,Unknown
+IMTX,Immatics N.V.,Healthcare,Biotechnology
 IMVT,"Immunovant, Inc.",Healthcare,Biotechnology
 IMXI,"International Money Express, Inc.",Technology,Software - Infrastructure
 INBX,"Inhibrx Biosciences, Inc.",Healthcare,Biotechnology
@@ -1456,7 +1460,6 @@ LUNR,"Intuitive Machines, Inc.",Industrials,Aerospace & Defense
 LUV,Southwest Airlines Co.,Industrials,Airlines
 LVS,Las Vegas Sands Corp.,Consumer Cyclical,Resorts & Casinos
 LW,"Lamb Weston Holdings, Inc.",Consumer Defensive,Packaged Foods
-LWLG,"Lightwave Logic, Inc.",Basic Materials,Specialty Chemicals
 LXP,LXP Industrial Trust,Real Estate,REIT - Industrial
 LXU,"LSB Industries, Inc.",Basic Materials,Chemicals
 LYB,LyondellBasell Industries N.V.,Basic Materials,Specialty Chemicals
@@ -1523,6 +1526,7 @@ MFA,"MFA Financial, Inc.",Real Estate,REIT - Mortgage
 MFC,Manulife Financial Corporation,Financial Services,Insurance - Life
 MFG,"Mizuho Financial Group, Inc.",Financial Services,Banks - Regional
 MFP,"Midera Food Processing, Inc.",Industrials,Specialty Industrial Machinery
+MG,"Mistras Group, Inc.",Industrials,Security & Protection Services
 MGA,Magna International Inc.,Consumer Cyclical,Auto Parts
 MGEE,"MGE Energy, Inc.",Utilities,Utilities - Regulated Electric
 MGM,MGM Resorts International,Consumer Cyclical,Resorts & Casinos
@@ -1704,6 +1708,7 @@ NTST,NETSTREIT Corp.,Real Estate,REIT - Retail
 NU,Nu Holdings Ltd.,Financial Services,Banks - Regional
 NUE,Nucor Corporation,Basic Materials,Steel
 NUTX,Nutex Health Inc.,Healthcare,Medical Care Facilities
+NUVB,Nuvation Bio Inc.,Healthcare,Biotechnology
 NVAX,"Novavax, Inc.",Healthcare,Biotechnology
 NVCR,NovoCure Limited,Healthcare,Medical Devices
 NVDA,NVIDIA Corporation,Technology,Semiconductors
@@ -1852,7 +1857,6 @@ PEN,"Penumbra, Inc.",Healthcare,Medical Devices
 PENG,"Penguin Solutions, Inc.",Technology,Information Technology Services
 PENN,"PENN Entertainment, Inc.",Consumer Cyclical,Resorts & Casinos
 PEP,"PepsiCo, Inc.",Consumer Defensive,Beverages - Non-Alcoholic
-PESI,"Perma-Fix Environmental Services, Inc.",Industrials,Waste Management
 PFE,Pfizer Inc.,Healthcare,Drug Manufacturers - General
 PFG,"Principal Financial Group, Inc.",Financial Services,Asset Management
 PFGC,Performance Food Group Company,Consumer Defensive,Food Distribution
@@ -1949,6 +1953,7 @@ PTC,PTC Inc.,Technology,Software - Application
 PTCT,"PTC Therapeutics, Inc.",Healthcare,Biotechnology
 PTEN,"Patterson-UTI Energy, Inc.",Energy,Oil & Gas Drilling
 PTGX,"Protagonist Therapeutics, Inc.",Healthcare,Biotechnology
+PTON,"Peloton Interactive, Inc.",Consumer Cyclical,Leisure
 PTRN,Pattern Group Inc.,Consumer Cyclical,Internet Retail
 PUBM,"PubMatic, Inc.",Technology,Software - Application
 PUK,Prudential plc,Financial Services,Insurance - Life
@@ -1969,6 +1974,7 @@ QFIN,"Qfin Holdings, Inc.",Financial Services,Credit Services
 QGEN,Qiagen N.V.,Healthcare,Diagnostics & Research
 QLYS,"Qualys, Inc.",Technology,Software - Infrastructure
 QMCO,Quantum Corporation,Technology,Computer Hardware
+QNDX,State Street SPDR Portfolio Nasdaq 100 E,Unknown,Unknown
 QNST,"QuinStreet, Inc.",Communication Services,Advertising Agencies
 QNT,Quantinuum Inc.,Technology,Software - Application
 QSR,Restaurant Brands International Inc.,Consumer Cyclical,Restaurants
@@ -2466,7 +2472,6 @@ URI,"United Rentals, Inc.",Industrials,Rental & Leasing Services
 USAC,"USA Compression Partners, LP",Energy,Oil & Gas Equipment & Services
 USAR,"USA Rare Earth, Inc.",Basic Materials,Other Industrial Metals & Mining
 USB,U.S. Bancorp,Financial Services,Banks - Regional
-USDE,StablecoinX Inc.,Financial Services,Capital Markets
 USFD,US Foods Holding Corp.,Consumer Defensive,Food Distribution
 USLM,"United States Lime & Minerals, Inc.",Basic Materials,Building Materials
 USPH,"U.S. Physical Therapy, Inc.",Healthcare,Medical Care Facilities
