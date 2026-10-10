@@ -612,7 +612,6 @@ CROX,"Crocs, Inc.",Consumer Cyclical,Footwear & Accessories
 CRS,Carpenter Technology Corporation,Industrials,Metal Fabrication
 CRSP,CRISPR Therapeutics AG,Healthcare,Biotechnology
 CRSR,"Corsair Gaming, Inc.",Technology,Computer Hardware
-CRTO,Criteo S.A.,Communication Services,Advertising Agencies
 CRUS,"Cirrus Logic, Inc.",Technology,Semiconductors
 CRVL,CorVel Corporation,Financial Services,Insurance Brokers
 CRVS,"Corvus Pharmaceuticals, Inc.",Healthcare,Biotechnology
@@ -1028,6 +1027,7 @@ GIC,Global Industrial Company,Industrials,Industrial Distribution
 GIII,"G-III Apparel Group, Ltd.",Consumer Cyclical,Apparel Manufacturing
 GIL,Gildan Activewear Inc.,Consumer Cyclical,Apparel Manufacturing
 GILD,"Gilead Sciences, Inc.",Healthcare,Drug Manufacturers - General
+GILT,Gilat Satellite Networks Ltd.,Technology,Communication Equipment
 GIS,"General Mills, Inc.",Consumer Defensive,Packaged Foods
 GKOS,Glaukos Corporation,Healthcare,Medical Devices
 GL,Globe Life Inc.,Financial Services,Insurance - Life
@@ -1226,7 +1226,6 @@ IMKTA,"Ingles Markets, Incorporated",Consumer Defensive,Grocery Stores
 IMMX,"Immix Biopharma, Inc.",Healthcare,Biotechnology
 IMNM,"Immunome, Inc.",Healthcare,Biotechnology
 IMO,Imperial Oil Limited,Unknown,Unknown
-IMTX,Immatics N.V.,Healthcare,Biotechnology
 IMVT,"Immunovant, Inc.",Healthcare,Biotechnology
 IMXI,"International Money Express, Inc.",Technology,Software - Infrastructure
 INBX,"Inhibrx Biosciences, Inc.",Healthcare,Biotechnology
@@ -1853,6 +1852,8 @@ PEN,"Penumbra, Inc.",Healthcare,Medical Devices
 PENG,"Penguin Solutions, Inc.",Technology,Information Technology Services
 PENN,"PENN Entertainment, Inc.",Consumer Cyclical,Resorts & Casinos
 PEP,"PepsiCo, Inc.",Consumer Defensive,Beverages - Non-Alcoholic
+PESI,"Perma-Fix Environmental Services, Inc.",Industrials,Waste Management
+PFE,Pfizer Inc.,Healthcare,Drug Manufacturers - General
 PFG,"Principal Financial Group, Inc.",Financial Services,Asset Management
 PFGC,Performance Food Group Company,Consumer Defensive,Food Distribution
 PFLT,PennantPark Floating Rate Capital Ltd.,Financial Services,Asset Management
