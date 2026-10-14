@@ -56,6 +56,7 @@ AEM,Agnico Eagle Mines Limited,Basic Materials,Gold
 AEO,"American Eagle Outfitters, Inc.",Consumer Cyclical,Apparel Retail
 AEP,"American Electric Power Company, Inc.",Utilities,Utilities - Regulated Electric
 AER,AerCap Holdings N.V.,Industrials,Rental & Leasing Services
+AERO,"Grupo Aeromexico, S.A.B. de C.V",Industrials,Airlines
 AES,The AES Corporation,Utilities,Utilities - Diversified
 AESI,Atlas Energy Solutions Inc.,Energy,Oil & Gas Equipment & Services
 AEVA,"Aeva Technologies, Inc.",Technology,Software - Infrastructure
@@ -336,7 +337,6 @@ BJRI,"BJ's Restaurants, Inc.",Consumer Cyclical,Restaurants
 BKD,Brookdale Senior Living Inc.,Healthcare,Medical Care Facilities
 BKE,"The Buckle, Inc.",Consumer Cyclical,Apparel Retail
 BKH,Black Hills Corporation,Utilities,Utilities - Regulated Gas
-BKKT,"Bakkt, Inc.",Technology,Software - Infrastructure
 BKNG,Booking Holdings Inc.,Consumer Cyclical,Travel Services
 BKR,Baker Hughes Company,Energy,Oil & Gas Equipment & Services
 BKSY,BlackSky Technology Inc.,Industrials,Specialty Business Services
@@ -355,6 +355,7 @@ BLTE,"Belite Bio, Inc",Healthcare,Biotechnology
 BLX,Bladex Inc.,Unknown,Unknown
 BLZE,"Backblaze, Inc.",Technology,Software - Infrastructure
 BMA,Banco Macro S.A.,Financial Services,Banks - Regional
+BMBL,Bumble Inc.,Communication Services,Internet Content & Information
 BMI,"Badger Meter, Inc.",Technology,Scientific & Technical Instruments
 BMNR,"Bitmine Immersion Technologies, Inc.",Financial Services,Capital Markets
 BMO,Bank of Montreal,Financial Services,Banks - Diversified
@@ -390,6 +391,7 @@ BSP,Bending Spoons S.p.A.,Technology,Software - Application
 BSX,Boston Scientific Corporation,Healthcare,Medical Devices
 BSY,"Bentley Systems, Incorporated",Technology,Software - Application
 BTDR,Bitdeer Technologies Group,Technology,Software - Application
+BTE,Baytex Energy Corp.,Energy,Oil & Gas E&P
 BTG,B2Gold Corp.,Basic Materials,Gold
 BTGO,"BitGo Holdings, Inc.",Financial Services,Capital Markets
 BTI,British American Tobacco p.l.c.,Consumer Defensive,Tobacco
@@ -402,7 +404,6 @@ BUSE,First Busey Corporation,Financial Services,Banks - Regional
 BV,"BrightView Holdings, Inc.",Industrials,Specialty Business Services
 BVN,Compañía de Minas Buenaventura S.A.A.,Basic Materials,Other Precious Metals & Mining
 BVS,Bioventus Inc.,Healthcare,Medical Devices
-BW,"Babcock & Wilcox Enterprises, Inc.",Industrials,Specialty Industrial Machinery
 BWA,BorgWarner Inc.,Consumer Cyclical,Auto Parts
 BWIN,"The Baldwin Insurance Group, Inc.",Financial Services,Insurance Brokers
 BWLP,BW LPG Limited,Energy,Oil & Gas Midstream
@@ -524,7 +525,6 @@ CLDX,"Celldex Therapeutics, Inc.",Healthcare,Biotechnology
 CLF,Cleveland-Cliffs Inc.,Basic Materials,Steel
 CLH,"Clean Harbors, Inc.",Industrials,Waste Management
 CLMT,"Calumet, Inc.",Basic Materials,Specialty Chemicals
-CLPT,"ClearPoint Neuro, Inc.",Healthcare,Medical Devices
 CLS,Celestica Inc.,Technology,Electronic Components
 CLSK,"CleanSpark, Inc.",Financial Services,Capital Markets
 CLX,The Clorox Company,Consumer Defensive,Household & Personal Products
@@ -580,7 +580,6 @@ COR,"Cencora, Inc.",Healthcare,Medical Distribution
 CORT,Corcept Therapeutics Incorporated,Healthcare,Biotechnology
 CORZ,"Core Scientific, Inc.",Technology,Software - Infrastructure
 COST,Costco Wholesale Corporation,Consumer Defensive,Discount Stores
-COUR,"Coursera, Inc.",Consumer Defensive,Education & Training Services
 CP,Canadian Pacific Kansas City Limited,Industrials,Railroads
 CPA,"Copa Holdings, S.A.",Industrials,Airlines
 CPAY,"Corpay, Inc.",Technology,Software - Infrastructure
@@ -612,7 +611,6 @@ CROX,"Crocs, Inc.",Consumer Cyclical,Footwear & Accessories
 CRS,Carpenter Technology Corporation,Industrials,Metal Fabrication
 CRSP,CRISPR Therapeutics AG,Healthcare,Biotechnology
 CRSR,"Corsair Gaming, Inc.",Technology,Computer Hardware
-CRTO,Criteo S.A.,Communication Services,Advertising Agencies
 CRUS,"Cirrus Logic, Inc.",Technology,Semiconductors
 CRVL,CorVel Corporation,Financial Services,Insurance Brokers
 CRVS,"Corvus Pharmaceuticals, Inc.",Healthcare,Biotechnology
@@ -626,12 +624,14 @@ CSQR,"Csquare, Inc.",Technology,Information Technology Services
 CSR,Centerspace,Real Estate,REIT - Residential
 CSTL,"Castle Biosciences, Inc.",Healthcare,Diagnostics & Research
 CSTM,Constellium SE,Basic Materials,Aluminum
+CSV,"Carriage Services, Inc.",Consumer Cyclical,Personal Services
 CSW,"CSW Industrials, Inc.",Industrials,Specialty Industrial Machinery
 CSWC,Capital Southwest Corporation,Financial Services,Asset Management
 CSX,CSX Corporation,Industrials,Railroads
 CTAS,Cintas Corporation,Industrials,Specialty Business Services
 CTBI,"Community Trust Bancorp, Inc.",Financial Services,Banks - Regional
 CTGO,Contango Silver & Gold Inc.,Basic Materials,Gold
+CTKB,"Cytek Biosciences, Inc.",Healthcare,Medical Devices
 CTNM,"Contineum Therapeutics, Inc.",Healthcare,Biotechnology
 CTO,"CTO Realty Growth, Inc.",Real Estate,REIT - Diversified
 CTOS,"Custom Truck One Source, Inc.",Industrials,Rental & Leasing Services
@@ -915,7 +915,6 @@ FIG,"Figma, Inc.",Technology,Software - Application
 FIGR,"Figure Technology Solutions, Inc.",Financial Services,Capital Markets
 FIGS,"FIGS, Inc.",Consumer Cyclical,Apparel Manufacturing
 FIS,"Fidelity National Information Services, ",Technology,Information Technology Services
-FISI,"Financial Institutions, Inc.",Financial Services,Banks - Regional
 FISV,"Fiserv, Inc.",Financials,Unknown
 FITB,Fifth Third Bancorp,Financial Services,Banks - Regional
 FIVE,"Five Below, Inc.",Consumer Cyclical,Specialty Retail
@@ -1072,8 +1071,8 @@ GRC,The Gorman-Rupp Company,Industrials,Specialty Industrial Machinery
 GRDN,"Guardian Pharmacy Services, Inc.",Healthcare,Medical Care Facilities
 GRMN,Garmin Ltd.,Technology,Scientific & Technical Instruments
 GRND,Grindr Inc.,Technology,Software - Application
+GRNT,"Granite Ridge Resources, Inc.",Energy,Oil & Gas E&P
 GRPN,"Groupon, Inc.",Communication Services,Internet Content & Information
-GRRR,Gorilla Technology Group Inc.,Technology,Software - Infrastructure
 GS,"The Goldman Sachs Group, Inc.",Financial Services,Capital Markets
 GSAT,"Globalstar, Inc.",Communication Services,Telecom Services
 GSBC,"Great Southern Bancorp, Inc.",Financial Services,Banks - Regional
@@ -1203,7 +1202,6 @@ IBTA,"Ibotta, Inc.",Technology,Software - Application
 ICE,"Intercontinental Exchange, Inc.",Financial Services,Financial Data & Stock Exchanges
 ICFI,"ICF International, Inc.",Industrials,Consulting Services
 ICHR,"Ichor Holdings, Ltd.",Technology,Semiconductor Equipment & Materials
-ICL,ICL Group Ltd,Unknown,Unknown
 ICLR,ICON Public Limited Company,Healthcare,Diagnostics & Research
 ICUI,"ICU Medical, Inc.",Healthcare,Medical Instruments & Supplies
 IDA,"IDACORP, Inc.",Utilities,Utilities - Regulated Electric
@@ -1308,7 +1306,6 @@ JKS,"JinkoSolar Holding Co., Ltd.",Technology,Solar
 JLL,Jones Lang LaSalle Incorporated,Real Estate,Real Estate Services
 JMIA,Jumia Technologies AG,Consumer Cyclical,Internet Retail
 JNJ,Johnson & Johnson,Healthcare,Drug Manufacturers - General
-JOBY,"Joby Aviation, Inc.",Industrials,Airports & Air Services
 JOE,The St. Joe Company,Real Estate,Real Estate - Diversified
 JOYY,JOYY Inc.,Communication Services,Internet Content & Information
 JPM,JPMorgan Chase & Co.,Financial Services,Banks - Diversified
@@ -1453,9 +1450,7 @@ LSTR,"Landstar System, Inc.",Industrials,Integrated Freight & Logistics
 LTC,"LTC Properties, Inc.",Real Estate,REIT - Healthcare Facilities
 LTH,"Life Time Group Holdings, Inc.",Consumer Cyclical,Leisure
 LTM,LATAM Airlines Group S.A.,Unknown,Unknown
-LTRX,"Lantronix, Inc.",Technology,Communication Equipment
 LULU,lululemon athletica inc.,Consumer Cyclical,Apparel Retail
-LUMN,"Lumen Technologies, Inc.",Communication Services,Telecom Services
 LUNR,"Intuitive Machines, Inc.",Industrials,Aerospace & Defense
 LUV,Southwest Airlines Co.,Industrials,Airlines
 LVS,Las Vegas Sands Corp.,Consumer Cyclical,Resorts & Casinos
@@ -1575,7 +1570,6 @@ MP,MP Materials Corp.,Basic Materials,Other Industrial Metals & Mining
 MPC,Marathon Petroleum Corporation,Energy,Oil & Gas Refining & Marketing
 MPLT,"MapLight Therapeutics, Inc.",Healthcare,Biotechnology
 MPLX,MPLX LP,Energy,Oil & Gas Midstream
-MPTI,"M-tron Industries, Inc.",Technology,Electronic Components
 MPWR,"Monolithic Power Systems, Inc.",Technology,Semiconductors
 MQ,"Marqeta, Inc.",Technology,Software - Infrastructure
 MRAM,"Everspin Technologies, Inc.",Technology,Semiconductors
@@ -1708,7 +1702,6 @@ NTST,NETSTREIT Corp.,Real Estate,REIT - Retail
 NU,Nu Holdings Ltd.,Financial Services,Banks - Regional
 NUE,Nucor Corporation,Basic Materials,Steel
 NUTX,Nutex Health Inc.,Healthcare,Medical Care Facilities
-NUVB,Nuvation Bio Inc.,Healthcare,Biotechnology
 NVAX,"Novavax, Inc.",Healthcare,Biotechnology
 NVCR,NovoCure Limited,Healthcare,Medical Devices
 NVDA,NVIDIA Corporation,Technology,Semiconductors
@@ -1745,7 +1738,7 @@ OC,Owens Corning,Industrials,Building Products & Equipment
 OCFC,OceanFirst Financial Corp.,Financial Services,Banks - Regional
 OCTV,Octave Intelligence plc,Technology,Software - Application
 OCUL,"Ocular Therapeutix, Inc.",Healthcare,Biotechnology
-ODC,Oil-Dri Corporation of America,Unknown,Unknown
+ODC,Oil-Dri Corporation of America,Basic Materials,Specialty Chemicals
 ODD,Oddity Tech Ltd.,Consumer Defensive,Household & Personal Products
 ODFL,"Old Dominion Freight Line, Inc.",Industrials,Trucking
 OFG,OFG Bancorp,Financial Services,Banks - Regional
@@ -2098,7 +2091,6 @@ SAN,"Banco Santander, S.A.",Financial Services,Banks - Diversified
 SANM,Sanmina Corporation,Technology,Electronic Components
 SAP,SAP SE,Technology,Software - Application
 SARO,"StandardAero, Inc.",Industrials,Aerospace & Defense
-SATL,Satellogic Inc.,Industrials,Aerospace & Defense
 SB,"Safe Bulkers, Inc.",Industrials,Marine Shipping
 SBAC,SBA Communications Corporation,Real Estate,REIT - Specialty
 SBCF,Seacoast Banking Corporation of Florida,Financial Services,Banks - Regional
@@ -2134,7 +2126,6 @@ SFD,"Smithfield Foods, Inc.",Consumer Defensive,Packaged Foods
 SFL,SFL Corporation Ltd.,Industrials,Marine Shipping
 SFM,"Sprouts Farmers Market, Inc.",Consumer Defensive,Grocery Stores
 SFNC,Simmons First National Corporation,Financial Services,Banks - Regional
-SFST,"Southern First Bancshares, Inc.",Financial Services,Banks - Regional
 SG,"Sweetgreen, Inc.",Consumer Cyclical,Restaurants
 SGHC,Super Group (SGHC) Limited,Consumer Cyclical,Gambling
 SGI,Somnigroup International Inc.,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
@@ -2217,7 +2208,6 @@ SOLV,Solventum Corporation,Healthcare,Medical Instruments & Supplies
 SON,Sonoco Products Company,Consumer Cyclical,Packaging & Containers
 SONO,"Sonos, Inc.",Technology,Consumer Electronics
 SONY,Sony Group Corporation,Technology,Consumer Electronics
-SOUN,"SoundHound AI, Inc.",Technology,Software - Application
 SPB,"Spectrum Brands Holdings, Inc.",Consumer Defensive,Household & Personal Products
 SPCX,Space Exploration Technologies Corp.,Industrials,Aerospace & Defense
 SPG,"Simon Property Group, Inc.",Real Estate,REIT - Retail
@@ -2261,6 +2251,7 @@ STNG,Scorpio Tankers Inc.,Energy,Oil & Gas Midstream
 STOK,"Stoke Therapeutics, Inc.",Healthcare,Biotechnology
 STRA,"Strategic Education, Inc.",Consumer Defensive,Education & Training Services
 STRL,"Sterling Infrastructure, Inc.",Industrials,Engineering & Construction
+STRZ,Starz Entertainment Corp.,Communication Services,Entertainment
 STT,State Street Corporation,Financial Services,Asset Management
 STTK,"Shattuck Labs, Inc.",Healthcare,Biotechnology
 STUB,"StubHub Holdings, Inc.",Communication Services,Internet Content & Information
@@ -2280,6 +2271,7 @@ SVM,Silvercorp Metals Inc.,Basic Materials,Silver
 SVV,"Savers Value Village, Inc.",Consumer Cyclical,Specialty Retail
 SW,Smurfit Westrock Plc,Consumer Cyclical,Packaging & Containers
 SWBI,"Smith & Wesson Brands, Inc.",Industrials,Aerospace & Defense
+SWIM,"Latham Group, Inc.",Industrials,Building Products & Equipment
 SWK,"Stanley Black & Decker, Inc.",Industrials,Tools & Accessories
 SWKS,"Skyworks Solutions, Inc.",Technology,Semiconductors
 SWX,"Southwest Gas Holdings, Inc.",Utilities,Utilities - Regulated Gas

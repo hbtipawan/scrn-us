@@ -17,7 +17,7 @@ ABEO,Healthcare,Biotechnology,United States,226.0,2026-10-09,2026-11-11,False,20
 ABG,Consumer Cyclical,Auto & Truck Dealerships,United States,15000.0,2026-10-09,2026-10-27,False,,2026-10-27,1144980.0,0
 ABM,Industrials,Specialty Business Services,United States,113000.0,2026-10-09,,,2026-09-08,,771497.0,0
 ABNB,Consumer Cyclical,Travel Services,United States,8200.0,2026-10-09,2026-11-05,False,,2026-11-05,1559720.0,0
-ABSI,Healthcare,Biotechnology,United States,140.0,2026-10-09,2026-11-16,False,2026-08-11,2026-11-16,1672688.0,0
+ABSI,Healthcare,Biotechnology,United States,140.0,2026-10-09,2026-11-12,False,2026-08-11,2026-11-12,1672688.0,0
 ABT,Healthcare,Medical Devices,United States,122000.0,2026-10-09,2026-10-21,False,,2026-10-21,1800.0,0
 ABTC,Financial Services,Capital Markets,United States,2.0,2026-10-09,2026-11-04,False,,2026-11-04,1755953.0,0
 ABUS,Healthcare,Biotechnology,United States,19.0,2026-10-09,2026-11-16,True,2026-08-12,2026-11-16,1447028.0,0
@@ -26,6 +26,7 @@ ABX,Financial Services,Insurance - Life,United States,326.0,2026-10-09,2026-11-0
 ACA,Industrials,Engineering & Construction,United States,6390.0,2026-10-09,2026-10-29,True,2026-08-05,2026-10-29,1739445.0,0
 ACAD,Healthcare,Biotechnology,United States,796.0,2026-10-09,2026-11-04,True,2026-08-04,2026-11-04,1070494.0,0
 ACB,Healthcare,Drug Manufacturers - Specialty & Generic,Canada,1028.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1683541.0,0
+ACCO,Industrials,Business Equipment & Supplies,United States,4700.0,2026-10-14,2026-10-29,False,2026-07-30,2026-10-29,712034.0,0
 ACCV,Industrials,Electrical Equipment & Parts,United States,,2026-10-09,,,,,2141406.0,0
 ACDC,Energy,Oil & Gas Equipment & Services,United States,2280.0,2026-10-09,2026-11-09,False,2026-08-06,2026-11-09,1881487.0,0
 ACEL,Consumer Cyclical,Gambling,United States,1600.0,2026-10-09,2026-11-03,False,,2026-11-03,1698991.0,0
@@ -33,7 +34,7 @@ ACGL,Financial Services,Insurance - Diversified,Bermuda,8000.0,2026-10-09,2026-1
 ACHC,Healthcare,Medical Care Facilities,United States,25000.0,2026-10-09,2026-11-04,False,2026-07-28,2026-11-04,1520697.0,0
 ACHR,Industrials,Aerospace & Defense,United States,1160.0,2026-10-09,2026-11-05,True,2026-08-10,2026-11-05,1824502.0,0
 ACHV,Healthcare,Biotechnology,United States,28.0,2026-10-09,2026-11-05,True,2026-08-11,2026-11-05,949858.0,0
-ACI,Consumer Defensive,Grocery Stores,United States,275000.0,2026-10-09,2026-10-13,False,,2026-10-13,1646972.0,0
+ACI,Consumer Defensive,Grocery Stores,United States,275000.0,2026-10-09,,False,2026-10-13,2026-10-13,1646972.0,0
 ACIW,Technology,Software - Infrastructure,United States,2930.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,935036.0,0
 ACLS,Technology,Semiconductor Equipment & Materials,United States,1465.0,2026-10-09,2026-11-03,True,2026-08-06,2026-11-03,1113232.0,0
 ACM,Industrials,Engineering & Construction,United States,51000.0,2026-10-09,2026-11-17,False,2026-08-10,2026-11-17,868857.0,0
@@ -51,7 +52,7 @@ ADI,Technology,Semiconductors,United States,24500.0,2026-10-09,2026-11-24,False,
 ADIG,Technology,Computer Hardware,United States,4119.0,2026-10-09,2026-11-12,False,2026-08-13,2026-11-12,2105139.0,0
 ADM,Consumer Defensive,Farm Products,United States,40798.0,2026-10-09,2026-11-03,False,,2026-11-03,7084.0,0
 ADMA,Healthcare,Biotechnology,United States,640.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1368514.0,0
-ADNT,Consumer Cyclical,Auto Parts,Ireland,65000.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1670541.0,0
+ADNT,Consumer Cyclical,Auto Parts,Ireland,65000.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1670541.0,0
 ADP,Technology,Software - Application,United States,67000.0,2026-10-09,2026-10-28,False,,2026-10-28,8670.0,0
 ADPT,Healthcare,Diagnostics & Research,United States,624.0,2026-10-09,2026-11-04,True,2026-07-29,2026-11-04,1478320.0,0
 ADRX,Healthcare,Biotechnology,United States,100.0,2026-10-09,,,,,1802369.0,0
@@ -59,7 +60,7 @@ ADSK,Technology,Software - Application,United States,14300.0,2026-10-09,2026-11-
 ADT,Industrials,Security & Protection Services,United States,12200.0,2026-10-09,2026-11-05,True,2026-07-30,2026-11-05,1703056.0,0
 ADTN,Technology,Communication Equipment,United States,3201.0,2026-10-09,2026-11-02,False,2026-08-03,2026-11-02,926282.0,0
 ADUR,Industrials,Pollution & Treatment Controls,Canada,33.0,2026-10-09,2026-10-14,True,2026-09-01,2026-10-14,1863934.0,0
-ADUS,Healthcare,Medical Care Facilities,United States,5982.0,2026-10-09,2026-11-02,True,2026-08-03,2026-11-02,1468328.0,0
+ADUS,Healthcare,Medical Care Facilities,United States,5982.0,2026-10-09,2026-11-03,False,2026-08-03,2026-11-03,1468328.0,0
 AEBI,Industrials,Farm & Heavy Construction Machinery,Switzerland,5415.0,2026-10-09,2026-11-12,False,2026-08-13,2026-11-12,2048519.0,0
 AEE,Utilities,Utilities - Regulated Electric,United States,8913.0,2026-10-09,2026-11-05,True,2026-07-30,2026-11-05,1002910.0,0
 AEG,Financial Services,Insurance - Diversified,Netherlands,12100.0,2026-10-09,,,2026-08-20,,769218.0,0
@@ -90,7 +91,7 @@ AGNT,Real Estate,Real Estate Services,United States,1834.0,2026-10-09,2026-11-05
 AGO,Financial Services,Insurance - Specialty,Bermuda,367.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1273813.0,0
 AGRO,Consumer Defensive,Farm Products,Luxembourg,,2026-10-09,2026-11-11,False,,2026-11-11,1499505.0,0
 AGX,Industrials,Engineering & Construction,United States,1409.0,2026-10-09,,,2026-09-02,,100591.0,0
-AGYS,Technology,Software - Application,United States,2413.0,2026-10-09,2026-10-26,True,2026-07-27,2026-10-26,78749.0,0
+AGYS,Technology,Software - Application,United States,2413.0,2026-10-09,2026-10-26,False,2026-07-27,2026-10-26,78749.0,0
 AHCO,Healthcare,Medical Devices,United States,10900.0,2026-10-09,2026-11-03,False,2026-08-04,2026-11-03,1725255.0,0
 AHR,Real Estate,REIT - Healthcare Facilities,United States,121.0,2026-10-09,2026-11-05,False,,2026-11-05,1632970.0,0
 AHRT,Real Estate,REIT - Diversified,United States,98.0,2026-10-09,2026-11-02,False,,2026-11-02,1569187.0,0
@@ -104,7 +105,7 @@ AIT,Industrials,Industrial Distribution,United States,6900.0,2026-10-09,2026-10-
 AIZ,Financial Services,Insurance - Property & Casualty,United States,14800.0,2026-10-09,2026-11-03,False,,2026-11-03,1267238.0,0
 AJG,Financial Services,Insurance Brokers,United States,67456.0,2026-10-09,2026-10-29,False,,2026-10-29,354190.0,0
 AKAM,Technology,Software - Infrastructure,United States,11000.0,2026-10-09,2026-11-05,False,,2026-11-05,1086222.0,0
-AKR,Real Estate,REIT - Retail,United States,138.0,2026-10-09,2026-10-27,True,2026-07-28,2026-10-27,899629.0,0
+AKR,Real Estate,REIT - Retail,United States,138.0,2026-10-09,2026-11-02,False,2026-07-28,2026-11-02,899629.0,0
 AKTS,Healthcare,Biotechnology,United States,79.0,2026-10-09,2026-11-12,True,,2026-11-12,2035832.0,0
 ALAB,Technology,Semiconductors,United States,756.0,2026-10-09,2026-11-03,False,,2026-11-03,1736297.0,0
 ALB,Basic Materials,Specialty Chemicals,United States,7800.0,2026-10-09,2026-11-04,False,,2026-11-04,915913.0,0
@@ -157,7 +158,7 @@ AMPL,Technology,Software - Application,United States,795.0,2026-10-09,2026-11-04
 AMPX,Industrials,Electrical Equipment & Parts,United States,97.0,2026-10-09,2026-11-05,False,2026-08-04,2026-11-05,1899287.0,0
 AMPY,Energy,Oil & Gas E&P,United States,184.0,2026-10-09,2026-11-04,True,,2026-11-04,1533924.0,0
 AMR,Basic Materials,Coking Coal,United States,3950.0,2026-10-09,2026-11-06,True,2026-08-07,2026-11-06,1704715.0,0
-AMRC,Industrials,Engineering & Construction,United States,1601.0,2026-10-09,2026-11-02,True,2026-08-03,2026-11-02,1488139.0,0
+AMRC,Industrials,Engineering & Construction,United States,1601.0,2026-10-09,2026-11-09,False,2026-08-03,2026-11-09,1488139.0,0
 AMRX,Healthcare,Drug Manufacturers - Specialty & Generic,United States,8700.0,2026-10-09,2026-11-03,False,,2026-11-03,1723128.0,0
 AMRZ,Basic Materials,Building Materials,Switzerland,19000.0,2026-10-09,2026-10-27,False,2026-08-06,2026-10-27,2035989.0,0
 AMSC,Industrials,Specialty Industrial Machinery,United States,1195.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,880807.0,0
@@ -166,7 +167,7 @@ AMT,Real Estate,REIT - Specialty,United States,4866.0,2026-10-09,2026-10-27,Fals
 AMTB,Financial Services,Banks - Regional,United States,704.0,2026-10-09,2026-10-22,False,,2026-10-22,1734342.0,1
 AMTM,Industrials,Specialty Business Services,United States,50000.0,2026-10-09,,,2026-08-10,,2011286.0,0
 AMZN,Consumer Cyclical,Internet Retail,United States,1595000.0,2026-10-09,2026-10-29,True,2026-07-30,2026-10-29,1018724.0,0
-AN,Consumer Cyclical,Auto & Truck Dealerships,United States,24800.0,2026-10-09,2026-10-29,False,2026-07-31,2026-10-29,350698.0,0
+AN,Consumer Cyclical,Auto & Truck Dealerships,United States,24800.0,2026-10-09,2026-10-30,False,2026-07-31,2026-10-30,350698.0,0
 ANAB,Healthcare,Biotechnology,United States,,2026-10-09,2026-11-03,True,2026-09-21,2026-11-03,1370053.0,0
 ANDE,Consumer Defensive,Food Distribution,United States,2028.0,2026-10-09,2026-11-03,False,,2026-11-03,821026.0,0
 ANDG,Consumer Cyclical,Personal Services,United States,2690.0,2026-10-09,2026-11-12,True,2026-08-12,2026-11-12,2065708.0,0
@@ -181,7 +182,7 @@ ANRO,Healthcare,Biotechnology,United States,68.0,2026-10-09,2026-11-11,True,,202
 AON,Financial Services,Insurance Brokers,Ireland,60000.0,2026-10-09,2026-10-28,False,2026-07-29,2026-10-28,315293.0,0
 AORT,Healthcare,Medical Devices,United States,1800.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,784199.0,0
 AOS,Industrials,Specialty Industrial Machinery,United States,11500.0,2026-10-09,2026-10-29,False,,2026-10-29,91142.0,0
-AOSL,Technology,Semiconductors,United States,2519.0,2026-10-09,2026-11-09,True,2026-08-12,2026-11-09,1387467.0,0
+AOSL,Technology,Semiconductors,United States,2519.0,2026-10-09,2026-11-05,False,2026-08-12,2026-11-05,1387467.0,0
 APA,Energy,Oil & Gas E&P,United States,1791.0,2026-10-09,2026-11-04,False,,2026-11-04,1841666.0,0
 APAM,Financial Services,Asset Management,United States,567.0,2026-10-09,2026-10-27,False,2026-07-28,2026-10-27,1517302.0,0
 APD,Basic Materials,Specialty Chemicals,United States,21087.0,2026-10-09,2026-11-05,False,,2026-11-05,2969.0,0
@@ -213,7 +214,7 @@ ARI,Real Estate,REIT - Mortgage,United States,,2026-10-09,2026-10-29,True,,2026-
 ARIS,Basic Materials,Gold,Canada,3578.0,2026-10-09,2026-11-04,True,2026-07-29,2026-11-04,1964504.0,0
 ARKO,Consumer Cyclical,Specialty Retail,United States,9748.0,2026-10-09,2026-11-04,False,2026-08-07,2026-11-04,1823794.0,0
 ARLO,Industrials,Building Products & Equipment,United States,376.0,2026-10-09,2026-11-05,False,,2026-11-05,1736946.0,0
-ARLP,Energy,Thermal Coal,United States,3575.0,2026-10-09,2026-10-26,True,2026-07-27,2026-10-26,1086600.0,0
+ARLP,Energy,Thermal Coal,United States,3575.0,2026-10-09,2026-10-26,False,2026-07-27,2026-10-26,1086600.0,0
 ARM,Technology,Semiconductors,United Kingdom,9584.0,2026-10-09,2026-11-04,False,,2026-11-04,1973239.0,0
 ARMK,Industrials,Specialty Business Services,United States,278390.0,2026-10-09,2026-11-24,True,2026-08-11,2026-11-24,1584509.0,0
 AROC,Energy,Oil & Gas Equipment & Services,United States,1350.0,2026-10-09,2026-10-27,True,2026-08-04,2026-10-27,1389050.0,0
@@ -258,7 +259,7 @@ ATLC,Financial Services,Credit Services,United States,576.0,2026-10-09,2026-11-0
 ATMU,Consumer Cyclical,Auto Parts,United States,4500.0,2026-10-09,2026-11-06,False,2026-08-07,2026-11-06,1921963.0,0
 ATO,Utilities,Utilities - Regulated Gas,United States,5487.0,2026-10-09,2026-11-04,False,,2026-11-04,731802.0,0
 ATR,Healthcare,Medical Instruments & Supplies,United States,14000.0,2026-10-09,2026-10-29,False,,2026-10-29,896622.0,0
-ATRC,Healthcare,Medical Instruments & Supplies,United States,1350.0,2026-10-09,2026-10-27,False,2026-07-23,2026-10-27,1323885.0,0
+ATRC,Healthcare,Medical Instruments & Supplies,United States,1350.0,2026-10-09,2026-11-03,False,2026-07-23,2026-11-03,1323885.0,0
 ATRO,Industrials,Aerospace & Defense,United States,2700.0,2026-10-09,2026-11-10,True,2026-08-11,2026-11-10,8063.0,0
 ATS,Industrials,Specialty Industrial Machinery,Canada,7000.0,2026-10-09,2026-11-04,False,2026-08-06,2026-11-04,1394832.0,0
 ATTO,Healthcare,Biotechnology,United States,44.0,2026-10-09,2026-11-11,True,,2026-11-11,2058707.0,0
@@ -301,16 +302,16 @@ AYI,Industrials,Electrical Equipment & Parts,United States,13000.0,2026-10-09,,,
 AZN,Healthcare,Drug Manufacturers - General,United Kingdom,96100.0,2026-10-09,2026-10-30,False,,2026-10-30,901832.0,0
 AZO,Consumer Cyclical,Auto Parts,United States,,2026-10-09,2026-12-08,True,2026-09-22,2026-12-08,866787.0,0
 AZTA,Healthcare,Medical Instruments & Supplies,United States,2900.0,2026-10-09,2026-11-20,True,2026-08-04,2026-11-20,933974.0,0
-AZZ,Industrials,Specialty Business Services,United States,3767.0,2026-10-09,2026-10-13,False,,2026-10-13,8947.0,0
+AZZ,Industrials,Specialty Business Services,United States,3767.0,2026-10-09,,False,2026-10-13,2026-10-13,8947.0,0
 B,Basic Materials,Gold,Canada,,2026-10-09,2026-11-09,False,2026-08-10,2026-11-09,756894.0,0
 BA,Industrials,Aerospace & Defense,United States,182000.0,2026-10-09,2026-10-27,False,,2026-10-27,12927.0,0
 BABA,Consumer Cyclical,Internet Retail,China,132165.0,2026-10-09,2026-11-24,True,2026-08-20,2026-11-24,1577552.0,0
 BAC,Financial Services,Banks - Diversified,United States,211000.0,2026-10-09,2026-10-14,False,,2026-10-14,70858.0,1
 BAH,Industrials,Consulting Services,United States,30900.0,2026-10-09,2026-10-23,False,,2026-10-23,1443646.0,0
 BALL,Consumer Cyclical,Packaging & Containers,United States,16000.0,2026-10-09,2026-11-03,False,,2026-11-03,9389.0,0
-BAM,Financial Services,Asset Management,United States,5800.0,2026-10-09,2026-11-06,True,2026-08-05,2026-11-06,1937926.0,0
+BAM,Financial Services,Asset Management,United States,5800.0,2026-10-09,2026-11-06,False,2026-08-05,2026-11-06,1937926.0,0
 BANC,Financial Services,Banks - Regional,United States,1904.0,2026-10-09,2026-10-27,False,,2026-10-27,1169770.0,1
-BAND,Technology,Software - Infrastructure,United States,1100.0,2026-10-09,2026-10-29,True,2026-07-29,2026-10-29,1514416.0,0
+BAND,Technology,Software - Infrastructure,United States,1100.0,2026-10-09,2026-10-29,False,2026-07-29,2026-10-29,1514416.0,0
 BANF,Financial Services,Banks - Regional,United States,2260.0,2026-10-09,2026-10-16,True,,2026-10-16,760498.0,1
 BANR,Financial Services,Banks - Regional,United States,1888.0,2026-10-09,2026-10-21,False,,2026-10-21,946673.0,1
 BAP,Financial Services,Banks - Regional,Peru,52770.0,2026-10-09,2026-11-09,False,,2026-11-09,1001290.0,1
@@ -345,7 +346,7 @@ BCSF,Financial Services,Asset Management,United States,,2026-10-09,2026-11-09,Fa
 BDC,Technology,Communication Equipment,United States,8000.0,2026-10-09,2026-10-29,True,2026-07-30,2026-10-29,913142.0,0
 BDJ,Financial Services,Asset Management,United States,,2026-10-09,,,2022-07-15,,1332283.0,0
 BDX,Healthcare,Medical Instruments & Supplies,United States,72000.0,2026-10-09,2026-11-05,False,,2026-11-05,10795.0,0
-BE,Industrials,Electrical Equipment & Parts,United States,2214.0,2026-10-09,2026-10-27,True,2026-07-28,2026-10-27,1664703.0,0
+BE,Industrials,Electrical Equipment & Parts,United States,2214.0,2026-10-09,2026-10-22,False,2026-07-28,2026-10-22,1664703.0,0
 BEAM,Healthcare,Biotechnology,United States,540.0,2026-10-09,2026-11-03,True,2026-08-04,2026-11-03,1745999.0,0
 BEKE,Real Estate,Real Estate Services,China,107409.0,2026-10-09,2026-11-10,True,2026-08-21,2026-11-10,1809587.0,0
 BELFA,Technology,Electronic Components,United States,4964.0,2026-10-09,2026-10-28,True,2026-07-29,2026-10-28,729580.0,0
@@ -378,7 +379,7 @@ BHVN,Healthcare,Biotechnology,United States,274.0,2026-10-09,2026-11-09,True,,20
 BIDU,Communication Services,Internet Content & Information,China,33500.0,2026-10-09,2026-11-18,True,2026-08-18,2026-11-18,1329099.0,0
 BIIB,Healthcare,Drug Manufacturers - General,United States,7500.0,2026-10-09,2026-10-28,False,,2026-10-28,875045.0,0
 BILI,Communication Services,Internet Content & Information,China,8287.0,2026-10-09,2026-11-12,True,2026-08-27,2026-11-12,1723690.0,0
-BILL,Technology,Software - Application,United States,1683.0,2026-10-09,2026-11-05,True,2026-08-19,2026-11-05,1786352.0,0
+BILL,Technology,Software - Application,United States,1683.0,2026-10-09,2026-11-05,False,2026-08-19,2026-11-05,1786352.0,0
 BIO,Healthcare,Medical Devices,United States,7450.0,2026-10-09,2026-10-29,True,2026-08-04,2026-10-29,12208.0,0
 BIOA,Healthcare,Drug Manufacturers - Specialty & Generic,United States,60.0,2026-10-09,2026-11-05,True,,2026-11-05,1709941.0,0
 BIP,Utilities,Utilities - Diversified,Bermuda,,2026-10-09,2026-11-06,False,,2026-11-06,1406234.0,0
@@ -404,11 +405,12 @@ BLK,Financial Services,Asset Management,United States,26200.0,2026-10-09,2026-10
 BLKB,Technology,Software - Application,United States,2800.0,2026-10-09,2026-10-28,False,2026-07-29,2026-10-28,1280058.0,0
 BLLN,Healthcare,Diagnostics & Research,United States,713.0,2026-10-09,2026-11-05,True,2026-08-05,2026-11-05,2070849.0,0
 BLMN,Consumer Cyclical,Restaurants,United States,64000.0,2026-10-09,2026-11-05,False,2026-08-05,2026-11-05,1546417.0,0
-BLSH,Technology,Software - Infrastructure,Cayman Islands,394.0,2026-10-09,2026-11-12,False,2026-08-13,2026-11-12,1872195.0,0
+BLSH,Technology,Software - Infrastructure,Cayman Islands,394.0,2026-10-09,2026-11-18,True,2026-08-13,2026-11-18,1872195.0,0
 BLSM,Healthcare,Biotechnology,United States,69.0,2026-10-09,2026-11-16,True,2026-09-18,2026-11-16,1839970.0,0
 BLTE,Healthcare,Biotechnology,United States,41.0,2026-10-09,2026-11-09,True,2026-08-13,2026-11-09,1889109.0,0
-BLZE,Technology,Software - Infrastructure,United States,320.0,2026-10-09,2026-11-05,True,2026-08-03,2026-11-05,1462056.0,0
+BLZE,Technology,Software - Infrastructure,United States,320.0,2026-10-09,2026-11-02,False,2026-08-03,2026-11-02,1462056.0,0
 BMA,Financial Services,Banks - Regional,Argentina,8180.0,2026-10-09,2026-11-25,False,2026-08-19,2026-11-25,1347426.0,1
+BMBL,Communication Services,Internet Content & Information,United States,580.0,2026-10-14,2026-11-04,False,2026-08-05,2026-11-04,1830043.0,0
 BMI,Technology,Scientific & Technical Instruments,United States,2477.0,2026-10-09,2026-10-22,False,,2026-10-22,9092.0,0
 BMNR,Financial Services,Capital Markets,United States,3.0,2026-10-09,2026-11-20,True,,2026-11-20,1829311.0,0
 BMO,Financial Services,Banks - Diversified,Canada,53234.0,2026-10-09,2026-12-02,False,,2026-12-02,927971.0,1
@@ -428,7 +430,7 @@ BOKF,Financial Services,Banks - Regional,United States,4970.0,2026-10-09,2026-10
 BOOT,Consumer Cyclical,Apparel Retail,United States,3800.0,2026-10-09,2026-10-28,False,2026-07-29,2026-10-28,1610250.0,0
 BORR,Energy,Oil & Gas Drilling,Bermuda,2030.0,2026-10-09,2026-11-18,True,2026-08-11,2026-11-18,1715497.0,0
 BOT,Financial Services,Asset Management,United States,,2026-10-09,,,,,2081119.0,0
-BOW,Financial Services,Insurance - Property & Casualty,United States,296.0,2026-10-09,2026-11-03,True,2026-08-03,2026-11-03,2002473.0,0
+BOW,Financial Services,Insurance - Property & Casualty,United States,296.0,2026-10-09,2026-11-03,False,2026-08-03,2026-11-03,2002473.0,0
 BOX,Technology,Software - Infrastructure,United States,2912.0,2026-10-09,,,2026-08-25,,1372612.0,0
 BP,Energy,Oil & Gas Integrated,United Kingdom,93700.0,2026-10-09,2026-10-30,False,,2026-10-30,313807.0,0
 BPOP,Financial Services,Banks - Regional,United States,9203.0,2026-10-09,2026-10-22,False,,2026-10-22,763901.0,1
@@ -482,7 +484,7 @@ BY,Financial Services,Banks - Regional,United States,1018.0,2026-10-09,2026-10-2
 BYD,Consumer Cyclical,Resorts & Casinos,United States,16009.0,2026-10-09,2026-10-22,False,,2026-10-22,906553.0,0
 BZ,Communication Services,Internet Content & Information,China,5219.0,2026-10-09,2026-11-17,False,2026-08-25,2026-11-17,1842827.0,0
 BZH,Consumer Cyclical,Residential Construction,United States,1018.0,2026-10-09,2026-11-12,False,2026-08-07,2026-11-12,915840.0,0
-C,Financial Services,Banks - Diversified,United States,219000.0,2026-10-09,2026-10-13,False,,2026-10-13,831001.0,1
+C,Financial Services,Banks - Diversified,United States,219000.0,2026-10-09,,False,2026-10-13,2026-10-13,831001.0,1
 CAAP,Industrials,Airports & Air Services,Luxembourg,6300.0,2026-10-09,2026-11-23,True,2026-08-18,2026-11-23,1717393.0,0
 CAC,Financial Services,Banks - Regional,United States,683.0,2026-10-09,2026-10-27,False,,2026-10-27,750686.0,1
 CACC,Financial Services,Credit Services,United States,2314.0,2026-10-09,2026-10-29,True,2026-08-04,2026-10-29,885550.0,0
@@ -523,7 +525,7 @@ CBRE,Real Estate,Real Estate Services,United States,155000.0,2026-10-09,2026-10-
 CBRL,Consumer Cyclical,Restaurants,United States,74500.0,2026-10-09,2026-12-09,True,2026-09-23,2026-12-09,1067294.0,0
 CBRS,Technology,Semiconductors,United States,708.0,2026-10-09,2026-11-10,False,2026-08-12,2026-11-10,2021728.0,0
 CBSH,Financial Services,Banks - Regional,United States,4976.0,2026-10-09,2026-10-15,True,2026-07-16,2026-10-15,22356.0,1
-CBT,Basic Materials,Specialty Chemicals,United States,4064.0,2026-10-09,2026-11-02,True,2026-08-03,2026-11-02,16040.0,0
+CBT,Basic Materials,Specialty Chemicals,United States,4064.0,2026-10-09,2026-11-02,False,2026-08-03,2026-11-02,16040.0,0
 CBU,Financial Services,Banks - Regional,United States,2853.0,2026-10-09,2026-10-27,False,,2026-10-27,723188.0,1
 CBZ,Industrials,Specialty Business Services,United States,9500.0,2026-10-09,2026-10-28,False,2026-07-29,2026-10-28,944148.0,0
 CC,Basic Materials,Specialty Chemicals,United States,5700.0,2026-10-09,2026-11-05,True,2026-08-04,2026-11-05,1627223.0,0
@@ -556,6 +558,7 @@ CELH,Consumer Defensive,Beverages - Non-Alcoholic,United States,1497.0,2026-10-0
 CENT,Consumer Defensive,Packaged Foods,United States,6000.0,2026-10-09,2026-11-25,True,2026-08-05,2026-11-25,887733.0,0
 CENTA,Consumer Defensive,Packaged Foods,United States,6000.0,2026-10-09,2026-11-25,True,2026-08-05,2026-11-25,887733.0,0
 CENX,Basic Materials,Aluminum,United States,2906.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,949157.0,0
+CEPU,Utilities,Utilities - Regulated Electric,Argentina,,2026-10-14,2026-11-11,False,2026-08-11,2026-11-11,1717161.0,0
 CERT,Healthcare,Health Information Services,United States,1515.0,2026-10-09,2026-11-05,False,2026-08-04,2026-11-05,1827090.0,0
 CEVA,Technology,Semiconductors,United States,374.0,2026-10-09,2026-11-09,True,2026-08-10,2026-11-09,1173489.0,0
 CF,Basic Materials,Agricultural Inputs,United States,2900.0,2026-10-09,2026-11-04,False,,2026-11-04,1324404.0,0
@@ -610,8 +613,8 @@ CLOV,Healthcare,Healthcare Plans,United States,724.0,2026-10-09,2026-11-04,False
 CLPT,Healthcare,Medical Devices,United States,160.0,2026-10-09,2026-11-05,False,2026-08-03,2026-11-05,1285550.0,0
 CLS,Technology,Electronic Components,Canada,23803.0,2026-10-09,2026-10-26,False,,2026-10-26,1030894.0,0
 CLSK,Financial Services,Capital Markets,United States,309.0,2026-10-09,2026-11-24,True,2026-08-06,2026-11-24,827876.0,0
-CLW,Basic Materials,Paper & Paper Products,United States,1900.0,2026-10-09,2026-10-27,True,2026-07-28,2026-10-27,1441236.0,0
-CLX,Consumer Defensive,Household & Personal Products,United States,9200.0,2026-10-09,2026-11-03,False,2026-08-03,2026-11-03,21076.0,0
+CLW,Basic Materials,Paper & Paper Products,United States,1900.0,2026-10-09,2026-10-26,False,2026-07-28,2026-10-26,1441236.0,0
+CLX,Consumer Defensive,Household & Personal Products,United States,9200.0,2026-10-09,2026-11-02,False,2026-08-03,2026-11-02,21076.0,0
 CLYM,Healthcare,Biotechnology,United States,28.0,2026-10-09,2026-11-13,True,,2026-11-13,1768446.0,0
 CM,Financial Services,Banks - Diversified,Canada,51711.0,2026-10-09,2026-12-03,False,,2026-12-03,1045520.0,1
 CMBT,Energy,Oil & Gas Midstream,Belgium,,2026-10-09,2026-11-26,False,,2026-11-26,1604481.0,0
@@ -626,7 +629,7 @@ CMPR,Industrials,Specialty Business Services,Ireland,16000.0,2026-10-09,2026-10-
 CMPS,Healthcare,Medical Care Facilities,United Kingdom,156.0,2026-10-09,2026-11-03,False,2026-08-05,2026-11-03,1816590.0,0
 CMRE,Industrials,Marine Shipping,Monaco,1880.0,2026-10-09,2026-11-03,True,2026-07-27,2026-11-03,1503584.0,0
 CMS,Utilities,Utilities - Regulated Electric,United States,8350.0,2026-10-09,2026-10-27,False,,2026-10-27,811156.0,0
-CNA,Financial Services,Insurance - Property & Casualty,United States,6600.0,2026-10-09,2026-11-02,True,2026-08-03,2026-11-02,21175.0,0
+CNA,Financial Services,Insurance - Property & Casualty,United States,6600.0,2026-10-09,2026-11-02,False,2026-08-03,2026-11-02,21175.0,0
 CNC,Healthcare,Healthcare Plans,United States,61100.0,2026-10-09,2026-10-27,False,,2026-10-27,1071739.0,0
 CNH,Industrials,Farm & Heavy Construction Machinery,United Kingdom,34197.0,2026-10-09,2026-11-09,False,,2026-11-09,1567094.0,0
 CNI,Industrials,Railroads,Canada,23825.0,2026-10-09,2026-10-30,False,,2026-10-30,16868.0,0
@@ -644,7 +647,7 @@ CNX,Energy,Oil & Gas E&P,United States,390.0,2026-10-09,2026-10-29,False,,2026-1
 CNXC,Technology,Information Technology Services,United States,455000.0,2026-10-09,,,2026-09-29,,1803599.0,0
 CNXN,Technology,Electronics & Computer Distribution,United States,2525.0,2026-10-09,2026-10-28,True,2026-07-29,2026-10-28,1050377.0,0
 COAG,Healthcare,Biotechnology,United States,59.0,2026-10-09,2026-11-16,True,2026-08-11,2026-11-16,2114044.0,0
-COCO,Consumer Defensive,Beverages - Non-Alcoholic,United States,336.0,2026-10-09,2026-10-28,True,2026-07-23,2026-10-28,1482981.0,0
+COCO,Consumer Defensive,Beverages - Non-Alcoholic,United States,336.0,2026-10-09,2026-10-22,False,2026-07-23,2026-10-22,1482981.0,0
 CODI,Industrials,Conglomerates,United States,4069.0,2026-10-09,2026-11-09,False,2026-08-10,2026-11-09,1345126.0,0
 COF,Financial Services,Credit Services,United States,78400.0,2026-10-09,2026-10-20,False,,2026-10-20,927628.0,0
 COGT,Healthcare,Biotechnology,United States,258.0,2026-10-09,2026-11-03,True,2026-08-10,2026-11-03,1622229.0,0
@@ -699,7 +702,7 @@ CRS,Industrials,Metal Fabrication,United States,4500.0,2026-10-09,2026-10-22,Fal
 CRSP,Healthcare,Biotechnology,Switzerland,,2026-10-09,2026-11-09,True,2026-08-03,2026-11-09,1674416.0,0
 CRSR,Technology,Computer Hardware,United States,2355.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1743759.0,0
 CRTO,Communication Services,Advertising Agencies,France,3543.0,2026-10-09,2026-10-28,True,2026-08-05,2026-10-28,1576427.0,0
-CRUS,Technology,Semiconductors,United States,1651.0,2026-10-09,2026-11-03,False,2026-08-05,2026-11-03,772406.0,0
+CRUS,Technology,Semiconductors,United States,1651.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,772406.0,0
 CRVL,Financial Services,Insurance Brokers,United States,5239.0,2026-10-09,2026-11-03,False,2026-08-05,2026-11-03,874866.0,0
 CRVS,Healthcare,Biotechnology,United States,37.0,2026-10-09,2026-11-03,False,2026-08-06,2026-11-03,1626971.0,0
 CRWD,Technology,Software - Infrastructure,United States,11706.0,2026-10-09,2026-12-01,False,2026-08-26,2026-12-01,1535527.0,0
@@ -711,7 +714,7 @@ CSL,Industrials,Building Products & Equipment,United States,5900.0,2026-10-09,20
 CSQR,Technology,Information Technology Services,United States,608.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,2105398.0,0
 CSR,Real Estate,REIT - Residential,United States,334.0,2026-10-09,2026-11-02,False,,2026-11-02,798359.0,0
 CSTL,Healthcare,Diagnostics & Research,United States,1002.0,2026-10-09,2026-11-02,False,2026-07-30,2026-11-02,1447362.0,0
-CSTM,Basic Materials,Aluminum,France,11500.0,2026-10-09,2026-10-28,True,2026-07-29,2026-10-28,1563411.0,0
+CSTM,Basic Materials,Aluminum,France,11500.0,2026-10-09,2026-10-28,False,2026-07-29,2026-10-28,1563411.0,0
 CSV,Consumer Cyclical,Personal Services,United States,1248.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1016281.0,0
 CSW,Industrials,Specialty Industrial Machinery,United States,2700.0,2026-10-09,2026-10-29,True,2026-07-30,2026-10-29,1624794.0,0
 CSWC,Financial Services,Asset Management,United States,36.0,2026-10-09,2026-11-02,False,2026-08-03,2026-11-02,17313.0,0
@@ -723,11 +726,11 @@ CTGO,Basic Materials,Gold,United States,6.0,2026-10-09,2026-11-12,True,,2026-11-
 CTKB,Healthcare,Medical Devices,United States,682.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1831915.0,0
 CTNM,Healthcare,Biotechnology,United States,51.0,2026-10-09,2026-10-29,True,2026-07-30,2026-10-29,1855175.0,0
 CTO,Real Estate,REIT - Diversified,United States,42.0,2026-10-09,2026-10-27,False,,2026-10-27,23795.0,0
-CTOS,Industrials,Rental & Leasing Services,United States,2500.0,2026-10-09,2026-10-27,False,2026-08-03,2026-10-27,1709682.0,0
+CTOS,Industrials,Rental & Leasing Services,United States,2500.0,2026-10-09,2026-10-26,False,2026-08-03,2026-10-26,1709682.0,0
 CTRE,Real Estate,REIT - Healthcare Facilities,United States,43.0,2026-10-09,2026-11-09,True,2026-08-06,2026-11-09,1590717.0,0
 CTRI,Utilities,Utilities - Regulated Gas,United States,9687.0,2026-10-09,2026-11-04,False,2026-08-04,2026-11-04,1981599.0,0
 CTRN,Consumer Cyclical,Apparel Retail,United States,2500.0,2026-10-09,,,2026-08-25,,1318484.0,0
-CTS,Technology,Electronic Components,United States,3492.0,2026-10-09,2026-10-27,True,2026-07-28,2026-10-27,26058.0,0
+CTS,Technology,Electronic Components,United States,3492.0,2026-10-09,2026-10-27,False,2026-07-28,2026-10-27,26058.0,0
 CTSH,Technology,Information Technology Services,United States,356700.0,2026-10-09,2026-10-29,False,,2026-10-29,1058290.0,0
 CTVA,Basic Materials,Agricultural Inputs,United States,,2026-10-09,2026-11-11,False,,2026-11-11,1755672.0,0
 CUBE,Real Estate,REIT - Industrial,United States,3121.0,2026-10-09,2026-10-29,False,,2026-10-29,1298675.0,0
@@ -751,7 +754,7 @@ CWBC,Financial Services,Banks - Regional,United States,418.0,2026-10-09,2026-10-
 CWEN,Utilities,Utilities - Renewable,United States,,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1567683.0,0
 CWH,Consumer Cyclical,Auto & Truck Dealerships,United States,11144.0,2026-10-09,2026-10-27,False,2026-07-29,2026-10-27,1669779.0,0
 CWK,Real Estate,Real Estate Services,United States,53000.0,2026-10-09,2026-10-29,False,2026-08-05,2026-10-29,1628369.0,0
-CWST,Industrials,Waste Management,United States,5600.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,911177.0,0
+CWST,Industrials,Waste Management,United States,5600.0,2026-10-09,2026-11-09,False,2026-08-06,2026-11-09,911177.0,0
 CWT,Utilities,Utilities - Regulated Water,United States,1336.0,2026-10-09,2026-10-28,False,,2026-10-28,1035201.0,0
 CX,Basic Materials,Building Materials,Mexico,38495.0,2026-10-09,2026-10-26,False,,2026-10-26,1076378.0,0
 CXM,Technology,Software - Application,United States,3258.0,2026-10-09,2026-12-02,True,2026-09-02,2026-12-02,1569345.0,0
@@ -762,7 +765,7 @@ CYTK,Healthcare,Biotechnology,United States,673.0,2026-10-09,2026-11-04,False,,2
 CZR,Consumer Cyclical,Resorts & Casinos,United States,50000.0,2026-10-09,2026-10-27,False,,2026-10-27,1590895.0,0
 D,Utilities,Utilities - Regulated Electric,United States,15200.0,2026-10-09,2026-10-30,False,,2026-10-30,715957.0,0
 DAKT,Technology,Electronic Components,United States,2423.0,2026-10-09,,,2026-09-02,,915779.0,0
-DAL,Industrials,Airlines,United States,103000.0,2026-10-09,2026-10-09,False,,2026-10-09,27904.0,0
+DAL,Industrials,Airlines,United States,103000.0,2026-10-09,,False,2026-10-09,2026-10-09,27904.0,0
 DAN,Consumer Cyclical,Auto Parts,United States,27300.0,2026-10-09,2026-10-28,False,,2026-10-28,26780.0,0
 DAR,Consumer Defensive,Packaged Foods,United States,15000.0,2026-10-09,2026-10-29,False,,2026-10-29,916540.0,0
 DASH,Consumer Cyclical,Internet Retail,United States,31400.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1792789.0,0
@@ -784,7 +787,7 @@ DDS,Consumer Cyclical,Department Stores,United States,,2026-10-09,2026-11-12,Tru
 DE,Industrials,Farm & Heavy Construction Machinery,United States,73100.0,2026-10-09,2026-11-25,False,,2026-11-25,315189.0,0
 DEA,Real Estate,REIT - Office,United States,55.0,2026-10-09,2026-10-26,False,,2026-10-26,1622194.0,0
 DEC,Energy,Oil & Gas Integrated,United States,1987.0,2026-10-09,2026-11-05,False,2026-08-05,2026-11-05,1922446.0,0
-DECK,Consumer Cyclical,Footwear & Accessories,United States,6000.0,2026-10-09,2026-10-22,True,2026-07-23,2026-10-22,910521.0,0
+DECK,Consumer Cyclical,Footwear & Accessories,United States,6000.0,2026-10-09,2026-10-22,False,2026-07-23,2026-10-22,910521.0,0
 DEI,Real Estate,REIT - Office,United States,778.0,2026-10-09,2026-11-03,False,,2026-11-03,1364250.0,0
 DELL,Technology,Computer Hardware,United States,97000.0,2026-10-09,2026-11-27,True,2026-09-01,2026-11-27,1571996.0,0
 DEO,Consumer Defensive,Beverages - Wineries & Distilleries,United Kingdom,27972.0,2026-10-09,,,2026-08-06,,835403.0,0
@@ -792,7 +795,7 @@ DFH,Consumer Cyclical,Residential Construction,United States,1911.0,2026-10-09,2
 DFIN,Technology,Software - Application,United States,1750.0,2026-10-09,2026-10-29,True,2026-07-30,2026-10-29,1669811.0,0
 DFTX,Healthcare,Biotechnology,United States,105.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1813814.0,0
 DG,Consumer Defensive,Discount Stores,United States,194000.0,2026-10-09,,,2026-08-27,,29534.0,0
-DGII,Technology,Communication Equipment,United States,913.0,2026-10-09,2026-11-11,True,2026-08-05,2026-11-11,854775.0,0
+DGII,Technology,Communication Equipment,United States,913.0,2026-10-09,2026-11-16,True,2026-08-05,2026-11-16,854775.0,0
 DGX,Healthcare,Diagnostics & Research,United States,46000.0,2026-10-09,2026-10-22,False,,2026-10-22,1022079.0,0
 DHC,Real Estate,REIT - Healthcare Facilities,United States,,2026-10-09,2026-11-02,False,,2026-11-02,1075415.0,0
 DHI,Consumer Cyclical,Residential Construction,United States,14341.0,2026-10-09,2026-10-29,False,,2026-10-29,882184.0,0
@@ -801,14 +804,14 @@ DHT,Energy,Oil & Gas Midstream,Bermuda,737.0,2026-10-09,2026-10-28,False,2026-08
 DIN,Consumer Cyclical,Restaurants,United States,,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,49754.0,0
 DINO,Energy,Oil & Gas Refining & Marketing,United States,5165.0,2026-10-09,2026-10-28,False,,2026-10-28,1915657.0,0
 DIOD,Technology,Semiconductors,United States,7989.0,2026-10-09,2026-11-05,False,2026-08-05,2026-11-05,29002.0,0
-DIS,Communication Services,Entertainment,United States,175560.0,2026-10-09,2026-11-12,True,2026-08-05,2026-11-12,1744489.0,0
+DIS,Communication Services,Entertainment,United States,175560.0,2026-10-09,2026-11-17,False,2026-08-05,2026-11-17,1744489.0,0
 DJCO,Technology,Software - Application,United States,415.0,2026-10-09,,,2026-08-12,,783412.0,0
 DJT,Communication Services,Internet Content & Information,United States,31.0,2026-10-09,2026-11-06,False,2026-08-10,2026-11-06,1849635.0,0
 DK,Energy,Oil & Gas Refining & Marketing,United States,1902.0,2026-10-09,2026-11-06,False,2026-08-05,2026-11-06,1694426.0,0
 DKL,Energy,Oil & Gas Refining & Marketing,United States,,2026-10-09,2026-11-06,False,2026-08-05,2026-11-06,1552797.0,0
 DKNG,Consumer Cyclical,Gambling,United States,5500.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1883685.0,0
 DKS,Consumer Cyclical,Specialty Retail,United States,31600.0,2026-10-09,2026-11-24,True,2026-08-25,2026-11-24,1089063.0,0
-DLB,Industrials,Specialty Business Services,United States,2051.0,2026-10-09,2026-11-17,True,2026-07-30,2026-11-17,1308547.0,0
+DLB,Industrials,Specialty Business Services,United States,2051.0,2026-10-09,2026-11-17,False,2026-07-30,2026-11-17,1308547.0,0
 DLO,Technology,Software - Infrastructure,Uruguay,1274.0,2026-10-09,2026-11-11,True,2026-08-13,2026-11-11,1846832.0,0
 DLR,Real Estate,REIT - Specialty,United States,4282.0,2026-10-09,2026-10-29,False,,2026-10-29,1297996.0,0
 DLTR,Consumer Defensive,Discount Stores,United States,150000.0,2026-10-09,,,2026-08-27,,935703.0,0
@@ -831,7 +834,7 @@ DOV,Industrials,Specialty Industrial Machinery,United States,24000.0,2026-10-09,
 DOW,Basic Materials,Chemicals,United States,32800.0,2026-10-09,2026-10-22,False,,2026-10-22,1751788.0,0
 DOX,Technology,Software - Infrastructure,United States,26969.0,2026-10-09,2026-11-03,False,,2026-11-03,1062579.0,0
 DPC,Industrials,Aerospace & Defense,United Kingdom,3070.0,2026-10-09,2026-11-09,True,2026-08-11,2026-11-09,2107018.0,0
-DPZ,Consumer Cyclical,Restaurants,United States,6200.0,2026-10-09,2026-10-13,False,,2026-10-13,1286681.0,0
+DPZ,Consumer Cyclical,Restaurants,United States,6200.0,2026-10-09,,False,2026-10-13,2026-10-13,1286681.0,0
 DQ,Technology,Semiconductor Equipment & Materials,China,3842.0,2026-10-09,2026-10-27,False,2026-08-20,2026-10-27,1477641.0,0
 DRD,Basic Materials,Gold,South Africa,,2026-10-09,,,2026-08-19,,1023512.0,0
 DRH,Real Estate,REIT - Hotel & Motel,United States,35.0,2026-10-09,2026-11-03,False,,2026-11-03,1298946.0,0
@@ -863,7 +866,7 @@ DYN,Healthcare,Biotechnology,United States,289.0,2026-10-09,2026-11-05,True,,202
 E,Energy,Oil & Gas Integrated,Italy,32168.0,2026-10-09,2026-10-23,False,,2026-10-23,1002242.0,0
 EAF,Industrials,Electrical Equipment & Parts,United States,1071.0,2026-10-09,2026-10-23,False,,2026-10-23,931148.0,0
 EAT,Consumer Cyclical,Restaurants,United States,20096.0,2026-10-09,2026-10-28,True,2026-08-12,2026-10-28,703351.0,0
-EBAY,Consumer Cyclical,Internet Retail,United States,12300.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1065088.0,0
+EBAY,Consumer Cyclical,Internet Retail,United States,12300.0,2026-10-09,2026-10-28,False,2026-08-05,2026-10-28,1065088.0,0
 EBC,Financial Services,Banks - Regional,United States,2247.0,2026-10-09,2026-10-22,False,,2026-10-22,1810546.0,1
 EBF,Industrials,Specialty Business Services,United States,1835.0,2026-10-09,2026-12-21,True,2026-09-21,2026-12-21,33002.0,0
 EBS,Healthcare,Drug Manufacturers - Specialty & Generic,United States,900.0,2026-10-09,2026-10-28,False,2026-08-05,2026-10-28,1367644.0,0
@@ -899,7 +902,7 @@ ELE,Basic Materials,Gold,Canada,39.0,2026-10-09,2026-11-12,False,2026-08-11,2026
 ELF,Consumer Defensive,Household & Personal Products,United States,849.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1600033.0,0
 ELMT,Industrials,Aerospace & Defense,United States,532.0,2026-10-09,2026-11-16,True,2026-08-13,2026-11-16,2101698.0,0
 ELPC,Utilities,Utilities - Regulated Electric,Brazil,4287.0,2026-10-09,2026-11-12,False,,2026-11-12,1041792.0,0
-ELS,Real Estate,REIT - Residential,United States,3700.0,2026-10-09,2026-10-21,True,2026-07-22,2026-10-21,895417.0,0
+ELS,Real Estate,REIT - Residential,United States,3700.0,2026-10-09,2026-10-20,False,2026-07-22,2026-10-20,895417.0,0
 ELV,Healthcare,Healthcare Plans,United States,96129.0,2026-10-09,2026-10-21,False,,2026-10-21,1156039.0,0
 ELVA,Industrials,Electrical Equipment & Parts,Canada,,2026-10-09,,,2026-08-10,,1844450.0,0
 ELVN,Healthcare,Biotechnology,United States,67.0,2026-10-09,2026-11-11,True,,2026-11-11,1672619.0,0
@@ -910,7 +913,7 @@ EME,Industrials,Engineering & Construction,United States,44000.0,2026-10-09,2026
 EMN,Basic Materials,Specialty Chemicals,United States,13000.0,2026-10-09,2026-10-29,False,,2026-10-29,915389.0,0
 EMR,Industrials,Specialty Industrial Machinery,United States,71000.0,2026-10-09,2026-11-04,False,2026-08-04,2026-11-04,32604.0,0
 ENB,Energy,Oil & Gas Midstream,Canada,14800.0,2026-10-09,2026-11-06,False,,2026-11-06,895728.0,0
-ENLT,Utilities,Utilities - Renewable,Israel,406.0,2026-10-09,2026-11-11,True,2026-08-04,2026-11-11,1922641.0,0
+ENLT,Utilities,Utilities - Renewable,Israel,406.0,2026-10-09,2026-11-03,False,2026-08-04,2026-11-03,1922641.0,0
 ENOV,Healthcare,Medical Devices,United States,7802.0,2026-10-09,2026-11-05,False,,2026-11-05,1420800.0,0
 ENPH,Technology,Solar,United States,2872.0,2026-10-09,2026-10-27,False,,2026-10-27,1463101.0,0
 ENR,Industrials,Electrical Equipment & Parts,United States,6050.0,2026-10-09,2026-11-17,True,2026-08-04,2026-11-17,1632790.0,0
@@ -920,10 +923,10 @@ ENTG,Technology,Semiconductor Equipment & Materials,United States,7700.0,2026-10
 ENVA,Financial Services,Credit Services,United States,1836.0,2026-10-09,2026-10-22,False,,2026-10-22,1529864.0,0
 EOG,Energy,Oil & Gas E&P,United States,3400.0,2026-10-09,2026-11-05,False,,2026-11-05,821189.0,0
 EOLS,Healthcare,Drug Manufacturers - Specialty & Generic,United States,353.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1570562.0,0
-EPAC,Industrials,Specialty Industrial Machinery,United States,2100.0,2026-10-09,2026-10-14,False,,2026-10-14,6955.0,0
+EPAC,Industrials,Specialty Industrial Machinery,United States,2100.0,2026-10-09,2026-10-21,True,,2026-10-21,6955.0,0
 EPAM,Technology,Information Technology Services,United States,62850.0,2026-10-09,2026-11-05,False,,2026-11-05,1352010.0,0
 EPC,Consumer Defensive,Household & Personal Products,United States,6700.0,2026-10-09,2026-11-12,True,2026-08-05,2026-11-12,1096752.0,0
-EPD,Energy,Oil & Gas Midstream,United States,,2026-10-09,2026-10-27,True,2026-07-30,2026-10-27,1061219.0,0
+EPD,Energy,Oil & Gas Midstream,United States,,2026-10-09,2026-10-29,False,2026-07-30,2026-10-29,1061219.0,0
 EPR,Real Estate,REIT - Specialty,United States,54.0,2026-10-09,2026-10-28,False,,2026-10-28,1045450.0,0
 EPRT,Real Estate,REIT - Retail,United States,56.0,2026-10-09,2026-10-21,False,,2026-10-21,1728951.0,0
 EPRX,Healthcare,Biotechnology,Canada,49.0,2026-10-09,2026-11-03,True,,2026-11-03,1581178.0,0
@@ -957,7 +960,7 @@ ET,Energy,Oil & Gas Midstream,United States,22311.0,2026-10-09,2026-11-03,False,
 ETD,Consumer Cyclical,"Furnishings, Fixtures & Appliances",United States,3062.0,2026-10-09,2026-10-28,False,2026-07-29,2026-10-28,896156.0,0
 ETN,Industrials,Specialty Industrial Machinery,Ireland,97303.0,2026-10-09,2026-11-03,True,2026-07-31,2026-11-03,1551182.0,0
 ETON,Healthcare,Drug Manufacturers - Specialty & Generic,United States,44.0,2026-10-09,2026-11-12,False,2026-08-13,2026-11-12,1710340.0,0
-ETOR,Financial Services,Capital Markets,Israel,1520.0,2026-10-09,2026-11-09,True,2026-08-11,2026-11-09,1493318.0,0
+ETOR,Financial Services,Capital Markets,Israel,1520.0,2026-10-09,2026-11-10,False,2026-08-11,2026-11-10,1493318.0,0
 ETR,Utilities,Utilities - Regulated Electric,United States,12000.0,2026-10-09,2026-11-02,False,,2026-11-02,65984.0,0
 ETRA,Healthcare,Biotechnology,United States,46.0,2026-10-09,,,,,2088082.0,0
 ETSY,Consumer Cyclical,Internet Retail,United States,2375.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1370637.0,0
@@ -990,9 +993,9 @@ FA,Industrials,Specialty Business Services,United States,9500.0,2026-10-09,2026-
 FAF,Financial Services,Insurance - Specialty,United States,19102.0,2026-10-09,2026-10-21,False,,2026-10-21,1472787.0,0
 FANG,Energy,Oil & Gas E&P,United States,1762.0,2026-10-09,2026-11-02,False,,2026-11-02,1539838.0,0
 FAST,Industrials,Industrial Distribution,United States,22230.0,2026-10-09,2026-10-14,False,,2026-10-14,815556.0,0
-FBIN,Industrials,Building Products & Equipment,United States,10000.0,2026-10-09,2026-11-12,False,2026-08-04,2026-11-12,1519751.0,0
+FBIN,Industrials,Building Products & Equipment,United States,10000.0,2026-10-09,2026-11-03,False,2026-08-04,2026-11-03,1519751.0,0
 FBIZ,Financial Services,Banks - Regional,United States,355.0,2026-10-09,2026-10-29,False,,2026-10-29,1521951.0,1
-FBK,Financial Services,Banks - Regional,United States,1594.0,2026-10-09,2026-10-13,False,,2026-10-13,1649749.0,1
+FBK,Financial Services,Banks - Regional,United States,1594.0,2026-10-09,,False,2026-10-13,2026-10-13,1649749.0,1
 FBNC,Financial Services,Banks - Regional,United States,1396.0,2026-10-09,2026-10-21,True,2026-07-22,2026-10-21,811589.0,1
 FBP,Financial Services,Banks - Regional,United States,3218.0,2026-10-09,2026-10-22,False,,2026-10-22,1057706.0,1
 FBRT,Real Estate,REIT - Mortgage,United States,252.0,2026-10-09,2026-10-28,False,,2026-10-28,1562528.0,0
@@ -1013,7 +1016,7 @@ FEIM,Technology,Communication Equipment,United States,232.0,2026-10-09,2026-12-1
 FELE,Industrials,Specialty Industrial Machinery,United States,6500.0,2026-10-09,2026-10-27,True,2026-07-28,2026-10-27,38725.0,0
 FER,Industrials,Engineering & Construction,Netherlands,22359.0,2026-10-09,2026-10-27,False,,2026-10-27,1468522.0,0
 FERG,Industrials,Industrial Distribution,United States,35000.0,2026-10-09,2026-11-09,False,,2026-11-09,2011641.0,0
-FET,Energy,Oil & Gas Equipment & Services,United States,1700.0,2026-10-09,2026-10-29,True,2026-07-30,2026-10-29,1401257.0,0
+FET,Energy,Oil & Gas Equipment & Services,United States,1700.0,2026-10-09,2026-10-29,False,2026-07-30,2026-10-29,1401257.0,0
 FFBC,Financial Services,Banks - Regional,United States,2371.0,2026-10-09,2026-10-27,False,,2026-10-27,708955.0,1
 FFIN,Financial Services,Banks - Regional,United States,1500.0,2026-10-09,2026-10-22,True,2026-07-16,2026-10-22,36029.0,1
 FFIV,Technology,Software - Infrastructure,United States,6512.0,2026-10-09,2026-10-27,False,,2026-10-27,1048695.0,0
@@ -1027,7 +1030,7 @@ FIG,Technology,Software - Application,United States,1886.0,2026-10-09,2026-11-04
 FIGR,Financial Services,Capital Markets,United States,602.0,2026-10-09,2026-11-12,False,2026-08-13,2026-11-12,2064124.0,0
 FIGS,Consumer Cyclical,Apparel Manufacturing,United States,330.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1846576.0,0
 FIRY,Communication Services,Electronic Gaming & Multimedia,United States,370.0,2026-10-09,2026-11-12,True,2026-08-13,2026-11-12,1801661.0,0
-FIS,Technology,Information Technology Services,United States,44000.0,2026-10-09,2026-11-04,True,2026-08-04,2026-11-04,1136893.0,0
+FIS,Technology,Information Technology Services,United States,44000.0,2026-10-09,2026-11-03,False,2026-08-04,2026-11-03,1136893.0,0
 FISI,Financial Services,Banks - Regional,United States,631.0,2026-10-09,2026-10-29,False,,2026-10-29,862831.0,1
 FISV,,,,,2026-10-09,2026-11-03,False,,2026-11-03,798354.0,0
 FITB,Financial Services,Banks - Regional,United States,25197.0,2026-10-09,2026-10-19,False,,2026-10-19,35527.0,1
@@ -1043,9 +1046,9 @@ FLNG,Energy,Oil & Gas Midstream,Bermuda,9.0,2026-10-09,,,2026-08-19,,1772253.0,0
 FLO,Consumer Defensive,Packaged Foods,United States,10300.0,2026-10-09,2026-11-05,True,2026-08-20,2026-11-05,1128928.0,0
 FLOC,Energy,Oil & Gas Equipment & Services,United States,1281.0,2026-10-09,2026-11-11,False,2026-08-11,2026-11-11,2035149.0,0
 FLR,Industrials,Engineering & Construction,United States,22995.0,2026-10-09,2026-11-06,False,,2026-11-06,1124198.0,0
-FLS,Industrials,Specialty Industrial Machinery,United States,16000.0,2026-10-09,2026-10-27,True,2026-07-29,2026-10-27,30625.0,0
+FLS,Industrials,Specialty Industrial Machinery,United States,16000.0,2026-10-09,2026-10-28,False,2026-07-29,2026-10-28,30625.0,0
 FLUT,Consumer Cyclical,Gambling,United States,28518.0,2026-10-09,2026-11-04,False,,2026-11-04,1635327.0,0
-FLXS,Consumer Cyclical,"Furnishings, Fixtures & Appliances",United States,1200.0,2026-10-09,2026-10-19,True,2026-08-17,2026-10-19,37472.0,0
+FLXS,Consumer Cyclical,"Furnishings, Fixtures & Appliances",United States,1200.0,2026-10-09,2026-10-26,False,2026-08-17,2026-10-26,37472.0,0
 FLY,Industrials,Aerospace & Defense,United States,1409.0,2026-10-09,2026-11-11,True,2026-08-11,2026-11-11,1860160.0,0
 FLYW,Technology,Software - Infrastructure,United States,1500.0,2026-10-09,2026-11-03,False,2026-08-04,2026-11-03,1580560.0,0
 FMBH,Financial Services,Banks - Regional,United States,1316.0,2026-10-09,2026-10-29,True,2026-07-23,2026-10-29,700565.0,1
@@ -1058,13 +1061,13 @@ FNB,Financial Services,Banks - Regional,United States,4128.0,2026-10-09,2026-10-
 FND,Consumer Cyclical,Home Improvement Retail,United States,10469.0,2026-10-09,2026-10-29,False,,2026-10-29,1507079.0,0
 FNF,Financial Services,Insurance - Specialty,United States,24535.0,2026-10-09,2026-11-05,False,,2026-11-05,1331875.0,0
 FNKO,Consumer Cyclical,Leisure,United States,1104.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1704711.0,0
-FNV,Basic Materials,Gold,Canada,,2026-10-09,2026-11-03,True,2026-08-11,2026-11-03,1456346.0,0
+FNV,Basic Materials,Gold,Canada,,2026-10-09,2026-11-11,False,2026-08-11,2026-11-11,1456346.0,0
 FOR,Real Estate,Real Estate - Development,United States,402.0,2026-10-09,2026-10-29,False,,2026-10-29,1406587.0,0
 FORM,Technology,Semiconductor Equipment & Materials,United States,2153.0,2026-10-09,2026-10-28,False,,2026-10-28,1039399.0,0
 FOSL,Consumer Cyclical,Footwear & Accessories,United States,4500.0,2026-10-09,2026-11-12,True,2026-08-12,2026-11-12,883569.0,0
 FOUR,Technology,Software - Infrastructure,United States,6300.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1794669.0,0
-FOX,Communication Services,Entertainment,United States,10550.0,2026-10-09,2026-10-29,True,2026-08-06,2026-10-29,1754301.0,0
-FOXA,Communication Services,Entertainment,United States,10550.0,2026-10-09,2026-10-29,True,2026-08-06,2026-10-29,1754301.0,0
+FOX,Communication Services,Entertainment,United States,10550.0,2026-10-09,2026-11-02,False,2026-08-06,2026-11-02,1754301.0,0
+FOXA,Communication Services,Entertainment,United States,10550.0,2026-10-09,2026-11-02,False,2026-08-06,2026-11-02,1754301.0,0
 FOXF,Consumer Cyclical,Auto Parts,United States,3700.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1424929.0,0
 FPI,Real Estate,REIT - Specialty,United States,11.0,2026-10-09,2026-11-04,False,2026-07-29,2026-11-04,1591670.0,0
 FPS,Industrials,Electrical Equipment & Parts,United States,3000.0,2026-10-09,,,2026-09-15,,2080126.0,0
@@ -1086,7 +1089,7 @@ FSLR,Technology,Solar,United States,7900.0,2026-10-09,2026-10-29,True,2026-07-30
 FSLY,Technology,Software - Application,United States,1140.0,2026-10-09,2026-11-04,False,,2026-11-04,1517413.0,0
 FSM,Basic Materials,Gold,Canada,,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1341335.0,0
 FSS,Industrials,Farm & Heavy Construction Machinery,United States,5800.0,2026-10-09,2026-10-29,True,2026-07-30,2026-10-29,277509.0,0
-FSUN,Financial Services,Banks - Regional,United States,1630.0,2026-10-09,2026-10-26,True,2026-07-27,2026-10-26,1709442.0,1
+FSUN,Financial Services,Banks - Regional,United States,1630.0,2026-10-09,2026-10-26,False,2026-07-27,2026-10-26,1709442.0,1
 FSV,Real Estate,Real Estate Services,Canada,30000.0,2026-10-09,2026-10-22,False,,2026-10-22,1637810.0,0
 FTAI,Industrials,Aerospace & Defense,United States,985.0,2026-10-09,2026-10-29,False,,2026-10-29,1590364.0,0
 FTDR,Consumer Cyclical,Personal Services,United States,2034.0,2026-10-09,2026-11-05,False,,2026-11-05,1727263.0,0
@@ -1115,7 +1118,7 @@ GABC,Financial Services,Banks - Regional,United States,984.0,2026-10-09,2026-10-
 GAP,Consumer Cyclical,Apparel Retail,United States,79000.0,2026-10-09,2026-11-19,True,2026-08-27,2026-11-19,39911.0,0
 GATX,Industrials,Rental & Leasing Services,United States,2371.0,2026-10-09,2026-10-29,False,,2026-10-29,40211.0,0
 GBCI,Financial Services,Banks - Regional,United States,4125.0,2026-10-09,2026-10-22,False,,2026-10-22,868671.0,1
-GBX,Industrials,Railroads,United States,11000.0,2026-10-09,2026-10-28,True,,2026-10-28,923120.0,0
+GBX,Industrials,Railroads,United States,11000.0,2026-10-09,2026-10-26,False,,2026-10-26,923120.0,0
 GCMG,Financial Services,Asset Management,United States,550.0,2026-10-09,2026-11-05,True,2026-08-10,2026-11-05,1819796.0,0
 GCO,Consumer Cyclical,Apparel Retail,United States,4800.0,2026-10-09,2026-12-03,True,2026-09-03,2026-12-03,18498.0,0
 GCT,Technology,Software - Infrastructure,United States,1644.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1857816.0,0
@@ -1169,7 +1172,7 @@ GLXY,Financial Services,Capital Markets,United States,750.0,2026-10-09,2026-10-2
 GM,Consumer Cyclical,Auto Manufacturers,United States,156000.0,2026-10-09,2026-10-20,False,,2026-10-20,1467858.0,0
 GMAB,Healthcare,Biotechnology,Denmark,3119.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1434265.0,0
 GME,Consumer Cyclical,Specialty Retail,United States,4000.0,2026-10-09,2026-12-08,True,2026-09-08,2026-12-08,1326380.0,0
-GMED,Healthcare,Medical Devices,United States,6000.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1237831.0,0
+GMED,Healthcare,Medical Devices,United States,6000.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1237831.0,0
 GMRS,Healthcare,Medical Care Facilities,United States,34000.0,2026-10-09,2026-11-16,True,2026-08-12,2026-11-16,1898718.0,0
 GNK,Industrials,Marine Shipping,United States,1056.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1326200.0,0
 GNL,Real Estate,REIT - Diversified,United States,56.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1526113.0,0
@@ -1202,7 +1205,7 @@ GRND,Technology,Software - Application,United States,172.0,2026-10-09,2026-11-05
 GRNT,Energy,Oil & Gas E&P,United States,6.0,2026-10-09,2026-11-05,False,,2026-11-05,1928446.0,0
 GRPN,Communication Services,Internet Content & Information,United States,1734.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1490281.0,0
 GRRR,Technology,Software - Infrastructure,United Kingdom,193.0,2026-10-09,2026-11-16,False,2026-08-24,2026-11-16,1903145.0,0
-GS,Financial Services,Capital Markets,United States,46200.0,2026-10-09,2026-10-13,False,,2026-10-13,886982.0,0
+GS,Financial Services,Capital Markets,United States,46200.0,2026-10-09,,False,2026-10-13,2026-10-13,886982.0,0
 GSAT,Communication Services,Telecom Services,United States,477.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1366868.0,0
 GSBC,Financial Services,Banks - Regional,United States,857.0,2026-10-09,2026-10-21,False,,2026-10-21,854560.0,1
 GSBD,Financial Services,Asset Management,United States,,2026-10-09,2026-11-05,False,,2026-11-05,1572694.0,0
@@ -1221,7 +1224,7 @@ GWW,Industrials,Industrial Distribution,United States,22100.0,2026-10-09,2026-11
 GXO,Industrials,Integrated Freight & Logistics,United States,150000.0,2026-10-09,2026-11-03,False,,2026-11-03,1852244.0,0
 H,Consumer Cyclical,Lodging,United States,50000.0,2026-10-09,2026-10-29,False,,2026-10-29,1468174.0,0
 HAE,Healthcare,Medical Devices,United States,3009.0,2026-10-09,2026-11-05,False,,2026-11-05,313143.0,0
-HAFC,Financial Services,Banks - Regional,United States,606.0,2026-10-09,2026-10-20,False,2026-07-21,2026-10-20,1109242.0,1
+HAFC,Financial Services,Banks - Regional,United States,606.0,2026-10-09,2026-10-27,False,2026-07-21,2026-10-27,1109242.0,1
 HAFN,Industrials,Marine Shipping,Singapore,4000.0,2026-10-09,2026-11-18,False,,2026-11-18,1815779.0,0
 HAL,Energy,Oil & Gas Equipment & Services,United States,46000.0,2026-10-09,2026-10-20,False,,2026-10-20,45012.0,0
 HALO,Healthcare,Biotechnology,United States,423.0,2026-10-09,2026-11-02,True,2026-08-06,2026-11-02,1159036.0,0
@@ -1252,7 +1255,7 @@ HFWA,Financial Services,Banks - Regional,United States,976.0,2026-10-09,2026-10-
 HG,Financial Services,Insurance - Reinsurance,Bermuda,600.0,2026-10-09,2026-10-29,False,,2026-10-29,1593275.0,0
 HGTY,Financial Services,Insurance - Property & Casualty,United States,1891.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1840776.0,0
 HGV,Consumer Cyclical,Resorts & Casinos,United States,22300.0,2026-10-09,2026-10-29,True,2026-07-30,2026-10-29,1674168.0,0
-HHH,Real Estate,Real Estate - Development,United States,500.0,2026-10-09,2026-11-09,True,2026-08-05,2026-11-09,1981792.0,0
+HHH,Real Estate,Real Estate - Development,United States,500.0,2026-10-09,2026-11-05,False,2026-08-05,2026-11-05,1981792.0,0
 HIFS,Financial Services,Banks - Regional,United States,93.0,2026-10-09,2026-10-16,True,2026-07-17,2026-10-16,,1
 HIG,Financial Services,Insurance - Diversified,United States,19200.0,2026-10-09,2026-10-26,False,,2026-10-26,874766.0,0
 HII,Industrials,Aerospace & Defense,United States,45000.0,2026-10-09,2026-10-29,False,,2026-10-29,1501585.0,0
@@ -1294,7 +1297,7 @@ HQ,Technology,Software - Infrastructure,Singapore,,2026-10-09,,,,,2088256.0,0
 HQY,Healthcare,Health Information Services,United States,2814.0,2026-10-09,,,2026-08-27,,1428336.0,0
 HR,Real Estate,REIT - Healthcare Facilities,United States,539.0,2026-10-09,2026-10-29,False,,2026-10-29,1360604.0,0
 HRB,Consumer Cyclical,Personal Services,United States,4600.0,2026-10-09,2026-11-05,True,2026-08-11,2026-11-05,12659.0,0
-HRI,Industrials,Rental & Leasing Services,United States,9600.0,2026-10-09,2026-10-27,True,2026-07-28,2026-10-27,1364479.0,0
+HRI,Industrials,Rental & Leasing Services,United States,9600.0,2026-10-09,2026-10-27,False,2026-07-28,2026-10-27,1364479.0,0
 HRL,Consumer Defensive,Packaged Foods,United States,20000.0,2026-10-09,,,2026-08-27,,48465.0,0
 HRMY,Healthcare,Biotechnology,United States,293.0,2026-10-09,2026-11-03,False,2026-08-04,2026-11-03,1802665.0,0
 HROW,Healthcare,Drug Manufacturers - Specialty & Generic,United States,373.0,2026-10-09,2026-11-09,False,2026-08-10,2026-11-09,1360214.0,0
@@ -1313,7 +1316,7 @@ HTH,Financial Services,Financial Conglomerates,United States,3600.0,2026-10-09,2
 HTHT,Consumer Cyclical,Lodging,China,26458.0,2026-10-09,2026-11-17,True,2026-08-17,2026-11-17,1483994.0,0
 HTLD,Industrials,Trucking,United States,3630.0,2026-10-09,2026-10-29,True,2026-07-30,2026-10-29,799233.0,0
 HTO,Utilities,Utilities - Regulated Water,United States,837.0,2026-10-09,2026-10-26,False,2026-07-27,2026-10-26,766829.0,0
-HUBB,Industrials,Electrical Equipment & Parts,United States,19400.0,2026-10-09,2026-10-27,True,2026-07-28,2026-10-27,48898.0,0
+HUBB,Industrials,Electrical Equipment & Parts,United States,19400.0,2026-10-09,2026-10-27,False,2026-07-28,2026-10-27,48898.0,0
 HUBG,Industrials,Integrated Freight & Logistics,United States,6604.0,2026-10-09,,,2026-03-30,,940942.0,0
 HUBS,Technology,Software - Application,United States,9016.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1404655.0,0
 HUM,Healthcare,Healthcare Plans,United States,67060.0,2026-10-09,2026-11-06,False,,2026-11-06,49071.0,0
@@ -1346,7 +1349,7 @@ ICHR,Technology,Semiconductor Equipment & Materials,United States,1891.0,2026-10
 ICLR,Healthcare,Diagnostics & Research,Ireland,40200.0,2026-10-09,2026-10-27,False,,2026-10-27,1060955.0,0
 ICUI,Healthcare,Medical Instruments & Supplies,United States,13000.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,883984.0,0
 IDA,Utilities,Utilities - Regulated Electric,United States,2174.0,2026-10-09,2026-10-29,False,2026-07-30,2026-10-29,1057877.0,0
-IDCC,Technology,Software - Application,United States,460.0,2026-10-09,2026-10-29,True,2026-07-30,2026-10-29,1405495.0,0
+IDCC,Technology,Software - Application,United States,460.0,2026-10-09,2026-10-29,False,2026-07-30,2026-10-29,1405495.0,0
 IDR,Basic Materials,Gold,United States,62.0,2026-10-09,2026-11-11,True,2026-08-13,2026-11-11,1030192.0,0
 IDT,Communication Services,Telecom Services,United States,1965.0,2026-10-09,2026-12-03,True,2026-09-28,2026-12-03,1005731.0,0
 IDXX,Healthcare,Diagnostics & Research,United States,11000.0,2026-10-09,2026-11-02,False,,2026-11-02,874716.0,0
@@ -1383,7 +1386,7 @@ ING,Financial Services,Banks - Diversified,Netherlands,60000.0,2026-10-09,2026-1
 INGM,Technology,Information Technology Services,United States,22200.0,2026-10-09,2026-11-10,False,2026-07-30,2026-11-10,1897762.0,0
 INGR,Consumer Defensive,Packaged Foods,United States,11000.0,2026-10-09,2026-11-03,True,2026-08-04,2026-11-03,1046257.0,0
 INIO,Industrials,Specialty Industrial Machinery,Germany,5467.0,2026-10-09,2026-10-27,True,2026-07-28,2026-10-27,2109150.0,0
-INMD,Healthcare,Medical Devices,Israel,660.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1742692.0,0
+INMD,Healthcare,Medical Devices,Israel,660.0,2026-10-09,2026-11-11,False,2026-08-05,2026-11-11,1742692.0,0
 INN,Real Estate,REIT - Hotel & Motel,United States,78.0,2026-10-09,2026-11-03,False,,2026-11-03,1497645.0,0
 INNV,Healthcare,Medical Care Facilities,United States,2500.0,2026-10-09,2026-11-03,True,2026-09-08,2026-11-03,1834376.0,0
 INOD,Technology,Information Technology Services,United States,10020.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,903651.0,0
@@ -1391,7 +1394,7 @@ INR,Energy,Oil & Gas E&P,United States,101.0,2026-10-09,2026-11-09,True,2026-08-
 INSM,Healthcare,Biotechnology,United States,1664.0,2026-10-09,2026-10-29,False,,2026-10-29,1104506.0,0
 INSP,Healthcare,Medical Devices,United States,1333.0,2026-10-09,2026-11-02,False,,2026-11-02,1609550.0,0
 INSW,Energy,Oil & Gas Midstream,United States,2837.0,2026-10-09,2026-11-05,False,2026-08-10,2026-11-05,1679049.0,0
-INTA,Technology,Software - Application,United States,1340.0,2026-10-09,2026-11-03,True,2026-08-04,2026-11-03,1565687.0,0
+INTA,Technology,Software - Application,United States,1340.0,2026-10-09,2026-10-27,False,2026-08-04,2026-10-27,1565687.0,0
 INTC,Technology,Semiconductors,United States,85100.0,2026-10-09,2026-10-29,False,,2026-10-29,50863.0,0
 INTR,Financial Services,Banks - Regional,Brazil,,2026-10-09,2026-11-12,True,2026-08-05,2026-11-12,1864163.0,1
 INTU,Technology,Software - Application,United States,18600.0,2026-10-09,2026-11-19,True,2026-08-25,2026-11-19,896878.0,0
@@ -1423,6 +1426,7 @@ IRTC,Healthcare,Medical Devices,United States,2400.0,2026-10-09,2026-11-05,False
 ISRG,Healthcare,Medical Instruments & Supplies,United States,17021.0,2026-10-09,2026-10-20,False,,2026-10-20,1035267.0,0
 ISTR,Financial Services,Banks - Regional,United States,421.0,2026-10-09,2026-10-19,True,2026-07-20,2026-10-19,1602658.0,1
 IT,Technology,Information Technology Services,United States,19285.0,2026-10-09,2026-11-03,True,2026-08-04,2026-11-03,749251.0,0
+ITG,Industrials,Engineering & Construction,United States,2900.0,2026-10-14,2026-11-11,False,2026-08-12,2026-11-11,2110117.0,0
 ITGR,Healthcare,Medical Devices,United States,11000.0,2026-10-09,2026-10-29,True,2026-08-03,2026-10-29,1114483.0,0
 ITIC,Financial Services,Insurance - Specialty,United States,548.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,720858.0,0
 ITRI,Technology,Scientific & Technical Instruments,United States,4987.0,2026-10-09,2026-10-27,False,,2026-10-27,780571.0,0
@@ -1458,11 +1462,11 @@ JKS,Technology,Solar,China,26409.0,2026-10-09,2026-11-16,True,2026-08-26,2026-11
 JLL,Real Estate,Real Estate Services,United States,112000.0,2026-10-09,2026-10-28,False,,2026-10-28,1037976.0,0
 JMIA,Consumer Cyclical,Internet Retail,Germany,1770.0,2026-10-09,2026-11-11,False,2026-08-12,2026-11-11,1756708.0,0
 JMKE,Consumer Cyclical,Restaurants,United States,899.0,2026-10-09,2026-10-28,False,,2026-10-28,2127043.0,0
-JNJ,Healthcare,Drug Manufacturers - General,United States,138200.0,2026-10-09,2026-10-13,False,,2026-10-13,200406.0,0
+JNJ,Healthcare,Drug Manufacturers - General,United States,138200.0,2026-10-09,,False,2026-10-13,2026-10-13,200406.0,0
 JOBY,Industrials,Airports & Air Services,United States,2559.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1819848.0,0
 JOE,Real Estate,Real Estate - Diversified,United States,906.0,2026-10-09,2026-10-28,False,2026-07-29,2026-10-28,745308.0,0
 JOYY,Communication Services,Internet Content & Information,Singapore,5421.0,2026-10-09,2026-11-18,True,2026-08-25,2026-11-18,1530238.0,0
-JPM,Financial Services,Banks - Diversified,United States,320560.0,2026-10-09,2026-10-13,False,,2026-10-13,19617.0,1
+JPM,Financial Services,Banks - Diversified,United States,320560.0,2026-10-09,,False,2026-10-13,2026-10-13,19617.0,1
 JXN,Financial Services,Insurance - Life,United States,3090.0,2026-10-09,2026-11-03,False,,2026-11-03,1822993.0,0
 KAI,Industrials,Specialty Industrial Machinery,United States,4000.0,2026-10-09,2026-11-03,True,2026-08-04,2026-11-03,886346.0,0
 KALU,Basic Materials,Aluminum,United States,3800.0,2026-10-09,2026-10-21,False,,2026-10-21,811596.0,0
@@ -1485,8 +1489,8 @@ KFRC,Industrials,Staffing & Employment Services,United States,1600.0,2026-10-09,
 KFY,Industrials,Staffing & Employment Services,United States,8965.0,2026-10-09,2026-12-08,True,2026-09-09,2026-12-08,56679.0,0
 KGC,Basic Materials,Gold,Canada,,2026-10-09,2026-10-28,False,,2026-10-28,701818.0,0
 KGS,Energy,Oil & Gas Equipment & Services,United States,1300.0,2026-10-09,2026-11-03,False,2026-08-06,2026-11-03,1767042.0,0
-KHC,Consumer Defensive,Packaged Foods,United States,35000.0,2026-10-09,2026-10-28,False,2026-08-05,2026-10-28,1637459.0,0
-KIDS,Healthcare,Medical Devices,United States,602.0,2026-10-09,2026-10-28,True,2026-08-04,2026-10-28,1425450.0,0
+KHC,Consumer Defensive,Packaged Foods,United States,35000.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1637459.0,0
+KIDS,Healthcare,Medical Devices,United States,602.0,2026-10-09,2026-10-27,False,2026-08-04,2026-10-27,1425450.0,0
 KIM,Real Estate,REIT - Retail,United States,710.0,2026-10-09,2026-10-29,False,,2026-10-29,879101.0,0
 KKR,Financial Services,Asset Management,United States,5043.0,2026-10-09,2026-11-09,False,,2026-11-09,1404912.0,0
 KLAC,Technology,Semiconductor Equipment & Materials,United States,17000.0,2026-10-09,2026-10-28,False,,2026-10-28,319201.0,0
@@ -1503,7 +1507,7 @@ KN,Technology,Electronic Components,United States,5200.0,2026-10-09,2026-10-22,F
 KNF,Basic Materials,Building Materials,United States,5298.0,2026-10-09,2026-11-03,False,2026-08-04,2026-11-03,1955520.0,0
 KNSA,Healthcare,Drug Manufacturers - Specialty & Generic,United Kingdom,366.0,2026-10-09,2026-10-27,False,2026-07-28,2026-10-27,1730430.0,0
 KNSL,Financial Services,Insurance - Property & Casualty,United States,711.0,2026-10-09,2026-10-22,False,,2026-10-22,1669162.0,0
-KNTK,Energy,Oil & Gas Midstream,United States,500.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1692787.0,0
+KNTK,Energy,Oil & Gas Midstream,United States,500.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1692787.0,0
 KNX,Industrials,Trucking,United States,37100.0,2026-10-09,2026-10-21,False,,2026-10-21,1492691.0,0
 KO,Consumer Defensive,Beverages - Non-Alcoholic,United States,65900.0,2026-10-09,2026-10-27,False,,2026-10-27,21344.0,0
 KOD,Healthcare,Biotechnology,United States,141.0,2026-10-09,2026-11-12,True,,2026-11-12,1468748.0,0
@@ -1522,7 +1526,7 @@ KRP,Energy,Oil & Gas E&P,United States,,2026-10-09,2026-11-05,False,,2026-11-05,
 KRT,Consumer Cyclical,Packaging & Containers,United States,636.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1758021.0,0
 KRUS,Consumer Cyclical,Restaurants,United States,3900.0,2026-10-09,2026-11-05,False,,2026-11-05,1772177.0,0
 KRYS,Healthcare,Biotechnology,United States,295.0,2026-10-09,2026-11-02,True,2026-08-03,2026-11-02,1711279.0,0
-KSPI,Technology,Software - Infrastructure,Kazakhstan,14008.0,2026-10-09,2026-10-21,False,2026-08-10,2026-10-21,1985487.0,0
+KSPI,Technology,Software - Infrastructure,Kazakhstan,14008.0,2026-10-09,2026-11-09,False,2026-08-10,2026-11-09,1985487.0,0
 KSS,Consumer Cyclical,Department Stores,United States,84000.0,2026-10-09,2026-11-24,True,2026-08-26,2026-11-24,885639.0,0
 KT,Communication Services,Telecom Services,South Korea,13886.0,2026-10-09,2026-11-05,True,,2026-11-05,892450.0,0
 KTB,Consumer Cyclical,Apparel Manufacturing,United States,10600.0,2026-10-09,2026-10-29,True,2026-08-12,2026-10-29,1760965.0,0
@@ -1534,7 +1538,7 @@ KWR,Basic Materials,Specialty Chemicals,United States,4700.0,2026-10-09,2026-10-
 KYIV,Communication Services,Telecom Services,United Arab Emirates,5667.0,2026-10-09,2026-11-06,False,,2026-11-06,2062440.0,0
 KYMR,Healthcare,Biotechnology,United States,273.0,2026-10-09,2026-11-03,False,2026-08-05,2026-11-03,1815442.0,0
 KYTX,Healthcare,Biotechnology,United States,149.0,2026-10-09,2026-11-11,True,,2026-11-11,1994702.0,0
-L,Financial Services,Insurance - Property & Casualty,United States,13100.0,2026-10-09,2026-11-02,True,2026-08-03,2026-11-02,60086.0,0
+L,Financial Services,Insurance - Property & Casualty,United States,13100.0,2026-10-09,2026-11-02,False,2026-08-03,2026-11-02,60086.0,0
 LAD,Consumer Cyclical,Auto & Truck Dealerships,United States,30000.0,2026-10-09,2026-10-21,False,,2026-10-21,1023128.0,0
 LADR,Real Estate,REIT - Mortgage,United States,60.0,2026-10-09,2026-10-22,True,2026-07-23,2026-10-22,1577670.0,0
 LAMR,Real Estate,REIT - Specialty,United States,3500.0,2026-10-09,2026-11-05,False,,2026-11-05,1090425.0,0
@@ -1567,8 +1571,8 @@ LGND,Healthcare,Biotechnology,United States,47.0,2026-10-09,2026-11-05,False,202
 LH,Healthcare,Diagnostics & Research,United States,71000.0,2026-10-09,2026-10-28,False,,2026-10-28,920148.0,0
 LHX,Industrials,Aerospace & Defense,United States,45000.0,2026-10-09,2026-10-29,False,,2026-10-29,202058.0,0
 LI,Consumer Cyclical,Auto Manufacturers,China,27048.0,2026-10-09,2026-11-25,True,2026-08-26,2026-11-25,1791706.0,0
-LIF,Technology,Software - Application,United States,547.0,2026-10-09,2026-11-09,True,2026-08-10,2026-11-09,1581760.0,0
-LIFE,Financial Services,Insurance Brokers,United States,614.0,2026-10-09,2026-11-04,False,2026-08-03,2026-11-04,1788451.0,0
+LIF,Technology,Software - Application,United States,547.0,2026-10-09,2026-11-09,False,2026-08-10,2026-11-09,1581760.0,0
+LIFE,Financial Services,Insurance Brokers,United States,614.0,2026-10-09,2026-11-02,False,2026-08-03,2026-11-02,1788451.0,0
 LII,Industrials,Building Products & Equipment,United States,5400.0,2026-10-09,2026-10-28,False,,2026-10-28,1069202.0,0
 LILA,Communication Services,Telecom Services,Bermuda,9000.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1712184.0,0
 LILAK,Communication Services,Telecom Services,Bermuda,9000.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1712184.0,0
@@ -1586,7 +1590,7 @@ LKQ,Consumer Cyclical,Auto Parts,United States,44000.0,2026-10-09,2026-10-29,Fal
 LLY,Healthcare,Drug Manufacturers - General,United States,50000.0,2026-10-09,2026-10-29,False,,2026-10-29,59478.0,0
 LLYVA,Communication Services,Entertainment,United States,300.0,2026-10-09,2026-11-05,False,,2026-11-05,2078416.0,0
 LLYVK,Communication Services,Entertainment,United States,300.0,2026-10-09,2026-11-05,False,,2026-11-05,2078416.0,0
-LMAT,Healthcare,Medical Instruments & Supplies,United States,646.0,2026-10-09,2026-11-05,True,2026-08-04,2026-11-05,1158895.0,0
+LMAT,Healthcare,Medical Instruments & Supplies,United States,646.0,2026-10-09,2026-11-04,False,2026-08-04,2026-11-04,1158895.0,0
 LMB,Industrials,Building Products & Equipment,United States,1600.0,2026-10-09,2026-11-03,False,2026-08-04,2026-11-03,1606163.0,0
 LMND,Financial Services,Insurance - Property & Casualty,United States,1282.0,2026-10-09,2026-11-04,False,2026-07-29,2026-11-04,1691421.0,0
 LMRI,Healthcare,Medical Devices,United States,5000.0,2026-10-09,2026-11-12,False,2026-08-12,2026-11-12,2071288.0,0
@@ -1612,7 +1616,7 @@ LQDA,Healthcare,Drug Manufacturers - Specialty & Generic,United States,216.0,202
 LQDT,Consumer Cyclical,Internet Retail,United States,818.0,2026-10-09,2026-11-19,True,2026-08-06,2026-11-19,1235468.0,0
 LRCX,Technology,Semiconductor Equipment & Materials,United States,23300.0,2026-10-09,2026-10-21,False,,2026-10-21,707549.0,0
 LRN,Consumer Defensive,Education & Training Services,United States,9200.0,2026-10-09,2026-10-20,False,,2026-10-20,1157408.0,0
-LSCC,Technology,Semiconductors,United States,1174.0,2026-10-09,2026-11-02,True,2026-08-04,2026-11-02,855658.0,0
+LSCC,Technology,Semiconductors,United States,1174.0,2026-10-09,2026-11-02,False,2026-08-04,2026-11-02,855658.0,0
 LSPD,Technology,Software - Application,Canada,3400.0,2026-10-09,2026-11-05,False,,2026-11-05,1823306.0,0
 LSTR,Industrials,Integrated Freight & Logistics,United States,1300.0,2026-10-09,2026-10-27,False,,2026-10-27,853816.0,0
 LTBR,Industrials,Electrical Equipment & Parts,United States,13.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1084554.0,0
@@ -1621,7 +1625,7 @@ LTGO,Healthcare,Biotechnology,United States,66.0,2026-10-09,2026-11-12,True,,202
 LTH,Consumer Cyclical,Leisure,United States,52000.0,2026-10-09,2026-10-29,False,,2026-10-29,1869198.0,0
 LTRX,Technology,Communication Equipment,United States,327.0,2026-10-09,2026-11-04,True,2026-08-26,2026-11-04,1114925.0,0
 LULU,Consumer Cyclical,Apparel Retail,Canada,39000.0,2026-10-09,,,2026-09-03,,1397187.0,0
-LUMN,Communication Services,Telecom Services,United States,24000.0,2026-10-09,2026-10-29,True,2026-08-04,2026-10-29,18926.0,0
+LUMN,Communication Services,Telecom Services,United States,24000.0,2026-10-09,2026-11-04,False,2026-08-04,2026-11-04,18926.0,0
 LUNR,Industrials,Aerospace & Defense,United States,525.0,2026-10-09,2026-11-10,True,2026-08-13,2026-11-10,1844452.0,0
 LUV,Industrials,Airlines,United States,73456.0,2026-10-09,2026-10-21,False,,2026-10-21,92380.0,0
 LVS,Consumer Cyclical,Resorts & Casinos,United States,41000.0,2026-10-09,2026-10-21,True,2026-07-22,2026-10-21,1300514.0,0
@@ -1665,7 +1669,7 @@ MAZE,Healthcare,Biotechnology,United States,141.0,2026-10-09,2026-11-05,True,,20
 MBC,Consumer Cyclical,"Furnishings, Fixtures & Appliances",United States,12633.0,2026-10-09,2026-11-05,False,,2026-11-05,1941365.0,0
 MBGL,Technology,Software - Infrastructure,United States,3400.0,2026-10-09,2026-11-12,False,,2026-11-12,2090312.0,0
 MBIN,Financial Services,Banks - Regional,United States,735.0,2026-10-09,2026-10-28,False,,2026-10-28,1629019.0,1
-MBLY,Consumer Cyclical,Auto Parts,Israel,4200.0,2026-10-09,2026-10-29,True,2026-07-23,2026-10-29,1910139.0,0
+MBLY,Consumer Cyclical,Auto Parts,Israel,4200.0,2026-10-09,2026-10-29,False,2026-07-23,2026-10-29,1910139.0,0
 MBUU,Consumer Cyclical,Recreational Vehicles,United States,3000.0,2026-10-09,2026-10-29,True,2026-08-27,2026-10-29,1590976.0,0
 MBWM,Financial Services,Banks - Regional,United States,827.0,2026-10-09,2026-10-20,False,,2026-10-20,1042729.0,1
 MBX,Healthcare,Biotechnology,United States,63.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1776111.0,0
@@ -1695,9 +1699,9 @@ MELI,Consumer Cyclical,Internet Retail,Uruguay,123670.0,2026-10-09,2026-11-04,Fa
 MEOH,Basic Materials,Chemicals,Canada,1649.0,2026-10-09,2026-10-29,False,,2026-10-29,886977.0,0
 MESO,Healthcare,Biotechnology,Australia,108.0,2026-10-09,,,2026-08-26,,1345099.0,0
 MET,Financial Services,Insurance - Life,United States,46000.0,2026-10-09,2026-11-04,False,,2026-11-04,1099219.0,0
-META,Communication Services,Internet Content & Information,United States,75472.0,2026-10-09,2026-10-28,True,2026-07-29,2026-10-28,1326801.0,0
+META,Communication Services,Internet Content & Information,United States,75472.0,2026-10-09,2026-10-21,False,2026-07-29,2026-10-21,1326801.0,0
 METC,Basic Materials,Coking Coal,United States,900.0,2026-10-09,2026-10-26,True,2026-08-04,2026-10-26,1687187.0,0
-MFA,Real Estate,REIT - Mortgage,United States,307.0,2026-10-09,2026-11-05,False,2026-08-05,2026-11-05,1055160.0,0
+MFA,Real Estate,REIT - Mortgage,United States,307.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1055160.0,0
 MFC,Financial Services,Insurance - Life,Canada,37000.0,2026-10-09,2026-11-04,False,,2026-11-04,1086888.0,0
 MFG,Financial Services,Banks - Regional,Japan,52427.0,2026-10-09,2026-11-13,False,,2026-11-13,1335730.0,1
 MFP,Industrials,Specialty Industrial Machinery,United States,2800.0,2026-10-09,2026-11-12,True,,2026-11-12,2088281.0,0
@@ -1721,7 +1725,7 @@ MIRM,Healthcare,Biotechnology,United States,433.0,2026-10-09,2026-11-04,False,20
 MITK,Technology,Software - Application,United States,561.0,2026-10-09,,,2026-08-06,,807863.0,0
 MKC,Consumer Defensive,Packaged Foods,United States,14100.0,2026-10-09,,,2026-10-01,,63754.0,0
 MKL,Financial Services,Insurance - Property & Casualty,United States,22900.0,2026-10-09,2026-10-28,False,2026-07-29,2026-10-28,1096343.0,0
-MKSI,Technology,Scientific & Technical Instruments,United States,10200.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1049502.0,0
+MKSI,Technology,Scientific & Technical Instruments,United States,10200.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1049502.0,0
 MKTX,Financial Services,Capital Markets,United States,863.0,2026-10-09,2026-11-05,False,2026-07-30,2026-11-05,1278021.0,0
 MLAB,Technology,Scientific & Technical Instruments,United States,717.0,2026-10-09,2026-11-09,False,,2026-11-09,724004.0,0
 MLCO,Consumer Cyclical,Resorts & Casinos,Hong Kong,22961.0,2026-10-09,2026-11-05,False,2026-08-13,2026-11-05,1381640.0,0
@@ -1764,7 +1768,7 @@ MQ,Technology,Software - Infrastructure,United States,938.0,2026-10-09,2026-11-0
 MRAM,Technology,Semiconductors,United States,85.0,2026-10-09,2026-11-11,True,2026-08-05,2026-11-11,1438423.0,0
 MRCY,Industrials,Aerospace & Defense,United States,2102.0,2026-10-09,2026-11-03,True,2026-08-18,2026-11-03,1049521.0,0
 MRK,Healthcare,Drug Manufacturers - General,United States,73000.0,2026-10-09,2026-10-29,False,,2026-10-29,310158.0,0
-MRNA,Healthcare,Biotechnology,United States,4700.0,2026-10-09,2026-11-05,False,2026-07-31,2026-11-05,1682852.0,0
+MRNA,Healthcare,Biotechnology,United States,4700.0,2026-10-09,2026-11-06,False,2026-07-31,2026-11-06,1682852.0,0
 MRP,Real Estate,REIT - Residential,United States,,2026-10-09,2026-10-27,False,,2026-10-27,2017206.0,0
 MRSH,Financial Services,Insurance Brokers,United States,95000.0,2026-10-09,2026-10-15,False,,2026-10-15,62709.0,0
 MRTN,Industrials,Trucking,United States,3502.0,2026-10-09,2026-10-22,False,,2026-10-22,799167.0,0
@@ -1783,7 +1787,7 @@ MSTR,Technology,Software - Application,United States,1539.0,2026-10-09,2026-10-2
 MT,Basic Materials,Steel,Luxembourg,125554.0,2026-10-09,2026-11-05,False,,2026-11-05,1243429.0,0
 MTA,Basic Materials,Other Precious Metals & Mining,Canada,7.0,2026-10-09,2026-11-12,True,,2026-11-12,1722606.0,0
 MTB,Financial Services,Banks - Regional,United States,21662.0,2026-10-09,2026-10-16,False,,2026-10-16,36270.0,1
-MTCH,Communication Services,Internet Content & Information,United States,2200.0,2026-10-09,2026-11-03,True,2026-08-04,2026-11-03,891103.0,0
+MTCH,Communication Services,Internet Content & Information,United States,2200.0,2026-10-09,2026-11-02,False,2026-08-04,2026-11-02,891103.0,0
 MTD,Healthcare,Diagnostics & Research,Switzerland,16600.0,2026-10-09,2026-11-05,False,2026-07-30,2026-11-05,1037646.0,0
 MTDR,Energy,Oil & Gas E&P,United States,483.0,2026-10-09,2026-10-27,False,2026-08-05,2026-10-27,1520006.0,0
 MTG,Financial Services,Insurance - Specialty,United States,542.0,2026-10-09,2026-11-04,False,,2026-11-04,876437.0,0
@@ -1792,7 +1796,7 @@ MTN,Consumer Cyclical,Resorts & Casinos,United States,6500.0,2026-10-09,2026-12-
 MTRN,Basic Materials,Other Industrial Metals & Mining,United States,3000.0,2026-10-09,2026-10-28,False,2026-08-05,2026-10-28,1104657.0,0
 MTRX,Industrials,Engineering & Construction,United States,2370.0,2026-10-09,2026-11-04,True,2026-09-02,2026-11-04,866273.0,0
 MTSI,Technology,Semiconductors,United States,2000.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1493594.0,0
-MTUS,Basic Materials,Steel,United States,1905.0,2026-10-09,2026-11-05,True,2026-08-03,2026-11-05,1598428.0,0
+MTUS,Basic Materials,Steel,United States,1905.0,2026-10-09,2026-11-02,False,2026-08-03,2026-11-02,1598428.0,0
 MTW,Industrials,Farm & Heavy Construction Machinery,United States,4700.0,2026-10-09,2026-11-04,True,2026-08-06,2026-11-04,61986.0,0
 MTX,Basic Materials,Specialty Chemicals,United States,3782.0,2026-10-09,2026-10-29,False,,2026-10-29,891014.0,0
 MTZ,Industrials,Engineering & Construction,United States,37000.0,2026-10-09,2026-10-29,False,2026-07-30,2026-10-29,15615.0,0
@@ -1817,7 +1821,7 @@ NAVN,Technology,Software - Application,United States,3700.0,2026-10-09,,,2026-09
 NBBK,Financial Services,Banks - Regional,United States,526.0,2026-10-09,2026-10-21,True,,2026-10-21,1979330.0,1
 NBHC,Financial Services,Banks - Regional,United States,1250.0,2026-10-09,2026-10-27,False,,2026-10-27,1475841.0,1
 NBIS,Communication Services,Internet Content & Information,Netherlands,1543.0,2026-10-09,2026-11-10,False,2026-08-12,2026-11-10,1513845.0,0
-NBIX,Healthcare,Drug Manufacturers - Specialty & Generic,United States,2500.0,2026-10-09,2026-10-28,False,2026-07-30,2026-10-28,914475.0,0
+NBIX,Healthcare,Drug Manufacturers - Specialty & Generic,United States,2500.0,2026-10-09,2026-11-02,False,2026-07-30,2026-11-02,914475.0,0
 NBN,Financial Services,Banks - Regional,United States,222.0,2026-10-09,2026-10-26,False,,2026-10-26,,1
 NBR,Energy,Oil & Gas Drilling,Bermuda,13900.0,2026-10-09,2026-10-27,False,,2026-10-27,1163739.0,0
 NBTB,Financial Services,Banks - Regional,United States,2303.0,2026-10-09,2026-10-27,False,,2026-10-27,790359.0,1
@@ -1826,13 +1830,13 @@ NCLH,Consumer Cyclical,Travel Services,United States,44500.0,2026-10-09,2026-11-
 NCNO,Technology,Software - Application,United States,1684.0,2026-10-09,,,2026-08-25,,1902733.0,0
 NDAQ,Financial Services,Financial Data & Stock Exchanges,United States,9630.0,2026-10-09,2026-10-22,False,,2026-10-22,1120193.0,0
 NDSN,Industrials,Specialty Industrial Machinery,United States,8200.0,2026-10-09,,,2026-08-19,,72331.0,0
-NE,Energy,Oil & Gas Drilling,United States,4500.0,2026-10-09,2026-10-27,False,2026-07-27,2026-10-27,1895262.0,0
+NE,Energy,Oil & Gas Drilling,United States,4500.0,2026-10-09,2026-10-26,False,2026-07-27,2026-10-26,1895262.0,0
 NEE,Utilities,Utilities - Regulated Electric,United States,17400.0,2026-10-09,2026-10-21,False,,2026-10-21,753308.0,0
 NEM,Basic Materials,Gold,United States,17500.0,2026-10-09,2026-10-22,False,,2026-10-22,1164727.0,0
 NEO,Healthcare,Diagnostics & Research,United States,2500.0,2026-10-09,2026-10-27,False,2026-07-28,2026-10-27,1077183.0,0
 NEOG,Healthcare,Medical Devices,United States,2636.0,2026-10-09,,,2026-10-06,,711377.0,0
 NESR,Energy,Oil & Gas Equipment & Services,United States,7352.0,2026-10-09,2026-11-12,False,2026-08-10,2026-11-12,1698514.0,0
-NET,Technology,Software - Infrastructure,United States,5156.0,2026-10-09,2026-10-29,True,2026-08-06,2026-10-29,1477333.0,0
+NET,Technology,Software - Infrastructure,United States,5156.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1477333.0,0
 NEU,Basic Materials,Specialty Chemicals,United States,2050.0,2026-10-09,2026-10-28,False,,2026-10-28,1282637.0,0
 NEWP,Basic Materials,Silver,Canada,,2026-10-09,2026-11-13,True,,2026-11-13,1369085.0,0
 NEXA,Basic Materials,Other Industrial Metals & Mining,Luxembourg,,2026-10-09,2026-10-29,False,,2026-10-29,1713930.0,0
@@ -1866,7 +1870,7 @@ NMRK,Real Estate,Real Estate Services,United States,10000.0,2026-10-09,2026-10-2
 NN,Technology,Software - Infrastructure,United States,103.0,2026-10-09,2026-11-05,True,2026-08-11,2026-11-05,1865631.0,0
 NNBR,Industrials,Conglomerates,United States,2300.0,2026-10-09,2026-10-28,False,,2026-10-28,918541.0,0
 NNE,Industrials,Specialty Industrial Machinery,United States,36.0,2026-10-09,,,2026-08-12,,1923891.0,0
-NNI,Financial Services,Credit Services,United States,5744.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1258602.0,0
+NNI,Financial Services,Credit Services,United States,5744.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1258602.0,0
 NNN,Real Estate,REIT - Retail,United States,85.0,2026-10-09,2026-11-04,False,,2026-11-04,751364.0,0
 NOC,Industrials,Aerospace & Defense,United States,95000.0,2026-10-09,2026-10-20,False,,2026-10-20,1133421.0,0
 NOG,Energy,Oil & Gas E&P,United States,64.0,2026-10-09,2026-11-05,False,,2026-11-05,1104485.0,0
@@ -1883,7 +1887,7 @@ NPO,Industrials,Specialty Industrial Machinery,United States,4000.0,2026-10-09,2
 NRDS,Communication Services,Internet Content & Information,United States,650.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1625278.0,0
 NRG,Utilities,Utilities - Independent Power Producers,United States,16702.0,2026-10-09,2026-11-05,True,2026-08-04,2026-11-05,1013871.0,0
 NRIM,Financial Services,Banks - Regional,United States,516.0,2026-10-09,2026-10-28,True,,2026-10-28,1163370.0,1
-NRIX,Healthcare,Biotechnology,United States,317.0,2026-10-09,2026-10-12,True,2026-07-09,2026-10-12,1549595.0,0
+NRIX,Healthcare,Biotechnology,United States,317.0,2026-10-09,,True,2026-10-12,2026-10-12,1549595.0,0
 NSC,Industrials,Railroads,United States,19300.0,2026-10-09,2026-10-22,False,,2026-10-22,702165.0,0
 NSIT,Technology,Electronics & Computer Distribution,United States,14505.0,2026-10-09,2026-10-29,True,2026-08-06,2026-10-29,932696.0,0
 NSP,Industrials,Staffing & Employment Services,United States,304407.0,2026-10-09,2026-10-29,False,,2026-10-29,1000753.0,0
@@ -1914,11 +1918,11 @@ NVGS,Energy,Oil & Gas Midstream,United Kingdom,1975.0,2026-10-09,2026-11-04,Fals
 NVMI,Technology,Semiconductor Equipment & Materials,Israel,1612.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1109345.0,0
 NVO,Healthcare,Drug Manufacturers - General,Denmark,66700.0,2026-10-09,2026-11-04,False,,2026-11-04,353278.0,0
 NVR,Consumer Cyclical,Residential Construction,United States,6300.0,2026-10-09,2026-10-22,False,,2026-10-22,906163.0,0
-NVRI,Industrials,Waste Management,United States,12000.0,2026-10-09,2026-11-16,False,2026-08-11,2026-11-16,2104052.0,0
+NVRI,Industrials,Waste Management,United States,12000.0,2026-10-09,2026-11-05,False,2026-08-11,2026-11-05,2104052.0,0
 NVS,Healthcare,Drug Manufacturers - General,Switzerland,75267.0,2026-10-09,2026-10-27,False,,2026-10-27,1114448.0,0
 NVST,Healthcare,Medical Instruments & Supplies,United States,12000.0,2026-10-09,2026-11-04,False,,2026-11-04,1757073.0,0
 NVT,Industrials,Electrical Equipment & Parts,United Kingdom,12000.0,2026-10-09,2026-10-30,True,2026-07-31,2026-10-30,1720635.0,0
-NVTS,Technology,Semiconductors,United States,190.0,2026-10-09,2026-11-02,True,2026-07-27,2026-11-02,1821769.0,0
+NVTS,Technology,Semiconductors,United States,190.0,2026-10-09,2026-11-03,False,2026-07-27,2026-11-03,1821769.0,0
 NWBI,Financial Services,Banks - Regional,United States,2183.0,2026-10-09,2026-10-26,False,,2026-10-26,1471265.0,1
 NWE,Utilities,Utilities - Regulated Electric,United States,1667.0,2026-10-09,2026-10-28,True,2026-07-29,2026-10-28,1993004.0,0
 NWG,Financial Services,Banks - Regional,United Kingdom,59000.0,2026-10-09,2026-10-30,False,,2026-10-30,844150.0,1
@@ -1944,6 +1948,7 @@ OC,Industrials,Building Products & Equipment,United States,25000.0,2026-10-09,20
 OCFC,Financial Services,Banks - Regional,United States,898.0,2026-10-09,2026-10-27,False,,2026-10-27,1004702.0,1
 OCTV,Technology,Software - Application,United States,7200.0,2026-10-09,2026-11-12,False,,2026-11-12,2083632.0,0
 OCUL,Healthcare,Biotechnology,United States,325.0,2026-10-09,2026-11-04,True,2026-08-03,2026-11-04,1393434.0,0
+ODC,Basic Materials,Specialty Chemicals,United States,927.0,2026-10-14,2026-12-08,True,2026-10-08,2026-12-08,74046.0,0
 ODD,Consumer Defensive,Household & Personal Products,Israel,658.0,2026-10-09,2026-11-18,True,2026-09-09,2026-11-18,1907085.0,0
 ODFL,Industrials,Trucking,United States,20173.0,2026-10-09,2026-10-28,False,,2026-10-28,878927.0,0
 ODTX,Healthcare,Biotechnology,United States,100.0,2026-10-09,2026-11-05,True,2026-08-04,2026-11-05,1882782.0,0
@@ -1966,7 +1971,7 @@ OLED,Technology,Electronic Components,United States,469.0,2026-10-09,2026-10-28,
 OLLI,Consumer Defensive,Discount Stores,United States,6500.0,2026-10-09,,,2026-09-02,,1639300.0,0
 OLMA,Healthcare,Biotechnology,United States,150.0,2026-10-09,2026-11-09,True,,2026-11-09,1750284.0,0
 OLN,Basic Materials,Chemicals,United States,7849.0,2026-10-09,2026-10-29,False,,2026-10-29,74303.0,0
-OMAB,Industrials,Airports & Air Services,Mexico,1206.0,2026-10-09,2026-10-22,False,2026-07-27,2026-10-22,1378239.0,0
+OMAB,Industrials,Airports & Air Services,Mexico,1206.0,2026-10-09,2026-10-27,False,2026-07-27,2026-10-27,1378239.0,0
 OMC,Communication Services,Advertising Agencies,United States,120000.0,2026-10-09,2026-10-20,True,2026-07-28,2026-10-20,29989.0,0
 OMCL,Healthcare,Health Information Services,United States,3485.0,2026-10-09,2026-10-29,False,,2026-10-29,926326.0,0
 OMDA,Healthcare,Health Information Services,United States,946.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1611115.0,0
@@ -1990,7 +1995,7 @@ OPY,Financial Services,Capital Markets,United States,3062.0,2026-10-09,2026-10-3
 OR,Basic Materials,Gold,Canada,,2026-10-09,2026-11-11,False,,2026-11-11,1627272.0,0
 ORA,Utilities,Utilities - Renewable,United States,1648.0,2026-10-09,2026-11-04,False,,2026-11-04,1296445.0,0
 ORC,Real Estate,REIT - Mortgage,United States,,2026-10-09,2026-10-22,False,,2026-10-22,1518621.0,0
-ORCL,Technology,Software - Infrastructure,United States,141000.0,2026-10-09,2026-12-10,True,2026-09-10,2026-12-10,1341439.0,0
+ORCL,Technology,Software - Infrastructure,United States,141000.0,2026-10-09,2026-12-14,False,2026-09-10,2026-12-14,1341439.0,0
 ORI,Financial Services,Insurance - Property & Casualty,United States,9500.0,2026-10-09,2026-10-22,False,,2026-10-22,74260.0,0
 ORIC,Healthcare,Biotechnology,United States,111.0,2026-10-09,2026-11-12,True,2026-08-03,2026-11-12,1796280.0,0
 ORKA,Healthcare,Biotechnology,United States,68.0,2026-10-09,2026-11-11,True,2026-08-10,2026-11-11,907654.0,0
@@ -1998,9 +2003,9 @@ ORLY,Consumer Cyclical,Auto Parts,United States,95822.0,2026-10-09,2026-10-28,Fa
 ORN,Industrials,Engineering & Construction,United States,2076.0,2026-10-09,2026-10-27,False,,2026-10-27,1402829.0,0
 ORRF,Financial Services,Banks - Regional,United States,627.0,2026-10-09,2026-10-20,False,,2026-10-20,826154.0,1
 OSBC,Financial Services,Banks - Regional,United States,1062.0,2026-10-09,2026-10-21,False,,2026-10-21,357173.0,1
-OSCR,Healthcare,Healthcare Plans,United States,2305.0,2026-10-09,2026-11-09,False,2026-08-06,2026-11-09,1568651.0,0
+OSCR,Healthcare,Healthcare Plans,United States,2305.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1568651.0,0
 OSIS,Technology,Electronic Components,United States,7806.0,2026-10-09,2026-10-29,True,2026-08-20,2026-10-29,1039065.0,0
-OSK,Industrials,Farm & Heavy Construction Machinery,United States,18000.0,2026-10-09,2026-10-28,False,2026-07-28,2026-10-28,775158.0,0
+OSK,Industrials,Farm & Heavy Construction Machinery,United States,18000.0,2026-10-09,2026-10-29,False,2026-07-28,2026-10-29,775158.0,0
 OSPN,Technology,Software - Infrastructure,United States,509.0,2026-10-09,2026-10-29,False,,2026-10-29,1044777.0,0
 OSS,Technology,Computer Hardware,United States,56.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1394056.0,0
 OSW,Consumer Cyclical,Leisure,Bahamas,5395.0,2026-10-09,2026-10-28,False,2026-07-29,2026-10-28,1758488.0,0
@@ -2022,7 +2027,7 @@ PAC,Industrials,Airports & Air Services,Mexico,3841.0,2026-10-09,2026-10-19,True
 PACS,Healthcare,Medical Care Facilities,United States,47455.0,2026-10-09,2026-11-09,False,2026-08-04,2026-11-09,2001184.0,0
 PAG,Consumer Cyclical,Auto & Truck Dealerships,United States,28600.0,2026-10-09,2026-10-28,True,2026-07-29,2026-10-28,1019849.0,0
 PAGP,Energy,Oil & Gas Midstream,United States,,2026-10-09,2026-11-06,False,,2026-11-06,1581990.0,0
-PAGS,Technology,Software - Infrastructure,Brazil,,2026-10-09,2026-11-10,False,,2026-11-10,1712807.0,0
+PAGS,Technology,Software - Infrastructure,Brazil,,2026-10-09,2026-11-16,False,,2026-11-16,1712807.0,0
 PAHC,Healthcare,Drug Manufacturers - Specialty & Generic,United States,2605.0,2026-10-09,2026-11-04,True,2026-08-26,2026-11-04,1069899.0,0
 PAM,Industrials,Conglomerates,Argentina,,2026-10-09,2026-11-02,False,,2026-11-02,1469395.0,0
 PANL,Industrials,Marine Shipping,United States,170.0,2026-10-09,2026-11-05,False,2026-08-10,2026-11-05,1606909.0,0
@@ -2050,9 +2055,9 @@ PBT,Energy,Oil & Gas Midstream,United States,,2026-10-09,2026-11-12,True,,2026-1
 PBYI,Healthcare,Biotechnology,United States,179.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1401667.0,0
 PCAR,Industrials,Farm & Heavy Construction Machinery,United States,25900.0,2026-10-09,2026-10-27,False,,2026-10-27,75362.0,0
 PCG,Utilities,Utilities - Regulated Electric,United States,29010.0,2026-10-09,2026-10-22,False,,2026-10-22,1004980.0,0
-PCOR,Technology,Software - Application,United States,4421.0,2026-10-09,2026-11-04,True,2026-07-29,2026-11-04,1611052.0,0
+PCOR,Technology,Software - Application,United States,4421.0,2026-10-09,2026-11-03,False,2026-07-29,2026-11-03,1611052.0,0
 PCRX,Healthcare,Drug Manufacturers - Specialty & Generic,United States,825.0,2026-10-09,2026-11-05,True,2026-08-04,2026-11-05,1396814.0,0
-PCTY,Technology,Software - Application,United States,6900.0,2026-10-09,2026-11-03,False,2026-08-04,2026-11-03,1591698.0,0
+PCTY,Technology,Software - Application,United States,6900.0,2026-10-09,2026-11-05,False,2026-08-04,2026-11-05,1591698.0,0
 PCVX,Healthcare,Biotechnology,United States,507.0,2026-10-09,2026-11-03,True,,2026-11-03,1649094.0,0
 PD,Technology,Software - Application,United States,1155.0,2026-10-09,2026-11-24,True,2026-08-27,2026-11-24,1568100.0,0
 PDD,Consumer Cyclical,Internet Retail,Ireland,25474.0,2026-10-09,2026-11-18,True,2026-08-24,2026-11-18,1737806.0,0
@@ -2115,8 +2120,8 @@ PLNT,Consumer Cyclical,Leisure,United States,4393.0,2026-10-09,2026-11-05,False,
 PLOW,Consumer Cyclical,Auto Parts,United States,1764.0,2026-10-09,2026-11-02,True,2026-08-03,2026-11-02,1287213.0,0
 PLPC,Industrials,Electrical Equipment & Parts,United States,3734.0,2026-10-09,2026-10-28,True,,2026-10-28,80035.0,0
 PLSE,Healthcare,Medical Instruments & Supplies,United States,116.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1625101.0,0
-PLTR,Technology,Software - Infrastructure,United States,4401.0,2026-10-09,2026-11-02,True,2026-08-03,2026-11-02,1321655.0,0
-PLUS,Technology,Software - Application,United States,2171.0,2026-10-09,2026-11-09,True,2026-08-04,2026-11-09,1022408.0,0
+PLTR,Technology,Software - Infrastructure,United States,4401.0,2026-10-09,2026-11-02,False,2026-08-03,2026-11-02,1321655.0,0
+PLUS,Technology,Software - Application,United States,2171.0,2026-10-09,2026-11-05,False,2026-08-04,2026-11-05,1022408.0,0
 PLXS,Technology,Electronic Components,United States,20000.0,2026-10-09,2026-10-28,True,2026-07-29,2026-10-28,785786.0,0
 PM,Consumer Defensive,Tobacco,United States,84900.0,2026-10-09,2026-10-21,False,,2026-10-21,1413329.0,0
 PMTS,Financial Services,Credit Services,United States,1700.0,2026-10-09,2026-11-03,False,2026-08-06,2026-11-03,1641614.0,0
@@ -2156,7 +2161,7 @@ PRKS,Consumer Cyclical,Leisure,United States,3300.0,2026-10-09,2026-11-05,False,
 PRLB,Industrials,Metal Fabrication,United States,2280.0,2026-10-09,2026-10-29,False,2026-07-31,2026-10-29,1443669.0,0
 PRM,Basic Materials,Specialty Chemicals,United States,356.0,2026-10-09,2026-10-29,False,2026-07-31,2026-10-29,1880319.0,0
 PRMB,Consumer Defensive,Beverages - Non-Alcoholic,United States,12000.0,2026-10-09,2026-11-05,False,,2026-11-05,2042694.0,0
-PRSU,Consumer Cyclical,Travel Services,United States,2100.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,884219.0,0
+PRSU,Consumer Cyclical,Travel Services,United States,2100.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,884219.0,0
 PRTA,Healthcare,Biotechnology,Ireland,67.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1559053.0,0
 PRTH,Technology,Software - Infrastructure,United States,1186.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1653558.0,0
 PRU,Financial Services,Insurance - Life,United States,36607.0,2026-10-09,2026-11-03,False,,2026-11-03,1137774.0,0
@@ -2181,7 +2186,7 @@ PTON,Consumer Cyclical,Leisure,United States,2199.0,2026-10-09,2026-11-05,True,2
 PTRN,Consumer Cyclical,Internet Retail,United States,2300.0,2026-10-09,2026-11-04,False,,2026-11-04,1811935.0,0
 PUBM,Technology,Software - Application,United States,1030.0,2026-10-09,2026-11-09,True,2026-08-06,2026-11-09,1422930.0,0
 PUK,Financial Services,Insurance - Life,Hong Kong,15338.0,2026-10-09,,,2026-08-27,,1116578.0,0
-PUMP,Energy,Oil & Gas Equipment & Services,United States,1700.0,2026-10-09,2026-10-28,True,2026-07-29,2026-10-28,1680247.0,0
+PUMP,Energy,Oil & Gas Equipment & Services,United States,1700.0,2026-10-09,2026-10-28,False,2026-07-29,2026-10-28,1680247.0,0
 PURR,Financial Services,Capital Markets,United States,5.0,2026-10-09,2026-11-16,True,2026-08-27,2026-11-16,2078856.0,0
 PVH,Consumer Cyclical,Apparel Manufacturing,United States,15000.0,2026-10-09,2026-12-02,True,2026-09-02,2026-12-02,78239.0,0
 PVLA,Healthcare,Biotechnology,United States,29.0,2026-10-09,2026-11-11,True,2026-08-04,2026-11-11,1583648.0,0
@@ -2198,7 +2203,7 @@ QFIN,Financial Services,Credit Services,China,3557.0,2026-10-09,2026-11-17,True,
 QGEN,Healthcare,Diagnostics & Research,Netherlands,5500.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1015820.0,0
 QLYS,Technology,Software - Infrastructure,United States,2718.0,2026-10-09,2026-11-03,True,2026-08-04,2026-11-03,1107843.0,0
 QMCO,Technology,Computer Hardware,United States,490.0,2026-10-09,2026-11-09,False,2026-08-10,2026-11-09,709283.0,0
-QNST,Communication Services,Advertising Agencies,United States,1074.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1117297.0,0
+QNST,Communication Services,Advertising Agencies,United States,1074.0,2026-10-09,2026-11-04,False,2026-08-06,2026-11-04,1117297.0,0
 QNT,Technology,Software - Application,United States,800.0,2026-10-09,2026-11-09,False,2026-08-11,2026-11-09,2110105.0,0
 QS,Consumer Cyclical,Auto Parts,United States,700.0,2026-10-09,2026-10-21,False,,2026-10-21,1811414.0,0
 QSR,Consumer Cyclical,Restaurants,United States,53500.0,2026-10-09,2026-10-29,False,,2026-10-29,1618756.0,0
@@ -2245,14 +2250,14 @@ RELX,Industrials,Specialty Business Services,United Kingdom,37000.0,2026-10-09,,
 RELY,Technology,Software - Infrastructure,United States,3200.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1782170.0,0
 REPL,Healthcare,Biotechnology,United States,465.0,2026-10-09,2026-11-05,True,2026-08-14,2026-11-05,1737953.0,0
 REPX,Energy,Oil & Gas E&P,United States,122.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1001614.0,0
-RES,Energy,Oil & Gas Equipment & Services,United States,2893.0,2026-10-09,2026-11-05,True,2026-07-30,2026-11-05,742278.0,0
+RES,Energy,Oil & Gas Equipment & Services,United States,2893.0,2026-10-09,2026-10-29,False,2026-07-30,2026-10-29,742278.0,0
 REX,Basic Materials,Chemicals,United States,132.0,2026-10-09,2026-12-03,True,2026-09-02,2026-12-03,744187.0,0
 REXR,Real Estate,REIT - Industrial,United States,256.0,2026-10-09,2026-10-22,False,,2026-10-22,1571283.0,0
 REYN,Consumer Cyclical,Packaging & Containers,United States,6000.0,2026-10-09,2026-11-04,True,2026-07-29,2026-11-04,1786431.0,0
 REZI,Industrials,Industrial Distribution,United States,14800.0,2026-10-09,2026-11-05,False,2026-08-12,2026-11-05,1740332.0,0
 RF,Financial Services,Banks - Regional,United States,20003.0,2026-10-09,2026-10-16,False,,2026-10-16,1281761.0,1
 RGA,Financial Services,Insurance - Reinsurance,United States,4300.0,2026-10-09,2026-11-05,False,,2026-11-05,898174.0,0
-RGEN,Healthcare,Medical Instruments & Supplies,United States,2000.0,2026-10-09,2026-11-03,False,2026-07-28,2026-11-03,730272.0,0
+RGEN,Healthcare,Medical Instruments & Supplies,United States,2000.0,2026-10-09,2026-10-27,False,2026-07-28,2026-10-27,730272.0,0
 RGLD,Basic Materials,Gold,United States,39.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,85535.0,0
 RGNX,Healthcare,Biotechnology,United States,371.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1590877.0,0
 RGR,Industrials,Aerospace & Defense,United States,1780.0,2026-10-09,2026-10-28,False,2026-07-29,2026-10-28,95029.0,0
@@ -2261,11 +2266,11 @@ RH,Consumer Cyclical,Specialty Retail,United States,6510.0,2026-10-09,2026-12-10
 RHI,Industrials,Staffing & Employment Services,United States,14500.0,2026-10-09,2026-10-21,True,2026-07-23,2026-10-21,315213.0,0
 RHLD,Industrials,Specialty Business Services,United States,7.0,2026-10-09,2026-11-02,True,2026-08-06,2026-11-02,2039497.0,0
 RHP,Real Estate,REIT - Hotel & Motel,United States,1012.0,2026-10-09,2026-11-02,False,,2026-11-02,1040829.0,0
-RIG,Energy,Oil & Gas Drilling,Switzerland,5220.0,2026-10-09,2026-10-28,True,2026-08-05,2026-10-28,1451505.0,0
+RIG,Energy,Oil & Gas Drilling,Switzerland,5220.0,2026-10-09,2026-11-02,False,2026-08-05,2026-11-02,1451505.0,0
 RIGL,Healthcare,Biotechnology,United States,172.0,2026-10-09,2026-11-03,False,2026-08-04,2026-11-03,1034842.0,0
 RIO,Basic Materials,Other Industrial Metals & Mining,United Kingdom,56890.0,2026-10-09,,,2026-07-28,,863064.0,0
 RIOT,Financial Services,Capital Markets,United States,816.0,2026-10-09,2026-10-29,False,2026-08-10,2026-10-29,1167419.0,0
-RITM,Real Estate,REIT - Mortgage,United States,7240.0,2026-10-09,2026-10-29,True,2026-07-28,2026-10-29,1556593.0,0
+RITM,Real Estate,REIT - Mortgage,United States,7240.0,2026-10-09,2026-10-23,False,2026-07-28,2026-10-23,1556593.0,0
 RIVN,Consumer Cyclical,Auto Manufacturers,United States,15232.0,2026-10-09,2026-10-29,False,,2026-10-29,1874178.0,0
 RJF,Financial Services,Asset Management,United States,19500.0,2026-10-09,2026-10-28,False,,2026-10-28,720005.0,0
 RKLB,Industrials,Aerospace & Defense,United States,2600.0,2026-10-09,2026-11-09,False,2026-08-10,2026-11-09,1819994.0,0
@@ -2285,7 +2290,7 @@ RNST,Financial Services,Banks - Regional,United States,3000.0,2026-10-09,2026-10
 RNW,Utilities,Utilities - Renewable,United Kingdom,4720.0,2026-10-09,2026-11-09,False,2026-08-18,2026-11-09,1848763.0,0
 ROAD,Industrials,Engineering & Construction,United States,1639.0,2026-10-09,2026-11-19,True,2026-08-07,2026-11-19,1718227.0,0
 ROCK,Industrials,Building Products & Equipment,United States,2300.0,2026-10-09,2026-10-29,True,2026-08-05,2026-10-29,912562.0,0
-ROG,Technology,Electronic Components,United States,3000.0,2026-10-09,2026-10-29,True,2026-07-28,2026-10-29,84748.0,0
+ROG,Technology,Electronic Components,United States,3000.0,2026-10-09,2026-10-27,False,2026-07-28,2026-10-27,84748.0,0
 ROIV,Healthcare,Biotechnology,United Kingdom,721.0,2026-10-09,2026-11-09,True,2026-08-06,2026-11-09,1635088.0,0
 ROK,Industrials,Specialty Industrial Machinery,United States,26000.0,2026-10-09,2026-11-05,True,2026-08-04,2026-11-05,1024478.0,0
 ROKU,Communication Services,Entertainment,United States,3600.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1428439.0,0
@@ -2299,7 +2304,7 @@ RPM,Basic Materials,Specialty Chemicals,United States,17500.0,2026-10-09,2027-01
 RPRX,Healthcare,Biotechnology,United States,100.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1802768.0,0
 RRBI,Financial Services,Banks - Regional,United States,381.0,2026-10-09,2026-10-29,True,2026-07-30,2026-10-29,1071236.0,1
 RRC,Energy,Oil & Gas E&P,United States,564.0,2026-10-09,2026-10-27,False,,2026-10-27,315852.0,0
-RRR,Consumer Cyclical,Resorts & Casinos,United States,9500.0,2026-10-09,2026-10-27,False,2026-08-04,2026-10-27,1653653.0,0
+RRR,Consumer Cyclical,Resorts & Casinos,United States,9500.0,2026-10-09,2026-11-03,False,2026-08-04,2026-11-03,1653653.0,0
 RRX,Industrials,Specialty Industrial Machinery,United States,28700.0,2026-10-09,2026-11-03,False,,2026-11-03,82811.0,0
 RS,Basic Materials,Steel,United States,15700.0,2026-10-09,2026-10-21,False,,2026-10-21,861884.0,0
 RSG,Industrials,Waste Management,United States,42000.0,2026-10-09,2026-10-29,False,,2026-10-29,1060391.0,0
@@ -2329,7 +2334,7 @@ RYZ,Industrials,Metal Fabrication,United States,4300.0,2026-10-09,2026-10-28,Fal
 RZAI,Technology,Software - Infrastructure,Canada,56.0,2026-10-09,,,,,2075335.0,0
 RZLT,Healthcare,Biotechnology,United States,58.0,2026-10-09,2026-11-05,True,2026-09-24,2026-11-05,1509261.0,0
 S,Technology,Software - Infrastructure,United States,2800.0,2026-10-09,,,2026-08-27,,1583708.0,0
-SA,Basic Materials,Gold,Canada,,2026-10-09,2026-11-11,True,,2026-11-11,1231346.0,0
+SA,Basic Materials,Gold,Canada,,2026-10-09,2026-11-12,True,,2026-11-12,1231346.0,0
 SAFE,Real Estate,REIT - Diversified,United States,72.0,2026-10-09,2026-10-29,False,2026-07-30,2026-10-29,1095651.0,0
 SAFT,Financial Services,Insurance - Property & Casualty,United States,568.0,2026-10-09,2026-11-02,True,,2026-11-02,1172052.0,0
 SAH,Consumer Cyclical,Auto & Truck Dealerships,United States,11000.0,2026-10-09,2026-10-29,False,,2026-10-29,1043509.0,0
@@ -2347,7 +2352,7 @@ SBAC,Real Estate,REIT - Specialty,United States,1844.0,2026-10-09,2026-11-02,Tru
 SBCF,Financial Services,Banks - Regional,United States,1964.0,2026-10-09,2026-10-27,False,,2026-10-27,730708.0,1
 SBET,Financial Services,Capital Markets,United States,15.0,2026-10-09,2026-11-12,True,2026-08-07,2026-11-12,1981535.0,0
 SBGI,Communication Services,Broadcasting,United States,7100.0,2026-10-09,2026-11-04,False,,2026-11-04,1971213.0,0
-SBH,Consumer Cyclical,Specialty Retail,United States,11000.0,2026-10-09,2026-11-12,True,2026-08-03,2026-11-12,1368458.0,0
+SBH,Consumer Cyclical,Specialty Retail,United States,11000.0,2026-10-09,2026-11-10,False,2026-08-03,2026-11-10,1368458.0,0
 SBLK,Industrials,Marine Shipping,Greece,294.0,2026-10-09,2026-11-18,False,2026-08-05,2026-11-18,1386716.0,0
 SBRA,Real Estate,REIT - Healthcare Facilities,United States,58.0,2026-10-09,2026-11-04,False,2026-08-03,2026-11-04,1492298.0,0
 SBS,Utilities,Utilities - Regulated Water,Brazil,8914.0,2026-10-09,2026-11-05,False,2026-08-12,2026-11-05,1170858.0,0
@@ -2369,7 +2374,7 @@ SE,Consumer Cyclical,Internet Retail,Singapore,102700.0,2026-10-09,2026-11-10,Fa
 SEB,Industrials,Conglomerates,United States,14000.0,2026-10-09,2026-10-27,True,,2026-10-27,88121.0,0
 SECZ,Technology,Software - Application,United States,194.0,2026-10-09,2026-11-11,False,2026-08-12,2026-11-11,2094496.0,0
 SEDG,Technology,Solar,Israel,3576.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1419612.0,0
-SEI,Energy,Oil & Gas Equipment & Services,United States,468.0,2026-10-09,2026-11-02,False,2026-08-05,2026-11-02,1697500.0,0
+SEI,Energy,Oil & Gas Equipment & Services,United States,468.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1697500.0,0
 SEIC,Financial Services,Asset Management,United States,4997.0,2026-10-09,2026-10-21,False,,2026-10-21,350894.0,0
 SENEA,Consumer Defensive,Packaged Foods,United States,2900.0,2026-10-09,2026-11-04,True,2026-08-06,2026-11-04,88948.0,0
 SENS,Healthcare,Medical Devices,United States,130.0,2026-10-09,2026-11-04,False,2026-08-06,2026-11-04,1616543.0,0
@@ -2405,7 +2410,7 @@ SHOP,Technology,Software - Application,Canada,7600.0,2026-10-09,2026-11-03,False
 SHW,Basic Materials,Specialty Chemicals,United States,64249.0,2026-10-09,2026-10-27,False,,2026-10-27,89800.0,0
 SIBN,Healthcare,Medical Devices,United States,376.0,2026-10-09,2026-11-09,False,2026-08-03,2026-11-09,1459839.0,0
 SIG,Consumer Cyclical,Luxury Goods,Bermuda,27097.0,2026-10-09,2026-12-01,True,2026-09-09,2026-12-01,832988.0,0
-SIGI,Financial Services,Insurance - Property & Casualty,United States,2800.0,2026-10-09,2026-10-21,True,2026-07-23,2026-10-21,230557.0,0
+SIGI,Financial Services,Insurance - Property & Casualty,United States,2800.0,2026-10-09,2026-10-22,False,2026-07-23,2026-10-22,230557.0,0
 SII,Financial Services,Asset Management,Canada,131.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1512920.0,0
 SILC,Technology,Communication Equipment,Israel,,2026-10-09,2026-10-29,False,,2026-10-29,916793.0,0
 SIMO,Technology,Semiconductors,Hong Kong,2009.0,2026-10-09,2026-10-28,False,,2026-10-28,1329394.0,0
@@ -2497,7 +2502,7 @@ SRRK,Healthcare,Biotechnology,United States,289.0,2026-10-09,2026-11-12,True,202
 SRTA,Healthcare,Medical Care Facilities,United States,327.0,2026-10-09,2026-11-09,False,2026-08-04,2026-11-09,1779128.0,0
 SRZN,Healthcare,Biotechnology,United States,44.0,2026-10-09,,,2025-05-09,,1824893.0,0
 SSB,Financial Services,Banks - Regional,United States,6431.0,2026-10-09,2026-10-21,False,,2026-10-21,764038.0,1
-SSD,Basic Materials,Lumber & Wood Production,United States,5545.0,2026-10-09,2026-10-26,True,2026-07-27,2026-10-26,920371.0,0
+SSD,Basic Materials,Lumber & Wood Production,United States,5545.0,2026-10-09,2026-10-26,False,2026-07-27,2026-10-26,920371.0,0
 SSL,Basic Materials,Specialty Chemicals,South Africa,26943.0,2026-10-09,,,2026-09-01,,314590.0,0
 SSMR,Basic Materials,Other Industrial Metals & Mining,United States,95.0,2026-10-09,2026-11-11,True,2026-08-12,2026-11-11,2091017.0,0
 SSNC,Technology,Software - Application,United States,28800.0,2026-10-09,2026-10-22,False,,2026-10-22,1402436.0,0
@@ -2507,7 +2512,7 @@ ST,Technology,Scientific & Technical Instruments,United States,16700.0,2026-10-0
 STAA,Healthcare,Medical Instruments & Supplies,United States,921.0,2026-10-09,2026-11-11,True,2026-08-12,2026-11-11,718937.0,0
 STAG,Real Estate,REIT - Industrial,United States,93.0,2026-10-09,2026-10-27,False,,2026-10-27,1479094.0,0
 STBA,Financial Services,Banks - Regional,United States,1209.0,2026-10-09,2026-10-22,False,,2026-10-22,719220.0,1
-STC,Financial Services,Insurance - Property & Casualty,United States,8100.0,2026-10-09,2026-10-21,True,2026-07-22,2026-10-21,94344.0,0
+STC,Financial Services,Insurance - Property & Casualty,United States,8100.0,2026-10-09,2026-10-21,False,2026-07-22,2026-10-21,94344.0,0
 STDN,Basic Materials,Specialty Chemicals,United States,80.0,2026-10-09,2026-11-16,False,2026-08-26,2026-11-16,2086716.0,0
 STE,Healthcare,Medical Devices,United States,17937.0,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,1757898.0,0
 STEP,Financial Services,Asset Management,United States,1355.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1796022.0,0
@@ -2529,7 +2534,7 @@ STT,Financial Services,Asset Management,United States,50596.0,2026-10-09,2026-10
 STTK,Healthcare,Biotechnology,United States,40.0,2026-10-09,2026-11-12,True,2026-08-11,2026-11-12,1680367.0,0
 STUB,Communication Services,Internet Content & Information,United States,900.0,2026-10-09,2026-11-12,True,2026-08-12,2026-11-12,1337634.0,0
 STVN,Healthcare,Medical Instruments & Supplies,Italy,6010.0,2026-10-09,2026-11-05,False,2026-08-04,2026-11-05,1849853.0,0
-STWD,Real Estate,REIT - Mortgage,United States,324.0,2026-10-09,2026-11-09,False,2026-08-06,2026-11-09,1465128.0,0
+STWD,Real Estate,REIT - Mortgage,United States,324.0,2026-10-09,2026-11-06,False,2026-08-06,2026-11-06,1465128.0,0
 STX,Technology,Computer Hardware,Singapore,30000.0,2026-10-09,2026-10-27,False,2026-07-28,2026-10-27,1137789.0,0
 STZ,Consumer Defensive,Beverages - Brewers,United States,9400.0,2026-10-09,,,2026-10-06,,16918.0,0
 SU,Energy,Oil & Gas Integrated,Canada,15424.0,2026-10-09,2026-11-03,True,2026-08-04,2026-11-03,311337.0,0
@@ -2542,7 +2547,7 @@ SUPN,Healthcare,Drug Manufacturers - Specialty & Generic,United States,778.0,202
 SUPV,Financial Services,Banks - Regional,Argentina,2815.0,2026-10-09,2026-11-17,False,,2026-11-17,1517399.0,1
 SUPX,Technology,Software - Infrastructure,Singapore,40.0,2026-10-09,,,,,1897087.0,0
 SUZ,Basic Materials,Paper & Paper Products,Brazil,,2026-10-09,2026-11-05,False,,2026-11-05,909327.0,0
-SVC,Real Estate,REIT - Hotel & Motel,United States,,2026-10-09,2026-11-04,True,2026-08-05,2026-11-04,945394.0,0
+SVC,Real Estate,REIT - Hotel & Motel,United States,,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,945394.0,0
 SVCO,Technology,Software - Application,United States,406.0,2026-10-09,2026-11-11,False,2026-08-06,2026-11-11,1943289.0,0
 SVM,Basic Materials,Silver,Canada,372.0,2026-10-09,2026-11-05,False,2026-08-10,2026-11-05,1340677.0,0
 SVRA,Healthcare,Biotechnology,United States,70.0,2026-10-09,2026-11-11,True,,2026-11-11,1160308.0,0
@@ -2563,7 +2568,7 @@ SYK,Healthcare,Medical Devices,United States,56000.0,2026-10-09,2026-10-29,False
 SYM,Industrials,Specialty Industrial Machinery,United States,2000.0,2026-10-09,2026-11-16,False,2026-08-05,2026-11-16,1837240.0,0
 SYNA,Technology,Semiconductors,United States,1700.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,817720.0,0
 SYRE,Healthcare,Biotechnology,United States,125.0,2026-10-09,2026-11-03,False,,2026-11-03,1636282.0,0
-SYY,Consumer Defensive,Food Distribution,United States,75000.0,2026-10-09,2026-11-03,True,2026-08-04,2026-11-03,96021.0,0
+SYY,Consumer Defensive,Food Distribution,United States,75000.0,2026-10-09,2026-11-03,False,2026-08-04,2026-11-03,96021.0,0
 T,Communication Services,Telecom Services,United States,133030.0,2026-10-09,2026-10-21,False,,2026-10-21,732717.0,0
 TAC,Utilities,Utilities - Independent Power Producers,Canada,1350.0,2026-10-09,2026-11-03,False,,2026-11-03,1144800.0,0
 TAK,Healthcare,Drug Manufacturers - Specialty & Generic,Japan,47029.0,2026-10-09,2026-10-29,False,,2026-10-29,1395064.0,0
@@ -2632,10 +2637,10 @@ TKC,Communication Services,Telecom Services,Turkey,,2026-10-09,2026-11-12,True,2
 TKO,Communication Services,Entertainment,United States,4000.0,2026-10-09,2026-11-04,False,,2026-11-04,1973266.0,0
 TKR,Industrials,Tools & Accessories,United States,19000.0,2026-10-09,2026-10-28,True,2026-08-04,2026-10-28,98362.0,0
 TLK,Communication Services,Telecom Services,Indonesia,17438.0,2026-10-09,2026-10-29,True,2026-07-31,2026-10-29,1001807.0,0
-TLN,Utilities,Utilities - Independent Power Producers,United States,1880.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1622536.0,0
+TLN,Utilities,Utilities - Independent Power Producers,United States,1880.0,2026-10-09,2026-11-03,False,2026-08-05,2026-11-03,1622536.0,0
 TM,Consumer Cyclical,Auto Manufacturers,Japan,367990.0,2026-10-09,2026-11-05,False,,2026-11-05,1094517.0,0
 TMDX,Healthcare,Medical Devices,United States,898.0,2026-10-09,2026-10-29,False,2026-08-04,2026-10-29,1756262.0,0
-TME,Communication Services,Internet Content & Information,China,5690.0,2026-10-09,2026-11-11,False,2026-08-11,2026-11-11,1744676.0,0
+TME,Communication Services,Internet Content & Information,China,5690.0,2026-10-09,2026-11-17,False,2026-08-11,2026-11-17,1744676.0,0
 TMO,Healthcare,Diagnostics & Research,United States,125000.0,2026-10-09,2026-10-21,False,,2026-10-21,97745.0,0
 TMP,Financial Services,Banks - Regional,United States,813.0,2026-10-09,2026-10-23,False,,2026-10-23,1005817.0,1
 TMUS,Communication Services,Telecom Services,United States,75000.0,2026-10-09,2026-10-28,False,,2026-10-28,1283699.0,0
@@ -2671,16 +2676,17 @@ TRNS,Industrials,Specialty Business Services,United States,1413.0,2026-10-09,202
 TROW,Financial Services,Asset Management,United States,7544.0,2026-10-09,2026-10-29,False,,2026-10-29,1113169.0,0
 TRP,Energy,Oil & Gas Midstream,Canada,6574.0,2026-10-09,2026-11-05,False,2026-07-30,2026-11-05,1232384.0,0
 TRS,Consumer Cyclical,Packaging & Containers,United States,2500.0,2026-10-09,2026-10-29,False,,2026-10-29,842633.0,0
-TRST,Financial Services,Banks - Regional,United States,742.0,2026-10-09,2026-10-20,False,2026-07-21,2026-10-20,357301.0,1
+TRST,Financial Services,Banks - Regional,United States,742.0,2026-10-09,2026-10-21,False,2026-07-21,2026-10-21,357301.0,1
 TRTX,Real Estate,REIT - Mortgage,United States,,2026-10-09,2026-10-27,False,2026-07-28,2026-10-27,1630472.0,0
 TRU,Financial Services,Financial Data & Stock Exchanges,United States,13000.0,2026-10-09,2026-10-27,False,,2026-10-27,1552033.0,0
 TRUP,Financial Services,Insurance - Property & Casualty,United States,1121.0,2026-10-09,2026-11-05,True,2026-08-05,2026-11-05,1371285.0,0
 TRV,Financial Services,Insurance - Property & Casualty,United States,34000.0,2026-10-09,2026-10-16,False,,2026-10-16,86312.0,0
 TRVI,Healthcare,Biotechnology,United States,34.0,2026-10-09,2026-11-12,False,2026-08-06,2026-11-12,1563880.0,0
+TRXB,Healthcare,Biotechnology,United States,60.0,2026-10-14,,,,,2139097.0,0
 TS,Energy,Oil & Gas Equipment & Services,Luxembourg,26000.0,2026-10-09,2026-11-04,False,,2026-11-04,1190723.0,0
 TSAT,Technology,Communication Equipment,Canada,711.0,2026-10-09,2026-11-10,True,2026-08-13,2026-11-10,1845840.0,0
 TSCO,Consumer Cyclical,Specialty Retail,United States,54000.0,2026-10-09,2026-10-22,False,2026-07-23,2026-10-22,916365.0,0
-TSEM,Technology,Semiconductors,Israel,,2026-10-09,2026-11-09,True,2026-08-04,2026-11-09,928876.0,0
+TSEM,Technology,Semiconductors,Israel,,2026-10-09,2026-11-02,False,2026-08-04,2026-11-02,928876.0,0
 TSHA,Healthcare,Biotechnology,United States,99.0,2026-10-09,2026-11-04,False,2026-08-11,2026-11-04,1806310.0,0
 TSLA,Consumer Cyclical,Auto Manufacturers,United States,134785.0,2026-10-09,2026-10-21,False,,2026-10-21,1318605.0,0
 TSLX,Financial Services,Asset Management,United States,,2026-10-09,2026-11-03,False,,2026-11-03,1508655.0,0
@@ -2743,16 +2749,16 @@ UMC,Technology,Semiconductors,Taiwan,20000.0,2026-10-09,2026-10-28,False,,2026-1
 UMH,Real Estate,REIT - Residential,United States,540.0,2026-10-09,2026-11-02,False,,2026-11-02,752642.0,0
 UNF,Industrials,Specialty Business Services,United States,16000.0,2026-10-09,2026-10-21,False,,2026-10-21,717954.0,0
 UNFI,Consumer Defensive,Food Distribution,United States,23431.0,2026-10-09,2026-12-01,True,2026-09-08,2026-12-01,1020859.0,0
-UNH,Healthcare,Healthcare Plans,United States,390000.0,2026-10-09,2026-10-13,False,,2026-10-13,731766.0,0
+UNH,Healthcare,Healthcare Plans,United States,390000.0,2026-10-09,,False,2026-10-13,2026-10-13,731766.0,0
 UNIT,Real Estate,REIT - Specialty,United States,8632.0,2026-10-09,2026-11-09,False,,2026-11-09,2020795.0,0
 UNM,Financial Services,Insurance - Life,United States,10684.0,2026-10-09,2026-11-03,False,,2026-11-03,5513.0,0
 UNP,Industrials,Railroads,United States,28716.0,2026-10-09,2026-10-22,False,,2026-10-22,100885.0,0
-UNTY,Financial Services,Banks - Regional,United States,249.0,2026-10-09,2026-10-13,True,2026-07-14,2026-10-13,920427.0,1
+UNTY,Financial Services,Banks - Regional,United States,249.0,2026-10-09,,True,2026-10-13,2026-10-13,920427.0,1
 UPB,Healthcare,Biotechnology,United States,75.0,2026-10-09,2026-11-04,True,2026-08-11,2026-11-04,2022626.0,0
 UPBD,Technology,Software - Application,United States,12050.0,2026-10-09,2026-10-29,False,2026-07-30,2026-10-29,933036.0,0
 UPS,Industrials,Integrated Freight & Logistics,United States,460000.0,2026-10-09,2026-10-27,False,,2026-10-27,1090727.0,0
 UPST,Financial Services,Credit Services,United States,1405.0,2026-10-09,2026-11-03,False,,2026-11-03,1647639.0,0
-UPWK,Communication Services,Internet Content & Information,United States,630.0,2026-10-09,2026-11-02,True,2026-08-10,2026-11-02,1627475.0,0
+UPWK,Communication Services,Internet Content & Information,United States,630.0,2026-10-09,2026-11-02,False,2026-08-10,2026-11-02,1627475.0,0
 URBN,Consumer Cyclical,Apparel Retail,United States,11780.0,2026-10-09,2026-11-25,True,2026-08-26,2026-11-25,912615.0,0
 URGN,Healthcare,Biotechnology,United States,300.0,2026-10-09,2026-11-05,True,2026-08-05,2026-11-05,1668243.0,0
 URI,Industrials,Rental & Leasing Services,United States,28500.0,2026-10-09,2026-10-21,False,,2026-10-21,1067701.0,0
@@ -2777,9 +2783,9 @@ V,Financial Services,Credit Services,United States,34100.0,2026-10-09,2026-10-27
 VAC,Consumer Cyclical,Resorts & Casinos,United States,21100.0,2026-10-09,2026-11-04,False,,2026-11-04,1524358.0,0
 VAL,Energy,Oil & Gas Drilling,United States,3800.0,2026-10-09,2026-10-28,True,2026-08-05,2026-10-28,314808.0,0
 VALE,Basic Materials,Other Industrial Metals & Mining,Brazil,65805.0,2026-10-09,2026-10-29,True,2026-07-30,2026-10-29,917851.0,0
-VC,Consumer Cyclical,Auto Parts,United States,10500.0,2026-10-09,2026-10-22,True,2026-07-23,2026-10-22,1111335.0,0
+VC,Consumer Cyclical,Auto Parts,United States,10500.0,2026-10-09,2026-10-22,False,2026-07-23,2026-10-22,1111335.0,0
 VCEL,Healthcare,Biotechnology,United States,398.0,2026-10-09,2026-11-05,False,2026-07-30,2026-11-05,887359.0,0
-VCTR,Financial Services,Asset Management,United States,699.0,2026-10-09,2026-11-05,True,2026-08-05,2026-11-05,1570827.0,0
+VCTR,Financial Services,Asset Management,United States,699.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,1570827.0,0
 VCYT,Healthcare,Diagnostics & Research,United States,755.0,2026-10-09,2026-11-03,False,2026-07-30,2026-11-03,1384101.0,0
 VECO,Technology,Semiconductor Equipment & Materials,United States,1265.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,103145.0,0
 VEEV,Healthcare,Health Information Services,United States,7928.0,2026-10-09,2026-11-25,True,2026-08-26,2026-11-25,1393052.0,0
@@ -2805,7 +2811,7 @@ VITL,Consumer Defensive,Farm Products,United States,739.0,2026-10-09,2026-11-05,
 VIV,Communication Services,Telecom Services,Brazil,35010.0,2026-10-09,2026-11-10,False,,2026-11-10,1066119.0,0
 VKTX,Healthcare,Biotechnology,United States,65.0,2026-10-09,2026-10-28,True,2026-07-29,2026-10-28,1607678.0,0
 VLO,Energy,Oil & Gas Refining & Marketing,United States,9785.0,2026-10-09,2026-10-22,False,,2026-10-22,1035002.0,0
-VLTO,Industrials,Pollution & Treatment Controls,United States,17000.0,2026-10-09,2026-10-21,False,2026-07-28,2026-10-21,1967680.0,0
+VLTO,Industrials,Pollution & Treatment Controls,United States,17000.0,2026-10-09,2026-10-29,False,2026-07-28,2026-10-29,1967680.0,0
 VLY,Financial Services,Banks - Regional,United States,3675.0,2026-10-09,2026-10-22,False,,2026-10-22,714310.0,1
 VMC,Basic Materials,Building Materials,United States,11548.0,2026-10-09,2026-10-29,False,2026-07-29,2026-10-29,1396009.0,0
 VMD,Healthcare,Medical Devices,United States,1438.0,2026-10-09,2026-11-04,True,2026-08-03,2026-11-04,1729149.0,0
@@ -2831,13 +2837,14 @@ VRT,Industrials,Electrical Equipment & Parts,United States,34000.0,2026-10-09,20
 VRTS,Financial Services,Asset Management,United States,801.0,2026-10-09,2026-10-30,False,2026-07-30,2026-10-30,883237.0,0
 VRTX,Healthcare,Biotechnology,United States,6400.0,2026-10-09,2026-11-02,False,,2026-11-02,875320.0,0
 VSAT,Technology,Communication Equipment,United States,7000.0,2026-10-09,2026-11-05,False,2026-08-04,2026-11-05,797721.0,0
-VSEC,Industrials,Aerospace & Defense,United States,1600.0,2026-10-09,2026-11-02,False,2026-08-05,2026-11-02,102752.0,0
+VSEC,Industrials,Aerospace & Defense,United States,1600.0,2026-10-09,2026-11-04,False,2026-08-05,2026-11-04,102752.0,0
 VSH,Technology,Semiconductors,United States,22600.0,2026-10-09,2026-11-04,False,,2026-11-04,103730.0,0
 VSNT,Communication Services,Entertainment,United States,4400.0,2026-10-09,2026-11-03,False,,2026-11-03,2067876.0,0
 VST,Utilities,Utilities - Independent Power Producers,United States,6390.0,2026-10-09,2026-11-06,False,,2026-11-06,1692819.0,0
 VSTM,Healthcare,Biotechnology,United States,102.0,2026-10-09,2026-11-03,True,2026-08-06,2026-11-03,1526119.0,0
 VSTS,Industrials,Rental & Leasing Services,United States,18150.0,2026-10-09,2026-11-19,False,2026-08-11,2026-11-19,1967649.0,0
 VSXY,Consumer Cyclical,Apparel Retail,United States,30000.0,2026-10-09,2026-12-03,True,2026-09-03,2026-12-03,1856437.0,0
+VTEX,Technology,Software - Application,Cayman Islands,1139.0,2026-10-14,2026-11-05,True,2026-08-06,2026-11-05,1793663.0,0
 VTOL,Energy,Oil & Gas Equipment & Services,United States,3660.0,2026-10-09,2026-11-03,False,2026-08-04,2026-11-03,1525221.0,0
 VTR,Real Estate,REIT - Healthcare Facilities,United States,542.0,2026-10-09,2026-10-27,False,,2026-10-27,740260.0,0
 VTRS,Healthcare,Drug Manufacturers - Specialty & Generic,United States,30000.0,2026-10-09,2026-11-05,False,,2026-11-05,1792044.0,0
@@ -2873,7 +2880,7 @@ WES,Energy,Oil & Gas Midstream,United States,1704.0,2026-10-09,2026-11-03,False,
 WEST,Consumer Defensive,Packaged Foods,United States,1393.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1806347.0,0
 WEX,Technology,Software - Infrastructure,United States,6600.0,2026-10-09,2026-10-28,True,,2026-10-28,1309108.0,0
 WF,Financial Services,Banks - Regional,South Korea,88.0,2026-10-09,,,2025-07-25,,1264136.0,1
-WFC,Financial Services,Banks - Diversified,United States,197466.0,2026-10-09,2026-10-13,False,,2026-10-13,72971.0,1
+WFC,Financial Services,Banks - Diversified,United States,197466.0,2026-10-09,,False,2026-10-13,2026-10-13,72971.0,1
 WFF,Industrials,Specialty Industrial Machinery,Malaysia,142.0,2026-10-09,,,,,1980210.0,0
 WFG,Basic Materials,Lumber & Wood Production,Canada,9600.0,2026-10-09,2026-10-28,False,,2026-10-28,1402388.0,0
 WFRD,Energy,Oil & Gas Equipment & Services,United States,16700.0,2026-10-09,2026-10-20,False,,2026-10-20,1603923.0,0
@@ -2881,7 +2888,7 @@ WGO,Consumer Cyclical,Recreational Vehicles,United States,5300.0,2026-10-09,2026
 WGS,Healthcare,Diagnostics & Research,United States,1300.0,2026-10-09,2026-10-27,True,2026-08-03,2026-10-27,1818331.0,0
 WH,Consumer Cyclical,Lodging,United States,2000.0,2026-10-09,2026-10-21,False,,2026-10-21,1722684.0,0
 WHD,Energy,Oil & Gas Equipment & Services,United States,1500.0,2026-10-09,2026-11-04,False,2026-07-29,2026-11-04,1699136.0,0
-WHK,Energy,Oil & Gas Midstream,United States,13.0,2026-10-09,2026-11-11,True,2026-08-12,2026-11-11,1921603.0,0
+WHK,Energy,Oil & Gas Midstream,United States,13.0,2026-10-09,2026-11-12,False,2026-08-12,2026-11-12,1921603.0,0
 WHR,Consumer Cyclical,"Furnishings, Fixtures & Appliances",United States,41000.0,2026-10-09,2026-10-28,True,2026-08-03,2026-10-28,106640.0,0
 WINA,Consumer Cyclical,Specialty Retail,United States,87.0,2026-10-09,2026-10-14,True,2026-07-15,2026-10-14,908315.0,0
 WING,Consumer Cyclical,Restaurants,United States,345.0,2026-10-09,2026-10-28,False,,2026-10-28,1636222.0,0
@@ -2894,7 +2901,7 @@ WLK,Basic Materials,Specialty Chemicals,United States,14600.0,2026-10-09,2026-10
 WLTH,Technology,Software - Application,United States,415.0,2026-10-09,,,2026-09-09,,1524566.0,0
 WLY,Communication Services,Publishing,United States,4500.0,2026-10-09,2026-12-03,True,2026-09-03,2026-12-03,107140.0,0
 WM,Industrials,Waste Management,United States,60500.0,2026-10-09,2026-10-27,False,,2026-10-27,823768.0,0
-WMB,Energy,Oil & Gas Midstream,United States,5987.0,2026-10-09,2026-11-02,True,2026-08-03,2026-11-02,107263.0,0
+WMB,Energy,Oil & Gas Midstream,United States,5987.0,2026-10-09,2026-11-02,False,2026-08-03,2026-11-02,107263.0,0
 WMG,Communication Services,Entertainment,United States,5500.0,2026-10-09,2026-11-19,True,2026-08-05,2026-11-19,1319161.0,0
 WMS,Industrials,Building Products & Equipment,United States,6425.0,2026-10-09,2026-11-05,False,2026-08-06,2026-11-05,1604028.0,0
 WMT,Consumer Defensive,Discount Stores,United States,2100000.0,2026-10-09,2026-11-19,False,,2026-11-19,104169.0,0
@@ -2910,7 +2917,7 @@ WRD,Technology,Software - Application,China,3661.0,2026-10-09,2026-11-24,True,20
 WRLD,Financial Services,Credit Services,United States,2907.0,2026-10-09,2026-10-22,True,2026-07-24,2026-10-22,108385.0,0
 WS,Basic Materials,Steel,United States,5400.0,2026-10-09,2026-12-16,True,2026-10-06,2026-12-16,1968487.0,0
 WSBC,Financial Services,Banks - Regional,United States,2996.0,2026-10-09,2026-10-21,False,,2026-10-21,203596.0,1
-WSC,Industrials,Rental & Leasing Services,United States,4700.0,2026-10-09,2026-11-09,True,2026-08-06,2026-11-09,1647088.0,0
+WSC,Industrials,Rental & Leasing Services,United States,4700.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,1647088.0,0
 WSE,Technology,Information Technology Services,United Kingdom,8805.0,2026-10-09,2026-11-12,False,,2026-11-12,2099039.0,0
 WSFS,Financial Services,Banks - Regional,United States,2391.0,2026-10-09,2026-10-22,False,,2026-10-22,828944.0,1
 WSM,Consumer Cyclical,Specialty Retail,United States,19800.0,2026-10-09,2026-11-18,True,2026-08-26,2026-11-18,719955.0,0
@@ -2923,8 +2930,8 @@ WTRG,Utilities,Utilities - Regulated Water,United States,3303.0,2026-10-09,2026-
 WTS,Industrials,Specialty Industrial Machinery,United States,5700.0,2026-10-09,2026-11-04,False,,2026-11-04,795403.0,0
 WTTR,Energy,Oil & Gas Equipment & Services,United States,3300.0,2026-10-09,2026-11-03,True,2026-08-04,2026-11-03,1693256.0,0
 WTW,Financial Services,Insurance Brokers,United Kingdom,48100.0,2026-10-09,2026-10-29,False,,2026-10-29,1140536.0,0
-WU,Financial Services,Credit Services,United States,9600.0,2026-10-09,2026-10-22,False,2026-07-30,2026-10-22,1365135.0,0
-WULF,Financial Services,Capital Markets,United States,141.0,2026-10-09,2026-11-09,True,2026-08-05,2026-11-09,1083301.0,0
+WU,Financial Services,Credit Services,United States,9600.0,2026-10-09,2026-11-04,False,2026-07-30,2026-11-04,1365135.0,0
+WULF,Financial Services,Capital Markets,United States,141.0,2026-10-09,2026-11-06,False,2026-08-05,2026-11-06,1083301.0,0
 WWD,Industrials,Aerospace & Defense,United States,10200.0,2026-10-09,2026-11-23,False,2026-07-29,2026-11-23,108312.0,0
 WWW,Consumer Cyclical,Footwear & Accessories,United States,3050.0,2026-10-09,2026-11-12,True,2026-08-13,2026-11-12,110471.0,0
 WY,Real Estate,REIT - Specialty,United States,9500.0,2026-10-09,2026-10-29,False,,2026-10-29,106535.0,0
@@ -2949,6 +2956,7 @@ XPOF,Consumer Cyclical,Leisure,United States,226.0,2026-10-09,2026-11-05,True,20
 XPRO,Energy,Oil & Gas Equipment & Services,United States,7000.0,2026-10-09,2026-10-22,False,2026-07-28,2026-10-22,2126198.0,0
 XRAY,Healthcare,Medical Instruments & Supplies,United States,14000.0,2026-10-09,2026-11-05,True,2026-08-06,2026-11-05,818479.0,0
 XRN,Real Estate,REIT - Healthcare Facilities,United States,30.0,2026-10-09,2026-11-03,True,2026-08-05,2026-11-03,1533615.0,0
+XRPN,Financial Services,Capital Markets,United States,,2026-10-14,,,,,2044009.0,0
 XXI,Consumer Defensive,Education & Training Services,United States,3.0,2026-10-09,2026-11-05,True,2026-08-11,2026-11-05,2070457.0,0
 XYL,Industrials,Specialty Industrial Machinery,United States,22000.0,2026-10-09,2026-10-27,False,,2026-10-27,1524472.0,0
 XYZ,Technology,Software - Infrastructure,United States,10205.0,2026-10-09,2026-11-03,False,,2026-11-03,1512673.0,0
