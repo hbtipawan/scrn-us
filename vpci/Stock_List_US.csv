@@ -580,6 +580,7 @@ COR,"Cencora, Inc.",Healthcare,Medical Distribution
 CORT,Corcept Therapeutics Incorporated,Healthcare,Biotechnology
 CORZ,"Core Scientific, Inc.",Technology,Software - Infrastructure
 COST,Costco Wholesale Corporation,Consumer Defensive,Discount Stores
+COUR,"Coursera, Inc.",Consumer Defensive,Education & Training Services
 CP,Canadian Pacific Kansas City Limited,Industrials,Railroads
 CPA,"Copa Holdings, S.A.",Industrials,Airlines
 CPAY,"Corpay, Inc.",Technology,Software - Infrastructure
@@ -632,7 +633,6 @@ CTAS,Cintas Corporation,Industrials,Specialty Business Services
 CTBI,"Community Trust Bancorp, Inc.",Financial Services,Banks - Regional
 CTGO,Contango Silver & Gold Inc.,Basic Materials,Gold
 CTKB,"Cytek Biosciences, Inc.",Healthcare,Medical Devices
-CTNM,"Contineum Therapeutics, Inc.",Healthcare,Biotechnology
 CTO,"CTO Realty Growth, Inc.",Real Estate,REIT - Diversified
 CTOS,"Custom Truck One Source, Inc.",Industrials,Rental & Leasing Services
 CTRE,"CareTrust REIT, Inc.",Real Estate,REIT - Healthcare Facilities
@@ -1227,6 +1227,7 @@ IMKTA,"Ingles Markets, Incorporated",Consumer Defensive,Grocery Stores
 IMMX,"Immix Biopharma, Inc.",Healthcare,Biotechnology
 IMNM,"Immunome, Inc.",Healthcare,Biotechnology
 IMO,Imperial Oil Limited,Unknown,Unknown
+IMOS,ChipMOS TECHNOLOGIES INC.,Technology,Semiconductors
 IMTX,Immatics N.V.,Healthcare,Biotechnology
 IMVT,"Immunovant, Inc.",Healthcare,Biotechnology
 IMXI,"International Money Express, Inc.",Technology,Software - Infrastructure
@@ -1262,7 +1263,6 @@ IP,International Paper Company,Consumer Cyclical,Packaging & Containers
 IPAR,"Interparfums, Inc.",Consumer Defensive,Household & Personal Products
 IPGP,IPG Photonics Corporation,Technology,Semiconductor Equipment & Materials
 IPI,"Intrepid Potash, Inc.",Basic Materials,Agricultural Inputs
-IQQ,iShares Nasdaq 100 ETF,Unknown,Unknown
 IQV,IQVIA Holdings Inc.,Healthcare,Diagnostics & Research
 IR,Ingersoll Rand Inc.,Industrials,Specialty Industrial Machinery
 IRDM,Iridium Communications Inc.,Communication Services,Telecom Services
@@ -1314,7 +1314,6 @@ KAI,Kadant Inc.,Industrials,Specialty Industrial Machinery
 KALU,Kaiser Aluminum Corporation,Basic Materials,Aluminum
 KARD,"Kardigan, Inc.",Healthcare,Biotechnology
 KB,KB Financial Group Inc.,Financial Services,Banks - Regional
-KBDC,"Kayne Anderson BDC, Inc.",Financial Services,Asset Management
 KBH,KB Home,Consumer Cyclical,Residential Construction
 KBR,"KBR, Inc.",Industrials,Engineering & Construction
 KC,Kingsoft Cloud Holdings Limited,Technology,Software - Application
@@ -1376,11 +1375,10 @@ LAD,"Lithia Motors, Inc.",Consumer Cyclical,Auto & Truck Dealerships
 LADR,Ladder Capital Corp,Real Estate,REIT - Mortgage
 LAMR,Lamar Advertising Company,Real Estate,REIT - Specialty
 LAND,Gladstone Land Corporation,Real Estate,REIT - Specialty
-LAR,Lithium Argentina AG,Basic Materials,Other Industrial Metals & Mining
 LASR,"nLIGHT, Inc.",Technology,Semiconductors
 LAUR,"Laureate Education, Inc.",Consumer Defensive,Education & Training Services
 LAZ,"Lazard, Inc.",Financial Services,Capital Markets
-LB,LandBridge Company LLC,Energy,Oil & Gas E&P
+LB,LandBridge Corporation,Energy,Oil & Gas E&P
 LBRT,Liberty Energy Inc.,Energy,Oil & Gas Equipment & Services
 LBRX,LB Pharmaceuticals Inc,Healthcare,Biotechnology
 LBTYA,Liberty Global Ltd.,Communication Services,Telecom Services
@@ -1967,7 +1965,6 @@ QFIN,"Qfin Holdings, Inc.",Financial Services,Credit Services
 QGEN,Qiagen N.V.,Healthcare,Diagnostics & Research
 QLYS,"Qualys, Inc.",Technology,Software - Infrastructure
 QMCO,Quantum Corporation,Technology,Computer Hardware
-QNDX,State Street SPDR Portfolio Nasdaq 100 E,Unknown,Unknown
 QNST,"QuinStreet, Inc.",Communication Services,Advertising Agencies
 QNT,Quantinuum Inc.,Technology,Software - Application
 QSR,Restaurant Brands International Inc.,Consumer Cyclical,Restaurants
@@ -1986,7 +1983,6 @@ RBC,RBC Bearings Incorporated,Industrials,Tools & Accessories
 RBCAA,"Republic Bancorp, Inc.",Financial Services,Banks - Regional
 RBLX,Roblox Corporation,Communication Services,Electronic Gaming & Multimedia
 RBRK,"Rubrik, Inc.",Technology,Software - Infrastructure
-RCAT,"Red Cat Holdings, Inc.",Industrials,Aerospace & Defense
 RCI,Rogers Communications Inc.,Communication Services,Telecom Services
 RCL,Royal Caribbean Cruises Ltd.,Consumer Cyclical,Travel Services
 RCUS,"Arcus Biosciences, Inc.",Healthcare,Biotechnology
@@ -2149,7 +2145,6 @@ SIBN,"SI-BONE, Inc.",Healthcare,Medical Devices
 SIG,Signet Jewelers Limited,Consumer Cyclical,Luxury Goods
 SIGI,"Selective Insurance Group, Inc.",Financial Services,Insurance - Property & Casualty
 SII,Sprott Inc.,Financial Services,Asset Management
-SILC,Silicom Ltd.,Technology,Communication Equipment
 SIMO,Silicon Motion Technology Corporation,Technology,Semiconductors
 SIRI,Sirius XM Holdings Inc.,Communication Services,Entertainment
 SITE,"SiteOne Landscape Supply, Inc.",Industrials,Industrial Distribution
@@ -2230,6 +2225,7 @@ SRRK,Scholar Rock Holding Corporation,Healthcare,Biotechnology
 SSB,SouthState Bank Corporation,Financial Services,Banks - Regional
 SSD,"Simpson Manufacturing Co., Inc.",Basic Materials,Lumber & Wood Production
 SSL,Sasol Limited,Basic Materials,Specialty Chemicals
+SSMR,Sunshine Silver Mining & Refining Compan,Basic Materials,Other Industrial Metals & Mining
 SSNC,"SS&C Technologies Holdings, Inc.",Technology,Software - Application
 SSRM,SSR Mining Inc.,Basic Materials,Gold
 SSYS,Stratasys Ltd.,Technology,Computer Hardware
@@ -2271,7 +2267,6 @@ SVM,Silvercorp Metals Inc.,Basic Materials,Silver
 SVV,"Savers Value Village, Inc.",Consumer Cyclical,Specialty Retail
 SW,Smurfit Westrock Plc,Consumer Cyclical,Packaging & Containers
 SWBI,"Smith & Wesson Brands, Inc.",Industrials,Aerospace & Defense
-SWIM,"Latham Group, Inc.",Industrials,Building Products & Equipment
 SWK,"Stanley Black & Decker, Inc.",Industrials,Tools & Accessories
 SWKS,"Skyworks Solutions, Inc.",Technology,Semiconductors
 SWX,"Southwest Gas Holdings, Inc.",Utilities,Utilities - Regulated Gas
@@ -2341,7 +2336,6 @@ TIMB,TIM S.A.,Communication Services,Telecom Services
 TJGC,TJGC Group Limited,Communication Services,Advertising Agencies
 TJX,"The TJX Companies, Inc.",Consumer Cyclical,Apparel Retail
 TK,Teekay Corporation Ltd.,Energy,Oil & Gas Midstream
-TKC,Turkcell Iletisim Hizmetleri A.S.,Communication Services,Telecom Services
 TKO,"TKO Group Holdings, Inc.",Communication Services,Entertainment
 TKR,The Timken Company,Industrials,Tools & Accessories
 TLK,Perusahaan Perseroan (Persero) PT Teleko,Communication Services,Telecom Services
@@ -2511,7 +2505,6 @@ VLY,Valley National Bancorp,Financial Services,Banks - Regional
 VMC,Vulcan Materials Company,Basic Materials,Building Materials
 VMI,"Valmont Industries, Inc.",Industrials,Conglomerates
 VMRK,"AvalonBay Communities, Inc.",Real Estate,REIT - Residential
-VNET,"VNET Group, Inc.",Technology,Information Technology Services
 VNO,Vornado Realty Trust,Real Estate,REIT - Office
 VNOM,"Viper Energy, Inc.",Energy,Oil & Gas Midstream
 VNT,Vontier Corporation,Technology,Scientific & Technical Instruments
