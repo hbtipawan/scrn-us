@@ -126,7 +126,7 @@ ARW,Arrow Electronics,Information Technology,Technology Distributors,S&P MidCap 
 ARWR,Arrowhead Pharmaceuticals,Health Care,Biotechnology,S&P MidCap 400
 ASB,Associated Bank,Financials,Regional Banks,S&P MidCap 400
 ASH,Ashland Global,Materials,Diversified Chemicals,S&P MidCap 400
-ASO,Academy Sports + Outdoors,Consumer Discretionary,Specialty Stores,S&P SmallCap 600
+ASO,Academy Sports + Outdoors,Consumer Discretionary,Other Specialty Retail,S&P SmallCap 600
 ASTE,"Astec Industries, Inc.",Industrials,Construction Machinery & Heavy Transportation Equipment,S&P SmallCap 600
 ASTH,"Astrana Health, Inc.",Health Care,Health Care Facilities,S&P SmallCap 600
 ATEN,"A10 Networks, Inc.",Information Technology,Systems Software,S&P SmallCap 600
@@ -403,7 +403,7 @@ DHR,Danaher Corporation,Health Care,Life Sciences Tools & Services,S&P 500
 DINO,HF Sinclair,Energy,Oil & Gas Refining & Marketing,S&P MidCap 400
 DIOD,Diodes Incorporated,Information Technology,Semiconductors,S&P SmallCap 600
 DIS,Walt Disney Company (The),Communication Services,Movies & Entertainment,S&P 500
-DKS,Dick's Sporting Goods,Consumer Discretionary,Specialty Stores,S&P MidCap 400
+DKS,Dick's Sporting Goods,Consumer Discretionary,Other Specialty Retail,S&P MidCap 400
 DLB,Dolby,Information Technology,Application Software,S&P MidCap 400
 DLR,Digital Realty,Real Estate,Data Center REITs,S&P 500
 DLTR,Dollar Tree,Consumer Staples,Consumer Staples Merchandise Retail,S&P 500
@@ -499,7 +499,7 @@ EXPE,Expedia Group,Consumer Discretionary,"Hotels, Resorts & Cruise Lines",S&P 5
 EXPO,"Exponent, Inc.",Industrials,Research & Consulting Services,S&P MidCap 400
 EXR,Extra Space Storage,Real Estate,Self-Storage REITs,S&P 500
 EXTR,"Extreme Networks, Inc.",Information Technology,Communications Equipment,S&P SmallCap 600
-EYE,National Vision Holdings,Consumer Discretionary,Specialty Stores,S&P SmallCap 600
+EYE,National Vision Holdings,Consumer Discretionary,Other Specialty Retail,S&P SmallCap 600
 EZPW,"EZCORP, Inc.",Financials,Consumer Finance,S&P SmallCap 600
 F,Ford Motor Company,Consumer Discretionary,Automobile Manufacturers,S&P 500
 FA,First Advantage Corporation,Industrials,Human Resource & Employment Services,S&P SmallCap 600
@@ -534,7 +534,7 @@ FICO,Fair Isaac,Information Technology,Application Software,S&P 500
 FIS,Fidelity National Information Services,Financials,Transaction & Payment Processing Services,S&P 500
 FISV,Fiserv,Financials,Transaction & Payment Processing Services,S&P 500
 FITB,Fifth Third Bancorp,Financials,Regional Banks,S&P 500
-FIVE,Five Below,Consumer Discretionary,Specialty Stores,S&P MidCap 400
+FIVE,Five Below,Consumer Discretionary,Other Specialty Retail,S&P MidCap 400
 FIVN,"Five9, Inc.",Information Technology,Application Software,S&P SmallCap 600
 FIX,Comfort Systems USA,Industrials,Construction & Engineering,S&P 500
 FIZZ,National Beverage Corp.,Consumer Staples,Soft Drinks & Non-alcoholic Beverages,S&P SmallCap 600
@@ -675,7 +675,7 @@ HWC,Hancock Whitney,Financials,Regional Banks,S&P MidCap 400
 HWKN,"Hawkins, Inc.",Materials,Commodity Chemicals,S&P SmallCap 600
 HWM,Howmet Aerospace,Industrials,Aerospace & Defense,S&P 500
 HXL,Hexcel,Industrials,Aerospace & Defense,S&P MidCap 400
-HZO,"MarineMax, Inc.",Consumer Discretionary,Specialty Stores,S&P SmallCap 600
+HZO,"MarineMax, Inc.",Consumer Discretionary,Other Specialty Retail,S&P SmallCap 600
 IART,Integra Lifesciences Holdings,Health Care,Health Care Equipment,S&P SmallCap 600
 IBKR,Interactive Brokers,Financials,Investment Banking & Brokerage,S&P 500
 IBM,IBM,Information Technology,IT Consulting & Other Services,S&P 500
@@ -1148,7 +1148,7 @@ RJF,Raymond James Financial,Financials,Investment Banking & Brokerage,S&P 500
 RL,Ralph Lauren Corporation,Consumer Discretionary,"Apparel, Accessories & Luxury Goods",S&P 500
 RLI,RLI Corp.,Financials,Property & Casualty Insurance,S&P MidCap 400
 RMBS,Rambus,Information Technology,Semiconductors,S&P MidCap 400
-RMD,ResMed|,Health Care,Health Care Equipment,S&P 500
+RMD,ResMed,Health Care,Health Care Equipment,S&P 500
 RNG,"RingCentral, Inc.",Information Technology,Application Software,S&P SmallCap 600
 RNR,RenaissanceRe,Financials,Reinsurance,S&P MidCap 400
 RNST,Renasant Corp.,Financials,Regional Banks,S&P SmallCap 600
@@ -1185,7 +1185,7 @@ SANM,Sanmina Corporation,Information Technology,Electronic Manufacturing Service
 SARO,StandardAero,Industrials,Aerospace & Defense,S&P MidCap 400
 SBAC,SBA Communications,Real Estate,Telecom Tower REITs,S&P 500
 SBCF,Seacoast Banking Corporation of Florida,Financials,Regional Banks,S&P SmallCap 600
-SBH,"Sally Beauty Holdings, Inc.",Consumer Discretionary,Specialty Stores,S&P SmallCap 600
+SBH,"Sally Beauty Holdings, Inc.",Consumer Discretionary,Other Specialty Retail,S&P SmallCap 600
 SBRA,Sabra Health Care REIT,Real Estate,Health Care REITs,S&P MidCap 400
 SBSI,"Southside Bancshares, Inc.",Financials,Regional Banks,S&P SmallCap 600
 SBUX,Starbucks,Consumer Discretionary,Restaurants,S&P 500
@@ -1210,7 +1210,7 @@ SHEN,Shenandoah Telecommunications Co,Communication Services,Wireless Telecommun
 SHO,"Sunstone Hotel Investors, Inc.",Real Estate,Hotel & Resort REITs,S&P SmallCap 600
 SHOO,"Steven Madden, Ltd.",Consumer Discretionary,Footwear,S&P SmallCap 600
 SHW,Sherwin-Williams,Materials,Specialty Chemicals,S&P 500
-SIG,Signet Jewelers,Consumer Discretionary,Specialty Stores,S&P SmallCap 600
+SIG,Signet Jewelers,Consumer Discretionary,Other Specialty Retail,S&P SmallCap 600
 SIGI,Selective Insurance Group,Financials,Property & Casualty Insurance,S&P MidCap 400
 SIRI,SiriusXM,Communication Services,Broadcasting,S&P MidCap 400
 SITM,SiTime,Information Technology,Semiconductors,S&P MidCap 400
