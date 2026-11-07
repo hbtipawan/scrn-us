@@ -548,7 +548,7 @@ FN,Fabrinet,Information Technology,Electronic Manufacturing Services,S&P MidCap 
 FNB,FNB Corporation,Financials,Regional Banks,S&P MidCap 400
 FND,Floor & Decor,Consumer Discretionary,Home Improvement Retail,S&P MidCap 400
 FNF,Fidelity National Financial,Financials,Property & Casualty Insurance,S&P MidCap 400
-FORM,"FormFactor, Inc.",Information Technology,Semiconductor Materials & Equipment,S&P MidCap 400
+FORM,FormFactor,Information Technology,Semiconductor Materials & Equipment,S&P MidCap 400
 FOUR,Shift4,Financials,Transaction & Payment Processing Services,S&P MidCap 400
 FOX,Fox Corporation (Class B),Communication Services,Broadcasting,S&P 500
 FOXA,Fox Corporation (Class A),Communication Services,Broadcasting,S&P 500
@@ -585,7 +585,7 @@ GHC,Graham Holdings,Consumer Discretionary,Education Services,S&P MidCap 400
 GIII,"G-III Apparel Group, Ltd.",Consumer Discretionary,"Apparel, Accessories & Luxury Goods",S&P SmallCap 600
 GILD,Gilead Sciences,Health Care,Biotechnology,S&P 500
 GIS,General Mills,Consumer Staples,Packaged Foods & Meats,S&P 500
-GKOS,Glaukos Corp.,Health Care,Health Care Equipment,S&P SmallCap 600
+GKOS,Glaukos,Health Care,Health Care Equipment,S&P MidCap 400
 GL,Globe Life,Financials,Life & Health Insurance,S&P 500
 GLPI,Gaming and Leisure Properties,Real Estate,Other Specialized REITs,S&P MidCap 400
 GLW,Corning Inc.,Information Technology,Electronic Components,S&P 500
@@ -773,7 +773,6 @@ KRYS,Krystal Biotech,Health Care,Biotechnology,S&P MidCap 400
 KSS,Kohl's Corp.,Consumer Discretionary,Broadline Retail,S&P SmallCap 600
 KTB,Kontoor Brands,Consumer Discretionary,"Apparel, Accessories & Luxury Goods",S&P SmallCap 600
 KTOS,Kratos Defense & Security Solutions,Industrials,Aerospace & Defense,S&P MidCap 400
-KVUE,Kenvue,Consumer Staples,Personal Care Products,S&P 500
 KWR,Quaker Chemical Corporation,Materials,Specialty Chemicals,S&P SmallCap 600
 L,Loews Corporation,Financials,Multi-line Insurance,S&P 500
 LAD,Lithia Motors,Consumer Discretionary,Automotive Retail,S&P MidCap 400
@@ -994,7 +993,7 @@ OHI,Omega Healthcare Investors,Real Estate,Health Care REITs,S&P MidCap 400
 OI,"O-I Glass, Inc.",Materials,"Metal, Glass & Plastic Containers",S&P SmallCap 600
 OII,"Oceaneering International, Inc.",Energy,Oil & Gas Equipment & Services,S&P SmallCap 600
 OKE,Oneok,Energy,Oil & Gas Storage & Transportation,S&P 500
-OKTA,"Okta, Inc.",Information Technology,Application Software,S&P MidCap 400
+OKTA,"Okta, Inc.",Information Technology,Application Software,S&P 500
 OLED,Universal Display,Information Technology,Semiconductors,S&P MidCap 400
 OLLI,Ollie's Bargain Outlet,Consumer Discretionary,Broadline Retail,S&P MidCap 400
 OMC,Omnicom Group,Communication Services,Advertising,S&P 500
@@ -1269,7 +1268,7 @@ STWD,Starwood Property Trust,Financials,Mortgage REITs,S&P MidCap 400
 STX,Seagate Technology,Information Technology,"Technology Hardware, Storage & Peripherals",S&P 500
 STZ,Constellation Brands,Consumer Staples,Distillers & Vintners,S&P 500
 SUI,Sun Communities,Real Estate,Single-Family Residential REITs,S&P MidCap 400
-SUPN,"Supernus Pharmaceuticals, Inc.",Health Care,Pharmaceuticals,S&P SmallCap 600
+SUPN,"Supernus, Inc.",Health Care,Pharmaceuticals,S&P SmallCap 600
 SW,Smurfit Westrock,Materials,Paper & Plastic Packaging Products & Materials,S&P 500
 SWK,Stanley Black & Decker,Industrials,Industrial Machinery & Supplies & Components,S&P 500
 SWKS,Skyworks Solutions,Information Technology,Semiconductors,S&P 500
