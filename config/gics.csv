@@ -730,6 +730,7 @@ JBSS,"John B. Sanfilippo & Son, Inc.",Consumer Staples,Packaged Foods & Meats,S&
 JBTM,JBT Marel Corporation,Industrials,Industrial Machinery & Supplies & Components,S&P SmallCap 600
 JCI,Johnson Controls,Industrials,Building Products,S&P 500
 JEF,Jefferies,Financials,Multi-Sector Holdings,S&P MidCap 400
+JHX,James Hardie Industries,Materials,Construction Materials,S&P MidCap 400
 JJSF,J&J Snack Foods Corp.,Consumer Staples,Packaged Foods & Meats,S&P SmallCap 600
 JKHY,Jack Henry & Associates,Financials,Transaction & Payment Processing Services,S&P 500
 JLL,Jones Lang LaSalle,Real Estate,Real Estate Services,S&P MidCap 400
@@ -899,7 +900,7 @@ MSA,MSA Safety,Industrials,Office Services & Supplies,S&P MidCap 400
 MSCI,MSCI,Financials,Financial Exchanges & Data,S&P 500
 MSEX,Middlesex Water Company,Utilities,Water Utilities,S&P SmallCap 600
 MSFT,Microsoft,Information Technology,Systems Software,S&P 500
-MSGS,Madison Square Garden Sports Corp.,Communication Services,Movies & Entertainment,S&P SmallCap 600
+MSGK,MSG Knickerbockers Corp.,Communication Services,Movies & Entertainment,S&P SmallCap 600
 MSI,Motorola Solutions,Information Technology,Communications Equipment,S&P 500
 MSM,MSC Industrial Direct,Industrials,Trading Companies & Distributors,S&P MidCap 400
 MTB,M&T Bank,Financials,Regional Banks,S&P 500
@@ -1156,7 +1157,6 @@ ROCK,"Gibraltar Industries, Inc.",Industrials,Building Products,S&P SmallCap 600
 ROG,Rogers Corporation,Information Technology,Electronic Components,S&P SmallCap 600
 ROIV,Roivant Sciences,Health Care,Biotechnology,S&P MidCap 400
 ROK,Rockwell Automation,Industrials,Electrical Components & Equipment,S&P 500
-ROKU,"Roku, Inc.",Communication Services,Movies & Entertainment,S&P MidCap 400
 ROL,"Rollins, Inc.",Industrials,Environmental & Facilities Services,S&P 500
 ROP,Roper Technologies,Information Technology,Electronic Equipment & Instruments,S&P 500
 ROST,Ross Stores,Consumer Discretionary,Apparel Retail,S&P 500
