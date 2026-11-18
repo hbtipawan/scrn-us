@@ -186,7 +186,6 @@ BIO,Bio-Rad Laboratories,Health Care,Life Sciences Tools & Services,S&P MidCap 4
 BJ,BJ's Wholesale Club,Consumer Staples,Consumer Staples Merchandise Retail,S&P MidCap 400
 BJRI,"BJ's Restaurants, Inc.",Consumer Discretionary,Restaurants,S&P SmallCap 600
 BKE,"The Buckle, Inc.",Consumer Discretionary,Apparel Retail,S&P SmallCap 600
-BKH,Black Hills Corporation,Utilities,Multi-Utilities,S&P MidCap 400
 BKNG,Booking Holdings,Consumer Discretionary,"Hotels, Resorts & Cruise Lines",S&P 500
 BKR,Baker Hughes,Energy,Oil & Gas Equipment & Services,S&P 500
 BKU,"BankUnited, Inc.",Financials,Regional Banks,S&P SmallCap 600
@@ -675,6 +674,7 @@ HWC,Hancock Whitney,Financials,Regional Banks,S&P MidCap 400
 HWKN,"Hawkins, Inc.",Materials,Commodity Chemicals,S&P SmallCap 600
 HWM,Howmet Aerospace,Industrials,Aerospace & Defense,S&P 500
 HXL,Hexcel,Industrials,Aerospace & Defense,S&P MidCap 400
+HZN,Bright Horizon Energy Corporation,Utilities,Multi-Utilities,S&P MidCap 400
 HZO,"MarineMax, Inc.",Consumer Discretionary,Other Specialty Retail,S&P SmallCap 600
 IART,Integra Lifesciences Holdings,Health Care,Health Care Equipment,S&P SmallCap 600
 IBKR,Interactive Brokers,Financials,Investment Banking & Brokerage,S&P 500
