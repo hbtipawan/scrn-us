@@ -19,6 +19,7 @@ ABNB,"Airbnb, Inc.",Consumer Cyclical,Travel Services
 ABSI,Absci Corporation,Healthcare,Biotechnology
 ABT,Abbott Laboratories,Healthcare,Medical Devices
 ABVX,ABIVAX Société Anonyme,Healthcare,Biotechnology
+ABX,"Abacus Global Management, Inc.",Financial Services,Insurance - Life
 ACAD,Acadia Pharmaceuticals Inc.,Healthcare,Biotechnology
 ACGL,Arch Capital Group Ltd.,Financial Services,Insurance - Diversified
 ACHC,"Acadia Healthcare Company, Inc.",Healthcare,Medical Care Facilities
@@ -34,7 +35,7 @@ ADBE,Adobe Inc.,Technology,Software - Application
 ADC,Agree Realty Corporation,Real Estate,REIT - Retail
 ADEA,Adeia Inc.,Technology,Software - Application
 ADI,"Analog Devices, Inc.",Technology,Semiconductors
-ADIG,ADI Global Distribution Inc.,Technology,Computer Hardware
+ADIG,ADI Global Distribution Inc,Technology,Computer Hardware
 ADM,Archer-Daniels-Midland Company,Consumer Defensive,Farm Products
 ADMA,"ADMA Biologics, Inc.",Healthcare,Biotechnology
 ADNT,Adient plc,Consumer Cyclical,Auto Parts
@@ -228,7 +229,6 @@ AVLN,Avalyn Pharma Inc.,Healthcare,Biotechnology
 AVNT,Avient Corporation,Basic Materials,Specialty Chemicals
 AVO,"Mission Produce, Inc.",Consumer Defensive,Food Distribution
 AVPT,"AvePoint, Inc.",Technology,Software - Infrastructure
-AVR,Anteris Technologies Global Corp.,Healthcare,Medical Devices
 AVT,"Avnet, Inc.",Technology,Electronics & Computer Distribution
 AVTR,"Avantor, Inc.",Healthcare,Medical Instruments & Supplies
 AVTX,"Avalo Therapeutics, Inc.",Healthcare,Biotechnology
@@ -402,7 +402,6 @@ BYD,Boyd Gaming Corporation,Consumer Cyclical,Resorts & Casinos
 BZ,Kanzhun Limited,Communication Services,Internet Content & Information
 C,Citigroup Inc.,Financial Services,Banks - Diversified
 CAAP,Corporación América Airports S.A.,Industrials,Airports & Air Services
-CAC,Camden National Corporation,Financial Services,Banks - Regional
 CACC,Credit Acceptance Corporation,Financial Services,Credit Services
 CACI,CACI International Inc,Technology,Information Technology Services
 CADL,"Candel Therapeutics, Inc.",Healthcare,Biotechnology
@@ -499,13 +498,13 @@ CL,Colgate-Palmolive Company,Consumer Defensive,Household & Personal Products
 CLB,Core Laboratories Inc.,Energy,Oil & Gas Equipment & Services
 CLBK,"Columbia Financial, Inc.",Financial Services,Banks - Regional
 CLBT,Cellebrite DI Ltd.,Technology,Software - Infrastructure
+CLDT,Chatham Lodging Trust,Real Estate,REIT - Hotel & Motel
 CLDX,"Celldex Therapeutics, Inc.",Healthcare,Biotechnology
 CLF,Cleveland-Cliffs Inc.,Basic Materials,Steel
 CLH,"Clean Harbors, Inc.",Industrials,Waste Management
 CLMB,"Climb Global Solutions, Inc.",Technology,Electronics & Computer Distribution
 CLMT,"Calumet, Inc.",Basic Materials,Specialty Chemicals
 CLS,Celestica Inc.,Technology,Electronic Components
-CLSK,"CleanSpark, Inc.",Financial Services,Capital Markets
 CLX,The Clorox Company,Consumer Defensive,Household & Personal Products
 CLYM,"Climb Bio, Inc.",Healthcare,Biotechnology
 CM,Canadian Imperial Bank of Commerce,Financial Services,Banks - Diversified
@@ -583,6 +582,7 @@ CRI,"Carter's, Inc.",Consumer Cyclical,Apparel Retail
 CRK,"Comstock Resources, Inc.",Energy,Oil & Gas E&P
 CRL,Charles River Laboratories International,Healthcare,Diagnostics & Research
 CRM,"Salesforce, Inc.",Technology,Software - Application
+CRMD,CorMedix Inc.,Healthcare,Biotechnology
 CROX,"Crocs, Inc.",Consumer Cyclical,Footwear & Accessories
 CRS,Carpenter Technology Corporation,Industrials,Metal Fabrication
 CRSP,CRISPR Therapeutics AG,Healthcare,Biotechnology
@@ -654,7 +654,6 @@ DAVE,Dave Inc.,Technology,Software - Application
 DB,Deutsche Bank Aktiengesellschaft,Financial Services,Banks - Regional
 DBD,"Diebold Nixdorf, Incorporated",Technology,Software - Application
 DBX,"Dropbox, Inc.",Technology,Software - Infrastructure
-DC,Dakota Gold Corp.,Basic Materials,Gold
 DCI,"Donaldson Company, Inc.",Industrials,Specialty Industrial Machinery
 DCO,Ducommun Incorporated,Industrials,Aerospace & Defense
 DCOM,"Dime Commercial Bancshares, Inc.",Financial Services,Banks - Regional
@@ -761,7 +760,6 @@ EG,"Everest Group, Ltd.",Financial Services,Insurance - Reinsurance
 EGBN,"Eagle Bancorp, Inc.",Financial Services,Banks - Regional
 EGO,Eldorado Gold Corporation,Basic Materials,Gold
 EGP,"EastGroup Properties, Inc.",Real Estate,REIT - Industrial
-EGY,"VAALCO Energy, Inc.",Energy,Oil & Gas E&P
 EHC,Encompass Health Corporation,Healthcare,Medical Care Facilities
 EIG,"Employers Holdings, Inc.",Financial Services,Insurance - Specialty
 EIX,Edison International,Utilities,Utilities - Regulated Electric
@@ -899,7 +897,6 @@ FLEX,Flex Ltd.,Technology,Electronic Components
 FLG,"Flagstar Bank, National Association",Financial Services,Banks - Regional
 FLGT,"Fulgent Genetics, Inc.",Healthcare,Diagnostics & Research
 FLNG,FLEX LNG Ltd.,Energy,Oil & Gas Midstream
-FLO,"Flowers Foods, Inc.",Consumer Defensive,Packaged Foods
 FLOC,Flowco Holdings Inc.,Energy,Oil & Gas Equipment & Services
 FLR,Fluor Corporation,Industrials,Engineering & Construction
 FLS,Flowserve Corporation,Industrials,Specialty Industrial Machinery
@@ -915,6 +912,7 @@ FND,"Floor & Decor Holdings, Inc.",Consumer Cyclical,Home Improvement Retail
 FNF,"Fidelity National Financial, Inc.",Financial Services,Insurance - Specialty
 FNKO,"Funko, Inc.",Consumer Cyclical,Leisure
 FNV,Franco-Nevada Corporation,Basic Materials,Gold
+FOR,Forestar Group Inc.,Real Estate,Real Estate - Development
 FORM,"FormFactor, Inc.",Technology,Semiconductor Equipment & Materials
 FOUR,"Shift4 Payments, Inc.",Technology,Software - Infrastructure
 FOX,Fox Corporation,Communication Services,Entertainment
@@ -957,6 +955,7 @@ FWONK,Formula One Group,Communication Services,Entertainment
 FWRD,Forward Air Corporation,Industrials,Integrated Freight & Logistics
 FWRG,"First Watch Restaurant Group, Inc.",Consumer Cyclical,Restaurants
 G,Genpact Limited,Technology,Information Technology Services
+GAB,The Gabelli Equity Trust Inc.,Financial Services,Asset Management
 GABC,"German American Bancorp, Inc.",Financial Services,Banks - Regional
 GAP,"The Gap, Inc.",Consumer Cyclical,Apparel Retail
 GATX,GATX Corporation,Industrials,Rental & Leasing Services
@@ -992,7 +991,6 @@ GIC,Global Industrial Company,Industrials,Industrial Distribution
 GIII,"G-III Apparel Group, Ltd.",Consumer Cyclical,Apparel Manufacturing
 GIL,Gildan Activewear Inc.,Consumer Cyclical,Apparel Manufacturing
 GILD,"Gilead Sciences, Inc.",Healthcare,Drug Manufacturers - General
-GILT,Gilat Satellite Networks Ltd.,Technology,Communication Equipment
 GIS,"General Mills, Inc.",Consumer Defensive,Packaged Foods
 GKOS,Glaukos Corporation,Healthcare,Medical Devices
 GL,Globe Life Inc.,Financial Services,Insurance - Life
@@ -1113,7 +1111,6 @@ HON,Honeywell International Inc.,Industrials,Conglomerates
 HONA,Honeywell Aerospace Inc.,Industrials,Aerospace & Defense
 HOOD,"Robinhood Markets, Inc.",Financial Services,Capital Markets
 HOPE,"Hope Bancorp, Inc.",Financial Services,Banks - Regional
-HOS,"Hornbeck Offshore Services, Inc",Industrials,Marine Shipping
 HOV,"Hovnanian Enterprises, Inc.",Consumer Cyclical,Residential Construction
 HP,"Helmerich & Payne, Inc.",Energy,Oil & Gas Drilling
 HPE,Hewlett Packard Enterprise Company,Technology,Communication Equipment
@@ -1154,10 +1151,12 @@ HWKN,"Hawkins, Inc.",Basic Materials,Specialty Chemicals
 HWM,Howmet Aerospace Inc.,Industrials,Aerospace & Defense
 HXL,Hexcel Corporation,Industrials,Aerospace & Defense
 HYMC,Hycroft Mining Holding Corporation,Basic Materials,Gold
+HZN,Bright Horizon Energy Corporation,Utilities,Utilities - Regulated Gas
 HZO,"MarineMax, Inc.",Consumer Cyclical,Specialty Retail
 IAG,IAMGOLD Corporation,Basic Materials,Gold
 IART,Integra LifeSciences Holdings Corporatio,Healthcare,Medical Devices
 IBCP,Independent Bank Corporation,Financial Services,Banks - Regional
+IBEX,IBEX Limited,Technology,Information Technology Services
 IBKR,"Interactive Brokers Group, Inc.",Financial Services,Capital Markets
 IBM,International Business Machines Corporat,Technology,Information Technology Services
 IBN,ICICI Bank Limited,Financial Services,Banks - Regional
@@ -1239,6 +1238,7 @@ ITIC,Investors Title Company,Financial Services,Insurance - Specialty
 ITRI,"Itron, Inc.",Technology,Scientific & Technical Instruments
 ITT,ITT Inc.,Industrials,Specialty Industrial Machinery
 ITW,Illinois Tool Works Inc.,Industrials,Specialty Industrial Machinery
+IVR,Invesco Mortgage Capital Inc.,Real Estate,REIT - Mortgage
 IVT,InvenTrust Properties Corp.,Real Estate,REIT - Retail
 IVZ,Invesco Ltd.,Financial Services,Asset Management
 IX,ORIX Corporation,Financial Services,Financial Conglomerates
@@ -1408,11 +1408,9 @@ LUNR,"Intuitive Machines, Inc.",Industrials,Aerospace & Defense
 LUV,Southwest Airlines Co.,Industrials,Airlines
 LVS,Las Vegas Sands Corp.,Consumer Cyclical,Resorts & Casinos
 LW,"Lamb Weston Holdings, Inc.",Consumer Defensive,Packaged Foods
-LXFR,Luxfer Holdings PLC,Industrials,Specialty Industrial Machinery
 LXU,"LSB Industries, Inc.",Basic Materials,Chemicals
 LYB,LyondellBasell Industries N.V.,Basic Materials,Specialty Chemicals
 LYFT,"Lyft, Inc.",Technology,Software - Application
-LYG,Lloyds Banking Group plc,Financial Services,Banks - Regional
 LYTS,LSI Industries Inc.,Technology,Electronic Components
 LYV,"Live Nation Entertainment, Inc.",Communication Services,Entertainment
 LZB,La-Z-Boy Incorporated,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
@@ -1438,7 +1436,6 @@ MAZE,"Maze Therapeutics, Inc.",Healthcare,Biotechnology
 MBC,"MasterBrand, Inc.",Consumer Cyclical,"Furnishings, Fixtures & Appliances"
 MBGL,"Mobility Global, Inc.",Technology,Software - Infrastructure
 MBIN,Merchants Bancorp,Financial Services,Banks - Regional
-MBLY,Mobileye Global Inc.,Consumer Cyclical,Auto Parts
 MBUU,"Malibu Boats, Inc.",Consumer Cyclical,Recreational Vehicles
 MBWM,Mercantile Bank Corporation,Financial Services,Banks - Regional
 MBX,"MBX Biosciences, Inc.",Healthcare,Biotechnology
@@ -1460,7 +1457,6 @@ MDLN,Medline Inc.,Healthcare,Medical Instruments & Supplies
 MDLZ,"Mondelez International, Inc.",Consumer Defensive,Confectioners
 MDT,Medtronic plc,Healthcare,Medical Devices
 MDU,"MDU Resources Group, Inc.",Utilities,Utilities - Regulated Gas
-MEC,"Mayville Engineering Company, Inc.",Industrials,Metal Fabrication
 MEDP,"Medpace Holdings, Inc.",Healthcare,Diagnostics & Research
 MEI,"Methode Electronics, Inc.",Technology,Electronic Components
 MELI,"MercadoLibre, Inc.",Consumer Cyclical,Internet Retail
@@ -1507,7 +1503,6 @@ MMYT,MakeMyTrip Limited,Consumer Cyclical,Travel Services
 MNDY,monday.com Ltd.,Technology,Software - Application
 MNPR,Monopar Therapeutics Inc.,Healthcare,Biotechnology
 MNR,Mach Natural Resources LP,Energy,Oil & Gas E&P
-MNRO,"Monro, Inc.",Consumer Cyclical,Auto Parts
 MNSO,MINISO Group Holding Limited,Consumer Cyclical,Specialty Retail
 MNST,Monster Beverage Corporation,Consumer Defensive,Beverages - Non-Alcoholic
 MO,"Altria Group, Inc.",Consumer Defensive,Tobacco
@@ -1594,7 +1589,6 @@ NEXA,Nexa Resources S.A.,Basic Materials,Other Industrial Metals & Mining
 NEXT,NextDecade Corporation,Energy,Oil & Gas Equipment & Services
 NFG,National Fuel Gas Company,Energy,Oil & Gas Integrated
 NFLX,"Netflix, Inc.",Communication Services,Entertainment
-NG,NovaGold Resources Inc.,Basic Materials,Gold
 NGG,National Grid plc,Utilities,Utilities - Regulated Electric
 NGNE,Neurogene Inc.,Healthcare,Biotechnology
 NGVT,Ingevity Corporation,Basic Materials,Specialty Chemicals
@@ -1679,7 +1673,6 @@ NXST,"Nexstar Media Group, Inc.",Communication Services,Broadcasting
 NXT,Nextpower Inc.,Technology,Solar
 NYT,The New York Times Company,Communication Services,Publishing
 O,Realty Income Corporation,Real Estate,REIT - Retail
-OABI,"OmniAb, Inc.",Healthcare,Biotechnology
 OBDC,Blue Owl Capital Corporation,Financial Services,Asset Management
 OBE,Obsidian Energy Ltd.,Energy,Oil & Gas E&P
 OBK,"Origin Bancorp, Inc.",Financial Services,Banks - Regional
@@ -1811,7 +1804,6 @@ PGNY,"Progyny, Inc.",Healthcare,Healthcare Plans
 PGR,The Progressive Corporation,Financial Services,Insurance - Property & Casualty
 PGY,Pagaya Technologies Ltd.,Technology,Software - Infrastructure
 PH,Parker-Hannifin Corporation,Industrials,Specialty Industrial Machinery
-PHAT,"Phathom Pharmaceuticals, Inc.",Healthcare,Biotechnology
 PHG,Koninklijke Philips N.V.,Healthcare,Medical Devices
 PHIN,PHINIA Inc.,Consumer Cyclical,Auto Parts
 PHM,"PulteGroup, Inc.",Consumer Cyclical,Residential Construction
@@ -1819,6 +1811,7 @@ PHR,"Phreesia, Inc.",Healthcare,Health Information Services
 PHVS,Pharvaris N.V.,Healthcare,Biotechnology
 PHYS,Sprott Physical Gold Trust,Unknown,Unknown
 PI,"Impinj, Inc.",Technology,Semiconductors
+PICS,PicS N.V.,Technology,Software - Infrastructure
 PII,Polaris Inc.,Consumer Cyclical,Recreational Vehicles
 PINS,"Pinterest, Inc.",Communication Services,Internet Content & Information
 PIPR,Piper Sandler Companies,Financial Services,Capital Markets
@@ -1893,7 +1886,6 @@ PTCT,"PTC Therapeutics, Inc.",Healthcare,Biotechnology
 PTEN,"Patterson-UTI Energy, Inc.",Energy,Oil & Gas Drilling
 PTGX,"Protagonist Therapeutics, Inc.",Healthcare,Biotechnology
 PTLO,Portillo's Inc.,Consumer Cyclical,Restaurants
-PTON,"Peloton Interactive, Inc.",Consumer Cyclical,Leisure
 PTRN,Pattern Group Inc.,Consumer Cyclical,Internet Retail
 PUBM,"PubMatic, Inc.",Technology,Software - Application
 PUK,Prudential plc,Financial Services,Insurance - Life
@@ -1917,7 +1909,6 @@ QNST,"QuinStreet, Inc.",Communication Services,Advertising Agencies
 QNT,Quantinuum Inc.,Technology,Software - Application
 QSR,Restaurant Brands International Inc.,Consumer Cyclical,Restaurants
 QTWO,"Q2 Holdings, Inc.",Technology,Software - Application
-QUBT,Quantum Computing Inc.,Technology,Computer Hardware
 QUIT,"Achieve Life Sciences, Inc.",Healthcare,Biotechnology
 QURE,uniQure N.V.,Healthcare,Biotechnology
 QXO,"QXO, Inc.",Industrials,Industrial Distribution
@@ -1951,7 +1942,6 @@ RELX,RELX PLC,Industrials,Specialty Business Services
 RELY,"Remitly Global, Inc.",Technology,Software - Infrastructure
 REPL,"Replimune Group, Inc.",Healthcare,Biotechnology
 REPX,"Riley Exploration Permian, Inc.",Energy,Oil & Gas E&P
-RES,"RPC, Inc.",Energy,Oil & Gas Equipment & Services
 REX,REX American Resources Corporation,Basic Materials,Chemicals
 REXR,"Rexford Industrial Realty, Inc.",Real Estate,REIT - Industrial
 REYN,Reynolds Consumer Products Inc.,Consumer Cyclical,Packaging & Containers
@@ -1967,7 +1957,6 @@ RH,RH,Consumer Cyclical,Specialty Retail
 RHI,Robert Half Inc.,Industrials,Staffing & Employment Services
 RHLD,"Resolute Holdings Management, Inc.",Industrials,Specialty Business Services
 RHP,"Ryman Hospitality Properties, Inc.",Real Estate,REIT - Hotel & Motel
-RIG,Transocean Ltd.,Energy,Oil & Gas Drilling
 RIGL,"Rigel Pharmaceuticals, Inc.",Healthcare,Biotechnology
 RIO,Rio Tinto Group,Basic Materials,Other Industrial Metals & Mining
 RIOT,"Riot Platforms, Inc.",Financial Services,Capital Markets
@@ -2018,7 +2007,6 @@ RVTY,"Revvity, Inc.",Healthcare,Diagnostics & Research
 RXO,"RXO, Inc.",Industrials,Trucking
 RY,Royal Bank of Canada,Financial Services,Banks - Diversified
 RYAAY,Ryanair Holdings plc,Industrials,Airlines
-RYAM,Rayonier Advanced Materials Inc.,Basic Materials,Chemicals
 RYAN,"Ryan Specialty Holdings, Inc.",Financial Services,Insurance Brokers
 RYN,Rayonier Inc.,Real Estate,REIT - Specialty
 RYTM,"Rhythm Pharmaceuticals, Inc.",Healthcare,Biotechnology
@@ -2039,7 +2027,6 @@ SARO,"StandardAero, Inc.",Industrials,Aerospace & Defense
 SB,"Safe Bulkers, Inc.",Industrials,Marine Shipping
 SBAC,SBA Communications Corporation,Real Estate,REIT - Specialty
 SBCF,Seacoast Banking Corporation of Florida,Financial Services,Banks - Regional
-SBET,"Sharplink, Inc.",Financial Services,Capital Markets
 SBGI,"Sinclair, Inc.",Communication Services,Broadcasting
 SBH,"Sally Beauty Holdings, Inc.",Consumer Cyclical,Specialty Retail
 SBLK,Star Bulk Carriers Corp.,Industrials,Marine Shipping
@@ -2128,7 +2115,6 @@ SMPL,The Simply Good Foods Company,Consumer Defensive,Packaged Foods
 SMTC,Semtech Corporation,Technology,Semiconductors
 SN,"SharkNinja, Inc.",Consumer Cyclical,"Furnishings, Fixtures & Appliances"
 SNA,Snap-on Incorporated,Industrials,Tools & Accessories
-SNAP,Snap Inc.,Communication Services,Internet Content & Information
 SNDA,"Sonida Senior Living, Inc.",Healthcare,Medical Care Facilities
 SNDK,Sandisk Corporation,Technology,Computer Hardware
 SNDR,"Schneider National, Inc.",Industrials,Trucking
@@ -2152,7 +2138,6 @@ SPCX,Space Exploration Technologies Corp.,Industrials,Aerospace & Defense
 SPG,"Simon Property Group, Inc.",Real Estate,REIT - Retail
 SPGI,S&P Global Inc.,Financial Services,Financial Data & Stock Exchanges
 SPHR,Sphere Entertainment Co.,Communication Services,Entertainment
-SPIR,"Spire Global, Inc.",Industrials,Specialty Business Services
 SPNT,SiriusPoint Ltd.,Financial Services,Insurance - Reinsurance
 SPOT,Spotify Technology S.A.,Communication Services,Internet Content & Information
 SPSC,"SPS Commerce, Inc.",Technology,Software - Application
@@ -2402,8 +2387,6 @@ USPH,"U.S. Physical Therapy, Inc.",Healthcare,Medical Care Facilities
 UTHR,United Therapeutics Corporation,Healthcare,Drug Manufacturers - Specialty & Generic
 UTI,"Universal Technical Institute, Inc.",Consumer Defensive,Education & Training Services
 UTL,Unitil Corporation,Utilities,Utilities - Diversified
-UTZ,"Utz Brands, Inc.",Consumer Defensive,Packaged Foods
-UUUU,Energy Fuels Inc.,Energy,Uranium
 UVE,"Universal Insurance Holdings, Inc.",Financial Services,Insurance - Property & Casualty
 UVSP,Univest Financial Corporation,Financial Services,Banks - Regional
 UVV,Universal Corporation,Consumer Defensive,Tobacco
@@ -2441,7 +2424,7 @@ VLTO,Veralto Corporation,Industrials,Pollution & Treatment Controls
 VLY,Valley National Bancorp,Financial Services,Banks - Regional
 VMC,Vulcan Materials Company,Basic Materials,Building Materials
 VMI,"Valmont Industries, Inc.",Industrials,Conglomerates
-VMRK,Vivmark Residential,Real Estate,REIT - Residential
+VMRK,"AvalonBay Communities, Inc.",Real Estate,REIT - Residential
 VNO,Vornado Realty Trust,Real Estate,REIT - Office
 VNOM,"Viper Energy, Inc.",Energy,Oil & Gas Midstream
 VNT,Vontier Corporation,Technology,Scientific & Technical Instruments
@@ -2550,7 +2533,6 @@ WULF,TeraWulf Inc.,Financial Services,Capital Markets
 WWD,"Woodward, Inc.",Industrials,Aerospace & Defense
 WWW,"Wolverine World Wide, Inc.",Consumer Cyclical,Footwear & Accessories
 WY,Weyerhaeuser Company,Real Estate,REIT - Specialty
-WYFI,"WhiteFiber, Inc.",Technology,Information Technology Services
 WYNN,"Wynn Resorts, Limited",Consumer Cyclical,Resorts & Casinos
 XE,"X-Energy, Inc.",Industrials,Specialty Industrial Machinery
 XEL,Xcel Energy Inc.,Utilities,Utilities - Regulated Electric
